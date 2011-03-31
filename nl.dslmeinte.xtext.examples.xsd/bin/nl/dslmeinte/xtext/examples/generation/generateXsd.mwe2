@@ -1,0 +1,33 @@
+module nl.dslmeinte.xtext.examples.xsd.generation.generateXsd
+
+import org.eclipse.emf.mwe.utils.*
+import org.eclipse.xtext.*
+
+var xsdrFile
+var targetDir
+
+Workflow {
+
+	bean = StandaloneSetup {
+		platformUri=".."
+	}
+
+	component = mwe.Reader {
+		path="${xsdrFile}"
+		register = nl.dslmeinte.xtext.examples.XsdLanguageStandaloneSetup {}
+		load = {
+			slot = "xsdr"
+			type = "Representation"
+		}
+	}
+
+	component = org.eclipse.xpand2.Generator {
+		metaModel = org.eclipse.xtend.typesystem.emf.EmfRegistryMetaModel {}
+		fileEncoding = "UTF-8"
+		expand = "nl::dslmeinte::xtext::examples::generation::XsdTemplate::main FOR xsdr"
+		outlet = {
+			path="${targetDir}"
+		}
+	}
+
+}

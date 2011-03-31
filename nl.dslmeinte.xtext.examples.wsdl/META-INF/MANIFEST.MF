@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: nl.dslmeinte.xtext.examples.wsdl
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0
+Bundle-SymbolicName: nl.dslmeinte.xtext.examples.wsdl; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.generator;resolution:=optional,
+ org.apache.commons.logging;resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ com.ibm.icu;resolution:=optional,
+ org.eclipse.xtext.xtend;resolution:=optional,
+ nl.dslmeinte.xtext.examples.xsd;bundle-version="1.0.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime,
+ org.eclipse.xtend.util.stdlib;bundle-version="1.0.1"
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: nl.dslmeinte.xtext.examples,
+ nl.dslmeinte.xtext.examples.services,
+ nl.dslmeinte.xtext.examples.wsdlLanguage,
+ nl.dslmeinte.xtext.examples.wsdlLanguage.impl,
+ nl.dslmeinte.xtext.examples.wsdlLanguage.util,
+ nl.dslmeinte.xtext.examples.parseTreeConstruction,
+ nl.dslmeinte.xtext.examples.parser.antlr,
+ nl.dslmeinte.xtext.examples.parser.antlr.internal,
+ nl.dslmeinte.xtext.examples.validation

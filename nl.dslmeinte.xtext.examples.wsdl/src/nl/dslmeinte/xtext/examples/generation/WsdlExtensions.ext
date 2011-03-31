@@ -1,0 +1,28 @@
+import wsdlLanguage;
+import xsdLanguage;
+
+
+cached XsdImport xsdImport(emf::EObject this) :
+	((Definitions) eRootContainer).xsdImport
+	;
+
+cached Schema resolve(XsdImport this) :
+	JAVA nl.dslmeinte.xtext.examples.XsdModelUtil.resolveImport(org.eclipse.emf.ecore.resource.Resource, java.lang.String)
+	;
+
+
+cached Boolean hasSoapBindings(Definitions this) :
+	bindings.transport.typeSelect(SoapTransport).size > 0
+	;
+
+cached Boolean hasHttpBindings(Definitions this) :
+	bindings.transport.typeSelect(HttpTransport).size > 0
+	;
+
+String name(Transport this) :
+	let metaName = metaType.name :
+		metaName.split("::").last().replaceFirst("Transport", "").toFirstLower()
+	;
+
+String typeName(HttpTransport this) : type.toString();
+

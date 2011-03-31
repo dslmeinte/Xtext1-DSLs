@@ -1,0 +1,52 @@
+import dataModelDsl;
+import dynamicScreenDsl ;
+
+extension nl::dslmeinte::xtext::examples::DataModelDslUtil;
+
+
+// the result type of ...
+cached Type resultType(PathTail this) :
+    JAVA nl.dslmeinte.xtext.examples.DynamicScreenModelUtil.resultType(nl.dslmeinte.xtext.examples.dynamicScreenDsl.PathTail);
+
+// all external variables defined on the screen:
+cached List[ExternalVariable] externalVars(DynamicScreen this) :
+    declarations.typeSelect(ExternalVariable)
+    ;
+
+// all enumeration lists defined on the screen:
+cached List[EnumList] enumLists (DynamicScreen this) :
+    declarations.typeSelect(EnumList)
+    ;
+
+// all group elements (including nested ones) defined on the screen:
+cached List[GroupElement] allGroupElements(DynamicScreen this) : eAllContents.typeSelect(GroupElement);
+
+// all fields (including nested ones) defined on the screen:
+cached List[dynamicScreenDsl::Field] allFields(DynamicScreen this) : eAllContents.typeSelect(Field);
+
+// returns whether the reference's target is boolean-typed:
+cached Boolean isBooleanTyped (ReferenceTarget this) :
+    let type = resultType(this.path) :
+          PrimitiveType.isAssignableFrom(type.metaType)
+       && ((PrimitiveType) type).isBoolean()
+    ;
+
+// returns whether the type is boolean:
+private cached Boolean isBoolean(PrimitiveType this) :
+       realizationType() == MetaPrimitiveType::boolean
+    || name.toLowerCase() == "boolean"
+    ;
+
+// returns the enumeration literals in the enum collection:
+List[EnumLiteral] resolve (EnumLiteralsCollection this) : {};   // (sentinel)
+List[EnumLiteral] resolve (DirectEnumLiteralsCollection this) : literals;
+List[EnumLiteral] resolve (EnumListReference this) : ref.literals;
+
+// returns the enumeration referenced in the enum comparison:
+Enumeration enum (EnumComparison this) : resultType(ref.ref.path);
+
+// all observable inputs, i.e. fields and external variables:
+cached List[ReferenceTarget] allObservables (DynamicScreen this) :
+    {}.addAll(externalVars()).addAll( allFields().sortBy( f | f.name ) )
+    ;
+

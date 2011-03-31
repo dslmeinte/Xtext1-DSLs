@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/nl.dslmeinte.xtext.examples.dynamic/src-gen"
+    editDirectory="/nl.dslmeinte.xtext.examples.dynamic.edit/src" editorDirectory="/nl.dslmeinte.xtext.examples.dynamic.editor/src"
+    modelPluginID="nl.dslmeinte.xtext.examples.dynamic" forceOverwrite="true" modelName="DynamicScreenDsl"
+    updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="nl.dslmeinte.xtext.examples.dynamic.edit"
+    editorPluginID="nl.dslmeinte.xtext.examples.dynamic.editor" usedGenPackages="../../../../../../nl.dslmeinte.xtext.examples.data/src-gen/nl/dslmeinte/xtext/examples/DataModelDsl.genmodel#//dataModelDsl">
+  <genPackages prefix="DynamicScreenDsl" basePackage="nl.dslmeinte.xtext.examples"
+      disposableProviderFactory="true" ecorePackage="DynamicScreenDsl.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DynamicScreenDsl.ecore#//AttributeClass">
+      <genEnumLiterals ecoreEnumLiteral="DynamicScreenDsl.ecore#//AttributeClass/display"/>
+      <genEnumLiterals ecoreEnumLiteral="DynamicScreenDsl.ecore#//AttributeClass/required"/>
+      <genEnumLiterals ecoreEnumLiteral="DynamicScreenDsl.ecore#//AttributeClass/readonly"/>
+      <genEnumLiterals ecoreEnumLiteral="DynamicScreenDsl.ecore#//AttributeClass/calculated"/>
+      <genEnumLiterals ecoreEnumLiteral="DynamicScreenDsl.ecore#//AttributeClass/doubleAsterisk"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DynamicScreenDsl.ecore#//BLiteral">
+      <genEnumLiterals ecoreEnumLiteral="DynamicScreenDsl.ecore#//BLiteral/true"/>
+      <genEnumLiterals ecoreEnumLiteral="DynamicScreenDsl.ecore#//BLiteral/false"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DynamicScreenDsl.ecore#//EnumMembership">
+      <genEnumLiterals ecoreEnumLiteral="DynamicScreenDsl.ecore#//EnumMembership/isIn"/>
+      <genEnumLiterals ecoreEnumLiteral="DynamicScreenDsl.ecore#//EnumMembership/isNotIn"/>
+    </genEnums>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//DynamicScreen">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//DynamicScreen/label"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//DynamicScreen/dataImport"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//DynamicScreen/viewClass"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//DynamicScreen/declarations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//DynamicScreen/groups"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//DataImport">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicScreenDsl.ecore#//DataImport/importURI"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//Label">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicScreenDsl.ecore#//Label/en"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicScreenDsl.ecore#//Label/nl"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//PathTail">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//PathTail/field"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//PathTail/asEntity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//PathTail/tail"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//Declaration"/>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//ExternalVariable"/>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//EnumList">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//EnumList/literals"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//EnumList/enum"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//DataStore">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//DataStore/class"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicScreenDsl.ecore#//DataStore/multi"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//GroupElement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//GroupElement/label"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//GroupElement/attributes"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//Field"/>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//FieldGroup">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//FieldGroup/with"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//FieldGroup/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//Attribute"/>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//EnumFieldAttribute"/>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//NormalAttribute">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//NormalAttribute/classExpr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//NormalAttribute/clause"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//AttributeClassExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicScreenDsl.ecore#//AttributeClassExpression/classes"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//RestrictionAttribute">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//RestrictionAttribute/literals"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//RestrictionAttribute/clause"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//RestrictionGroupAttribute">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//RestrictionGroupAttribute/rules"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//RestrictionRule">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//RestrictionRule/literals"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//RestrictionRule/clause"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//ReferenceTarget">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//ReferenceTarget/path"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//Reference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//Reference/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//DummyForExternalVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicScreenDsl.ecore#//DummyForExternalVariable/name"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//BExpression"/>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//NegationExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//NegationExpression/expr"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//AtomicReferringBExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//AtomicReferringBExpression/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//BComparison">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicScreenDsl.ecore#//BComparison/bLiteral"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//EnumComparison"/>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//SingleEnumComparison">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//SingleEnumComparison/eLiteral"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//MultiEnumComparison">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicScreenDsl.ecore#//MultiEnumComparison/membership"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//MultiEnumComparison/eLiterals"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//StringValueComparison">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicScreenDsl.ecore#//StringValueComparison/targetValue"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//PresenceCheck"/>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//EnumLiteralsCollection"/>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//DirectEnumLiteralsCollection">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//DirectEnumLiteralsCollection/literals"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//EnumListReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//EnumListReference/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//OrOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//OrOperation/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//OrOperation/right"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//AndOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//AndOperation/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//AndOperation/right"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

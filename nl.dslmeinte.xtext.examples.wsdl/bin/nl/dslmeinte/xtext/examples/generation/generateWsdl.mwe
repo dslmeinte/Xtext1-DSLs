@@ -1,0 +1,19 @@
+<workflow abstract="true">
+
+	<bean class="org.eclipse.emf.mwe.utils.StandaloneSetup" platformUri=".." />
+
+	<component class="org.eclipse.xtext.MweReader" uri="${wsdlrFile}">
+		<register class="nl.dslmeinte.xtext.examples.WsdlLanguageStandaloneSetup"/>
+		<register class="nl.dslmeinte.xtext.examples.XsdLanguageStandaloneSetup"/>
+		<outputSlot value="wsdlr"/>
+	</component>
+
+	<component class="org.eclipse.xpand2.Generator">
+		<metaModel class="org.eclipse.xtend.typesystem.emf.EmfRegistryMetaModel"/>
+		<fileEncoding value="UTF-8"/>
+		<expand value="nl::dslmeinte::xtext::examples::generation::WsdlTemplate::main FOR wsdlr"/>
+		<genPath value="${targetDir}"/>
+		<!-- add XML beautifier here! -->
+	</component>
+
+</workflow>

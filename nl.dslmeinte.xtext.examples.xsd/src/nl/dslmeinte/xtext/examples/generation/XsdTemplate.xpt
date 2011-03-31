@@ -1,0 +1,185 @@
+«IMPORT xsdLanguage»
+
+«EXTENSION nl::dslmeinte::xtext::examples::generation::XsdLanguageExtensions»
+«EXTENSION org::eclipse::xtend::util::stdlib::io»
+
+
+«DEFINE main FOR Schema»
+«FILE name + ".xsd" -»
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema
+  xmlns:tns="«nsURI»"
+  targetNamespace="«nsURI»"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+«FOREACH imports AS this -»
+  xmlns:«nsPrefix»="«resolve().nsURI»"
+«ENDFOREACH»
+«IF imports.size > 0 »  elementFormDefault="unqualified"«ENDIF»
+>
+«EXPAND inner FOR this»
+</xs:schema>
+«ENDFILE»
+«ENDDEFINE»
+
+
+«DEFINE inner FOR Schema -»
+«EXPAND import FOREACH imports -»
+«EXPAND definition FOREACH definitions -»
+«ENDDEFINE»
+
+
+«DEFINE import FOR Import»
+  <xs:import namespace="«resolve().nsURI»" schemaLocation="«resolve().name».xsd" />
+«ENDDEFINE»
+
+
+«DEFINE definition FOR TopLevelDefinition»
+«( "undefined 'definition' block for type " + metaType.name ).error()»
+«ENDDEFINE»
+
+«DEFINE definition FOR TopLevelElement»
+  <xs:element name="«name»"«IF typeRef != null» type="«EXPAND typeRef FOR typeRef»" />«ELSE»>
+  «EXPAND definition FOR embeddedTypeDef -»
+  </xs:element>
+«ENDIF -»
+«ENDDEFINE»
+
+«DEFINE definition FOR TopLevelComplexType»
+«IF documentation != null»  <!-- «documentation» -->«ENDIF»
+  <xs:complexType name="«name»"«IF abstract» abstract="true"«ENDIF»>
+«EXPAND innerDefinition -»
+  </xs:complexType>
+«ENDDEFINE»
+
+«DEFINE definition FOR EmbeddedComplexType -»
+    <xs:complexType>
+«EXPAND innerDefinition -»
+    </xs:complexType>
+«ENDDEFINE»
+
+«DEFINE definition FOR TopLevelSimpleType»
+  <xs:simpleType name="«name»">
+«EXPAND documentation FOR documentation -»
+«EXPAND innerDefinition -»
+  </xs:simpleType>
+«ENDDEFINE»
+
+«DEFINE definition FOR EmbeddedSimpleType -»
+    <xs:simpleType>
+«EXPAND documentation FOR documentation -»
+«EXPAND innerDefinition -»
+    </xs:simpleType>
+«ENDDEFINE»
+
+«DEFINE definition FOR EmbeddedType»
+«( "undefined 'definition' block for type " + metaType.name ).error()»
+«ENDDEFINE»
+
+
+«DEFINE innerDefinition FOR ComplexType -»
+«IF extends != null -»
+    <xs:complexContent>
+      <xs:extension base="«EXPAND typeRef FOR extends»">
+«ENDIF -»
+    <xs:sequence>
+«EXPAND property FOREACH properties.typeSelect(Element) -»
+    </xs:sequence>
+«EXPAND property FOREACH properties.typeSelect(Attribute) -»
+«IF extends != null -»
+      </xs:extension>
+    </xs:complexContent>
+«ENDIF -»
+«ENDDEFINE»
+
+«DEFINE innerDefinition FOR SimpleType -»
+«IF restriction != null -»«EXPAND restriction FOR restriction»«ENDIF -»
+«ENDDEFINE»
+
+
+«DEFINE restriction FOR Restriction -»
+    <xs:restriction base="«EXPAND typeRef FOR typeRef»">
+    «EXPAND restrictionVariant FOREACH facets -»
+    </xs:restriction>
+«ENDDEFINE»
+
+
+«DEFINE restrictionVariant FOR Facet»
+«( "undefined 'restrictionVariant' block for type " + metaType.name ).error()»
+«ENDDEFINE»
+
+«DEFINE restrictionVariant FOR EnumerationFacet -»
+«FOREACH literals AS this -»
+      <xs:enumeration value="«value»"«IF annotation != null»>
+«EXPAND documentation FOR annotation -»
+      </xs:enumeration>
+«ELSE -» />
+«ENDIF -»
+«ENDFOREACH -»
+«ENDDEFINE»
+
+«DEFINE restrictionVariant FOR MaxLengthFacet -»
+      <xs:maxLength value="«maxLength»" />
+«ENDDEFINE»
+
+«DEFINE restrictionVariant FOR PatternFacet -»
+      <xs:pattern value="«pattern»" />
+«ENDDEFINE»
+
+«DEFINE restrictionVariant FOR RangeFacet -»
+      <xs:minInclusive value="«lower»" />
+      <xs:maxInclusive value="«upper»" />
+«ENDDEFINE»
+
+«DEFINE restrictionVariant FOR LengthFacet»
+      <xs:length value="«length»" />
+«ENDDEFINE»
+
+
+«DEFINE property FOR Property»
+«( "undefined 'property' block for type " + metaType.name ).error()»
+«ENDDEFINE»
+
+«DEFINE property FOR Element -»
+      <xs:element name="«name»"«EXPAND multiplicity FOR multiplicity»«IF typeRef != null» type="«EXPAND typeRef FOR typeRef»" />
+«ELSE»>
+  «EXPAND definition FOR embeddedTypeDef -»
+  </xs:element>
+«ENDIF -»
+«ENDDEFINE»
+
+«DEFINE property FOR Attribute»
+      <xs:attribute name="«name»" type="«EXPAND typeRef FOR typeRef»" «IF required»use="required"«ENDIF -»/>
+«ENDDEFINE»
+
+
+«DEFINE multiplicity FOR Multiplicity -» minOccurs="«lower»" maxOccurs="«IF unbounded»unbounded«ELSE»«upper»«ENDIF»" «ENDDEFINE»
+«DEFINE multiplicity FOR Void»«ENDDEFINE»
+«REM»note  a bit of hack to be able to do away with ugly 'if != null' checks«ENDREM»
+
+
+«DEFINE typeRef FOR NamedTypeReference»
+«( "undefined 'typeRef' block for type " + metaType.name ).error()»
+«ENDDEFINE»
+«DEFINE typeRef FOR NonComplexTypeReference»
+«( "undefined 'typeRef' block for type " + metaType.name ).error()»
+«ENDDEFINE»
+«DEFINE typeRef FOR TopLevelComplexTypeReference»
+«( "undefined 'typeRef' block for type " + metaType.name ).error()»
+«ENDDEFINE»
+
+«DEFINE typeRef FOR BuiltinTypeReference»xs:«builtin»«ENDDEFINE»
+«DEFINE typeRef FOR DirectTopLevelTypeReference»tns:«ref.name»«ENDDEFINE»
+«DEFINE typeRef FOR DirectTopLevelSimpleTypeReference»tns:«ref.name»«ENDDEFINE»
+«DEFINE typeRef FOR DirectTopLevelComplexTypeReference»tns:«ref.name»«ENDDEFINE»
+«DEFINE typeRef FOR ImportedTopLevelTypeReference»«import.nsPrefix»:«ref.name»«ENDDEFINE»
+«DEFINE typeRef FOR ImportedTopLevelSimpleTypeReference»«import.nsPrefix»:«ref.name»«ENDDEFINE»
+«DEFINE typeRef FOR ImportedTopLevelComplexTypeReference»«import.nsPrefix»:«ref.name»«ENDDEFINE»
+
+
+«DEFINE documentation FOR Documentation»«EXPAND documentation FOR text»«ENDDEFINE»
+«DEFINE documentation FOR Void»«ENDDEFINE»
+«DEFINE documentation FOR String -»
+        <xs:annotation>
+          <xs:documentation>«this»</xs:documentation>
+        </xs:annotation>
+«ENDDEFINE»

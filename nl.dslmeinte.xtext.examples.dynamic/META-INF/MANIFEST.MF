@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: nl.dslmeinte.xtext.examples.dynamic
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0
+Bundle-SymbolicName: nl.dslmeinte.xtext.examples.dynamic; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.generator;resolution:=optional,
+ nl.dslmeinte.xtext.examples.data;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: nl.dslmeinte.xtext.examples,
+ nl.dslmeinte.xtext.examples.dynamicScreenDsl,
+ nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl,
+ nl.dslmeinte.xtext.examples.dynamicScreenDsl.util,
+ nl.dslmeinte.xtext.examples.parseTreeConstruction,
+ nl.dslmeinte.xtext.examples.parser.antlr,
+ nl.dslmeinte.xtext.examples.parser.antlr.internal,
+ nl.dslmeinte.xtext.examples.services,
+ nl.dslmeinte.xtext.examples.validation

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dynamicScreenDsl"
+    nsURI="http://www.dslmeinte.nl/xtext/examples/DynamicScreenDsl" nsPrefix="dynamicScreenDsl">
+  <eClassifiers xsi:type="ecore:EClass" name="DynamicScreen">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="label" eType="#//Label"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataImport" eType="#//DataImport"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="viewClass" eType="ecore:EClass ../../../../../../nl.dslmeinte.xtext.examples.data/src-gen/nl/dslmeinte/xtext/examples/DataModelDsl.ecore#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="declarations" upperBound="-1"
+        eType="#//Declaration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
+        eType="#//FieldGroup" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataImport">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Label">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="en" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nl" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PathTail">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="field" eType="ecore:EClass ../../../../../../nl.dslmeinte.xtext.examples.data/src-gen/nl/dslmeinte/xtext/examples/DataModelDsl.ecore#//Field"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="asEntity" eType="ecore:EClass ../../../../../../nl.dslmeinte.xtext.examples.data/src-gen/nl/dslmeinte/xtext/examples/DataModelDsl.ecore#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tail" eType="#//PathTail"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Declaration" eSuperTypes="#//DummyForExternalVariable"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExternalVariable" eSuperTypes="#//Declaration #//ReferenceTarget"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumList" eSuperTypes="#//Declaration">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="literals" unique="false"
+        upperBound="-1" eType="ecore:EClass ../../../../../../nl.dslmeinte.xtext.examples.data/src-gen/nl/dslmeinte/xtext/examples/DataModelDsl.ecore#//EnumLiteral"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enum" eType="ecore:EClass ../../../../../../nl.dslmeinte.xtext.examples.data/src-gen/nl/dslmeinte/xtext/examples/DataModelDsl.ecore#//Enumeration"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataStore" eSuperTypes="#//Declaration">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="ecore:EClass ../../../../../../nl.dslmeinte.xtext.examples.data/src-gen/nl/dslmeinte/xtext/examples/DataModelDsl.ecore#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multi" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GroupElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="label" eType="#//Label"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="#//Attribute" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Field" eSuperTypes="#//GroupElement #//ReferenceTarget"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FieldGroup" eSuperTypes="#//GroupElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="with" eType="#//PathTail"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//GroupElement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attribute"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumFieldAttribute" eSuperTypes="#//Attribute"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NormalAttribute" eSuperTypes="#//Attribute">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="classExpr" eType="#//AttributeClassExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clause" eType="#//BExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttributeClassExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="classes" unique="false"
+        upperBound="-1" eType="#//AttributeClass"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AttributeClass">
+    <eLiterals name="display" literal="display"/>
+    <eLiterals name="required" value="1" literal="required"/>
+    <eLiterals name="readonly" value="2" literal="readonly"/>
+    <eLiterals name="calculated" value="3" literal="calculated"/>
+    <eLiterals name="doubleAsterisk" value="4" literal="doubleAsterisk"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RestrictionAttribute" eSuperTypes="#//EnumFieldAttribute">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="literals" eType="#//EnumLiteralsCollection"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clause" eType="#//BExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RestrictionGroupAttribute" eSuperTypes="#//EnumFieldAttribute">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rules" upperBound="-1"
+        eType="#//RestrictionRule" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RestrictionRule">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="literals" eType="#//EnumLiteralsCollection"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clause" eType="#//BExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferenceTarget" eSuperTypes="#//DummyForExternalVariable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="path" eType="#//PathTail"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Reference">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//ReferenceTarget"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DummyForExternalVariable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NegationExpression" eSuperTypes="#//BExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="#//BExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AtomicReferringBExpression" eSuperTypes="#//BExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Reference"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BComparison" eSuperTypes="#//AtomicReferringBExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bLiteral" eType="#//BLiteral"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumComparison" eSuperTypes="#//AtomicReferringBExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SingleEnumComparison" eSuperTypes="#//EnumComparison">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eLiteral" eType="ecore:EClass ../../../../../../nl.dslmeinte.xtext.examples.data/src-gen/nl/dslmeinte/xtext/examples/DataModelDsl.ecore#//EnumLiteral"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiEnumComparison" eSuperTypes="#//EnumComparison">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="membership" eType="#//EnumMembership"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eLiterals" eType="#//EnumLiteralsCollection"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringValueComparison" eSuperTypes="#//AtomicReferringBExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PresenceCheck" eSuperTypes="#//AtomicReferringBExpression"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="BLiteral">
+    <eLiterals name="true" literal="true"/>
+    <eLiterals name="false" value="1" literal="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EnumMembership">
+    <eLiterals name="isIn" literal="is-one-of"/>
+    <eLiterals name="isNotIn" value="1" literal="is-not-one-of"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumLiteralsCollection"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DirectEnumLiteralsCollection" eSuperTypes="#//EnumLiteralsCollection">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="literals" unique="false"
+        upperBound="-1" eType="ecore:EClass ../../../../../../nl.dslmeinte.xtext.examples.data/src-gen/nl/dslmeinte/xtext/examples/DataModelDsl.ecore#//EnumLiteral"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumListReference" eSuperTypes="#//EnumLiteralsCollection">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//EnumList"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OrOperation" eSuperTypes="#//BExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//BExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//BExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AndOperation" eSuperTypes="#//BExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//BExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//BExpression"
+        containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

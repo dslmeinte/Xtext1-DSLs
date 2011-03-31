@@ -1,0 +1,20 @@
+import xsdLanguage;
+
+cached Schema resolve(Import importElt) :
+	JAVA nl.dslmeinte.xtext.examples.XsdModelUtil.resolveImport(nl.dslmeinte.xtext.examples.xsdLanguage.Import)
+	;
+
+/*
+
+// currently unused for schema vs. import-resolution:
+
+private cached Schema schema(emf::EObject this) : (Schema) eRootContainer;
+cached String prefix(TopLevelType this) : "tns";
+cached String prefix1(ComplexType this) : "tns";
+
+cached String prefix(TopLevelTypeReference this) :
+	schema() == ref.schema() ? "tns" : ( schema().imports.select( i | i.resolve() == schema() ).first().nsPrefix )
+	;
+
+ */
+

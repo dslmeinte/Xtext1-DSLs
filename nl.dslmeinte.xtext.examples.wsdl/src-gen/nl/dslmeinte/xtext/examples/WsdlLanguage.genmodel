@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/nl.dslmeinte.xtext.examples.wsdl/src-gen"
+    editDirectory="/nl.dslmeinte.xtext.examples.wsdl.edit/src" editorDirectory="/nl.dslmeinte.xtext.examples.wsdl.editor/src"
+    modelPluginID="nl.dslmeinte.xtext.examples.wsdl" forceOverwrite="true" modelName="WsdlLanguage"
+    updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="nl.dslmeinte.xtext.examples.wsdl.edit"
+    editorPluginID="nl.dslmeinte.xtext.examples.wsdl.editor" usedGenPackages="../../../../../../nl.dslmeinte.xtext.examples.xsd/src-gen/nl/dslmeinte/xtext/examples/XsdLanguage.genmodel#//xsdLanguage">
+  <genPackages prefix="WsdlLanguage" basePackage="nl.dslmeinte.xtext.examples" disposableProviderFactory="true"
+      ecorePackage="WsdlLanguage.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WsdlLanguage.ecore#//SoapType">
+      <genEnumLiterals ecoreEnumLiteral="WsdlLanguage.ecore#//SoapType/document"/>
+      <genEnumLiterals ecoreEnumLiteral="WsdlLanguage.ecore#//SoapType/rpc"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="WsdlLanguage.ecore#//HttpType">
+      <genEnumLiterals ecoreEnumLiteral="WsdlLanguage.ecore#//HttpType/get"/>
+      <genEnumLiterals ecoreEnumLiteral="WsdlLanguage.ecore#//HttpType/put"/>
+    </genEnums>
+    <genClasses ecoreClass="WsdlLanguage.ecore#//Definitions">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WsdlLanguage.ecore#//Definitions/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WsdlLanguage.ecore#//Definitions/nsUri"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WsdlLanguage.ecore#//Definitions/xsdImport"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WsdlLanguage.ecore#//Definitions/messages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WsdlLanguage.ecore#//Definitions/portTypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WsdlLanguage.ecore#//Definitions/bindings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WsdlLanguage.ecore#//Definitions/services"/>
+    </genClasses>
+    <genClasses ecoreClass="WsdlLanguage.ecore#//XsdImport">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WsdlLanguage.ecore#//XsdImport/importURI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WsdlLanguage.ecore#//XsdImport/nsPrefix"/>
+    </genClasses>
+    <genClasses ecoreClass="WsdlLanguage.ecore#//Message">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WsdlLanguage.ecore#//Message/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WsdlLanguage.ecore#//Message/parts"/>
+    </genClasses>
+    <genClasses ecoreClass="WsdlLanguage.ecore#//Part">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WsdlLanguage.ecore#//Part/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WsdlLanguage.ecore#//Part/def"/>
+    </genClasses>
+    <genClasses ecoreClass="WsdlLanguage.ecore#//PortType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WsdlLanguage.ecore#//PortType/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WsdlLanguage.ecore#//PortType/operations"/>
+    </genClasses>
+    <genClasses ecoreClass="WsdlLanguage.ecore#//Operation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WsdlLanguage.ecore#//Operation/name"/>
+    </genClasses>
+    <genClasses ecoreClass="WsdlLanguage.ecore#//OneWayOperation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WsdlLanguage.ecore#//OneWayOperation/input"/>
+    </genClasses>
+    <genClasses ecoreClass="WsdlLanguage.ecore#//RequestResponseOperation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WsdlLanguage.ecore#//RequestResponseOperation/input"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WsdlLanguage.ecore#//RequestResponseOperation/output"/>
+    </genClasses>
+    <genClasses ecoreClass="WsdlLanguage.ecore#//SolicitResponseOperation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WsdlLanguage.ecore#//SolicitResponseOperation/input"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WsdlLanguage.ecore#//SolicitResponseOperation/output"/>
+    </genClasses>
+    <genClasses ecoreClass="WsdlLanguage.ecore#//NotificationOperation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WsdlLanguage.ecore#//NotificationOperation/output"/>
+    </genClasses>
+    <genClasses ecoreClass="WsdlLanguage.ecore#//Binding">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WsdlLanguage.ecore#//Binding/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WsdlLanguage.ecore#//Binding/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WsdlLanguage.ecore#//Binding/transport"/>
+    </genClasses>
+    <genClasses ecoreClass="WsdlLanguage.ecore#//Transport"/>
+    <genClasses ecoreClass="WsdlLanguage.ecore#//SoapTransport">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WsdlLanguage.ecore#//SoapTransport/type"/>
+    </genClasses>
+    <genClasses ecoreClass="WsdlLanguage.ecore#//HttpTransport">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WsdlLanguage.ecore#//HttpTransport/type"/>
+    </genClasses>
+    <genClasses ecoreClass="WsdlLanguage.ecore#//Service">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WsdlLanguage.ecore#//Service/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WsdlLanguage.ecore#//Service/documentation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WsdlLanguage.ecore#//Service/ports"/>
+    </genClasses>
+    <genClasses ecoreClass="WsdlLanguage.ecore#//Port">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WsdlLanguage.ecore#//Port/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WsdlLanguage.ecore#//Port/binding"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WsdlLanguage.ecore#//Port/location"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
