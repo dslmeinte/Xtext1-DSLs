@@ -7,7 +7,14 @@ Bundle-SymbolicName: nl.dslmeinte.xtext.examples.dynamic; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.generator;resolution:=optional,
- nl.dslmeinte.xtext.examples.data;bundle-version="1.0.0"
+ nl.dslmeinte.xtext.examples.data;bundle-version="1.0.0",
+ org.eclipse.emf.mwe2.launch;bundle-version="1.0.2";resolution:=optional,
+ org.apache.log4j;bundle-version="1.2.15";resolution:=optional,
+ org.apache.commons.logging;bundle-version="1.1.1",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: nl.dslmeinte.xtext.examples,
  nl.dslmeinte.xtext.examples.dynamicScreenDsl,
@@ -18,3 +25,4 @@ Export-Package: nl.dslmeinte.xtext.examples,
  nl.dslmeinte.xtext.examples.parser.antlr.internal,
  nl.dslmeinte.xtext.examples.services,
  nl.dslmeinte.xtext.examples.validation
+Import-Package: org.apache.log4j

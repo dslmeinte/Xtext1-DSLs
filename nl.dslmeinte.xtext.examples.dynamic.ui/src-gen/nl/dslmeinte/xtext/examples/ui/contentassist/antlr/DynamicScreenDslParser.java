@@ -43,6 +43,10 @@ public class DynamicScreenDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEnumFieldAttributeAccess().getAlternatives(), "rule__EnumFieldAttribute__Alternatives");
 					put(grammarAccess.getReferenceTargetAccess().getAlternatives(), "rule__ReferenceTarget__Alternatives");
 					put(grammarAccess.getDummyForExternalVariableAccess().getAlternatives(), "rule__DummyForExternalVariable__Alternatives");
+					put(grammarAccess.getBOrExpressionAccess().getAlternatives_1_1(), "rule__BOrExpression__Alternatives_1_1");
+					put(grammarAccess.getBAndExpressionAccess().getAlternatives_1_1(), "rule__BAndExpression__Alternatives_1_1");
+					put(grammarAccess.getNegationExpressionAccess().getAlternatives(), "rule__NegationExpression__Alternatives");
+					put(grammarAccess.getNegationExpressionAccess().getAlternatives_1_1(), "rule__NegationExpression__Alternatives_1_1");
 					put(grammarAccess.getTerminalBExpressionAccess().getAlternatives(), "rule__TerminalBExpression__Alternatives");
 					put(grammarAccess.getAtomicReferringBExpressionAccess().getAlternatives(), "rule__AtomicReferringBExpression__Alternatives");
 					put(grammarAccess.getEnumComparisonAccess().getAlternatives(), "rule__EnumComparison__Alternatives");
@@ -51,7 +55,6 @@ public class DynamicScreenDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBLiteralAccess().getAlternatives(), "rule__BLiteral__Alternatives");
 					put(grammarAccess.getEnumMembershipAccess().getAlternatives(), "rule__EnumMembership__Alternatives");
 					put(grammarAccess.getDynamicScreenAccess().getGroup(), "rule__DynamicScreen__Group__0");
-					put(grammarAccess.getDataImportAccess().getGroup(), "rule__DataImport__Group__0");
 					put(grammarAccess.getLabelAccess().getGroup(), "rule__Label__Group__0");
 					put(grammarAccess.getLabelAccess().getGroup_1(), "rule__Label__Group_1__0");
 					put(grammarAccess.getPathTailAccess().getGroup(), "rule__PathTail__Group__0");
@@ -73,8 +76,8 @@ public class DynamicScreenDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBOrExpressionAccess().getGroup_1(), "rule__BOrExpression__Group_1__0");
 					put(grammarAccess.getBAndExpressionAccess().getGroup(), "rule__BAndExpression__Group__0");
 					put(grammarAccess.getBAndExpressionAccess().getGroup_1(), "rule__BAndExpression__Group_1__0");
-					put(grammarAccess.getTerminalBExpressionAccess().getGroup_2(), "rule__TerminalBExpression__Group_2__0");
-					put(grammarAccess.getNegationExpressionAccess().getGroup(), "rule__NegationExpression__Group__0");
+					put(grammarAccess.getNegationExpressionAccess().getGroup_1(), "rule__NegationExpression__Group_1__0");
+					put(grammarAccess.getTerminalBExpressionAccess().getGroup_1(), "rule__TerminalBExpression__Group_1__0");
 					put(grammarAccess.getBComparisonAccess().getGroup(), "rule__BComparison__Group__0");
 					put(grammarAccess.getBComparisonAccess().getGroup_2(), "rule__BComparison__Group_2__0");
 					put(grammarAccess.getSingleEnumComparisonAccess().getGroup(), "rule__SingleEnumComparison__Group__0");
@@ -83,11 +86,10 @@ public class DynamicScreenDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPresenceCheckAccess().getGroup(), "rule__PresenceCheck__Group__0");
 					put(grammarAccess.getDirectEnumLiteralsCollectionAccess().getGroup(), "rule__DirectEnumLiteralsCollection__Group__0");
 					put(grammarAccess.getDynamicScreenAccess().getLabelAssignment_1(), "rule__DynamicScreen__LabelAssignment_1");
-					put(grammarAccess.getDynamicScreenAccess().getDataImportAssignment_2(), "rule__DynamicScreen__DataImportAssignment_2");
-					put(grammarAccess.getDynamicScreenAccess().getViewClassAssignment_5(), "rule__DynamicScreen__ViewClassAssignment_5");
-					put(grammarAccess.getDynamicScreenAccess().getDeclarationsAssignment_6(), "rule__DynamicScreen__DeclarationsAssignment_6");
-					put(grammarAccess.getDynamicScreenAccess().getGroupsAssignment_7(), "rule__DynamicScreen__GroupsAssignment_7");
-					put(grammarAccess.getDataImportAccess().getImportURIAssignment_2(), "rule__DataImport__ImportURIAssignment_2");
+					put(grammarAccess.getDynamicScreenAccess().getImportURIAssignment_4(), "rule__DynamicScreen__ImportURIAssignment_4");
+					put(grammarAccess.getDynamicScreenAccess().getViewClassAssignment_7(), "rule__DynamicScreen__ViewClassAssignment_7");
+					put(grammarAccess.getDynamicScreenAccess().getDeclarationsAssignment_8(), "rule__DynamicScreen__DeclarationsAssignment_8");
+					put(grammarAccess.getDynamicScreenAccess().getGroupsAssignment_9(), "rule__DynamicScreen__GroupsAssignment_9");
 					put(grammarAccess.getLabelAccess().getEnAssignment_0(), "rule__Label__EnAssignment_0");
 					put(grammarAccess.getLabelAccess().getNlAssignment_1_1(), "rule__Label__NlAssignment_1_1");
 					put(grammarAccess.getPathTailAccess().getFieldAssignment_1(), "rule__PathTail__FieldAssignment_1");
@@ -121,7 +123,7 @@ public class DynamicScreenDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getReferenceAccess().getRefAssignment(), "rule__Reference__RefAssignment");
 					put(grammarAccess.getBOrExpressionAccess().getRightAssignment_1_2(), "rule__BOrExpression__RightAssignment_1_2");
 					put(grammarAccess.getBAndExpressionAccess().getRightAssignment_1_2(), "rule__BAndExpression__RightAssignment_1_2");
-					put(grammarAccess.getNegationExpressionAccess().getExprAssignment_1(), "rule__NegationExpression__ExprAssignment_1");
+					put(grammarAccess.getNegationExpressionAccess().getExprAssignment_1_2(), "rule__NegationExpression__ExprAssignment_1_2");
 					put(grammarAccess.getBComparisonAccess().getRefAssignment_1(), "rule__BComparison__RefAssignment_1");
 					put(grammarAccess.getBComparisonAccess().getBLiteralAssignment_2_1(), "rule__BComparison__BLiteralAssignment_2_1");
 					put(grammarAccess.getSingleEnumComparisonAccess().getRefAssignment_0(), "rule__SingleEnumComparison__RefAssignment_0");

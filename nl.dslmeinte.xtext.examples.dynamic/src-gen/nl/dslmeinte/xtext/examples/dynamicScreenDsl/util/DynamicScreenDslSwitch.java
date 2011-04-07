@@ -102,13 +102,6 @@ public class DynamicScreenDslSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DynamicScreenDslPackage.DATA_IMPORT:
-      {
-        DataImport dataImport = (DataImport)theEObject;
-        T result = caseDataImport(dataImport);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case DynamicScreenDslPackage.LABEL:
       {
         Label label = (Label)theEObject;
@@ -268,14 +261,6 @@ public class DynamicScreenDslSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DynamicScreenDslPackage.NEGATION_EXPRESSION:
-      {
-        NegationExpression negationExpression = (NegationExpression)theEObject;
-        T result = caseNegationExpression(negationExpression);
-        if (result == null) result = caseBExpression(negationExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case DynamicScreenDslPackage.ATOMIC_REFERRING_BEXPRESSION:
       {
         AtomicReferringBExpression atomicReferringBExpression = (AtomicReferringBExpression)theEObject;
@@ -379,6 +364,14 @@ public class DynamicScreenDslSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DynamicScreenDslPackage.NEGATION_EXPRESSION:
+      {
+        NegationExpression negationExpression = (NegationExpression)theEObject;
+        T result = caseNegationExpression(negationExpression);
+        if (result == null) result = caseBExpression(negationExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -395,22 +388,6 @@ public class DynamicScreenDslSwitch<T>
    * @generated
    */
   public T caseDynamicScreen(DynamicScreen object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Data Import</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Data Import</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseDataImport(DataImport object)
   {
     return null;
   }
@@ -736,22 +713,6 @@ public class DynamicScreenDslSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Negation Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Negation Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseNegationExpression(NegationExpression object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Atomic Referring BExpression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -939,6 +900,22 @@ public class DynamicScreenDslSwitch<T>
    * @generated
    */
   public T caseAndOperation(AndOperation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Negation Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Negation Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNegationExpression(NegationExpression object)
   {
     return null;
   }

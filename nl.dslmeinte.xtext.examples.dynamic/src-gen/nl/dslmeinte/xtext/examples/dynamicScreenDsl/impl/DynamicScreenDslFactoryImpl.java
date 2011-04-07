@@ -69,7 +69,6 @@ public class DynamicScreenDslFactoryImpl extends EFactoryImpl implements Dynamic
     switch (eClass.getClassifierID())
     {
       case DynamicScreenDslPackage.DYNAMIC_SCREEN: return createDynamicScreen();
-      case DynamicScreenDslPackage.DATA_IMPORT: return createDataImport();
       case DynamicScreenDslPackage.LABEL: return createLabel();
       case DynamicScreenDslPackage.PATH_TAIL: return createPathTail();
       case DynamicScreenDslPackage.DECLARATION: return createDeclaration();
@@ -90,7 +89,6 @@ public class DynamicScreenDslFactoryImpl extends EFactoryImpl implements Dynamic
       case DynamicScreenDslPackage.REFERENCE: return createReference();
       case DynamicScreenDslPackage.DUMMY_FOR_EXTERNAL_VARIABLE: return createDummyForExternalVariable();
       case DynamicScreenDslPackage.BEXPRESSION: return createBExpression();
-      case DynamicScreenDslPackage.NEGATION_EXPRESSION: return createNegationExpression();
       case DynamicScreenDslPackage.ATOMIC_REFERRING_BEXPRESSION: return createAtomicReferringBExpression();
       case DynamicScreenDslPackage.BCOMPARISON: return createBComparison();
       case DynamicScreenDslPackage.ENUM_COMPARISON: return createEnumComparison();
@@ -103,6 +101,7 @@ public class DynamicScreenDslFactoryImpl extends EFactoryImpl implements Dynamic
       case DynamicScreenDslPackage.ENUM_LIST_REFERENCE: return createEnumListReference();
       case DynamicScreenDslPackage.OR_OPERATION: return createOrOperation();
       case DynamicScreenDslPackage.AND_OPERATION: return createAndOperation();
+      case DynamicScreenDslPackage.NEGATION_EXPRESSION: return createNegationExpression();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -159,17 +158,6 @@ public class DynamicScreenDslFactoryImpl extends EFactoryImpl implements Dynamic
   {
     DynamicScreenImpl dynamicScreen = new DynamicScreenImpl();
     return dynamicScreen;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DataImport createDataImport()
-  {
-    DataImportImpl dataImport = new DataImportImpl();
-    return dataImport;
   }
 
   /**
@@ -397,17 +385,6 @@ public class DynamicScreenDslFactoryImpl extends EFactoryImpl implements Dynamic
    * <!-- end-user-doc -->
    * @generated
    */
-  public NegationExpression createNegationExpression()
-  {
-    NegationExpressionImpl negationExpression = new NegationExpressionImpl();
-    return negationExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public AtomicReferringBExpression createAtomicReferringBExpression()
   {
     AtomicReferringBExpressionImpl atomicReferringBExpression = new AtomicReferringBExpressionImpl();
@@ -533,6 +510,17 @@ public class DynamicScreenDslFactoryImpl extends EFactoryImpl implements Dynamic
   {
     AndOperationImpl andOperation = new AndOperationImpl();
     return andOperation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NegationExpression createNegationExpression()
+  {
+    NegationExpressionImpl negationExpression = new NegationExpressionImpl();
+    return negationExpression;
   }
 
   /**

@@ -276,16 +276,6 @@ public class DataModelDslPackageImpl extends EPackageImpl implements DataModelDs
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getType_Name()
-  {
-    return (EAttribute)typeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getCompoundType()
   {
     return compoundTypeEClass;
@@ -326,9 +316,19 @@ public class DataModelDslPackageImpl extends EPackageImpl implements DataModelDs
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getPrimitiveType_Name()
+  {
+    return (EAttribute)primitiveTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getPrimitiveType_SuperType()
   {
-    return (EReference)primitiveTypeEClass.getEStructuralFeatures().get(0);
+    return (EReference)primitiveTypeEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -338,7 +338,7 @@ public class DataModelDslPackageImpl extends EPackageImpl implements DataModelDs
    */
   public EAttribute getPrimitiveType_RealizationType()
   {
-    return (EAttribute)primitiveTypeEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)primitiveTypeEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -356,9 +356,9 @@ public class DataModelDslPackageImpl extends EPackageImpl implements DataModelDs
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDataType_Fields()
+  public EAttribute getDataType_Name()
   {
-    return (EReference)dataTypeEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)dataTypeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -366,7 +366,7 @@ public class DataModelDslPackageImpl extends EPackageImpl implements DataModelDs
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDataType_Constraints()
+  public EReference getDataType_Fields()
   {
     return (EReference)dataTypeEClass.getEStructuralFeatures().get(1);
   }
@@ -376,9 +376,19 @@ public class DataModelDslPackageImpl extends EPackageImpl implements DataModelDs
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDataType_Functions()
+  public EReference getDataType_Constraints()
   {
     return (EReference)dataTypeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDataType_Functions()
+  {
+    return (EReference)dataTypeEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -426,9 +436,19 @@ public class DataModelDslPackageImpl extends EPackageImpl implements DataModelDs
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getEnumeration_Name()
+  {
+    return (EAttribute)enumerationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getEnumeration_Literals()
   {
-    return (EReference)enumerationEClass.getEStructuralFeatures().get(0);
+    return (EReference)enumerationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -486,9 +506,9 @@ public class DataModelDslPackageImpl extends EPackageImpl implements DataModelDs
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEntity_SuperType()
+  public EAttribute getEntity_Name()
   {
-    return (EReference)entityEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)entityEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -496,7 +516,7 @@ public class DataModelDslPackageImpl extends EPackageImpl implements DataModelDs
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEntity_Fields()
+  public EReference getEntity_SuperType()
   {
     return (EReference)entityEClass.getEStructuralFeatures().get(3);
   }
@@ -506,7 +526,7 @@ public class DataModelDslPackageImpl extends EPackageImpl implements DataModelDs
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEntity_Constraints()
+  public EReference getEntity_Fields()
   {
     return (EReference)entityEClass.getEStructuralFeatures().get(4);
   }
@@ -516,9 +536,19 @@ public class DataModelDslPackageImpl extends EPackageImpl implements DataModelDs
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEntity_Functions()
+  public EReference getEntity_Constraints()
   {
     return (EReference)entityEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEntity_Functions()
+  {
+    return (EReference)entityEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -716,7 +746,6 @@ public class DataModelDslPackageImpl extends EPackageImpl implements DataModelDs
     createEReference(dataModelEClass, DATA_MODEL__COMPOUND_TYPES);
 
     typeEClass = createEClass(TYPE);
-    createEAttribute(typeEClass, TYPE__NAME);
 
     compoundTypeEClass = createEClass(COMPOUND_TYPE);
 
@@ -724,10 +753,12 @@ public class DataModelDslPackageImpl extends EPackageImpl implements DataModelDs
     createEReference(primitiveTypesEClass, PRIMITIVE_TYPES__PRIMITIVE_TYPES);
 
     primitiveTypeEClass = createEClass(PRIMITIVE_TYPE);
+    createEAttribute(primitiveTypeEClass, PRIMITIVE_TYPE__NAME);
     createEReference(primitiveTypeEClass, PRIMITIVE_TYPE__SUPER_TYPE);
     createEAttribute(primitiveTypeEClass, PRIMITIVE_TYPE__REALIZATION_TYPE);
 
     dataTypeEClass = createEClass(DATA_TYPE);
+    createEAttribute(dataTypeEClass, DATA_TYPE__NAME);
     createEReference(dataTypeEClass, DATA_TYPE__FIELDS);
     createEReference(dataTypeEClass, DATA_TYPE__CONSTRAINTS);
     createEReference(dataTypeEClass, DATA_TYPE__FUNCTIONS);
@@ -737,6 +768,7 @@ public class DataModelDslPackageImpl extends EPackageImpl implements DataModelDs
     createEReference(fieldEClass, FIELD__TYPE);
 
     enumerationEClass = createEClass(ENUMERATION);
+    createEAttribute(enumerationEClass, ENUMERATION__NAME);
     createEReference(enumerationEClass, ENUMERATION__LITERALS);
 
     enumLiteralEClass = createEClass(ENUM_LITERAL);
@@ -745,6 +777,7 @@ public class DataModelDslPackageImpl extends EPackageImpl implements DataModelDs
     entityEClass = createEClass(ENTITY);
     createEAttribute(entityEClass, ENTITY__TRANSIENT);
     createEAttribute(entityEClass, ENTITY__ABSTRACT);
+    createEAttribute(entityEClass, ENTITY__NAME);
     createEReference(entityEClass, ENTITY__SUPER_TYPE);
     createEReference(entityEClass, ENTITY__FIELDS);
     createEReference(entityEClass, ENTITY__CONSTRAINTS);
@@ -821,7 +854,6 @@ public class DataModelDslPackageImpl extends EPackageImpl implements DataModelDs
     initEReference(getDataModel_CompoundTypes(), this.getCompoundType(), null, "compoundTypes", null, 0, -1, DataModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getType_Name(), ecorePackage.getEString(), "name", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(compoundTypeEClass, CompoundType.class, "CompoundType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -829,10 +861,12 @@ public class DataModelDslPackageImpl extends EPackageImpl implements DataModelDs
     initEReference(getPrimitiveTypes_PrimitiveTypes(), this.getPrimitiveType(), null, "primitiveTypes", null, 0, -1, PrimitiveTypes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(primitiveTypeEClass, PrimitiveType.class, "PrimitiveType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPrimitiveType_Name(), ecorePackage.getEString(), "name", null, 0, 1, PrimitiveType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPrimitiveType_SuperType(), this.getPrimitiveType(), null, "superType", null, 0, 1, PrimitiveType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPrimitiveType_RealizationType(), this.getMetaPrimitiveType(), "realizationType", null, 0, 1, PrimitiveType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(dataTypeEClass, DataType.class, "DataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDataType_Name(), ecorePackage.getEString(), "name", null, 0, 1, DataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDataType_Fields(), this.getField(), null, "fields", null, 0, -1, DataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDataType_Constraints(), this.getConstraint(), null, "constraints", null, 0, -1, DataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDataType_Functions(), this.getFunction(), null, "functions", null, 0, -1, DataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -842,6 +876,7 @@ public class DataModelDslPackageImpl extends EPackageImpl implements DataModelDs
     initEReference(getField_Type(), this.getType(), null, "type", null, 0, 1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(enumerationEClass, Enumeration.class, "Enumeration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEnumeration_Name(), ecorePackage.getEString(), "name", null, 0, 1, Enumeration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEnumeration_Literals(), this.getEnumLiteral(), null, "literals", null, 0, -1, Enumeration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(enumLiteralEClass, EnumLiteral.class, "EnumLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -850,6 +885,7 @@ public class DataModelDslPackageImpl extends EPackageImpl implements DataModelDs
     initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEntity_Transient(), ecorePackage.getEBoolean(), "transient", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEntity_Abstract(), ecorePackage.getEBoolean(), "abstract", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEntity_SuperType(), this.getEntity(), null, "superType", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEntity_Fields(), this.getField(), null, "fields", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEntity_Constraints(), this.getConstraint(), null, "constraints", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

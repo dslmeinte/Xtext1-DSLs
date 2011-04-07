@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.Entity#isTransient <em>Transient</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.Entity#isAbstract <em>Abstract</em>}</li>
+ *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.Entity#getName <em>Name</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.Entity#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.Entity#getFields <em>Fields</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.Entity#getConstraints <em>Constraints</em>}</li>
@@ -81,6 +82,32 @@ public interface Entity extends CompoundType
    * @generated
    */
   void setAbstract(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see nl.dslmeinte.xtext.examples.dataModelDsl.DataModelDslPackage#getEntity_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link nl.dslmeinte.xtext.examples.dataModelDsl.Entity#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
 
   /**
    * Returns the value of the '<em><b>Super Type</b></em>' reference.

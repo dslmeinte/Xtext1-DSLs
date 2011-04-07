@@ -15,7 +15,6 @@ import nl.dslmeinte.xtext.examples.dynamicScreenDsl.AttributeClassExpression;
 import nl.dslmeinte.xtext.examples.dynamicScreenDsl.BComparison;
 import nl.dslmeinte.xtext.examples.dynamicScreenDsl.BExpression;
 import nl.dslmeinte.xtext.examples.dynamicScreenDsl.BLiteral;
-import nl.dslmeinte.xtext.examples.dynamicScreenDsl.DataImport;
 import nl.dslmeinte.xtext.examples.dynamicScreenDsl.DataStore;
 import nl.dslmeinte.xtext.examples.dynamicScreenDsl.Declaration;
 import nl.dslmeinte.xtext.examples.dynamicScreenDsl.DirectEnumLiteralsCollection;
@@ -70,13 +69,6 @@ public class DynamicScreenDslPackageImpl extends EPackageImpl implements Dynamic
    * @generated
    */
   private EClass dynamicScreenEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass dataImportEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -223,13 +215,6 @@ public class DynamicScreenDslPackageImpl extends EPackageImpl implements Dynamic
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass negationExpressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass atomicReferringBExpressionEClass = null;
 
   /**
@@ -308,6 +293,13 @@ public class DynamicScreenDslPackageImpl extends EPackageImpl implements Dynamic
    * @generated
    */
   private EClass andOperationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass negationExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -421,9 +413,9 @@ public class DynamicScreenDslPackageImpl extends EPackageImpl implements Dynamic
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDynamicScreen_DataImport()
+  public EAttribute getDynamicScreen_ImportURI()
   {
-    return (EReference)dynamicScreenEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)dynamicScreenEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -454,26 +446,6 @@ public class DynamicScreenDslPackageImpl extends EPackageImpl implements Dynamic
   public EReference getDynamicScreen_Groups()
   {
     return (EReference)dynamicScreenEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getDataImport()
-  {
-    return dataImportEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getDataImport_ImportURI()
-  {
-    return (EAttribute)dataImportEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -921,26 +893,6 @@ public class DynamicScreenDslPackageImpl extends EPackageImpl implements Dynamic
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getNegationExpression()
-  {
-    return negationExpressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getNegationExpression_Expr()
-  {
-    return (EReference)negationExpressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getAtomicReferringBExpression()
   {
     return atomicReferringBExpressionEClass;
@@ -1181,6 +1133,26 @@ public class DynamicScreenDslPackageImpl extends EPackageImpl implements Dynamic
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getNegationExpression()
+  {
+    return negationExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getNegationExpression_Expr()
+  {
+    return (EReference)negationExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EEnum getAttributeClass()
   {
     return attributeClassEEnum;
@@ -1238,13 +1210,10 @@ public class DynamicScreenDslPackageImpl extends EPackageImpl implements Dynamic
     // Create classes and their features
     dynamicScreenEClass = createEClass(DYNAMIC_SCREEN);
     createEReference(dynamicScreenEClass, DYNAMIC_SCREEN__LABEL);
-    createEReference(dynamicScreenEClass, DYNAMIC_SCREEN__DATA_IMPORT);
+    createEAttribute(dynamicScreenEClass, DYNAMIC_SCREEN__IMPORT_URI);
     createEReference(dynamicScreenEClass, DYNAMIC_SCREEN__VIEW_CLASS);
     createEReference(dynamicScreenEClass, DYNAMIC_SCREEN__DECLARATIONS);
     createEReference(dynamicScreenEClass, DYNAMIC_SCREEN__GROUPS);
-
-    dataImportEClass = createEClass(DATA_IMPORT);
-    createEAttribute(dataImportEClass, DATA_IMPORT__IMPORT_URI);
 
     labelEClass = createEClass(LABEL);
     createEAttribute(labelEClass, LABEL__EN);
@@ -1310,9 +1279,6 @@ public class DynamicScreenDslPackageImpl extends EPackageImpl implements Dynamic
 
     bExpressionEClass = createEClass(BEXPRESSION);
 
-    negationExpressionEClass = createEClass(NEGATION_EXPRESSION);
-    createEReference(negationExpressionEClass, NEGATION_EXPRESSION__EXPR);
-
     atomicReferringBExpressionEClass = createEClass(ATOMIC_REFERRING_BEXPRESSION);
     createEReference(atomicReferringBExpressionEClass, ATOMIC_REFERRING_BEXPRESSION__REF);
 
@@ -1348,6 +1314,9 @@ public class DynamicScreenDslPackageImpl extends EPackageImpl implements Dynamic
     andOperationEClass = createEClass(AND_OPERATION);
     createEReference(andOperationEClass, AND_OPERATION__LEFT);
     createEReference(andOperationEClass, AND_OPERATION__RIGHT);
+
+    negationExpressionEClass = createEClass(NEGATION_EXPRESSION);
+    createEReference(negationExpressionEClass, NEGATION_EXPRESSION__EXPR);
 
     // Create enums
     attributeClassEEnum = createEEnum(ATTRIBUTE_CLASS);
@@ -1400,7 +1369,6 @@ public class DynamicScreenDslPackageImpl extends EPackageImpl implements Dynamic
     restrictionAttributeEClass.getESuperTypes().add(this.getEnumFieldAttribute());
     restrictionGroupAttributeEClass.getESuperTypes().add(this.getEnumFieldAttribute());
     referenceTargetEClass.getESuperTypes().add(this.getDummyForExternalVariable());
-    negationExpressionEClass.getESuperTypes().add(this.getBExpression());
     atomicReferringBExpressionEClass.getESuperTypes().add(this.getBExpression());
     bComparisonEClass.getESuperTypes().add(this.getAtomicReferringBExpression());
     enumComparisonEClass.getESuperTypes().add(this.getAtomicReferringBExpression());
@@ -1412,17 +1380,15 @@ public class DynamicScreenDslPackageImpl extends EPackageImpl implements Dynamic
     enumListReferenceEClass.getESuperTypes().add(this.getEnumLiteralsCollection());
     orOperationEClass.getESuperTypes().add(this.getBExpression());
     andOperationEClass.getESuperTypes().add(this.getBExpression());
+    negationExpressionEClass.getESuperTypes().add(this.getBExpression());
 
     // Initialize classes and features; add operations and parameters
     initEClass(dynamicScreenEClass, DynamicScreen.class, "DynamicScreen", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getDynamicScreen_Label(), this.getLabel(), null, "label", null, 0, 1, DynamicScreen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDynamicScreen_DataImport(), this.getDataImport(), null, "dataImport", null, 0, 1, DynamicScreen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDynamicScreen_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, 1, DynamicScreen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDynamicScreen_ViewClass(), theDataModelDslPackage.getEntity(), null, "viewClass", null, 0, 1, DynamicScreen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDynamicScreen_Declarations(), this.getDeclaration(), null, "declarations", null, 0, -1, DynamicScreen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDynamicScreen_Groups(), this.getFieldGroup(), null, "groups", null, 0, -1, DynamicScreen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(dataImportEClass, DataImport.class, "DataImport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDataImport_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, 1, DataImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(labelEClass, Label.class, "Label", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLabel_En(), ecorePackage.getEString(), "en", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1488,9 +1454,6 @@ public class DynamicScreenDslPackageImpl extends EPackageImpl implements Dynamic
 
     initEClass(bExpressionEClass, BExpression.class, "BExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(negationExpressionEClass, NegationExpression.class, "NegationExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getNegationExpression_Expr(), this.getBExpression(), null, "expr", null, 0, 1, NegationExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(atomicReferringBExpressionEClass, AtomicReferringBExpression.class, "AtomicReferringBExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAtomicReferringBExpression_Ref(), this.getReference(), null, "ref", null, 0, 1, AtomicReferringBExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1526,6 +1489,9 @@ public class DynamicScreenDslPackageImpl extends EPackageImpl implements Dynamic
     initEClass(andOperationEClass, AndOperation.class, "AndOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAndOperation_Left(), this.getBExpression(), null, "left", null, 0, 1, AndOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAndOperation_Right(), this.getBExpression(), null, "right", null, 0, 1, AndOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(negationExpressionEClass, NegationExpression.class, "NegationExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getNegationExpression_Expr(), this.getBExpression(), null, "expr", null, 0, 1, NegationExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(attributeClassEEnum, AttributeClass.class, "AttributeClass");

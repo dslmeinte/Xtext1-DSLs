@@ -6,16 +6,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="DynamicScreen">
     <eStructuralFeatures xsi:type="ecore:EReference" name="label" eType="#//Label"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dataImport" eType="#//DataImport"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="viewClass" eType="ecore:EClass ../../../../../../nl.dslmeinte.xtext.examples.data/src-gen/nl/dslmeinte/xtext/examples/DataModelDsl.ecore#//Entity"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="declarations" upperBound="-1"
         eType="#//Declaration" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
         eType="#//FieldGroup" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DataImport">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Label">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="en" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -97,10 +93,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BExpression"/>
-  <eClassifiers xsi:type="ecore:EClass" name="NegationExpression" eSuperTypes="#//BExpression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="#//BExpression"
-        containment="true"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AtomicReferringBExpression" eSuperTypes="#//BExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Reference"
         containment="true"/>
@@ -147,6 +139,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//BExpression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//BExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NegationExpression" eSuperTypes="#//BExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="#//BExpression"
         containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

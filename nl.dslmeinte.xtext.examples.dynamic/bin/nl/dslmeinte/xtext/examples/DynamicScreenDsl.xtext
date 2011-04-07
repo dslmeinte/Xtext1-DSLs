@@ -18,9 +18,7 @@ generate dynamicScreenDsl 'http://www.dslmeinte.nl/xtext/examples/DynamicScreenD
  * Aspects and features still TODO (roughly in order of priority):
  *
  *  1) add paths relative to data stores for non-enum selection lists
- *  2) hooks to generate HTML mock-up from the model (actions as Attribute-s?)
- *  3) short hand for commonly used boolean expressions
- *  4) sample population of fields (especially useful for data stores @1)
+ *  2) sample population of fields (especially useful for data stores @1)
  */
 
 
@@ -248,21 +246,19 @@ BExpression:
     ;
 
 BOrExpression returns BExpression:
-    BAndExpression ({OrOperation.left=current} 'or' right=BAndExpression)*
+    BAndExpression ({OrOperation.left=current} ('or'|'|') right=BAndExpression)*
     ;
 
 BAndExpression returns BExpression:
-    TerminalBExpression ({AndOperation.left=current} 'and' right=TerminalBExpression)*
+    NegationExpression ({AndOperation.left=current} ('and'|'&') right=NegationExpression)*
     ;
+
+NegationExpression returns BExpression:
+    TerminalBExpression | ({NegationExpression} ('not'|'!') expr=NegationExpression);
 
 TerminalBExpression returns BExpression:
       AtomicReferringBExpression
-    | NegationExpression
     | '(' BExpression ')'
-    ;
-
-NegationExpression:
-    'not' expr=BExpression
     ;
 
 AtomicReferringBExpression:

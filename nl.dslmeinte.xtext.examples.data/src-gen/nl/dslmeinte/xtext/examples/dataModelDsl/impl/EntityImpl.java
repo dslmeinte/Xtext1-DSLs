@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.EntityImpl#isTransient <em>Transient</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.EntityImpl#isAbstract <em>Abstract</em>}</li>
+ *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.EntityImpl#getName <em>Name</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.EntityImpl#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.EntityImpl#getFields <em>Fields</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.EntityImpl#getConstraints <em>Constraints</em>}</li>
@@ -85,6 +86,26 @@ public class EntityImpl extends CompoundTypeImpl implements Entity
    * @ordered
    */
   protected boolean abstract_ = ABSTRACT_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference.
@@ -191,6 +212,29 @@ public class EntityImpl extends CompoundTypeImpl implements Entity
     abstract_ = newAbstract;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, DataModelDslPackage.ENTITY__ABSTRACT, oldAbstract, abstract_));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DataModelDslPackage.ENTITY__NAME, oldName, name));
   }
 
   /**
@@ -312,6 +356,8 @@ public class EntityImpl extends CompoundTypeImpl implements Entity
         return isTransient();
       case DataModelDslPackage.ENTITY__ABSTRACT:
         return isAbstract();
+      case DataModelDslPackage.ENTITY__NAME:
+        return getName();
       case DataModelDslPackage.ENTITY__SUPER_TYPE:
         if (resolve) return getSuperType();
         return basicGetSuperType();
@@ -341,6 +387,9 @@ public class EntityImpl extends CompoundTypeImpl implements Entity
         return;
       case DataModelDslPackage.ENTITY__ABSTRACT:
         setAbstract((Boolean)newValue);
+        return;
+      case DataModelDslPackage.ENTITY__NAME:
+        setName((String)newValue);
         return;
       case DataModelDslPackage.ENTITY__SUPER_TYPE:
         setSuperType((Entity)newValue);
@@ -377,6 +426,9 @@ public class EntityImpl extends CompoundTypeImpl implements Entity
       case DataModelDslPackage.ENTITY__ABSTRACT:
         setAbstract(ABSTRACT_EDEFAULT);
         return;
+      case DataModelDslPackage.ENTITY__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case DataModelDslPackage.ENTITY__SUPER_TYPE:
         setSuperType((Entity)null);
         return;
@@ -407,6 +459,8 @@ public class EntityImpl extends CompoundTypeImpl implements Entity
         return transient_ != TRANSIENT_EDEFAULT;
       case DataModelDslPackage.ENTITY__ABSTRACT:
         return abstract_ != ABSTRACT_EDEFAULT;
+      case DataModelDslPackage.ENTITY__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DataModelDslPackage.ENTITY__SUPER_TYPE:
         return superType != null;
       case DataModelDslPackage.ENTITY__FIELDS:
@@ -434,6 +488,8 @@ public class EntityImpl extends CompoundTypeImpl implements Entity
     result.append(transient_);
     result.append(", abstract: ");
     result.append(abstract_);
+    result.append(", name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }

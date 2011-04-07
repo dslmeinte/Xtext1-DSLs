@@ -11,12 +11,15 @@ import nl.dslmeinte.xtext.examples.dataModelDsl.DataModelDslPackage;
 import nl.dslmeinte.xtext.examples.dataModelDsl.EnumLiteral;
 import nl.dslmeinte.xtext.examples.dataModelDsl.Enumeration;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -28,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.EnumerationImpl#getName <em>Name</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.EnumerationImpl#getLiterals <em>Literals</em>}</li>
  * </ul>
  * </p>
@@ -36,6 +40,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class EnumerationImpl extends CompoundTypeImpl implements Enumeration
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getLiterals() <em>Literals</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -65,6 +89,29 @@ public class EnumerationImpl extends CompoundTypeImpl implements Enumeration
   protected EClass eStaticClass()
   {
     return DataModelDslPackage.Literals.ENUMERATION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DataModelDslPackage.ENUMERATION__NAME, oldName, name));
   }
 
   /**
@@ -107,6 +154,8 @@ public class EnumerationImpl extends CompoundTypeImpl implements Enumeration
   {
     switch (featureID)
     {
+      case DataModelDslPackage.ENUMERATION__NAME:
+        return getName();
       case DataModelDslPackage.ENUMERATION__LITERALS:
         return getLiterals();
     }
@@ -124,6 +173,9 @@ public class EnumerationImpl extends CompoundTypeImpl implements Enumeration
   {
     switch (featureID)
     {
+      case DataModelDslPackage.ENUMERATION__NAME:
+        setName((String)newValue);
+        return;
       case DataModelDslPackage.ENUMERATION__LITERALS:
         getLiterals().clear();
         getLiterals().addAll((Collection<? extends EnumLiteral>)newValue);
@@ -142,6 +194,9 @@ public class EnumerationImpl extends CompoundTypeImpl implements Enumeration
   {
     switch (featureID)
     {
+      case DataModelDslPackage.ENUMERATION__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case DataModelDslPackage.ENUMERATION__LITERALS:
         getLiterals().clear();
         return;
@@ -159,10 +214,29 @@ public class EnumerationImpl extends CompoundTypeImpl implements Enumeration
   {
     switch (featureID)
     {
+      case DataModelDslPackage.ENUMERATION__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DataModelDslPackage.ENUMERATION__LITERALS:
         return literals != null && !literals.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //EnumerationImpl

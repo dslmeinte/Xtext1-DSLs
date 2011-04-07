@@ -35,15 +35,6 @@ public interface DynamicScreenDslFactory extends EFactory
   DynamicScreen createDynamicScreen();
 
   /**
-   * Returns a new object of class '<em>Data Import</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Data Import</em>'.
-   * @generated
-   */
-  DataImport createDataImport();
-
-  /**
    * Returns a new object of class '<em>Label</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -224,15 +215,6 @@ public interface DynamicScreenDslFactory extends EFactory
   BExpression createBExpression();
 
   /**
-   * Returns a new object of class '<em>Negation Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Negation Expression</em>'.
-   * @generated
-   */
-  NegationExpression createNegationExpression();
-
-  /**
    * Returns a new object of class '<em>Atomic Referring BExpression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -339,6 +321,15 @@ public interface DynamicScreenDslFactory extends EFactory
    * @generated
    */
   AndOperation createAndOperation();
+
+  /**
+   * Returns a new object of class '<em>Negation Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Negation Expression</em>'.
+   * @generated
+   */
+  NegationExpression createNegationExpression();
 
   /**
    * Returns the package supported by this factory.

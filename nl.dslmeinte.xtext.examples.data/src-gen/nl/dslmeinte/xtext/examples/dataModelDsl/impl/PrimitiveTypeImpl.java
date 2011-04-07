@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.PrimitiveTypeImpl#getName <em>Name</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.PrimitiveTypeImpl#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.PrimitiveTypeImpl#getRealizationType <em>Realization Type</em>}</li>
  * </ul>
@@ -32,6 +33,26 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class PrimitiveTypeImpl extends TypeImpl implements PrimitiveType
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getSuperType() <em>Super Type</em>}' reference.
    * <!-- begin-user-doc -->
@@ -81,6 +102,29 @@ public class PrimitiveTypeImpl extends TypeImpl implements PrimitiveType
   protected EClass eStaticClass()
   {
     return DataModelDslPackage.Literals.PRIMITIVE_TYPE;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DataModelDslPackage.PRIMITIVE_TYPE__NAME, oldName, name));
   }
 
   /**
@@ -159,6 +203,8 @@ public class PrimitiveTypeImpl extends TypeImpl implements PrimitiveType
   {
     switch (featureID)
     {
+      case DataModelDslPackage.PRIMITIVE_TYPE__NAME:
+        return getName();
       case DataModelDslPackage.PRIMITIVE_TYPE__SUPER_TYPE:
         if (resolve) return getSuperType();
         return basicGetSuperType();
@@ -178,6 +224,9 @@ public class PrimitiveTypeImpl extends TypeImpl implements PrimitiveType
   {
     switch (featureID)
     {
+      case DataModelDslPackage.PRIMITIVE_TYPE__NAME:
+        setName((String)newValue);
+        return;
       case DataModelDslPackage.PRIMITIVE_TYPE__SUPER_TYPE:
         setSuperType((PrimitiveType)newValue);
         return;
@@ -198,6 +247,9 @@ public class PrimitiveTypeImpl extends TypeImpl implements PrimitiveType
   {
     switch (featureID)
     {
+      case DataModelDslPackage.PRIMITIVE_TYPE__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case DataModelDslPackage.PRIMITIVE_TYPE__SUPER_TYPE:
         setSuperType((PrimitiveType)null);
         return;
@@ -218,6 +270,8 @@ public class PrimitiveTypeImpl extends TypeImpl implements PrimitiveType
   {
     switch (featureID)
     {
+      case DataModelDslPackage.PRIMITIVE_TYPE__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DataModelDslPackage.PRIMITIVE_TYPE__SUPER_TYPE:
         return superType != null;
       case DataModelDslPackage.PRIMITIVE_TYPE__REALIZATION_TYPE:
@@ -237,7 +291,9 @@ public class PrimitiveTypeImpl extends TypeImpl implements PrimitiveType
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (realizationType: ");
+    result.append(" (name: ");
+    result.append(name);
+    result.append(", realizationType: ");
     result.append(realizationType);
     result.append(')');
     return result.toString();

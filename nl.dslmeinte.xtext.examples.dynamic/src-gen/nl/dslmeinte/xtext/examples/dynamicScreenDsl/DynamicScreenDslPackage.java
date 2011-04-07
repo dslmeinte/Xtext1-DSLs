@@ -80,13 +80,13 @@ public interface DynamicScreenDslPackage extends EPackage
   int DYNAMIC_SCREEN__LABEL = 0;
 
   /**
-   * The feature id for the '<em><b>Data Import</b></em>' containment reference.
+   * The feature id for the '<em><b>Import URI</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DYNAMIC_SCREEN__DATA_IMPORT = 1;
+  int DYNAMIC_SCREEN__IMPORT_URI = 1;
 
   /**
    * The feature id for the '<em><b>View Class</b></em>' reference.
@@ -125,34 +125,6 @@ public interface DynamicScreenDslPackage extends EPackage
   int DYNAMIC_SCREEN_FEATURE_COUNT = 5;
 
   /**
-   * The meta object id for the '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DataImportImpl <em>Data Import</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DataImportImpl
-   * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getDataImport()
-   * @generated
-   */
-  int DATA_IMPORT = 1;
-
-  /**
-   * The feature id for the '<em><b>Import URI</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATA_IMPORT__IMPORT_URI = 0;
-
-  /**
-   * The number of structural features of the '<em>Data Import</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATA_IMPORT_FEATURE_COUNT = 1;
-
-  /**
    * The meta object id for the '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.LabelImpl <em>Label</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -160,7 +132,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getLabel()
    * @generated
    */
-  int LABEL = 2;
+  int LABEL = 1;
 
   /**
    * The feature id for the '<em><b>En</b></em>' attribute.
@@ -197,7 +169,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getPathTail()
    * @generated
    */
-  int PATH_TAIL = 3;
+  int PATH_TAIL = 2;
 
   /**
    * The feature id for the '<em><b>Field</b></em>' reference.
@@ -243,7 +215,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getDummyForExternalVariable()
    * @generated
    */
-  int DUMMY_FOR_EXTERNAL_VARIABLE = 20;
+  int DUMMY_FOR_EXTERNAL_VARIABLE = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -271,7 +243,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getDeclaration()
    * @generated
    */
-  int DECLARATION = 4;
+  int DECLARATION = 3;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -299,7 +271,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getExternalVariable()
    * @generated
    */
-  int EXTERNAL_VARIABLE = 5;
+  int EXTERNAL_VARIABLE = 4;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -336,7 +308,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getEnumList()
    * @generated
    */
-  int ENUM_LIST = 6;
+  int ENUM_LIST = 5;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -382,7 +354,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getDataStore()
    * @generated
    */
-  int DATA_STORE = 7;
+  int DATA_STORE = 6;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -428,7 +400,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getGroupElement()
    * @generated
    */
-  int GROUP_ELEMENT = 8;
+  int GROUP_ELEMENT = 7;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' containment reference.
@@ -465,7 +437,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getField()
    * @generated
    */
-  int FIELD = 9;
+  int FIELD = 8;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' containment reference.
@@ -520,7 +492,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getFieldGroup()
    * @generated
    */
-  int FIELD_GROUP = 10;
+  int FIELD_GROUP = 9;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' containment reference.
@@ -575,7 +547,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getAttribute()
    * @generated
    */
-  int ATTRIBUTE = 11;
+  int ATTRIBUTE = 10;
 
   /**
    * The number of structural features of the '<em>Attribute</em>' class.
@@ -594,7 +566,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getEnumFieldAttribute()
    * @generated
    */
-  int ENUM_FIELD_ATTRIBUTE = 12;
+  int ENUM_FIELD_ATTRIBUTE = 11;
 
   /**
    * The number of structural features of the '<em>Enum Field Attribute</em>' class.
@@ -613,7 +585,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getNormalAttribute()
    * @generated
    */
-  int NORMAL_ATTRIBUTE = 13;
+  int NORMAL_ATTRIBUTE = 12;
 
   /**
    * The feature id for the '<em><b>Class Expr</b></em>' containment reference.
@@ -650,7 +622,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getAttributeClassExpression()
    * @generated
    */
-  int ATTRIBUTE_CLASS_EXPRESSION = 14;
+  int ATTRIBUTE_CLASS_EXPRESSION = 13;
 
   /**
    * The feature id for the '<em><b>Classes</b></em>' attribute list.
@@ -678,7 +650,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getRestrictionAttribute()
    * @generated
    */
-  int RESTRICTION_ATTRIBUTE = 15;
+  int RESTRICTION_ATTRIBUTE = 14;
 
   /**
    * The feature id for the '<em><b>Literals</b></em>' containment reference.
@@ -715,7 +687,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getRestrictionGroupAttribute()
    * @generated
    */
-  int RESTRICTION_GROUP_ATTRIBUTE = 16;
+  int RESTRICTION_GROUP_ATTRIBUTE = 15;
 
   /**
    * The feature id for the '<em><b>Rules</b></em>' containment reference list.
@@ -743,7 +715,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getRestrictionRule()
    * @generated
    */
-  int RESTRICTION_RULE = 17;
+  int RESTRICTION_RULE = 16;
 
   /**
    * The feature id for the '<em><b>Literals</b></em>' containment reference.
@@ -780,7 +752,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getReferenceTarget()
    * @generated
    */
-  int REFERENCE_TARGET = 18;
+  int REFERENCE_TARGET = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -817,7 +789,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getReference()
    * @generated
    */
-  int REFERENCE = 19;
+  int REFERENCE = 18;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -845,7 +817,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getBExpression()
    * @generated
    */
-  int BEXPRESSION = 21;
+  int BEXPRESSION = 20;
 
   /**
    * The number of structural features of the '<em>BExpression</em>' class.
@@ -857,34 +829,6 @@ public interface DynamicScreenDslPackage extends EPackage
   int BEXPRESSION_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.NegationExpressionImpl <em>Negation Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.NegationExpressionImpl
-   * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getNegationExpression()
-   * @generated
-   */
-  int NEGATION_EXPRESSION = 22;
-
-  /**
-   * The feature id for the '<em><b>Expr</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NEGATION_EXPRESSION__EXPR = BEXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Negation Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NEGATION_EXPRESSION_FEATURE_COUNT = BEXPRESSION_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.AtomicReferringBExpressionImpl <em>Atomic Referring BExpression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -892,7 +836,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getAtomicReferringBExpression()
    * @generated
    */
-  int ATOMIC_REFERRING_BEXPRESSION = 23;
+  int ATOMIC_REFERRING_BEXPRESSION = 21;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' containment reference.
@@ -920,7 +864,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getBComparison()
    * @generated
    */
-  int BCOMPARISON = 24;
+  int BCOMPARISON = 22;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' containment reference.
@@ -957,7 +901,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getEnumComparison()
    * @generated
    */
-  int ENUM_COMPARISON = 25;
+  int ENUM_COMPARISON = 23;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' containment reference.
@@ -985,7 +929,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getSingleEnumComparison()
    * @generated
    */
-  int SINGLE_ENUM_COMPARISON = 26;
+  int SINGLE_ENUM_COMPARISON = 24;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' containment reference.
@@ -1022,7 +966,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getMultiEnumComparison()
    * @generated
    */
-  int MULTI_ENUM_COMPARISON = 27;
+  int MULTI_ENUM_COMPARISON = 25;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' containment reference.
@@ -1068,7 +1012,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getStringValueComparison()
    * @generated
    */
-  int STRING_VALUE_COMPARISON = 28;
+  int STRING_VALUE_COMPARISON = 26;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' containment reference.
@@ -1105,7 +1049,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getPresenceCheck()
    * @generated
    */
-  int PRESENCE_CHECK = 29;
+  int PRESENCE_CHECK = 27;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' containment reference.
@@ -1133,7 +1077,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getEnumLiteralsCollection()
    * @generated
    */
-  int ENUM_LITERALS_COLLECTION = 30;
+  int ENUM_LITERALS_COLLECTION = 28;
 
   /**
    * The number of structural features of the '<em>Enum Literals Collection</em>' class.
@@ -1152,7 +1096,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getDirectEnumLiteralsCollection()
    * @generated
    */
-  int DIRECT_ENUM_LITERALS_COLLECTION = 31;
+  int DIRECT_ENUM_LITERALS_COLLECTION = 29;
 
   /**
    * The feature id for the '<em><b>Literals</b></em>' reference list.
@@ -1180,7 +1124,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getEnumListReference()
    * @generated
    */
-  int ENUM_LIST_REFERENCE = 32;
+  int ENUM_LIST_REFERENCE = 30;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -1208,7 +1152,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getOrOperation()
    * @generated
    */
-  int OR_OPERATION = 33;
+  int OR_OPERATION = 31;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1245,7 +1189,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getAndOperation()
    * @generated
    */
-  int AND_OPERATION = 34;
+  int AND_OPERATION = 32;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1275,6 +1219,34 @@ public interface DynamicScreenDslPackage extends EPackage
   int AND_OPERATION_FEATURE_COUNT = BEXPRESSION_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.NegationExpressionImpl <em>Negation Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.NegationExpressionImpl
+   * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getNegationExpression()
+   * @generated
+   */
+  int NEGATION_EXPRESSION = 33;
+
+  /**
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NEGATION_EXPRESSION__EXPR = BEXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Negation Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NEGATION_EXPRESSION_FEATURE_COUNT = BEXPRESSION_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.AttributeClass <em>Attribute Class</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1282,7 +1254,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getAttributeClass()
    * @generated
    */
-  int ATTRIBUTE_CLASS = 35;
+  int ATTRIBUTE_CLASS = 34;
 
   /**
    * The meta object id for the '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.BLiteral <em>BLiteral</em>}' enum.
@@ -1292,7 +1264,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getBLiteral()
    * @generated
    */
-  int BLITERAL = 36;
+  int BLITERAL = 35;
 
   /**
    * The meta object id for the '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.EnumMembership <em>Enum Membership</em>}' enum.
@@ -1302,7 +1274,7 @@ public interface DynamicScreenDslPackage extends EPackage
    * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getEnumMembership()
    * @generated
    */
-  int ENUM_MEMBERSHIP = 37;
+  int ENUM_MEMBERSHIP = 36;
 
 
   /**
@@ -1327,15 +1299,15 @@ public interface DynamicScreenDslPackage extends EPackage
   EReference getDynamicScreen_Label();
 
   /**
-   * Returns the meta object for the containment reference '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.DynamicScreen#getDataImport <em>Data Import</em>}'.
+   * Returns the meta object for the attribute '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.DynamicScreen#getImportURI <em>Import URI</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Data Import</em>'.
-   * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.DynamicScreen#getDataImport()
+   * @return the meta object for the attribute '<em>Import URI</em>'.
+   * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.DynamicScreen#getImportURI()
    * @see #getDynamicScreen()
    * @generated
    */
-  EReference getDynamicScreen_DataImport();
+  EAttribute getDynamicScreen_ImportURI();
 
   /**
    * Returns the meta object for the reference '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.DynamicScreen#getViewClass <em>View Class</em>}'.
@@ -1369,27 +1341,6 @@ public interface DynamicScreenDslPackage extends EPackage
    * @generated
    */
   EReference getDynamicScreen_Groups();
-
-  /**
-   * Returns the meta object for class '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.DataImport <em>Data Import</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Data Import</em>'.
-   * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.DataImport
-   * @generated
-   */
-  EClass getDataImport();
-
-  /**
-   * Returns the meta object for the attribute '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.DataImport#getImportURI <em>Import URI</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Import URI</em>'.
-   * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.DataImport#getImportURI()
-   * @see #getDataImport()
-   * @generated
-   */
-  EAttribute getDataImport_ImportURI();
 
   /**
    * Returns the meta object for class '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.Label <em>Label</em>}'.
@@ -1856,27 +1807,6 @@ public interface DynamicScreenDslPackage extends EPackage
   EClass getBExpression();
 
   /**
-   * Returns the meta object for class '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.NegationExpression <em>Negation Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Negation Expression</em>'.
-   * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.NegationExpression
-   * @generated
-   */
-  EClass getNegationExpression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.NegationExpression#getExpr <em>Expr</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Expr</em>'.
-   * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.NegationExpression#getExpr()
-   * @see #getNegationExpression()
-   * @generated
-   */
-  EReference getNegationExpression_Expr();
-
-  /**
    * Returns the meta object for class '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.AtomicReferringBExpression <em>Atomic Referring BExpression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2129,6 +2059,27 @@ public interface DynamicScreenDslPackage extends EPackage
   EReference getAndOperation_Right();
 
   /**
+   * Returns the meta object for class '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.NegationExpression <em>Negation Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Negation Expression</em>'.
+   * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.NegationExpression
+   * @generated
+   */
+  EClass getNegationExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.NegationExpression#getExpr <em>Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expr</em>'.
+   * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.NegationExpression#getExpr()
+   * @see #getNegationExpression()
+   * @generated
+   */
+  EReference getNegationExpression_Expr();
+
+  /**
    * Returns the meta object for enum '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.AttributeClass <em>Attribute Class</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2200,12 +2151,12 @@ public interface DynamicScreenDslPackage extends EPackage
     EReference DYNAMIC_SCREEN__LABEL = eINSTANCE.getDynamicScreen_Label();
 
     /**
-     * The meta object literal for the '<em><b>Data Import</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Import URI</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DYNAMIC_SCREEN__DATA_IMPORT = eINSTANCE.getDynamicScreen_DataImport();
+    EAttribute DYNAMIC_SCREEN__IMPORT_URI = eINSTANCE.getDynamicScreen_ImportURI();
 
     /**
      * The meta object literal for the '<em><b>View Class</b></em>' reference feature.
@@ -2230,24 +2181,6 @@ public interface DynamicScreenDslPackage extends EPackage
      * @generated
      */
     EReference DYNAMIC_SCREEN__GROUPS = eINSTANCE.getDynamicScreen_Groups();
-
-    /**
-     * The meta object literal for the '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DataImportImpl <em>Data Import</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DataImportImpl
-     * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getDataImport()
-     * @generated
-     */
-    EClass DATA_IMPORT = eINSTANCE.getDataImport();
-
-    /**
-     * The meta object literal for the '<em><b>Import URI</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute DATA_IMPORT__IMPORT_URI = eINSTANCE.getDataImport_ImportURI();
 
     /**
      * The meta object literal for the '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.LabelImpl <em>Label</em>}' class.
@@ -2642,24 +2575,6 @@ public interface DynamicScreenDslPackage extends EPackage
     EClass BEXPRESSION = eINSTANCE.getBExpression();
 
     /**
-     * The meta object literal for the '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.NegationExpressionImpl <em>Negation Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.NegationExpressionImpl
-     * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getNegationExpression()
-     * @generated
-     */
-    EClass NEGATION_EXPRESSION = eINSTANCE.getNegationExpression();
-
-    /**
-     * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference NEGATION_EXPRESSION__EXPR = eINSTANCE.getNegationExpression_Expr();
-
-    /**
      * The meta object literal for the '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.AtomicReferringBExpressionImpl <em>Atomic Referring BExpression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2874,6 +2789,24 @@ public interface DynamicScreenDslPackage extends EPackage
      * @generated
      */
     EReference AND_OPERATION__RIGHT = eINSTANCE.getAndOperation_Right();
+
+    /**
+     * The meta object literal for the '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.NegationExpressionImpl <em>Negation Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.NegationExpressionImpl
+     * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenDslPackageImpl#getNegationExpression()
+     * @generated
+     */
+    EClass NEGATION_EXPRESSION = eINSTANCE.getNegationExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference NEGATION_EXPRESSION__EXPR = eINSTANCE.getNegationExpression_Expr();
 
     /**
      * The meta object literal for the '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.AttributeClass <em>Attribute Class</em>}' enum.

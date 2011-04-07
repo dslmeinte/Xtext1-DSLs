@@ -83,11 +83,6 @@ public class DynamicScreenDslAdapterFactory extends AdapterFactoryImpl
         return createDynamicScreenAdapter();
       }
       @Override
-      public Adapter caseDataImport(DataImport object)
-      {
-        return createDataImportAdapter();
-      }
-      @Override
       public Adapter caseLabel(Label object)
       {
         return createLabelAdapter();
@@ -188,11 +183,6 @@ public class DynamicScreenDslAdapterFactory extends AdapterFactoryImpl
         return createBExpressionAdapter();
       }
       @Override
-      public Adapter caseNegationExpression(NegationExpression object)
-      {
-        return createNegationExpressionAdapter();
-      }
-      @Override
       public Adapter caseAtomicReferringBExpression(AtomicReferringBExpression object)
       {
         return createAtomicReferringBExpressionAdapter();
@@ -253,6 +243,11 @@ public class DynamicScreenDslAdapterFactory extends AdapterFactoryImpl
         return createAndOperationAdapter();
       }
       @Override
+      public Adapter caseNegationExpression(NegationExpression object)
+      {
+        return createNegationExpressionAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -285,21 +280,6 @@ public class DynamicScreenDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDynamicScreenAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.DataImport <em>Data Import</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.DataImport
-   * @generated
-   */
-  public Adapter createDataImportAdapter()
   {
     return null;
   }
@@ -605,21 +585,6 @@ public class DynamicScreenDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.NegationExpression <em>Negation Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.NegationExpression
-   * @generated
-   */
-  public Adapter createNegationExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.AtomicReferringBExpression <em>Atomic Referring BExpression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -795,6 +760,21 @@ public class DynamicScreenDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAndOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.NegationExpression <em>Negation Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.NegationExpression
+   * @generated
+   */
+  public Adapter createNegationExpressionAdapter()
   {
     return null;
   }

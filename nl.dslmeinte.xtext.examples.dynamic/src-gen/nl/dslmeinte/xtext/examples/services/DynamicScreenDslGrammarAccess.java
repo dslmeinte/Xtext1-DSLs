@@ -23,17 +23,19 @@ public class DynamicScreenDslGrammarAccess extends AbstractGrammarElementFinder 
 		private final Keyword cDynamicScreenKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cLabelAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cLabelLabelParserRuleCall_1_0 = (RuleCall)cLabelAssignment_1.eContents().get(0);
-		private final Assignment cDataImportAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cDataImportDataImportParserRuleCall_2_0 = (RuleCall)cDataImportAssignment_2.eContents().get(0);
-		private final Keyword cViewClassKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Keyword cEqualsSignKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cViewClassAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cViewClassEntityCrossReference_5_0 = (CrossReference)cViewClassAssignment_5.eContents().get(0);
-		private final RuleCall cViewClassEntityIDTerminalRuleCall_5_0_1 = (RuleCall)cViewClassEntityCrossReference_5_0.eContents().get(1);
-		private final Assignment cDeclarationsAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cDeclarationsDeclarationParserRuleCall_6_0 = (RuleCall)cDeclarationsAssignment_6.eContents().get(0);
-		private final Assignment cGroupsAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cGroupsFieldGroupParserRuleCall_7_0 = (RuleCall)cGroupsAssignment_7.eContents().get(0);
+		private final Keyword cDataImportKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cImportURIAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cImportURISTRINGTerminalRuleCall_4_0 = (RuleCall)cImportURIAssignment_4.eContents().get(0);
+		private final Keyword cViewClassKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cEqualsSignKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cViewClassAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final CrossReference cViewClassEntityCrossReference_7_0 = (CrossReference)cViewClassAssignment_7.eContents().get(0);
+		private final RuleCall cViewClassEntityIDTerminalRuleCall_7_0_1 = (RuleCall)cViewClassEntityCrossReference_7_0.eContents().get(1);
+		private final Assignment cDeclarationsAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cDeclarationsDeclarationParserRuleCall_8_0 = (RuleCall)cDeclarationsAssignment_8.eContents().get(0);
+		private final Assignment cGroupsAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cGroupsFieldGroupParserRuleCall_9_0 = (RuleCall)cGroupsAssignment_9.eContents().get(0);
 		
 		/// *
 		// * An instance of this DSL describes a screen with a lot of custom
@@ -48,25 +50,19 @@ public class DynamicScreenDslGrammarAccess extends AbstractGrammarElementFinder 
 		// * Aspects and features still TODO (roughly in order of priority):
 		// *
 		// *  1) add paths relative to data stores for non-enum selection lists
-		// *  2) hooks to generate HTML mock-up from the model (actions as Attribute-s?)
-		// *  3) short hand for commonly used boolean expressions
-		// *  4) sample population of fields (especially useful for data stores @1)
-		// *  5) mapping to and from screen (including defaults)
-		// *      (nicety: warn if not all required fields have been mapped)
-		// *  6) translations to Dutch as 'referring annotations'
-		// *  7) layout definition for 2-column layout
-		// *  8) ...
+		// *  2) short hand for commonly used boolean expressions
+		// *  3) sample population of fields (especially useful for data stores @1)
 		// * // *
 		// * +-----------------------------+
 		// * | Infrastructure and generics |
 		// * +-----------------------------+
 		// * /DynamicScreen:
-		//	"dynamic-screen" label=Label dataImport=DataImport "view-class" "=" viewClass=[data::Entity]
+		//	"dynamic-screen" label=Label "data-import" "=" importURI=STRING "view-class" "=" viewClass=[data::Entity]
 		//	declarations+=Declaration* groups+=FieldGroup+;
 		public ParserRule getRule() { return rule; }
 
-		//"dynamic-screen" label=Label dataImport=DataImport "view-class" "=" viewClass=[data::Entity] declarations+=Declaration*
-		//groups+=FieldGroup+
+		//"dynamic-screen" label=Label "data-import" "=" importURI=STRING "view-class" "=" viewClass=[data::Entity]
+		//declarations+=Declaration* groups+=FieldGroup+
 		public Group getGroup() { return cGroup; }
 
 		//"dynamic-screen"
@@ -78,66 +74,44 @@ public class DynamicScreenDslGrammarAccess extends AbstractGrammarElementFinder 
 		//Label
 		public RuleCall getLabelLabelParserRuleCall_1_0() { return cLabelLabelParserRuleCall_1_0; }
 
-		//dataImport=DataImport
-		public Assignment getDataImportAssignment_2() { return cDataImportAssignment_2; }
-
-		//DataImport
-		public RuleCall getDataImportDataImportParserRuleCall_2_0() { return cDataImportDataImportParserRuleCall_2_0; }
-
-		//"view-class"
-		public Keyword getViewClassKeyword_3() { return cViewClassKeyword_3; }
-
-		//"="
-		public Keyword getEqualsSignKeyword_4() { return cEqualsSignKeyword_4; }
-
-		//viewClass=[data::Entity]
-		public Assignment getViewClassAssignment_5() { return cViewClassAssignment_5; }
-
-		//[data::Entity]
-		public CrossReference getViewClassEntityCrossReference_5_0() { return cViewClassEntityCrossReference_5_0; }
-
-		//ID
-		public RuleCall getViewClassEntityIDTerminalRuleCall_5_0_1() { return cViewClassEntityIDTerminalRuleCall_5_0_1; }
-
-		//declarations+=Declaration*
-		public Assignment getDeclarationsAssignment_6() { return cDeclarationsAssignment_6; }
-
-		//Declaration
-		public RuleCall getDeclarationsDeclarationParserRuleCall_6_0() { return cDeclarationsDeclarationParserRuleCall_6_0; }
-
-		//groups+=FieldGroup+
-		public Assignment getGroupsAssignment_7() { return cGroupsAssignment_7; }
-
-		//FieldGroup
-		public RuleCall getGroupsFieldGroupParserRuleCall_7_0() { return cGroupsFieldGroupParserRuleCall_7_0; }
-	}
-
-	public class DataImportElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DataImport");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cDataImportKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cImportURIAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cImportURISTRINGTerminalRuleCall_2_0 = (RuleCall)cImportURIAssignment_2.eContents().get(0);
-		
-		//DataImport:
-		//	"data-import" "=" importURI=STRING;
-		public ParserRule getRule() { return rule; }
-
-		//"data-import" "=" importURI=STRING
-		public Group getGroup() { return cGroup; }
-
 		//"data-import"
-		public Keyword getDataImportKeyword_0() { return cDataImportKeyword_0; }
+		public Keyword getDataImportKeyword_2() { return cDataImportKeyword_2; }
 
 		//"="
-		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
+		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
 
 		//importURI=STRING
-		public Assignment getImportURIAssignment_2() { return cImportURIAssignment_2; }
+		public Assignment getImportURIAssignment_4() { return cImportURIAssignment_4; }
 
 		//STRING
-		public RuleCall getImportURISTRINGTerminalRuleCall_2_0() { return cImportURISTRINGTerminalRuleCall_2_0; }
+		public RuleCall getImportURISTRINGTerminalRuleCall_4_0() { return cImportURISTRINGTerminalRuleCall_4_0; }
+
+		//"view-class"
+		public Keyword getViewClassKeyword_5() { return cViewClassKeyword_5; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_6() { return cEqualsSignKeyword_6; }
+
+		//viewClass=[data::Entity]
+		public Assignment getViewClassAssignment_7() { return cViewClassAssignment_7; }
+
+		//[data::Entity]
+		public CrossReference getViewClassEntityCrossReference_7_0() { return cViewClassEntityCrossReference_7_0; }
+
+		//ID
+		public RuleCall getViewClassEntityIDTerminalRuleCall_7_0_1() { return cViewClassEntityIDTerminalRuleCall_7_0_1; }
+
+		//declarations+=Declaration*
+		public Assignment getDeclarationsAssignment_8() { return cDeclarationsAssignment_8; }
+
+		//Declaration
+		public RuleCall getDeclarationsDeclarationParserRuleCall_8_0() { return cDeclarationsDeclarationParserRuleCall_8_0; }
+
+		//groups+=FieldGroup+
+		public Assignment getGroupsAssignment_9() { return cGroupsAssignment_9; }
+
+		//FieldGroup
+		public RuleCall getGroupsFieldGroupParserRuleCall_9_0() { return cGroupsFieldGroupParserRuleCall_9_0; }
 	}
 
 	public class LabelElements extends AbstractParserRuleElementFinder {
@@ -907,28 +881,36 @@ public class DynamicScreenDslGrammarAccess extends AbstractGrammarElementFinder 
 		private final RuleCall cBAndExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Action cOrOperationLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Keyword cOrKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
+		private final Keyword cOrKeyword_1_1_0 = (Keyword)cAlternatives_1_1.eContents().get(0);
+		private final Keyword cVerticalLineKeyword_1_1_1 = (Keyword)cAlternatives_1_1.eContents().get(1);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightBAndExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//BOrExpression returns BExpression:
-		//	BAndExpression ({OrOperation.left=current} "or" right=BAndExpression)*;
+		//	BAndExpression ({OrOperation.left=current} ("or" | "|") right=BAndExpression)*;
 		public ParserRule getRule() { return rule; }
 
-		//BAndExpression ({OrOperation.left=current} "or" right=BAndExpression)*
+		//BAndExpression ({OrOperation.left=current} ("or" | "|") right=BAndExpression)*
 		public Group getGroup() { return cGroup; }
 
 		//BAndExpression
 		public RuleCall getBAndExpressionParserRuleCall_0() { return cBAndExpressionParserRuleCall_0; }
 
-		//({OrOperation.left=current} "or" right=BAndExpression)*
+		//({OrOperation.left=current} ("or" | "|") right=BAndExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 
 		//{OrOperation.left=current}
 		public Action getOrOperationLeftAction_1_0() { return cOrOperationLeftAction_1_0; }
 
+		//"or" | "|"
+		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
+
 		//"or"
-		public Keyword getOrKeyword_1_1() { return cOrKeyword_1_1; }
+		public Keyword getOrKeyword_1_1_0() { return cOrKeyword_1_1_0; }
+
+		//"|"
+		public Keyword getVerticalLineKeyword_1_1_1() { return cVerticalLineKeyword_1_1_1; }
 
 		//right=BAndExpression
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
@@ -940,97 +922,121 @@ public class DynamicScreenDslGrammarAccess extends AbstractGrammarElementFinder 
 	public class BAndExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BAndExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cTerminalBExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final RuleCall cNegationExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Action cAndOperationLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Keyword cAndKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
+		private final Keyword cAndKeyword_1_1_0 = (Keyword)cAlternatives_1_1.eContents().get(0);
+		private final Keyword cAmpersandKeyword_1_1_1 = (Keyword)cAlternatives_1_1.eContents().get(1);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cRightTerminalBExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		private final RuleCall cRightNegationExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//BAndExpression returns BExpression:
-		//	TerminalBExpression ({AndOperation.left=current} "and" right=TerminalBExpression)*;
+		//	NegationExpression ({AndOperation.left=current} ("and" | "&") right=NegationExpression)*;
 		public ParserRule getRule() { return rule; }
 
-		//TerminalBExpression ({AndOperation.left=current} "and" right=TerminalBExpression)*
+		//NegationExpression ({AndOperation.left=current} ("and" | "&") right=NegationExpression)*
 		public Group getGroup() { return cGroup; }
 
-		//TerminalBExpression
-		public RuleCall getTerminalBExpressionParserRuleCall_0() { return cTerminalBExpressionParserRuleCall_0; }
+		//NegationExpression
+		public RuleCall getNegationExpressionParserRuleCall_0() { return cNegationExpressionParserRuleCall_0; }
 
-		//({AndOperation.left=current} "and" right=TerminalBExpression)*
+		//({AndOperation.left=current} ("and" | "&") right=NegationExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 
 		//{AndOperation.left=current}
 		public Action getAndOperationLeftAction_1_0() { return cAndOperationLeftAction_1_0; }
 
-		//"and"
-		public Keyword getAndKeyword_1_1() { return cAndKeyword_1_1; }
+		//"and" | "&"
+		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
 
-		//right=TerminalBExpression
+		//"and"
+		public Keyword getAndKeyword_1_1_0() { return cAndKeyword_1_1_0; }
+
+		//"&"
+		public Keyword getAmpersandKeyword_1_1_1() { return cAmpersandKeyword_1_1_1; }
+
+		//right=NegationExpression
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
 
+		//NegationExpression
+		public RuleCall getRightNegationExpressionParserRuleCall_1_2_0() { return cRightNegationExpressionParserRuleCall_1_2_0; }
+	}
+
+	public class NegationExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "NegationExpression");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cTerminalBExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cNegationExpressionAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
+		private final Keyword cNotKeyword_1_1_0 = (Keyword)cAlternatives_1_1.eContents().get(0);
+		private final Keyword cExclamationMarkKeyword_1_1_1 = (Keyword)cAlternatives_1_1.eContents().get(1);
+		private final Assignment cExprAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cExprNegationExpressionParserRuleCall_1_2_0 = (RuleCall)cExprAssignment_1_2.eContents().get(0);
+		
+		//NegationExpression returns BExpression:
+		//	TerminalBExpression | {NegationExpression} ("not" | "!") expr=NegationExpression;
+		public ParserRule getRule() { return rule; }
+
+		//TerminalBExpression | {NegationExpression} ("not" | "!") expr=NegationExpression
+		public Alternatives getAlternatives() { return cAlternatives; }
+
 		//TerminalBExpression
-		public RuleCall getRightTerminalBExpressionParserRuleCall_1_2_0() { return cRightTerminalBExpressionParserRuleCall_1_2_0; }
+		public RuleCall getTerminalBExpressionParserRuleCall_0() { return cTerminalBExpressionParserRuleCall_0; }
+
+		//{NegationExpression} ("not" | "!") expr=NegationExpression
+		public Group getGroup_1() { return cGroup_1; }
+
+		//{NegationExpression}
+		public Action getNegationExpressionAction_1_0() { return cNegationExpressionAction_1_0; }
+
+		//"not" | "!"
+		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
+
+		//"not"
+		public Keyword getNotKeyword_1_1_0() { return cNotKeyword_1_1_0; }
+
+		//"!"
+		public Keyword getExclamationMarkKeyword_1_1_1() { return cExclamationMarkKeyword_1_1_1; }
+
+		//expr=NegationExpression
+		public Assignment getExprAssignment_1_2() { return cExprAssignment_1_2; }
+
+		//NegationExpression
+		public RuleCall getExprNegationExpressionParserRuleCall_1_2_0() { return cExprNegationExpressionParserRuleCall_1_2_0; }
 	}
 
 	public class TerminalBExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TerminalBExpression");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cAtomicReferringBExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cNegationExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final RuleCall cBExpressionParserRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cBExpressionParserRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
 		
 		//TerminalBExpression returns BExpression:
-		//	AtomicReferringBExpression | NegationExpression | "(" BExpression ")";
+		//	AtomicReferringBExpression | "(" BExpression ")";
 		public ParserRule getRule() { return rule; }
 
-		//AtomicReferringBExpression | NegationExpression | "(" BExpression ")"
+		//AtomicReferringBExpression | "(" BExpression ")"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//AtomicReferringBExpression
 		public RuleCall getAtomicReferringBExpressionParserRuleCall_0() { return cAtomicReferringBExpressionParserRuleCall_0; }
 
-		//NegationExpression
-		public RuleCall getNegationExpressionParserRuleCall_1() { return cNegationExpressionParserRuleCall_1; }
-
 		//"(" BExpression ")"
-		public Group getGroup_2() { return cGroup_2; }
+		public Group getGroup_1() { return cGroup_1; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
+		public Keyword getLeftParenthesisKeyword_1_0() { return cLeftParenthesisKeyword_1_0; }
 
 		//BExpression
-		public RuleCall getBExpressionParserRuleCall_2_1() { return cBExpressionParserRuleCall_2_1; }
+		public RuleCall getBExpressionParserRuleCall_1_1() { return cBExpressionParserRuleCall_1_1; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_2_2() { return cRightParenthesisKeyword_2_2; }
-	}
-
-	public class NegationExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "NegationExpression");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cNotKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cExprAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cExprBExpressionParserRuleCall_1_0 = (RuleCall)cExprAssignment_1.eContents().get(0);
-		
-		//NegationExpression:
-		//	"not" expr=BExpression;
-		public ParserRule getRule() { return rule; }
-
-		//"not" expr=BExpression
-		public Group getGroup() { return cGroup; }
-
-		//"not"
-		public Keyword getNotKeyword_0() { return cNotKeyword_0; }
-
-		//expr=BExpression
-		public Assignment getExprAssignment_1() { return cExprAssignment_1; }
-
-		//BExpression
-		public RuleCall getExprBExpressionParserRuleCall_1_0() { return cExprBExpressionParserRuleCall_1_0; }
+		public Keyword getRightParenthesisKeyword_1_2() { return cRightParenthesisKeyword_1_2; }
 	}
 
 	public class AtomicReferringBExpressionElements extends AbstractParserRuleElementFinder {
@@ -1452,7 +1458,6 @@ public class DynamicScreenDslGrammarAccess extends AbstractGrammarElementFinder 
 	}
 	
 	private DynamicScreenElements pDynamicScreen;
-	private DataImportElements pDataImport;
 	private LabelElements pLabel;
 	private PathTailElements pPathTail;
 	private DeclarationElements pDeclaration;
@@ -1476,8 +1481,8 @@ public class DynamicScreenDslGrammarAccess extends AbstractGrammarElementFinder 
 	private BExpressionElements pBExpression;
 	private BOrExpressionElements pBOrExpression;
 	private BAndExpressionElements pBAndExpression;
-	private TerminalBExpressionElements pTerminalBExpression;
 	private NegationExpressionElements pNegationExpression;
+	private TerminalBExpressionElements pTerminalBExpression;
 	private AtomicReferringBExpressionElements pAtomicReferringBExpression;
 	private BComparisonElements pBComparison;
 	private EnumComparisonElements pEnumComparison;
@@ -1525,20 +1530,14 @@ public class DynamicScreenDslGrammarAccess extends AbstractGrammarElementFinder 
 	// * Aspects and features still TODO (roughly in order of priority):
 	// *
 	// *  1) add paths relative to data stores for non-enum selection lists
-	// *  2) hooks to generate HTML mock-up from the model (actions as Attribute-s?)
-	// *  3) short hand for commonly used boolean expressions
-	// *  4) sample population of fields (especially useful for data stores @1)
-	// *  5) mapping to and from screen (including defaults)
-	// *      (nicety: warn if not all required fields have been mapped)
-	// *  6) translations to Dutch as 'referring annotations'
-	// *  7) layout definition for 2-column layout
-	// *  8) ...
+	// *  2) short hand for commonly used boolean expressions
+	// *  3) sample population of fields (especially useful for data stores @1)
 	// * // *
 	// * +-----------------------------+
 	// * | Infrastructure and generics |
 	// * +-----------------------------+
 	// * /DynamicScreen:
-	//	"dynamic-screen" label=Label dataImport=DataImport "view-class" "=" viewClass=[data::Entity]
+	//	"dynamic-screen" label=Label "data-import" "=" importURI=STRING "view-class" "=" viewClass=[data::Entity]
 	//	declarations+=Declaration* groups+=FieldGroup+;
 	public DynamicScreenElements getDynamicScreenAccess() {
 		return (pDynamicScreen != null) ? pDynamicScreen : (pDynamicScreen = new DynamicScreenElements());
@@ -1546,16 +1545,6 @@ public class DynamicScreenDslGrammarAccess extends AbstractGrammarElementFinder 
 	
 	public ParserRule getDynamicScreenRule() {
 		return getDynamicScreenAccess().getRule();
-	}
-
-	//DataImport:
-	//	"data-import" "=" importURI=STRING;
-	public DataImportElements getDataImportAccess() {
-		return (pDataImport != null) ? pDataImport : (pDataImport = new DataImportElements());
-	}
-	
-	public ParserRule getDataImportRule() {
-		return getDataImportAccess().getRule();
 	}
 
 	//Label:
@@ -1841,7 +1830,7 @@ public class DynamicScreenDslGrammarAccess extends AbstractGrammarElementFinder 
 	}
 
 	//BOrExpression returns BExpression:
-	//	BAndExpression ({OrOperation.left=current} "or" right=BAndExpression)*;
+	//	BAndExpression ({OrOperation.left=current} ("or" | "|") right=BAndExpression)*;
 	public BOrExpressionElements getBOrExpressionAccess() {
 		return (pBOrExpression != null) ? pBOrExpression : (pBOrExpression = new BOrExpressionElements());
 	}
@@ -1851,7 +1840,7 @@ public class DynamicScreenDslGrammarAccess extends AbstractGrammarElementFinder 
 	}
 
 	//BAndExpression returns BExpression:
-	//	TerminalBExpression ({AndOperation.left=current} "and" right=TerminalBExpression)*;
+	//	NegationExpression ({AndOperation.left=current} ("and" | "&") right=NegationExpression)*;
 	public BAndExpressionElements getBAndExpressionAccess() {
 		return (pBAndExpression != null) ? pBAndExpression : (pBAndExpression = new BAndExpressionElements());
 	}
@@ -1860,24 +1849,24 @@ public class DynamicScreenDslGrammarAccess extends AbstractGrammarElementFinder 
 		return getBAndExpressionAccess().getRule();
 	}
 
-	//TerminalBExpression returns BExpression:
-	//	AtomicReferringBExpression | NegationExpression | "(" BExpression ")";
-	public TerminalBExpressionElements getTerminalBExpressionAccess() {
-		return (pTerminalBExpression != null) ? pTerminalBExpression : (pTerminalBExpression = new TerminalBExpressionElements());
-	}
-	
-	public ParserRule getTerminalBExpressionRule() {
-		return getTerminalBExpressionAccess().getRule();
-	}
-
-	//NegationExpression:
-	//	"not" expr=BExpression;
+	//NegationExpression returns BExpression:
+	//	TerminalBExpression | {NegationExpression} ("not" | "!") expr=NegationExpression;
 	public NegationExpressionElements getNegationExpressionAccess() {
 		return (pNegationExpression != null) ? pNegationExpression : (pNegationExpression = new NegationExpressionElements());
 	}
 	
 	public ParserRule getNegationExpressionRule() {
 		return getNegationExpressionAccess().getRule();
+	}
+
+	//TerminalBExpression returns BExpression:
+	//	AtomicReferringBExpression | "(" BExpression ")";
+	public TerminalBExpressionElements getTerminalBExpressionAccess() {
+		return (pTerminalBExpression != null) ? pTerminalBExpression : (pTerminalBExpression = new TerminalBExpressionElements());
+	}
+	
+	public ParserRule getTerminalBExpressionRule() {
+		return getTerminalBExpressionAccess().getRule();
 	}
 
 	//AtomicReferringBExpression:

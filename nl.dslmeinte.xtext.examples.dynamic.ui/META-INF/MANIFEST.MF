@@ -8,7 +8,10 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: nl.dslmeinte.xtext.examples.dynamic;visibility:=reexport,
  org.eclipse.xtext.ui,
  org.eclipse.xtext.ui.shared,
- org.eclipse.xtext.builder
+ org.eclipse.xtext.builder,
+ org.eclipse.ui.editors,
+ org.eclipse.ui,
+ org.antlr.runtime
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: nl.dslmeinte.xtext.examples.ui.contentassist.antlr

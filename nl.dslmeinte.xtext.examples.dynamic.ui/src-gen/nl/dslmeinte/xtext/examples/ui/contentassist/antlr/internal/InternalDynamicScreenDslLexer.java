@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class InternalDynamicScreenDslLexer extends Lexer {
-    public static final int RULE_ID=4;
+    public static final int RULE_ID=5;
     public static final int RULE_ANY_OTHER=10;
     public static final int T29=29;
     public static final int T28=28;
@@ -39,7 +39,7 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public static final int T49=49;
     public static final int T48=48;
     public static final int T43=43;
-    public static final int Tokens=52;
+    public static final int Tokens=55;
     public static final int RULE_SL_COMMENT=8;
     public static final int T42=42;
     public static final int T41=41;
@@ -49,17 +49,20 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public static final int T45=45;
     public static final int RULE_ML_COMMENT=7;
     public static final int T44=44;
-    public static final int RULE_STRING=5;
+    public static final int RULE_STRING=4;
     public static final int T50=50;
     public static final int T11=11;
     public static final int T12=12;
     public static final int T13=13;
     public static final int T14=14;
+    public static final int T52=52;
     public static final int T15=15;
     public static final int RULE_WS=9;
     public static final int T51=51;
     public static final int T16=16;
+    public static final int T54=54;
     public static final int T17=17;
+    public static final int T53=53;
     public static final int T18=18;
     public static final int T19=19;
     public InternalDynamicScreenDslLexer() {;} 
@@ -72,10 +75,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT11() throws RecognitionException {
         try {
             int _type = T11;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:10:5: ( 'display' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:10:7: 'display'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:10:5: ( 'or' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:10:7: 'or'
             {
-            match("display"); 
+            match("or"); 
 
 
             }
@@ -91,11 +94,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT12() throws RecognitionException {
         try {
             int _type = T12;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:11:5: ( 'required' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:11:7: 'required'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:11:5: ( '|' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:11:7: '|'
             {
-            match("required"); 
-
+            match('|'); 
 
             }
 
@@ -110,10 +112,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT13() throws RecognitionException {
         try {
             int _type = T13;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:12:5: ( 'readonly' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:12:7: 'readonly'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:12:5: ( 'and' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:12:7: 'and'
             {
-            match("readonly"); 
+            match("and"); 
 
 
             }
@@ -129,11 +131,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT14() throws RecognitionException {
         try {
             int _type = T14;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:13:5: ( 'calculated' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:13:7: 'calculated'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:13:5: ( '&' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:13:7: '&'
             {
-            match("calculated"); 
-
+            match('&'); 
 
             }
 
@@ -148,10 +149,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT15() throws RecognitionException {
         try {
             int _type = T15;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:14:5: ( 'doubleAsterisk' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:14:7: 'doubleAsterisk'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:14:5: ( 'not' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:14:7: 'not'
             {
-            match("doubleAsterisk"); 
+            match("not"); 
 
 
             }
@@ -167,11 +168,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT16() throws RecognitionException {
         try {
             int _type = T16;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:15:5: ( 'true' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:15:7: 'true'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:15:5: ( '!' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:15:7: '!'
             {
-            match("true"); 
-
+            match('!'); 
 
             }
 
@@ -186,10 +186,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT17() throws RecognitionException {
         try {
             int _type = T17;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:16:5: ( 'false' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:16:7: 'false'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:16:5: ( 'display' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:16:7: 'display'
             {
-            match("false"); 
+            match("display"); 
 
 
             }
@@ -205,10 +205,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT18() throws RecognitionException {
         try {
             int _type = T18;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:17:5: ( 'is-one-of' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:17:7: 'is-one-of'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:17:5: ( 'required' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:17:7: 'required'
             {
-            match("is-one-of"); 
+            match("required"); 
 
 
             }
@@ -224,10 +224,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT19() throws RecognitionException {
         try {
             int _type = T19;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:18:5: ( 'is-not-one-of' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:18:7: 'is-not-one-of'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:18:5: ( 'readonly' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:18:7: 'readonly'
             {
-            match("is-not-one-of"); 
+            match("readonly"); 
 
 
             }
@@ -243,10 +243,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT20() throws RecognitionException {
         try {
             int _type = T20;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:19:5: ( 'dynamic-screen' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:19:7: 'dynamic-screen'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:19:5: ( 'calculated' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:19:7: 'calculated'
             {
-            match("dynamic-screen"); 
+            match("calculated"); 
 
 
             }
@@ -262,10 +262,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT21() throws RecognitionException {
         try {
             int _type = T21;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:20:5: ( 'view-class' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:20:7: 'view-class'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:20:5: ( 'doubleAsterisk' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:20:7: 'doubleAsterisk'
             {
-            match("view-class"); 
+            match("doubleAsterisk"); 
 
 
             }
@@ -281,10 +281,11 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT22() throws RecognitionException {
         try {
             int _type = T22;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:21:5: ( '=' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:21:7: '='
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:21:5: ( 'true' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:21:7: 'true'
             {
-            match('='); 
+            match("true"); 
+
 
             }
 
@@ -299,10 +300,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT23() throws RecognitionException {
         try {
             int _type = T23;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:22:5: ( 'data-import' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:22:7: 'data-import'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:22:5: ( 'false' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:22:7: 'false'
             {
-            match("data-import"); 
+            match("false"); 
 
 
             }
@@ -318,10 +319,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT24() throws RecognitionException {
         try {
             int _type = T24;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:23:5: ( '[nl:' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:23:7: '[nl:'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:23:5: ( 'is-one-of' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:23:7: 'is-one-of'
             {
-            match("[nl:"); 
+            match("is-one-of"); 
 
 
             }
@@ -337,10 +338,11 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT25() throws RecognitionException {
         try {
             int _type = T25;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:24:5: ( ']' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:24:7: ']'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:24:5: ( 'is-not-one-of' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:24:7: 'is-not-one-of'
             {
-            match(']'); 
+            match("is-not-one-of"); 
+
 
             }
 
@@ -355,10 +357,11 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT26() throws RecognitionException {
         try {
             int _type = T26;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:25:5: ( '/' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:25:7: '/'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:25:5: ( 'dynamic-screen' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:25:7: 'dynamic-screen'
             {
-            match('/'); 
+            match("dynamic-screen"); 
+
 
             }
 
@@ -373,10 +376,11 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT27() throws RecognitionException {
         try {
             int _type = T27;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:26:5: ( '(' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:26:7: '('
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:26:5: ( 'data-import' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:26:7: 'data-import'
             {
-            match('('); 
+            match("data-import"); 
+
 
             }
 
@@ -391,10 +395,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT28() throws RecognitionException {
         try {
             int _type = T28;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:27:5: ( ')' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:27:7: ')'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:27:5: ( '=' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:27:7: '='
             {
-            match(')'); 
+            match('='); 
 
             }
 
@@ -409,10 +413,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT29() throws RecognitionException {
         try {
             int _type = T29;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:28:5: ( 'external-var' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:28:7: 'external-var'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:28:5: ( 'view-class' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:28:7: 'view-class'
             {
-            match("external-var"); 
+            match("view-class"); 
 
 
             }
@@ -428,10 +432,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT30() throws RecognitionException {
         try {
             int _type = T30;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:29:5: ( 'as' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:29:7: 'as'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:29:5: ( '[nl:' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:29:7: '[nl:'
             {
-            match("as"); 
+            match("[nl:"); 
 
 
             }
@@ -447,11 +451,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT31() throws RecognitionException {
         try {
             int _type = T31;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:30:5: ( 'define' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:30:7: 'define'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:30:5: ( ']' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:30:7: ']'
             {
-            match("define"); 
-
+            match(']'); 
 
             }
 
@@ -466,11 +469,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT32() throws RecognitionException {
         try {
             int _type = T32;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:31:5: ( 'of' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:31:7: 'of'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:31:5: ( '/' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:31:7: '/'
             {
-            match("of"); 
-
+            match('/'); 
 
             }
 
@@ -485,11 +487,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT33() throws RecognitionException {
         try {
             int _type = T33;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:32:5: ( 'data-store' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:32:7: 'data-store'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:32:5: ( '(' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:32:7: '('
             {
-            match("data-store"); 
-
+            match('('); 
 
             }
 
@@ -504,11 +505,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT34() throws RecognitionException {
         try {
             int _type = T34;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:33:5: ( 'of-type' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:33:7: 'of-type'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:33:5: ( ')' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:33:7: ')'
             {
-            match("of-type"); 
-
+            match(')'); 
 
             }
 
@@ -523,10 +523,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT35() throws RecognitionException {
         try {
             int _type = T35;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:34:5: ( 'group' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:34:7: 'group'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:34:5: ( 'external-var' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:34:7: 'external-var'
             {
-            match("group"); 
+            match("external-var"); 
 
 
             }
@@ -542,10 +542,11 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT36() throws RecognitionException {
         try {
             int _type = T36;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:35:5: ( '{' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:35:7: '{'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:35:5: ( 'as' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:35:7: 'as'
             {
-            match('{'); 
+            match("as"); 
+
 
             }
 
@@ -560,10 +561,11 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT37() throws RecognitionException {
         try {
             int _type = T37;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:36:5: ( '}' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:36:7: '}'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:36:5: ( 'define' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:36:7: 'define'
             {
-            match('}'); 
+            match("define"); 
+
 
             }
 
@@ -578,10 +580,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT38() throws RecognitionException {
         try {
             int _type = T38;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:37:5: ( 'with' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:37:7: 'with'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:37:5: ( 'of' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:37:7: 'of'
             {
-            match("with"); 
+            match("of"); 
 
 
             }
@@ -597,10 +599,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT39() throws RecognitionException {
         try {
             int _type = T39;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:38:5: ( 'if' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:38:7: 'if'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:38:5: ( 'data-store' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:38:7: 'data-store'
             {
-            match("if"); 
+            match("data-store"); 
 
 
             }
@@ -616,10 +618,11 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT40() throws RecognitionException {
         try {
             int _type = T40;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:39:5: ( '+' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:39:7: '+'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:39:5: ( 'of-type' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:39:7: 'of-type'
             {
-            match('+'); 
+            match("of-type"); 
+
 
             }
 
@@ -634,10 +637,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT41() throws RecognitionException {
         try {
             int _type = T41;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:40:5: ( 'restrict-to' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:40:7: 'restrict-to'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:40:5: ( 'group' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:40:7: 'group'
             {
-            match("restrict-to"); 
+            match("group"); 
 
 
             }
@@ -653,11 +656,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT42() throws RecognitionException {
         try {
             int _type = T42;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:41:5: ( 'restrict-to-group' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:41:7: 'restrict-to-group'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:41:5: ( '{' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:41:7: '{'
             {
-            match("restrict-to-group"); 
-
+            match('{'); 
 
             }
 
@@ -672,10 +674,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT43() throws RecognitionException {
         try {
             int _type = T43;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:42:5: ( '<' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:42:7: '<'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:42:5: ( '}' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:42:7: '}'
             {
-            match('<'); 
+            match('}'); 
 
             }
 
@@ -690,10 +692,11 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT44() throws RecognitionException {
         try {
             int _type = T44;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:43:5: ( '>' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:43:7: '>'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:43:5: ( 'with' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:43:7: 'with'
             {
-            match('>'); 
+            match("with"); 
+
 
             }
 
@@ -708,10 +711,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT45() throws RecognitionException {
         try {
             int _type = T45;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:44:5: ( 'or' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:44:7: 'or'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:44:5: ( 'if' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:44:7: 'if'
             {
-            match("or"); 
+            match("if"); 
 
 
             }
@@ -727,11 +730,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT46() throws RecognitionException {
         try {
             int _type = T46;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:45:5: ( 'and' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:45:7: 'and'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:45:5: ( '+' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:45:7: '+'
             {
-            match("and"); 
-
+            match('+'); 
 
             }
 
@@ -746,10 +748,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT47() throws RecognitionException {
         try {
             int _type = T47;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:46:5: ( 'not' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:46:7: 'not'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:46:5: ( 'restrict-to' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:46:7: 'restrict-to'
             {
-            match("not"); 
+            match("restrict-to"); 
 
 
             }
@@ -765,10 +767,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT48() throws RecognitionException {
         try {
             int _type = T48;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:47:5: ( 'is' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:47:7: 'is'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:47:5: ( 'restrict-to-group' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:47:7: 'restrict-to-group'
             {
-            match("is"); 
+            match("restrict-to-group"); 
 
 
             }
@@ -784,11 +786,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT49() throws RecognitionException {
         try {
             int _type = T49;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:48:5: ( 'equals' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:48:7: 'equals'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:48:5: ( '<' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:48:7: '<'
             {
-            match("equals"); 
-
+            match('<'); 
 
             }
 
@@ -803,11 +804,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT50() throws RecognitionException {
         try {
             int _type = T50;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:49:5: ( 'is-present' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:49:7: 'is-present'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:49:5: ( '>' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:49:7: '>'
             {
-            match("is-present"); 
-
+            match('>'); 
 
             }
 
@@ -822,10 +822,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mT51() throws RecognitionException {
         try {
             int _type = T51;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:50:5: ( 'is-multi-valued' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:50:7: 'is-multi-valued'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:50:5: ( 'is' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:50:7: 'is'
             {
-            match("is-multi-valued"); 
+            match("is"); 
 
 
             }
@@ -837,14 +837,71 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     }
     // $ANTLR end T51
 
+    // $ANTLR start T52
+    public final void mT52() throws RecognitionException {
+        try {
+            int _type = T52;
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:51:5: ( 'equals' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:51:7: 'equals'
+            {
+            match("equals"); 
+
+
+            }
+
+            this.type = _type;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end T52
+
+    // $ANTLR start T53
+    public final void mT53() throws RecognitionException {
+        try {
+            int _type = T53;
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:52:5: ( 'is-present' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:52:7: 'is-present'
+            {
+            match("is-present"); 
+
+
+            }
+
+            this.type = _type;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end T53
+
+    // $ANTLR start T54
+    public final void mT54() throws RecognitionException {
+        try {
+            int _type = T54;
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:53:5: ( 'is-multi-valued' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:53:7: 'is-multi-valued'
+            {
+            match("is-multi-valued"); 
+
+
+            }
+
+            this.type = _type;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end T54
+
     // $ANTLR start RULE_ID
     public final void mRULE_ID() throws RecognitionException {
         try {
             int _type = RULE_ID;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5686:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5686:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5734:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5734:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5686:11: ( '^' )?
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5734:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -853,7 +910,7 @@ public class InternalDynamicScreenDslLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5686:11: '^'
+                    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5734:11: '^'
                     {
                     match('^'); 
 
@@ -872,7 +929,7 @@ public class InternalDynamicScreenDslLexer extends Lexer {
                 recover(mse);    throw mse;
             }
 
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5686:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5734:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -920,10 +977,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mRULE_INT() throws RecognitionException {
         try {
             int _type = RULE_INT;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5688:10: ( ( '0' .. '9' )+ )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5688:12: ( '0' .. '9' )+
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5736:10: ( ( '0' .. '9' )+ )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5736:12: ( '0' .. '9' )+
             {
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5688:12: ( '0' .. '9' )+
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5736:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -937,7 +994,7 @@ public class InternalDynamicScreenDslLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5688:13: '0' .. '9'
+            	    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5736:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -967,10 +1024,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mRULE_STRING() throws RecognitionException {
         try {
             int _type = RULE_STRING;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5690:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5690:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5738:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5738:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5690:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5738:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -982,16 +1039,16 @@ public class InternalDynamicScreenDslLexer extends Lexer {
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("5690:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )", 6, 0, input);
+                    new NoViableAltException("5738:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )", 6, 0, input);
 
                 throw nvae;
             }
             switch (alt6) {
                 case 1 :
-                    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5690:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5738:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5690:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5738:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -1007,7 +1064,7 @@ public class InternalDynamicScreenDslLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5690:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' )
+                    	    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5738:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||input.LA(1)=='t' ) {
@@ -1024,7 +1081,7 @@ public class InternalDynamicScreenDslLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5690:62: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5738:62: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFE') ) {
                     	        input.consume();
@@ -1050,10 +1107,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5690:82: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5738:82: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5690:87: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5738:87: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -1069,7 +1126,7 @@ public class InternalDynamicScreenDslLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5690:88: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' )
+                    	    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5738:88: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||input.LA(1)=='t' ) {
@@ -1086,7 +1143,7 @@ public class InternalDynamicScreenDslLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5690:129: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5738:129: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFE') ) {
                     	        input.consume();
@@ -1128,12 +1185,12 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mRULE_ML_COMMENT() throws RecognitionException {
         try {
             int _type = RULE_ML_COMMENT;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5692:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5692:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5740:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5740:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5692:24: ( options {greedy=false; } : . )*
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5740:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -1158,7 +1215,7 @@ public class InternalDynamicScreenDslLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5692:52: .
+            	    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5740:52: .
             	    {
             	    matchAny(); 
 
@@ -1186,12 +1243,12 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mRULE_SL_COMMENT() throws RecognitionException {
         try {
             int _type = RULE_SL_COMMENT;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5694:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5694:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5742:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5742:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5694:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5742:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -1204,7 +1261,7 @@ public class InternalDynamicScreenDslLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5694:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5742:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFE') ) {
             	        input.consume();
@@ -1225,7 +1282,7 @@ public class InternalDynamicScreenDslLexer extends Lexer {
                 }
             } while (true);
 
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5694:40: ( ( '\\r' )? '\\n' )?
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5742:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1234,9 +1291,9 @@ public class InternalDynamicScreenDslLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5694:41: ( '\\r' )? '\\n'
+                    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5742:41: ( '\\r' )? '\\n'
                     {
-                    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5694:41: ( '\\r' )?
+                    // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5742:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -1245,7 +1302,7 @@ public class InternalDynamicScreenDslLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5694:41: '\\r'
+                            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5742:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1275,10 +1332,10 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mRULE_WS() throws RecognitionException {
         try {
             int _type = RULE_WS;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5696:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5696:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5744:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5744:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5696:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5744:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -1331,8 +1388,8 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     public final void mRULE_ANY_OTHER() throws RecognitionException {
         try {
             int _type = RULE_ANY_OTHER;
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5698:16: ( . )
-            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5698:18: .
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5746:16: ( . )
+            // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:5746:18: .
             {
             matchAny(); 
 
@@ -1346,535 +1403,696 @@ public class InternalDynamicScreenDslLexer extends Lexer {
     // $ANTLR end RULE_ANY_OTHER
 
     public void mTokens() throws RecognitionException {
-        // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:1:8: ( T11 | T12 | T13 | T14 | T15 | T16 | T17 | T18 | T19 | T20 | T21 | T22 | T23 | T24 | T25 | T26 | T27 | T28 | T29 | T30 | T31 | T32 | T33 | T34 | T35 | T36 | T37 | T38 | T39 | T40 | T41 | T42 | T43 | T44 | T45 | T46 | T47 | T48 | T49 | T50 | T51 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt12=48;
+        // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:1:8: ( T11 | T12 | T13 | T14 | T15 | T16 | T17 | T18 | T19 | T20 | T21 | T22 | T23 | T24 | T25 | T26 | T27 | T28 | T29 | T30 | T31 | T32 | T33 | T34 | T35 | T36 | T37 | T38 | T39 | T40 | T41 | T42 | T43 | T44 | T45 | T46 | T47 | T48 | T49 | T50 | T51 | T52 | T53 | T54 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt12=51;
         int LA12_0 = input.LA(1);
 
-        if ( (LA12_0=='d') ) {
+        if ( (LA12_0=='o') ) {
+            switch ( input.LA(2) ) {
+            case 'r':
+                {
+                int LA12_35 = input.LA(3);
+
+                if ( ((LA12_35>='0' && LA12_35<='9')||(LA12_35>='A' && LA12_35<='Z')||LA12_35=='_'||(LA12_35>='a' && LA12_35<='z')) ) {
+                    alt12=45;
+                }
+                else {
+                    alt12=1;}
+                }
+                break;
+            case 'f':
+                {
+                switch ( input.LA(3) ) {
+                case '-':
+                    {
+                    alt12=30;
+                    }
+                    break;
+                case '0':
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                case 'A':
+                case 'B':
+                case 'C':
+                case 'D':
+                case 'E':
+                case 'F':
+                case 'G':
+                case 'H':
+                case 'I':
+                case 'J':
+                case 'K':
+                case 'L':
+                case 'M':
+                case 'N':
+                case 'O':
+                case 'P':
+                case 'Q':
+                case 'R':
+                case 'S':
+                case 'T':
+                case 'U':
+                case 'V':
+                case 'W':
+                case 'X':
+                case 'Y':
+                case 'Z':
+                case '_':
+                case 'a':
+                case 'b':
+                case 'c':
+                case 'd':
+                case 'e':
+                case 'f':
+                case 'g':
+                case 'h':
+                case 'i':
+                case 'j':
+                case 'k':
+                case 'l':
+                case 'm':
+                case 'n':
+                case 'o':
+                case 'p':
+                case 'q':
+                case 'r':
+                case 's':
+                case 't':
+                case 'u':
+                case 'v':
+                case 'w':
+                case 'x':
+                case 'y':
+                case 'z':
+                    {
+                    alt12=45;
+                    }
+                    break;
+                default:
+                    alt12=28;}
+
+                }
+                break;
+            default:
+                alt12=45;}
+
+        }
+        else if ( (LA12_0=='|') ) {
+            alt12=2;
+        }
+        else if ( (LA12_0=='a') ) {
+            switch ( input.LA(2) ) {
+            case 'n':
+                {
+                int LA12_39 = input.LA(3);
+
+                if ( (LA12_39=='d') ) {
+                    int LA12_79 = input.LA(4);
+
+                    if ( ((LA12_79>='0' && LA12_79<='9')||(LA12_79>='A' && LA12_79<='Z')||LA12_79=='_'||(LA12_79>='a' && LA12_79<='z')) ) {
+                        alt12=45;
+                    }
+                    else {
+                        alt12=3;}
+                }
+                else {
+                    alt12=45;}
+                }
+                break;
+            case 's':
+                {
+                int LA12_40 = input.LA(3);
+
+                if ( ((LA12_40>='0' && LA12_40<='9')||(LA12_40>='A' && LA12_40<='Z')||LA12_40=='_'||(LA12_40>='a' && LA12_40<='z')) ) {
+                    alt12=45;
+                }
+                else {
+                    alt12=26;}
+                }
+                break;
+            default:
+                alt12=45;}
+
+        }
+        else if ( (LA12_0=='&') ) {
+            alt12=4;
+        }
+        else if ( (LA12_0=='n') ) {
+            int LA12_5 = input.LA(2);
+
+            if ( (LA12_5=='o') ) {
+                int LA12_42 = input.LA(3);
+
+                if ( (LA12_42=='t') ) {
+                    int LA12_81 = input.LA(4);
+
+                    if ( ((LA12_81>='0' && LA12_81<='9')||(LA12_81>='A' && LA12_81<='Z')||LA12_81=='_'||(LA12_81>='a' && LA12_81<='z')) ) {
+                        alt12=45;
+                    }
+                    else {
+                        alt12=5;}
+                }
+                else {
+                    alt12=45;}
+            }
+            else {
+                alt12=45;}
+        }
+        else if ( (LA12_0=='!') ) {
+            alt12=6;
+        }
+        else if ( (LA12_0=='d') ) {
             switch ( input.LA(2) ) {
             case 'i':
                 {
-                int LA12_32 = input.LA(3);
+                int LA12_44 = input.LA(3);
 
-                if ( (LA12_32=='s') ) {
-                    int LA12_70 = input.LA(4);
+                if ( (LA12_44=='s') ) {
+                    int LA12_82 = input.LA(4);
 
-                    if ( (LA12_70=='p') ) {
-                        int LA12_95 = input.LA(5);
+                    if ( (LA12_82=='p') ) {
+                        int LA12_103 = input.LA(5);
 
-                        if ( (LA12_95=='l') ) {
-                            int LA12_117 = input.LA(6);
+                        if ( (LA12_103=='l') ) {
+                            int LA12_123 = input.LA(6);
 
-                            if ( (LA12_117=='a') ) {
-                                int LA12_133 = input.LA(7);
+                            if ( (LA12_123=='a') ) {
+                                int LA12_139 = input.LA(7);
 
-                                if ( (LA12_133=='y') ) {
-                                    int LA12_147 = input.LA(8);
+                                if ( (LA12_139=='y') ) {
+                                    int LA12_153 = input.LA(8);
 
-                                    if ( ((LA12_147>='0' && LA12_147<='9')||(LA12_147>='A' && LA12_147<='Z')||LA12_147=='_'||(LA12_147>='a' && LA12_147<='z')) ) {
-                                        alt12=42;
+                                    if ( ((LA12_153>='0' && LA12_153<='9')||(LA12_153>='A' && LA12_153<='Z')||LA12_153=='_'||(LA12_153>='a' && LA12_153<='z')) ) {
+                                        alt12=45;
                                     }
                                     else {
-                                        alt12=1;}
+                                        alt12=7;}
                                 }
                                 else {
-                                    alt12=42;}
+                                    alt12=45;}
                             }
                             else {
-                                alt12=42;}
+                                alt12=45;}
                         }
                         else {
-                            alt12=42;}
+                            alt12=45;}
                     }
                     else {
-                        alt12=42;}
+                        alt12=45;}
                 }
                 else {
-                    alt12=42;}
+                    alt12=45;}
                 }
                 break;
             case 'o':
                 {
-                int LA12_33 = input.LA(3);
+                int LA12_45 = input.LA(3);
 
-                if ( (LA12_33=='u') ) {
-                    int LA12_71 = input.LA(4);
+                if ( (LA12_45=='u') ) {
+                    int LA12_83 = input.LA(4);
 
-                    if ( (LA12_71=='b') ) {
-                        int LA12_96 = input.LA(5);
+                    if ( (LA12_83=='b') ) {
+                        int LA12_104 = input.LA(5);
 
-                        if ( (LA12_96=='l') ) {
-                            int LA12_118 = input.LA(6);
+                        if ( (LA12_104=='l') ) {
+                            int LA12_124 = input.LA(6);
 
-                            if ( (LA12_118=='e') ) {
-                                int LA12_134 = input.LA(7);
+                            if ( (LA12_124=='e') ) {
+                                int LA12_140 = input.LA(7);
 
-                                if ( (LA12_134=='A') ) {
-                                    int LA12_148 = input.LA(8);
+                                if ( (LA12_140=='A') ) {
+                                    int LA12_154 = input.LA(8);
 
-                                    if ( (LA12_148=='s') ) {
-                                        int LA12_158 = input.LA(9);
+                                    if ( (LA12_154=='s') ) {
+                                        int LA12_164 = input.LA(9);
 
-                                        if ( (LA12_158=='t') ) {
-                                            int LA12_165 = input.LA(10);
+                                        if ( (LA12_164=='t') ) {
+                                            int LA12_171 = input.LA(10);
 
-                                            if ( (LA12_165=='e') ) {
-                                                int LA12_171 = input.LA(11);
+                                            if ( (LA12_171=='e') ) {
+                                                int LA12_177 = input.LA(11);
 
-                                                if ( (LA12_171=='r') ) {
-                                                    int LA12_174 = input.LA(12);
+                                                if ( (LA12_177=='r') ) {
+                                                    int LA12_180 = input.LA(12);
 
-                                                    if ( (LA12_174=='i') ) {
-                                                        int LA12_177 = input.LA(13);
+                                                    if ( (LA12_180=='i') ) {
+                                                        int LA12_183 = input.LA(13);
 
-                                                        if ( (LA12_177=='s') ) {
-                                                            int LA12_180 = input.LA(14);
+                                                        if ( (LA12_183=='s') ) {
+                                                            int LA12_186 = input.LA(14);
 
-                                                            if ( (LA12_180=='k') ) {
-                                                                int LA12_181 = input.LA(15);
+                                                            if ( (LA12_186=='k') ) {
+                                                                int LA12_187 = input.LA(15);
 
-                                                                if ( ((LA12_181>='0' && LA12_181<='9')||(LA12_181>='A' && LA12_181<='Z')||LA12_181=='_'||(LA12_181>='a' && LA12_181<='z')) ) {
-                                                                    alt12=42;
+                                                                if ( ((LA12_187>='0' && LA12_187<='9')||(LA12_187>='A' && LA12_187<='Z')||LA12_187=='_'||(LA12_187>='a' && LA12_187<='z')) ) {
+                                                                    alt12=45;
                                                                 }
                                                                 else {
-                                                                    alt12=5;}
+                                                                    alt12=11;}
                                                             }
                                                             else {
-                                                                alt12=42;}
+                                                                alt12=45;}
                                                         }
                                                         else {
-                                                            alt12=42;}
+                                                            alt12=45;}
                                                     }
                                                     else {
-                                                        alt12=42;}
+                                                        alt12=45;}
                                                 }
                                                 else {
-                                                    alt12=42;}
+                                                    alt12=45;}
                                             }
                                             else {
-                                                alt12=42;}
+                                                alt12=45;}
                                         }
                                         else {
-                                            alt12=42;}
+                                            alt12=45;}
                                     }
                                     else {
-                                        alt12=42;}
+                                        alt12=45;}
                                 }
                                 else {
-                                    alt12=42;}
+                                    alt12=45;}
                             }
                             else {
-                                alt12=42;}
+                                alt12=45;}
                         }
                         else {
-                            alt12=42;}
+                            alt12=45;}
                     }
                     else {
-                        alt12=42;}
+                        alt12=45;}
                 }
                 else {
-                    alt12=42;}
+                    alt12=45;}
                 }
                 break;
             case 'y':
                 {
-                int LA12_34 = input.LA(3);
+                int LA12_46 = input.LA(3);
 
-                if ( (LA12_34=='n') ) {
-                    int LA12_72 = input.LA(4);
+                if ( (LA12_46=='n') ) {
+                    int LA12_84 = input.LA(4);
 
-                    if ( (LA12_72=='a') ) {
-                        int LA12_97 = input.LA(5);
+                    if ( (LA12_84=='a') ) {
+                        int LA12_105 = input.LA(5);
 
-                        if ( (LA12_97=='m') ) {
-                            int LA12_119 = input.LA(6);
+                        if ( (LA12_105=='m') ) {
+                            int LA12_125 = input.LA(6);
 
-                            if ( (LA12_119=='i') ) {
-                                int LA12_135 = input.LA(7);
+                            if ( (LA12_125=='i') ) {
+                                int LA12_141 = input.LA(7);
 
-                                if ( (LA12_135=='c') ) {
-                                    int LA12_149 = input.LA(8);
+                                if ( (LA12_141=='c') ) {
+                                    int LA12_155 = input.LA(8);
 
-                                    if ( (LA12_149=='-') ) {
-                                        alt12=10;
+                                    if ( (LA12_155=='-') ) {
+                                        alt12=16;
                                     }
                                     else {
-                                        alt12=42;}
+                                        alt12=45;}
                                 }
                                 else {
-                                    alt12=42;}
+                                    alt12=45;}
                             }
                             else {
-                                alt12=42;}
+                                alt12=45;}
                         }
                         else {
-                            alt12=42;}
+                            alt12=45;}
                     }
                     else {
-                        alt12=42;}
+                        alt12=45;}
                 }
                 else {
-                    alt12=42;}
+                    alt12=45;}
                 }
                 break;
             case 'a':
                 {
-                int LA12_35 = input.LA(3);
+                int LA12_47 = input.LA(3);
 
-                if ( (LA12_35=='t') ) {
-                    int LA12_73 = input.LA(4);
+                if ( (LA12_47=='t') ) {
+                    int LA12_85 = input.LA(4);
 
-                    if ( (LA12_73=='a') ) {
-                        int LA12_98 = input.LA(5);
+                    if ( (LA12_85=='a') ) {
+                        int LA12_106 = input.LA(5);
 
-                        if ( (LA12_98=='-') ) {
-                            int LA12_120 = input.LA(6);
+                        if ( (LA12_106=='-') ) {
+                            int LA12_126 = input.LA(6);
 
-                            if ( (LA12_120=='i') ) {
-                                alt12=13;
+                            if ( (LA12_126=='s') ) {
+                                alt12=29;
                             }
-                            else if ( (LA12_120=='s') ) {
-                                alt12=23;
+                            else if ( (LA12_126=='i') ) {
+                                alt12=17;
                             }
                             else {
                                 NoViableAltException nvae =
-                                    new NoViableAltException("1:1: Tokens : ( T11 | T12 | T13 | T14 | T15 | T16 | T17 | T18 | T19 | T20 | T21 | T22 | T23 | T24 | T25 | T26 | T27 | T28 | T29 | T30 | T31 | T32 | T33 | T34 | T35 | T36 | T37 | T38 | T39 | T40 | T41 | T42 | T43 | T44 | T45 | T46 | T47 | T48 | T49 | T50 | T51 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );", 12, 120, input);
+                                    new NoViableAltException("1:1: Tokens : ( T11 | T12 | T13 | T14 | T15 | T16 | T17 | T18 | T19 | T20 | T21 | T22 | T23 | T24 | T25 | T26 | T27 | T28 | T29 | T30 | T31 | T32 | T33 | T34 | T35 | T36 | T37 | T38 | T39 | T40 | T41 | T42 | T43 | T44 | T45 | T46 | T47 | T48 | T49 | T50 | T51 | T52 | T53 | T54 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );", 12, 126, input);
 
                                 throw nvae;
                             }
                         }
                         else {
-                            alt12=42;}
+                            alt12=45;}
                     }
                     else {
-                        alt12=42;}
+                        alt12=45;}
                 }
                 else {
-                    alt12=42;}
+                    alt12=45;}
                 }
                 break;
             case 'e':
                 {
-                int LA12_36 = input.LA(3);
+                int LA12_48 = input.LA(3);
 
-                if ( (LA12_36=='f') ) {
-                    int LA12_74 = input.LA(4);
+                if ( (LA12_48=='f') ) {
+                    int LA12_86 = input.LA(4);
 
-                    if ( (LA12_74=='i') ) {
-                        int LA12_99 = input.LA(5);
+                    if ( (LA12_86=='i') ) {
+                        int LA12_107 = input.LA(5);
 
-                        if ( (LA12_99=='n') ) {
-                            int LA12_121 = input.LA(6);
+                        if ( (LA12_107=='n') ) {
+                            int LA12_127 = input.LA(6);
 
-                            if ( (LA12_121=='e') ) {
-                                int LA12_138 = input.LA(7);
+                            if ( (LA12_127=='e') ) {
+                                int LA12_144 = input.LA(7);
 
-                                if ( ((LA12_138>='0' && LA12_138<='9')||(LA12_138>='A' && LA12_138<='Z')||LA12_138=='_'||(LA12_138>='a' && LA12_138<='z')) ) {
-                                    alt12=42;
+                                if ( ((LA12_144>='0' && LA12_144<='9')||(LA12_144>='A' && LA12_144<='Z')||LA12_144=='_'||(LA12_144>='a' && LA12_144<='z')) ) {
+                                    alt12=45;
                                 }
                                 else {
-                                    alt12=21;}
+                                    alt12=27;}
                             }
                             else {
-                                alt12=42;}
+                                alt12=45;}
                         }
                         else {
-                            alt12=42;}
+                            alt12=45;}
                     }
                     else {
-                        alt12=42;}
+                        alt12=45;}
                 }
                 else {
-                    alt12=42;}
+                    alt12=45;}
                 }
                 break;
             default:
-                alt12=42;}
+                alt12=45;}
 
         }
         else if ( (LA12_0=='r') ) {
-            int LA12_2 = input.LA(2);
+            int LA12_8 = input.LA(2);
 
-            if ( (LA12_2=='e') ) {
+            if ( (LA12_8=='e') ) {
                 switch ( input.LA(3) ) {
-                case 'q':
-                    {
-                    int LA12_75 = input.LA(4);
-
-                    if ( (LA12_75=='u') ) {
-                        int LA12_100 = input.LA(5);
-
-                        if ( (LA12_100=='i') ) {
-                            int LA12_122 = input.LA(6);
-
-                            if ( (LA12_122=='r') ) {
-                                int LA12_139 = input.LA(7);
-
-                                if ( (LA12_139=='e') ) {
-                                    int LA12_151 = input.LA(8);
-
-                                    if ( (LA12_151=='d') ) {
-                                        int LA12_160 = input.LA(9);
-
-                                        if ( ((LA12_160>='0' && LA12_160<='9')||(LA12_160>='A' && LA12_160<='Z')||LA12_160=='_'||(LA12_160>='a' && LA12_160<='z')) ) {
-                                            alt12=42;
-                                        }
-                                        else {
-                                            alt12=2;}
-                                    }
-                                    else {
-                                        alt12=42;}
-                                }
-                                else {
-                                    alt12=42;}
-                            }
-                            else {
-                                alt12=42;}
-                        }
-                        else {
-                            alt12=42;}
-                    }
-                    else {
-                        alt12=42;}
-                    }
-                    break;
                 case 's':
                     {
-                    int LA12_76 = input.LA(4);
+                    int LA12_87 = input.LA(4);
 
-                    if ( (LA12_76=='t') ) {
-                        int LA12_101 = input.LA(5);
+                    if ( (LA12_87=='t') ) {
+                        int LA12_108 = input.LA(5);
 
-                        if ( (LA12_101=='r') ) {
-                            int LA12_123 = input.LA(6);
+                        if ( (LA12_108=='r') ) {
+                            int LA12_128 = input.LA(6);
 
-                            if ( (LA12_123=='i') ) {
-                                int LA12_140 = input.LA(7);
+                            if ( (LA12_128=='i') ) {
+                                int LA12_145 = input.LA(7);
 
-                                if ( (LA12_140=='c') ) {
-                                    int LA12_152 = input.LA(8);
+                                if ( (LA12_145=='c') ) {
+                                    int LA12_157 = input.LA(8);
 
-                                    if ( (LA12_152=='t') ) {
-                                        int LA12_161 = input.LA(9);
+                                    if ( (LA12_157=='t') ) {
+                                        int LA12_166 = input.LA(9);
 
-                                        if ( (LA12_161=='-') ) {
-                                            int LA12_167 = input.LA(10);
+                                        if ( (LA12_166=='-') ) {
+                                            int LA12_172 = input.LA(10);
 
-                                            if ( (LA12_167=='t') ) {
-                                                int LA12_172 = input.LA(11);
+                                            if ( (LA12_172=='t') ) {
+                                                int LA12_178 = input.LA(11);
 
-                                                if ( (LA12_172=='o') ) {
-                                                    int LA12_175 = input.LA(12);
+                                                if ( (LA12_178=='o') ) {
+                                                    int LA12_181 = input.LA(12);
 
-                                                    if ( (LA12_175=='-') ) {
-                                                        alt12=32;
+                                                    if ( (LA12_181=='-') ) {
+                                                        alt12=38;
                                                     }
                                                     else {
-                                                        alt12=31;}
+                                                        alt12=37;}
                                                 }
                                                 else {
                                                     NoViableAltException nvae =
-                                                        new NoViableAltException("1:1: Tokens : ( T11 | T12 | T13 | T14 | T15 | T16 | T17 | T18 | T19 | T20 | T21 | T22 | T23 | T24 | T25 | T26 | T27 | T28 | T29 | T30 | T31 | T32 | T33 | T34 | T35 | T36 | T37 | T38 | T39 | T40 | T41 | T42 | T43 | T44 | T45 | T46 | T47 | T48 | T49 | T50 | T51 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );", 12, 172, input);
+                                                        new NoViableAltException("1:1: Tokens : ( T11 | T12 | T13 | T14 | T15 | T16 | T17 | T18 | T19 | T20 | T21 | T22 | T23 | T24 | T25 | T26 | T27 | T28 | T29 | T30 | T31 | T32 | T33 | T34 | T35 | T36 | T37 | T38 | T39 | T40 | T41 | T42 | T43 | T44 | T45 | T46 | T47 | T48 | T49 | T50 | T51 | T52 | T53 | T54 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );", 12, 178, input);
 
                                                     throw nvae;
                                                 }
                                             }
                                             else {
                                                 NoViableAltException nvae =
-                                                    new NoViableAltException("1:1: Tokens : ( T11 | T12 | T13 | T14 | T15 | T16 | T17 | T18 | T19 | T20 | T21 | T22 | T23 | T24 | T25 | T26 | T27 | T28 | T29 | T30 | T31 | T32 | T33 | T34 | T35 | T36 | T37 | T38 | T39 | T40 | T41 | T42 | T43 | T44 | T45 | T46 | T47 | T48 | T49 | T50 | T51 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );", 12, 167, input);
+                                                    new NoViableAltException("1:1: Tokens : ( T11 | T12 | T13 | T14 | T15 | T16 | T17 | T18 | T19 | T20 | T21 | T22 | T23 | T24 | T25 | T26 | T27 | T28 | T29 | T30 | T31 | T32 | T33 | T34 | T35 | T36 | T37 | T38 | T39 | T40 | T41 | T42 | T43 | T44 | T45 | T46 | T47 | T48 | T49 | T50 | T51 | T52 | T53 | T54 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );", 12, 172, input);
 
                                                 throw nvae;
                                             }
                                         }
                                         else {
-                                            alt12=42;}
+                                            alt12=45;}
                                     }
                                     else {
-                                        alt12=42;}
+                                        alt12=45;}
                                 }
                                 else {
-                                    alt12=42;}
+                                    alt12=45;}
                             }
                             else {
-                                alt12=42;}
+                                alt12=45;}
                         }
                         else {
-                            alt12=42;}
+                            alt12=45;}
                     }
                     else {
-                        alt12=42;}
+                        alt12=45;}
+                    }
+                    break;
+                case 'q':
+                    {
+                    int LA12_88 = input.LA(4);
+
+                    if ( (LA12_88=='u') ) {
+                        int LA12_109 = input.LA(5);
+
+                        if ( (LA12_109=='i') ) {
+                            int LA12_129 = input.LA(6);
+
+                            if ( (LA12_129=='r') ) {
+                                int LA12_146 = input.LA(7);
+
+                                if ( (LA12_146=='e') ) {
+                                    int LA12_158 = input.LA(8);
+
+                                    if ( (LA12_158=='d') ) {
+                                        int LA12_167 = input.LA(9);
+
+                                        if ( ((LA12_167>='0' && LA12_167<='9')||(LA12_167>='A' && LA12_167<='Z')||LA12_167=='_'||(LA12_167>='a' && LA12_167<='z')) ) {
+                                            alt12=45;
+                                        }
+                                        else {
+                                            alt12=8;}
+                                    }
+                                    else {
+                                        alt12=45;}
+                                }
+                                else {
+                                    alt12=45;}
+                            }
+                            else {
+                                alt12=45;}
+                        }
+                        else {
+                            alt12=45;}
+                    }
+                    else {
+                        alt12=45;}
                     }
                     break;
                 case 'a':
                     {
-                    int LA12_77 = input.LA(4);
+                    int LA12_89 = input.LA(4);
 
-                    if ( (LA12_77=='d') ) {
-                        int LA12_102 = input.LA(5);
+                    if ( (LA12_89=='d') ) {
+                        int LA12_110 = input.LA(5);
 
-                        if ( (LA12_102=='o') ) {
-                            int LA12_124 = input.LA(6);
+                        if ( (LA12_110=='o') ) {
+                            int LA12_130 = input.LA(6);
 
-                            if ( (LA12_124=='n') ) {
-                                int LA12_141 = input.LA(7);
+                            if ( (LA12_130=='n') ) {
+                                int LA12_147 = input.LA(7);
 
-                                if ( (LA12_141=='l') ) {
-                                    int LA12_153 = input.LA(8);
+                                if ( (LA12_147=='l') ) {
+                                    int LA12_159 = input.LA(8);
 
-                                    if ( (LA12_153=='y') ) {
-                                        int LA12_162 = input.LA(9);
+                                    if ( (LA12_159=='y') ) {
+                                        int LA12_168 = input.LA(9);
 
-                                        if ( ((LA12_162>='0' && LA12_162<='9')||(LA12_162>='A' && LA12_162<='Z')||LA12_162=='_'||(LA12_162>='a' && LA12_162<='z')) ) {
-                                            alt12=42;
+                                        if ( ((LA12_168>='0' && LA12_168<='9')||(LA12_168>='A' && LA12_168<='Z')||LA12_168=='_'||(LA12_168>='a' && LA12_168<='z')) ) {
+                                            alt12=45;
                                         }
                                         else {
-                                            alt12=3;}
+                                            alt12=9;}
                                     }
                                     else {
-                                        alt12=42;}
+                                        alt12=45;}
                                 }
                                 else {
-                                    alt12=42;}
+                                    alt12=45;}
                             }
                             else {
-                                alt12=42;}
+                                alt12=45;}
                         }
                         else {
-                            alt12=42;}
+                            alt12=45;}
                     }
                     else {
-                        alt12=42;}
+                        alt12=45;}
                     }
                     break;
                 default:
-                    alt12=42;}
+                    alt12=45;}
 
             }
             else {
-                alt12=42;}
+                alt12=45;}
         }
         else if ( (LA12_0=='c') ) {
-            int LA12_3 = input.LA(2);
+            int LA12_9 = input.LA(2);
 
-            if ( (LA12_3=='a') ) {
-                int LA12_39 = input.LA(3);
+            if ( (LA12_9=='a') ) {
+                int LA12_50 = input.LA(3);
 
-                if ( (LA12_39=='l') ) {
-                    int LA12_78 = input.LA(4);
+                if ( (LA12_50=='l') ) {
+                    int LA12_90 = input.LA(4);
 
-                    if ( (LA12_78=='c') ) {
-                        int LA12_103 = input.LA(5);
+                    if ( (LA12_90=='c') ) {
+                        int LA12_111 = input.LA(5);
 
-                        if ( (LA12_103=='u') ) {
-                            int LA12_125 = input.LA(6);
+                        if ( (LA12_111=='u') ) {
+                            int LA12_131 = input.LA(6);
 
-                            if ( (LA12_125=='l') ) {
-                                int LA12_142 = input.LA(7);
+                            if ( (LA12_131=='l') ) {
+                                int LA12_148 = input.LA(7);
 
-                                if ( (LA12_142=='a') ) {
-                                    int LA12_154 = input.LA(8);
+                                if ( (LA12_148=='a') ) {
+                                    int LA12_160 = input.LA(8);
 
-                                    if ( (LA12_154=='t') ) {
-                                        int LA12_163 = input.LA(9);
+                                    if ( (LA12_160=='t') ) {
+                                        int LA12_169 = input.LA(9);
 
-                                        if ( (LA12_163=='e') ) {
-                                            int LA12_169 = input.LA(10);
+                                        if ( (LA12_169=='e') ) {
+                                            int LA12_175 = input.LA(10);
 
-                                            if ( (LA12_169=='d') ) {
-                                                int LA12_173 = input.LA(11);
+                                            if ( (LA12_175=='d') ) {
+                                                int LA12_179 = input.LA(11);
 
-                                                if ( ((LA12_173>='0' && LA12_173<='9')||(LA12_173>='A' && LA12_173<='Z')||LA12_173=='_'||(LA12_173>='a' && LA12_173<='z')) ) {
-                                                    alt12=42;
+                                                if ( ((LA12_179>='0' && LA12_179<='9')||(LA12_179>='A' && LA12_179<='Z')||LA12_179=='_'||(LA12_179>='a' && LA12_179<='z')) ) {
+                                                    alt12=45;
                                                 }
                                                 else {
-                                                    alt12=4;}
+                                                    alt12=10;}
                                             }
                                             else {
-                                                alt12=42;}
+                                                alt12=45;}
                                         }
                                         else {
-                                            alt12=42;}
+                                            alt12=45;}
                                     }
                                     else {
-                                        alt12=42;}
+                                        alt12=45;}
                                 }
                                 else {
-                                    alt12=42;}
+                                    alt12=45;}
                             }
                             else {
-                                alt12=42;}
+                                alt12=45;}
                         }
                         else {
-                            alt12=42;}
+                            alt12=45;}
                     }
                     else {
-                        alt12=42;}
+                        alt12=45;}
                 }
                 else {
-                    alt12=42;}
+                    alt12=45;}
             }
             else {
-                alt12=42;}
+                alt12=45;}
         }
         else if ( (LA12_0=='t') ) {
-            int LA12_4 = input.LA(2);
+            int LA12_10 = input.LA(2);
 
-            if ( (LA12_4=='r') ) {
-                int LA12_40 = input.LA(3);
+            if ( (LA12_10=='r') ) {
+                int LA12_51 = input.LA(3);
 
-                if ( (LA12_40=='u') ) {
-                    int LA12_79 = input.LA(4);
+                if ( (LA12_51=='u') ) {
+                    int LA12_91 = input.LA(4);
 
-                    if ( (LA12_79=='e') ) {
-                        int LA12_104 = input.LA(5);
+                    if ( (LA12_91=='e') ) {
+                        int LA12_112 = input.LA(5);
 
-                        if ( ((LA12_104>='0' && LA12_104<='9')||(LA12_104>='A' && LA12_104<='Z')||LA12_104=='_'||(LA12_104>='a' && LA12_104<='z')) ) {
-                            alt12=42;
+                        if ( ((LA12_112>='0' && LA12_112<='9')||(LA12_112>='A' && LA12_112<='Z')||LA12_112=='_'||(LA12_112>='a' && LA12_112<='z')) ) {
+                            alt12=45;
                         }
                         else {
-                            alt12=6;}
+                            alt12=12;}
                     }
                     else {
-                        alt12=42;}
+                        alt12=45;}
                 }
                 else {
-                    alt12=42;}
+                    alt12=45;}
             }
             else {
-                alt12=42;}
+                alt12=45;}
         }
         else if ( (LA12_0=='f') ) {
-            int LA12_5 = input.LA(2);
+            int LA12_11 = input.LA(2);
 
-            if ( (LA12_5=='a') ) {
-                int LA12_41 = input.LA(3);
+            if ( (LA12_11=='a') ) {
+                int LA12_52 = input.LA(3);
 
-                if ( (LA12_41=='l') ) {
-                    int LA12_80 = input.LA(4);
+                if ( (LA12_52=='l') ) {
+                    int LA12_92 = input.LA(4);
 
-                    if ( (LA12_80=='s') ) {
-                        int LA12_105 = input.LA(5);
+                    if ( (LA12_92=='s') ) {
+                        int LA12_113 = input.LA(5);
 
-                        if ( (LA12_105=='e') ) {
-                            int LA12_127 = input.LA(6);
+                        if ( (LA12_113=='e') ) {
+                            int LA12_133 = input.LA(6);
 
-                            if ( ((LA12_127>='0' && LA12_127<='9')||(LA12_127>='A' && LA12_127<='Z')||LA12_127=='_'||(LA12_127>='a' && LA12_127<='z')) ) {
-                                alt12=42;
+                            if ( ((LA12_133>='0' && LA12_133<='9')||(LA12_133>='A' && LA12_133<='Z')||LA12_133=='_'||(LA12_133>='a' && LA12_133<='z')) ) {
+                                alt12=45;
                             }
                             else {
-                                alt12=7;}
+                                alt12=13;}
                         }
                         else {
-                            alt12=42;}
+                            alt12=45;}
                     }
                     else {
-                        alt12=42;}
+                        alt12=45;}
                 }
                 else {
-                    alt12=42;}
+                    alt12=45;}
             }
             else {
-                alt12=42;}
+                alt12=45;}
         }
         else if ( (LA12_0=='i') ) {
             switch ( input.LA(2) ) {
@@ -1884,29 +2102,29 @@ public class InternalDynamicScreenDslLexer extends Lexer {
                 case '-':
                     {
                     switch ( input.LA(4) ) {
-                    case 'm':
-                        {
-                        alt12=41;
-                        }
-                        break;
-                    case 'n':
-                        {
-                        alt12=9;
-                        }
-                        break;
                     case 'o':
                         {
-                        alt12=8;
+                        alt12=14;
                         }
                         break;
                     case 'p':
                         {
-                        alt12=40;
+                        alt12=43;
+                        }
+                        break;
+                    case 'n':
+                        {
+                        alt12=15;
+                        }
+                        break;
+                    case 'm':
+                        {
+                        alt12=44;
                         }
                         break;
                     default:
                         NoViableAltException nvae =
-                            new NoViableAltException("1:1: Tokens : ( T11 | T12 | T13 | T14 | T15 | T16 | T17 | T18 | T19 | T20 | T21 | T22 | T23 | T24 | T25 | T26 | T27 | T28 | T29 | T30 | T31 | T32 | T33 | T34 | T35 | T36 | T37 | T38 | T39 | T40 | T41 | T42 | T43 | T44 | T45 | T46 | T47 | T48 | T49 | T50 | T51 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );", 12, 81, input);
+                            new NoViableAltException("1:1: Tokens : ( T11 | T12 | T13 | T14 | T15 | T16 | T17 | T18 | T19 | T20 | T21 | T22 | T23 | T24 | T25 | T26 | T27 | T28 | T29 | T30 | T31 | T32 | T33 | T34 | T35 | T36 | T37 | T38 | T39 | T40 | T41 | T42 | T43 | T44 | T45 | T46 | T47 | T48 | T49 | T50 | T51 | T52 | T53 | T54 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );", 12, 93, input);
 
                         throw nvae;
                     }
@@ -1977,450 +2195,298 @@ public class InternalDynamicScreenDslLexer extends Lexer {
                 case 'y':
                 case 'z':
                     {
-                    alt12=42;
+                    alt12=45;
                     }
                     break;
                 default:
-                    alt12=38;}
+                    alt12=41;}
 
                 }
                 break;
             case 'f':
-                {
-                int LA12_43 = input.LA(3);
-
-                if ( ((LA12_43>='0' && LA12_43<='9')||(LA12_43>='A' && LA12_43<='Z')||LA12_43=='_'||(LA12_43>='a' && LA12_43<='z')) ) {
-                    alt12=42;
-                }
-                else {
-                    alt12=29;}
-                }
-                break;
-            default:
-                alt12=42;}
-
-        }
-        else if ( (LA12_0=='v') ) {
-            int LA12_7 = input.LA(2);
-
-            if ( (LA12_7=='i') ) {
-                int LA12_44 = input.LA(3);
-
-                if ( (LA12_44=='e') ) {
-                    int LA12_84 = input.LA(4);
-
-                    if ( (LA12_84=='w') ) {
-                        int LA12_110 = input.LA(5);
-
-                        if ( (LA12_110=='-') ) {
-                            alt12=11;
-                        }
-                        else {
-                            alt12=42;}
-                    }
-                    else {
-                        alt12=42;}
-                }
-                else {
-                    alt12=42;}
-            }
-            else {
-                alt12=42;}
-        }
-        else if ( (LA12_0=='=') ) {
-            alt12=12;
-        }
-        else if ( (LA12_0=='[') ) {
-            int LA12_9 = input.LA(2);
-
-            if ( (LA12_9=='n') ) {
-                alt12=14;
-            }
-            else {
-                alt12=48;}
-        }
-        else if ( (LA12_0==']') ) {
-            alt12=15;
-        }
-        else if ( (LA12_0=='/') ) {
-            switch ( input.LA(2) ) {
-            case '*':
-                {
-                alt12=45;
-                }
-                break;
-            case '/':
-                {
-                alt12=46;
-                }
-                break;
-            default:
-                alt12=16;}
-
-        }
-        else if ( (LA12_0=='(') ) {
-            alt12=17;
-        }
-        else if ( (LA12_0==')') ) {
-            alt12=18;
-        }
-        else if ( (LA12_0=='e') ) {
-            switch ( input.LA(2) ) {
-            case 'q':
-                {
-                int LA12_53 = input.LA(3);
-
-                if ( (LA12_53=='u') ) {
-                    int LA12_85 = input.LA(4);
-
-                    if ( (LA12_85=='a') ) {
-                        int LA12_111 = input.LA(5);
-
-                        if ( (LA12_111=='l') ) {
-                            int LA12_129 = input.LA(6);
-
-                            if ( (LA12_129=='s') ) {
-                                int LA12_144 = input.LA(7);
-
-                                if ( ((LA12_144>='0' && LA12_144<='9')||(LA12_144>='A' && LA12_144<='Z')||LA12_144=='_'||(LA12_144>='a' && LA12_144<='z')) ) {
-                                    alt12=42;
-                                }
-                                else {
-                                    alt12=39;}
-                            }
-                            else {
-                                alt12=42;}
-                        }
-                        else {
-                            alt12=42;}
-                    }
-                    else {
-                        alt12=42;}
-                }
-                else {
-                    alt12=42;}
-                }
-                break;
-            case 'x':
                 {
                 int LA12_54 = input.LA(3);
 
-                if ( (LA12_54=='t') ) {
-                    int LA12_86 = input.LA(4);
-
-                    if ( (LA12_86=='e') ) {
-                        int LA12_112 = input.LA(5);
-
-                        if ( (LA12_112=='r') ) {
-                            int LA12_130 = input.LA(6);
-
-                            if ( (LA12_130=='n') ) {
-                                int LA12_145 = input.LA(7);
-
-                                if ( (LA12_145=='a') ) {
-                                    int LA12_156 = input.LA(8);
-
-                                    if ( (LA12_156=='l') ) {
-                                        int LA12_164 = input.LA(9);
-
-                                        if ( (LA12_164=='-') ) {
-                                            alt12=19;
-                                        }
-                                        else {
-                                            alt12=42;}
-                                    }
-                                    else {
-                                        alt12=42;}
-                                }
-                                else {
-                                    alt12=42;}
-                            }
-                            else {
-                                alt12=42;}
-                        }
-                        else {
-                            alt12=42;}
-                    }
-                    else {
-                        alt12=42;}
-                }
-                else {
-                    alt12=42;}
-                }
-                break;
-            default:
-                alt12=42;}
-
-        }
-        else if ( (LA12_0=='a') ) {
-            switch ( input.LA(2) ) {
-            case 's':
-                {
-                int LA12_55 = input.LA(3);
-
-                if ( ((LA12_55>='0' && LA12_55<='9')||(LA12_55>='A' && LA12_55<='Z')||LA12_55=='_'||(LA12_55>='a' && LA12_55<='z')) ) {
-                    alt12=42;
-                }
-                else {
-                    alt12=20;}
-                }
-                break;
-            case 'n':
-                {
-                int LA12_56 = input.LA(3);
-
-                if ( (LA12_56=='d') ) {
-                    int LA12_88 = input.LA(4);
-
-                    if ( ((LA12_88>='0' && LA12_88<='9')||(LA12_88>='A' && LA12_88<='Z')||LA12_88=='_'||(LA12_88>='a' && LA12_88<='z')) ) {
-                        alt12=42;
-                    }
-                    else {
-                        alt12=36;}
-                }
-                else {
-                    alt12=42;}
-                }
-                break;
-            default:
-                alt12=42;}
-
-        }
-        else if ( (LA12_0=='o') ) {
-            switch ( input.LA(2) ) {
-            case 'f':
-                {
-                switch ( input.LA(3) ) {
-                case '-':
-                    {
-                    alt12=24;
-                    }
-                    break;
-                case '0':
-                case '1':
-                case '2':
-                case '3':
-                case '4':
-                case '5':
-                case '6':
-                case '7':
-                case '8':
-                case '9':
-                case 'A':
-                case 'B':
-                case 'C':
-                case 'D':
-                case 'E':
-                case 'F':
-                case 'G':
-                case 'H':
-                case 'I':
-                case 'J':
-                case 'K':
-                case 'L':
-                case 'M':
-                case 'N':
-                case 'O':
-                case 'P':
-                case 'Q':
-                case 'R':
-                case 'S':
-                case 'T':
-                case 'U':
-                case 'V':
-                case 'W':
-                case 'X':
-                case 'Y':
-                case 'Z':
-                case '_':
-                case 'a':
-                case 'b':
-                case 'c':
-                case 'd':
-                case 'e':
-                case 'f':
-                case 'g':
-                case 'h':
-                case 'i':
-                case 'j':
-                case 'k':
-                case 'l':
-                case 'm':
-                case 'n':
-                case 'o':
-                case 'p':
-                case 'q':
-                case 'r':
-                case 's':
-                case 't':
-                case 'u':
-                case 'v':
-                case 'w':
-                case 'x':
-                case 'y':
-                case 'z':
-                    {
-                    alt12=42;
-                    }
-                    break;
-                default:
-                    alt12=22;}
-
-                }
-                break;
-            case 'r':
-                {
-                int LA12_58 = input.LA(3);
-
-                if ( ((LA12_58>='0' && LA12_58<='9')||(LA12_58>='A' && LA12_58<='Z')||LA12_58=='_'||(LA12_58>='a' && LA12_58<='z')) ) {
-                    alt12=42;
+                if ( ((LA12_54>='0' && LA12_54<='9')||(LA12_54>='A' && LA12_54<='Z')||LA12_54=='_'||(LA12_54>='a' && LA12_54<='z')) ) {
+                    alt12=45;
                 }
                 else {
                     alt12=35;}
                 }
                 break;
             default:
-                alt12=42;}
+                alt12=45;}
+
+        }
+        else if ( (LA12_0=='=') ) {
+            alt12=18;
+        }
+        else if ( (LA12_0=='v') ) {
+            int LA12_14 = input.LA(2);
+
+            if ( (LA12_14=='i') ) {
+                int LA12_56 = input.LA(3);
+
+                if ( (LA12_56=='e') ) {
+                    int LA12_96 = input.LA(4);
+
+                    if ( (LA12_96=='w') ) {
+                        int LA12_118 = input.LA(5);
+
+                        if ( (LA12_118=='-') ) {
+                            alt12=19;
+                        }
+                        else {
+                            alt12=45;}
+                    }
+                    else {
+                        alt12=45;}
+                }
+                else {
+                    alt12=45;}
+            }
+            else {
+                alt12=45;}
+        }
+        else if ( (LA12_0=='[') ) {
+            int LA12_15 = input.LA(2);
+
+            if ( (LA12_15=='n') ) {
+                alt12=20;
+            }
+            else {
+                alt12=51;}
+        }
+        else if ( (LA12_0==']') ) {
+            alt12=21;
+        }
+        else if ( (LA12_0=='/') ) {
+            switch ( input.LA(2) ) {
+            case '*':
+                {
+                alt12=48;
+                }
+                break;
+            case '/':
+                {
+                alt12=49;
+                }
+                break;
+            default:
+                alt12=22;}
+
+        }
+        else if ( (LA12_0=='(') ) {
+            alt12=23;
+        }
+        else if ( (LA12_0==')') ) {
+            alt12=24;
+        }
+        else if ( (LA12_0=='e') ) {
+            switch ( input.LA(2) ) {
+            case 'q':
+                {
+                int LA12_64 = input.LA(3);
+
+                if ( (LA12_64=='u') ) {
+                    int LA12_97 = input.LA(4);
+
+                    if ( (LA12_97=='a') ) {
+                        int LA12_119 = input.LA(5);
+
+                        if ( (LA12_119=='l') ) {
+                            int LA12_135 = input.LA(6);
+
+                            if ( (LA12_135=='s') ) {
+                                int LA12_150 = input.LA(7);
+
+                                if ( ((LA12_150>='0' && LA12_150<='9')||(LA12_150>='A' && LA12_150<='Z')||LA12_150=='_'||(LA12_150>='a' && LA12_150<='z')) ) {
+                                    alt12=45;
+                                }
+                                else {
+                                    alt12=42;}
+                            }
+                            else {
+                                alt12=45;}
+                        }
+                        else {
+                            alt12=45;}
+                    }
+                    else {
+                        alt12=45;}
+                }
+                else {
+                    alt12=45;}
+                }
+                break;
+            case 'x':
+                {
+                int LA12_65 = input.LA(3);
+
+                if ( (LA12_65=='t') ) {
+                    int LA12_98 = input.LA(4);
+
+                    if ( (LA12_98=='e') ) {
+                        int LA12_120 = input.LA(5);
+
+                        if ( (LA12_120=='r') ) {
+                            int LA12_136 = input.LA(6);
+
+                            if ( (LA12_136=='n') ) {
+                                int LA12_151 = input.LA(7);
+
+                                if ( (LA12_151=='a') ) {
+                                    int LA12_162 = input.LA(8);
+
+                                    if ( (LA12_162=='l') ) {
+                                        int LA12_170 = input.LA(9);
+
+                                        if ( (LA12_170=='-') ) {
+                                            alt12=25;
+                                        }
+                                        else {
+                                            alt12=45;}
+                                    }
+                                    else {
+                                        alt12=45;}
+                                }
+                                else {
+                                    alt12=45;}
+                            }
+                            else {
+                                alt12=45;}
+                        }
+                        else {
+                            alt12=45;}
+                    }
+                    else {
+                        alt12=45;}
+                }
+                else {
+                    alt12=45;}
+                }
+                break;
+            default:
+                alt12=45;}
 
         }
         else if ( (LA12_0=='g') ) {
-            int LA12_17 = input.LA(2);
+            int LA12_21 = input.LA(2);
 
-            if ( (LA12_17=='r') ) {
-                int LA12_59 = input.LA(3);
-
-                if ( (LA12_59=='o') ) {
-                    int LA12_92 = input.LA(4);
-
-                    if ( (LA12_92=='u') ) {
-                        int LA12_114 = input.LA(5);
-
-                        if ( (LA12_114=='p') ) {
-                            int LA12_131 = input.LA(6);
-
-                            if ( ((LA12_131>='0' && LA12_131<='9')||(LA12_131>='A' && LA12_131<='Z')||LA12_131=='_'||(LA12_131>='a' && LA12_131<='z')) ) {
-                                alt12=42;
-                            }
-                            else {
-                                alt12=25;}
-                        }
-                        else {
-                            alt12=42;}
-                    }
-                    else {
-                        alt12=42;}
-                }
-                else {
-                    alt12=42;}
-            }
-            else {
-                alt12=42;}
-        }
-        else if ( (LA12_0=='{') ) {
-            alt12=26;
-        }
-        else if ( (LA12_0=='}') ) {
-            alt12=27;
-        }
-        else if ( (LA12_0=='w') ) {
-            int LA12_20 = input.LA(2);
-
-            if ( (LA12_20=='i') ) {
-                int LA12_62 = input.LA(3);
-
-                if ( (LA12_62=='t') ) {
-                    int LA12_93 = input.LA(4);
-
-                    if ( (LA12_93=='h') ) {
-                        int LA12_115 = input.LA(5);
-
-                        if ( ((LA12_115>='0' && LA12_115<='9')||(LA12_115>='A' && LA12_115<='Z')||LA12_115=='_'||(LA12_115>='a' && LA12_115<='z')) ) {
-                            alt12=42;
-                        }
-                        else {
-                            alt12=28;}
-                    }
-                    else {
-                        alt12=42;}
-                }
-                else {
-                    alt12=42;}
-            }
-            else {
-                alt12=42;}
-        }
-        else if ( (LA12_0=='+') ) {
-            alt12=30;
-        }
-        else if ( (LA12_0=='<') ) {
-            alt12=33;
-        }
-        else if ( (LA12_0=='>') ) {
-            alt12=34;
-        }
-        else if ( (LA12_0=='n') ) {
-            int LA12_24 = input.LA(2);
-
-            if ( (LA12_24=='o') ) {
+            if ( (LA12_21=='r') ) {
                 int LA12_66 = input.LA(3);
 
-                if ( (LA12_66=='t') ) {
-                    int LA12_94 = input.LA(4);
+                if ( (LA12_66=='o') ) {
+                    int LA12_99 = input.LA(4);
 
-                    if ( ((LA12_94>='0' && LA12_94<='9')||(LA12_94>='A' && LA12_94<='Z')||LA12_94=='_'||(LA12_94>='a' && LA12_94<='z')) ) {
-                        alt12=42;
+                    if ( (LA12_99=='u') ) {
+                        int LA12_121 = input.LA(5);
+
+                        if ( (LA12_121=='p') ) {
+                            int LA12_137 = input.LA(6);
+
+                            if ( ((LA12_137>='0' && LA12_137<='9')||(LA12_137>='A' && LA12_137<='Z')||LA12_137=='_'||(LA12_137>='a' && LA12_137<='z')) ) {
+                                alt12=45;
+                            }
+                            else {
+                                alt12=31;}
+                        }
+                        else {
+                            alt12=45;}
                     }
                     else {
-                        alt12=37;}
+                        alt12=45;}
                 }
                 else {
-                    alt12=42;}
+                    alt12=45;}
             }
             else {
-                alt12=42;}
+                alt12=45;}
+        }
+        else if ( (LA12_0=='{') ) {
+            alt12=32;
+        }
+        else if ( (LA12_0=='}') ) {
+            alt12=33;
+        }
+        else if ( (LA12_0=='w') ) {
+            int LA12_24 = input.LA(2);
+
+            if ( (LA12_24=='i') ) {
+                int LA12_69 = input.LA(3);
+
+                if ( (LA12_69=='t') ) {
+                    int LA12_100 = input.LA(4);
+
+                    if ( (LA12_100=='h') ) {
+                        int LA12_122 = input.LA(5);
+
+                        if ( ((LA12_122>='0' && LA12_122<='9')||(LA12_122>='A' && LA12_122<='Z')||LA12_122=='_'||(LA12_122>='a' && LA12_122<='z')) ) {
+                            alt12=45;
+                        }
+                        else {
+                            alt12=34;}
+                    }
+                    else {
+                        alt12=45;}
+                }
+                else {
+                    alt12=45;}
+            }
+            else {
+                alt12=45;}
+        }
+        else if ( (LA12_0=='+') ) {
+            alt12=36;
+        }
+        else if ( (LA12_0=='<') ) {
+            alt12=39;
+        }
+        else if ( (LA12_0=='>') ) {
+            alt12=40;
         }
         else if ( (LA12_0=='^') ) {
-            int LA12_25 = input.LA(2);
-
-            if ( ((LA12_25>='A' && LA12_25<='Z')||LA12_25=='_'||(LA12_25>='a' && LA12_25<='z')) ) {
-                alt12=42;
-            }
-            else {
-                alt12=48;}
-        }
-        else if ( ((LA12_0>='A' && LA12_0<='Z')||LA12_0=='_'||LA12_0=='b'||LA12_0=='h'||(LA12_0>='j' && LA12_0<='m')||(LA12_0>='p' && LA12_0<='q')||LA12_0=='s'||LA12_0=='u'||(LA12_0>='x' && LA12_0<='z')) ) {
-            alt12=42;
-        }
-        else if ( ((LA12_0>='0' && LA12_0<='9')) ) {
-            alt12=43;
-        }
-        else if ( (LA12_0=='\"') ) {
             int LA12_28 = input.LA(2);
 
-            if ( ((LA12_28>='\u0000' && LA12_28<='\uFFFE')) ) {
-                alt12=44;
+            if ( ((LA12_28>='A' && LA12_28<='Z')||LA12_28=='_'||(LA12_28>='a' && LA12_28<='z')) ) {
+                alt12=45;
             }
             else {
-                alt12=48;}
+                alt12=51;}
+        }
+        else if ( ((LA12_0>='A' && LA12_0<='Z')||LA12_0=='_'||LA12_0=='b'||LA12_0=='h'||(LA12_0>='j' && LA12_0<='m')||(LA12_0>='p' && LA12_0<='q')||LA12_0=='s'||LA12_0=='u'||(LA12_0>='x' && LA12_0<='z')) ) {
+            alt12=45;
+        }
+        else if ( ((LA12_0>='0' && LA12_0<='9')) ) {
+            alt12=46;
+        }
+        else if ( (LA12_0=='\"') ) {
+            int LA12_31 = input.LA(2);
+
+            if ( ((LA12_31>='\u0000' && LA12_31<='\uFFFE')) ) {
+                alt12=47;
+            }
+            else {
+                alt12=51;}
         }
         else if ( (LA12_0=='\'') ) {
-            int LA12_29 = input.LA(2);
+            int LA12_32 = input.LA(2);
 
-            if ( ((LA12_29>='\u0000' && LA12_29<='\uFFFE')) ) {
-                alt12=44;
+            if ( ((LA12_32>='\u0000' && LA12_32<='\uFFFE')) ) {
+                alt12=47;
             }
             else {
-                alt12=48;}
+                alt12=51;}
         }
         else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {
-            alt12=47;
+            alt12=50;
         }
-        else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='#' && LA12_0<='&')||LA12_0=='*'||(LA12_0>=',' && LA12_0<='.')||(LA12_0>=':' && LA12_0<=';')||(LA12_0>='?' && LA12_0<='@')||LA12_0=='\\'||LA12_0=='`'||LA12_0=='|'||(LA12_0>='~' && LA12_0<='\uFFFE')) ) {
-            alt12=48;
+        else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||(LA12_0>='#' && LA12_0<='%')||LA12_0=='*'||(LA12_0>=',' && LA12_0<='.')||(LA12_0>=':' && LA12_0<=';')||(LA12_0>='?' && LA12_0<='@')||LA12_0=='\\'||LA12_0=='`'||(LA12_0>='~' && LA12_0<='\uFFFE')) ) {
+            alt12=51;
         }
         else {
             NoViableAltException nvae =
-                new NoViableAltException("1:1: Tokens : ( T11 | T12 | T13 | T14 | T15 | T16 | T17 | T18 | T19 | T20 | T21 | T22 | T23 | T24 | T25 | T26 | T27 | T28 | T29 | T30 | T31 | T32 | T33 | T34 | T35 | T36 | T37 | T38 | T39 | T40 | T41 | T42 | T43 | T44 | T45 | T46 | T47 | T48 | T49 | T50 | T51 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );", 12, 0, input);
+                new NoViableAltException("1:1: Tokens : ( T11 | T12 | T13 | T14 | T15 | T16 | T17 | T18 | T19 | T20 | T21 | T22 | T23 | T24 | T25 | T26 | T27 | T28 | T29 | T30 | T31 | T32 | T33 | T34 | T35 | T36 | T37 | T38 | T39 | T40 | T41 | T42 | T43 | T44 | T45 | T46 | T47 | T48 | T49 | T50 | T51 | T52 | T53 | T54 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );", 12, 0, input);
 
             throw nvae;
         }
@@ -2713,49 +2779,70 @@ public class InternalDynamicScreenDslLexer extends Lexer {
                 }
                 break;
             case 42 :
-                // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:1:174: RULE_ID
+                // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:1:174: T52
+                {
+                mT52(); 
+
+                }
+                break;
+            case 43 :
+                // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:1:178: T53
+                {
+                mT53(); 
+
+                }
+                break;
+            case 44 :
+                // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:1:182: T54
+                {
+                mT54(); 
+
+                }
+                break;
+            case 45 :
+                // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:1:186: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 43 :
-                // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:1:182: RULE_INT
+            case 46 :
+                // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:1:194: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 44 :
-                // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:1:191: RULE_STRING
+            case 47 :
+                // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:1:203: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 45 :
-                // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:1:203: RULE_ML_COMMENT
+            case 48 :
+                // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:1:215: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 46 :
-                // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:1:219: RULE_SL_COMMENT
+            case 49 :
+                // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:1:231: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 47 :
-                // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:1:235: RULE_WS
+            case 50 :
+                // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:1:247: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 48 :
-                // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:1:243: RULE_ANY_OTHER
+            case 51 :
+                // ../nl.dslmeinte.xtext.examples.dynamic.ui/src-gen/nl/dslmeinte/xtext/examples/ui/contentassist/antlr/internal/InternalDynamicScreenDsl.g:1:255: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 

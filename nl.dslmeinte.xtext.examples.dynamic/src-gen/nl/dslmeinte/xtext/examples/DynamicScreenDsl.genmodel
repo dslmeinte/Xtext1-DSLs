@@ -26,13 +26,10 @@
     </genEnums>
     <genClasses ecoreClass="DynamicScreenDsl.ecore#//DynamicScreen">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//DynamicScreen/label"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//DynamicScreen/dataImport"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicScreenDsl.ecore#//DynamicScreen/importURI"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//DynamicScreen/viewClass"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//DynamicScreen/declarations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//DynamicScreen/groups"/>
-    </genClasses>
-    <genClasses ecoreClass="DynamicScreenDsl.ecore#//DataImport">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicScreenDsl.ecore#//DataImport/importURI"/>
     </genClasses>
     <genClasses ecoreClass="DynamicScreenDsl.ecore#//Label">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicScreenDsl.ecore#//Label/en"/>
@@ -92,9 +89,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicScreenDsl.ecore#//DummyForExternalVariable/name"/>
     </genClasses>
     <genClasses ecoreClass="DynamicScreenDsl.ecore#//BExpression"/>
-    <genClasses ecoreClass="DynamicScreenDsl.ecore#//NegationExpression">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//NegationExpression/expr"/>
-    </genClasses>
     <genClasses ecoreClass="DynamicScreenDsl.ecore#//AtomicReferringBExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//AtomicReferringBExpression/ref"/>
     </genClasses>
@@ -127,6 +121,9 @@
     <genClasses ecoreClass="DynamicScreenDsl.ecore#//AndOperation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//AndOperation/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//AndOperation/right"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicScreenDsl.ecore#//NegationExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicScreenDsl.ecore#//NegationExpression/expr"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -1,7 +1,7 @@
 import dataModelDsl;
 import dynamicScreenDsl ;
 
-extension nl::dslmeinte::xtext::examples::DataModelDslUtil;
+extension nl::dslmeinte::xtext::examples::DataModelExtensions;
 
 
 // the result type of ...

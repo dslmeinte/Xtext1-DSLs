@@ -13,12 +13,15 @@ import nl.dslmeinte.xtext.examples.dataModelDsl.DataType;
 import nl.dslmeinte.xtext.examples.dataModelDsl.Field;
 import nl.dslmeinte.xtext.examples.dataModelDsl.Function;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -30,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.DataTypeImpl#getName <em>Name</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.DataTypeImpl#getFields <em>Fields</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.DataTypeImpl#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.DataTypeImpl#getFunctions <em>Functions</em>}</li>
@@ -40,6 +44,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class DataTypeImpl extends CompoundTypeImpl implements DataType
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getFields() <em>Fields</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -89,6 +113,29 @@ public class DataTypeImpl extends CompoundTypeImpl implements DataType
   protected EClass eStaticClass()
   {
     return DataModelDslPackage.Literals.DATA_TYPE;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DataModelDslPackage.DATA_TYPE__NAME, oldName, name));
   }
 
   /**
@@ -163,6 +210,8 @@ public class DataTypeImpl extends CompoundTypeImpl implements DataType
   {
     switch (featureID)
     {
+      case DataModelDslPackage.DATA_TYPE__NAME:
+        return getName();
       case DataModelDslPackage.DATA_TYPE__FIELDS:
         return getFields();
       case DataModelDslPackage.DATA_TYPE__CONSTRAINTS:
@@ -184,6 +233,9 @@ public class DataTypeImpl extends CompoundTypeImpl implements DataType
   {
     switch (featureID)
     {
+      case DataModelDslPackage.DATA_TYPE__NAME:
+        setName((String)newValue);
+        return;
       case DataModelDslPackage.DATA_TYPE__FIELDS:
         getFields().clear();
         getFields().addAll((Collection<? extends Field>)newValue);
@@ -210,6 +262,9 @@ public class DataTypeImpl extends CompoundTypeImpl implements DataType
   {
     switch (featureID)
     {
+      case DataModelDslPackage.DATA_TYPE__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case DataModelDslPackage.DATA_TYPE__FIELDS:
         getFields().clear();
         return;
@@ -233,6 +288,8 @@ public class DataTypeImpl extends CompoundTypeImpl implements DataType
   {
     switch (featureID)
     {
+      case DataModelDslPackage.DATA_TYPE__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DataModelDslPackage.DATA_TYPE__FIELDS:
         return fields != null && !fields.isEmpty();
       case DataModelDslPackage.DATA_TYPE__CONSTRAINTS:
@@ -241,6 +298,23 @@ public class DataTypeImpl extends CompoundTypeImpl implements DataType
         return functions != null && !functions.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //DataTypeImpl

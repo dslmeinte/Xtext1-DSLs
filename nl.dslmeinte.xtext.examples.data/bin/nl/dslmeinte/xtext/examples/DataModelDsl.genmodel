@@ -24,18 +24,18 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DataModelDsl.ecore#//DataModel/primitives"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DataModelDsl.ecore#//DataModel/compoundTypes"/>
     </genClasses>
-    <genClasses ecoreClass="DataModelDsl.ecore#//Type">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataModelDsl.ecore#//Type/name"/>
-    </genClasses>
+    <genClasses ecoreClass="DataModelDsl.ecore#//Type"/>
     <genClasses ecoreClass="DataModelDsl.ecore#//CompoundType"/>
     <genClasses ecoreClass="DataModelDsl.ecore#//PrimitiveTypes">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DataModelDsl.ecore#//PrimitiveTypes/primitiveTypes"/>
     </genClasses>
     <genClasses ecoreClass="DataModelDsl.ecore#//PrimitiveType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataModelDsl.ecore#//PrimitiveType/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DataModelDsl.ecore#//PrimitiveType/superType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataModelDsl.ecore#//PrimitiveType/realizationType"/>
     </genClasses>
     <genClasses ecoreClass="DataModelDsl.ecore#//DataType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataModelDsl.ecore#//DataType/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DataModelDsl.ecore#//DataType/fields"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DataModelDsl.ecore#//DataType/constraints"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DataModelDsl.ecore#//DataType/functions"/>
@@ -45,6 +45,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DataModelDsl.ecore#//Field/type"/>
     </genClasses>
     <genClasses ecoreClass="DataModelDsl.ecore#//Enumeration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataModelDsl.ecore#//Enumeration/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DataModelDsl.ecore#//Enumeration/literals"/>
     </genClasses>
     <genClasses ecoreClass="DataModelDsl.ecore#//EnumLiteral">
@@ -53,6 +54,7 @@
     <genClasses ecoreClass="DataModelDsl.ecore#//Entity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataModelDsl.ecore#//Entity/transient"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataModelDsl.ecore#//Entity/abstract"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataModelDsl.ecore#//Entity/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DataModelDsl.ecore#//Entity/superType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DataModelDsl.ecore#//Entity/fields"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DataModelDsl.ecore#//Entity/constraints"/>

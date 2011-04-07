@@ -66,6 +66,19 @@ PrimitiveType:
             ( '->' realizationType=MetaPrimitiveType )?
         )
     ;
+    /*
+     * Nice challenge: the user experience would be better if 
+     * "foo extends bar -> string" is _syntactically_ valid but
+     * not semantically, by means of an explicit validation
+     * (with a meaningful error message).
+     * However, since MetaPrimitiveType is an enumeration, its
+     * value is always set, with the default being the first literal
+     * of the enumeration. Hence, we cannot distinguish between
+     * "foo extends bar -> string" (invalid) and "foo extends bar" (valid).
+     * We could add an "invalid" enum literal, whose usage then
+     * has to be prevented using another validation (or more validations),
+     * but currently, I'm too lazy for that ;)
+     */
 
 /**
  * Definition of a data type complete with its constituent fields,

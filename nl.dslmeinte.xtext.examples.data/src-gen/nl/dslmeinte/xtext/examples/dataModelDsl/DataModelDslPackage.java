@@ -108,22 +108,13 @@ public interface DataModelDslPackage extends EPackage
   int TYPE = 1;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPE__NAME = 0;
-
-  /**
    * The number of structural features of the '<em>Type</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TYPE_FEATURE_COUNT = 1;
+  int TYPE_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.CompoundTypeImpl <em>Compound Type</em>}' class.
@@ -134,15 +125,6 @@ public interface DataModelDslPackage extends EPackage
    * @generated
    */
   int COMPOUND_TYPE = 2;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPOUND_TYPE__NAME = TYPE__NAME;
 
   /**
    * The number of structural features of the '<em>Compound Type</em>' class.
@@ -198,7 +180,7 @@ public interface DataModelDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PRIMITIVE_TYPE__NAME = TYPE__NAME;
+  int PRIMITIVE_TYPE__NAME = TYPE_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
@@ -207,7 +189,7 @@ public interface DataModelDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PRIMITIVE_TYPE__SUPER_TYPE = TYPE_FEATURE_COUNT + 0;
+  int PRIMITIVE_TYPE__SUPER_TYPE = TYPE_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Realization Type</b></em>' attribute.
@@ -216,7 +198,7 @@ public interface DataModelDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PRIMITIVE_TYPE__REALIZATION_TYPE = TYPE_FEATURE_COUNT + 1;
+  int PRIMITIVE_TYPE__REALIZATION_TYPE = TYPE_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Primitive Type</em>' class.
@@ -225,7 +207,7 @@ public interface DataModelDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PRIMITIVE_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 2;
+  int PRIMITIVE_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.DataTypeImpl <em>Data Type</em>}' class.
@@ -244,7 +226,7 @@ public interface DataModelDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATA_TYPE__NAME = COMPOUND_TYPE__NAME;
+  int DATA_TYPE__NAME = COMPOUND_TYPE_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
@@ -253,7 +235,7 @@ public interface DataModelDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATA_TYPE__FIELDS = COMPOUND_TYPE_FEATURE_COUNT + 0;
+  int DATA_TYPE__FIELDS = COMPOUND_TYPE_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
@@ -262,7 +244,7 @@ public interface DataModelDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATA_TYPE__CONSTRAINTS = COMPOUND_TYPE_FEATURE_COUNT + 1;
+  int DATA_TYPE__CONSTRAINTS = COMPOUND_TYPE_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Functions</b></em>' containment reference list.
@@ -271,7 +253,7 @@ public interface DataModelDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATA_TYPE__FUNCTIONS = COMPOUND_TYPE_FEATURE_COUNT + 2;
+  int DATA_TYPE__FUNCTIONS = COMPOUND_TYPE_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Data Type</em>' class.
@@ -280,7 +262,7 @@ public interface DataModelDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATA_TYPE_FEATURE_COUNT = COMPOUND_TYPE_FEATURE_COUNT + 3;
+  int DATA_TYPE_FEATURE_COUNT = COMPOUND_TYPE_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.FeatureImpl <em>Feature</em>}' class.
@@ -373,7 +355,7 @@ public interface DataModelDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENUMERATION__NAME = COMPOUND_TYPE__NAME;
+  int ENUMERATION__NAME = COMPOUND_TYPE_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Literals</b></em>' containment reference list.
@@ -382,7 +364,7 @@ public interface DataModelDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENUMERATION__LITERALS = COMPOUND_TYPE_FEATURE_COUNT + 0;
+  int ENUMERATION__LITERALS = COMPOUND_TYPE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Enumeration</em>' class.
@@ -391,7 +373,7 @@ public interface DataModelDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENUMERATION_FEATURE_COUNT = COMPOUND_TYPE_FEATURE_COUNT + 1;
+  int ENUMERATION_FEATURE_COUNT = COMPOUND_TYPE_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.EnumLiteralImpl <em>Enum Literal</em>}' class.
@@ -432,15 +414,6 @@ public interface DataModelDslPackage extends EPackage
   int ENTITY = 9;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ENTITY__NAME = COMPOUND_TYPE__NAME;
-
-  /**
    * The feature id for the '<em><b>Transient</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -459,13 +432,22 @@ public interface DataModelDslPackage extends EPackage
   int ENTITY__ABSTRACT = COMPOUND_TYPE_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY__NAME = COMPOUND_TYPE_FEATURE_COUNT + 2;
+
+  /**
    * The feature id for the '<em><b>Super Type</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTITY__SUPER_TYPE = COMPOUND_TYPE_FEATURE_COUNT + 2;
+  int ENTITY__SUPER_TYPE = COMPOUND_TYPE_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
@@ -474,7 +456,7 @@ public interface DataModelDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY__FIELDS = COMPOUND_TYPE_FEATURE_COUNT + 3;
+  int ENTITY__FIELDS = COMPOUND_TYPE_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
@@ -483,7 +465,7 @@ public interface DataModelDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY__CONSTRAINTS = COMPOUND_TYPE_FEATURE_COUNT + 4;
+  int ENTITY__CONSTRAINTS = COMPOUND_TYPE_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Functions</b></em>' containment reference list.
@@ -492,7 +474,7 @@ public interface DataModelDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY__FUNCTIONS = COMPOUND_TYPE_FEATURE_COUNT + 5;
+  int ENTITY__FUNCTIONS = COMPOUND_TYPE_FEATURE_COUNT + 6;
 
   /**
    * The number of structural features of the '<em>Entity</em>' class.
@@ -501,7 +483,7 @@ public interface DataModelDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY_FEATURE_COUNT = COMPOUND_TYPE_FEATURE_COUNT + 6;
+  int ENTITY_FEATURE_COUNT = COMPOUND_TYPE_FEATURE_COUNT + 7;
 
   /**
    * The meta object id for the '{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.ConstraintImpl <em>Constraint</em>}' class.
@@ -734,17 +716,6 @@ public interface DataModelDslPackage extends EPackage
   EClass getType();
 
   /**
-   * Returns the meta object for the attribute '{@link nl.dslmeinte.xtext.examples.dataModelDsl.Type#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see nl.dslmeinte.xtext.examples.dataModelDsl.Type#getName()
-   * @see #getType()
-   * @generated
-   */
-  EAttribute getType_Name();
-
-  /**
    * Returns the meta object for class '{@link nl.dslmeinte.xtext.examples.dataModelDsl.CompoundType <em>Compound Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -786,6 +757,17 @@ public interface DataModelDslPackage extends EPackage
   EClass getPrimitiveType();
 
   /**
+   * Returns the meta object for the attribute '{@link nl.dslmeinte.xtext.examples.dataModelDsl.PrimitiveType#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see nl.dslmeinte.xtext.examples.dataModelDsl.PrimitiveType#getName()
+   * @see #getPrimitiveType()
+   * @generated
+   */
+  EAttribute getPrimitiveType_Name();
+
+  /**
    * Returns the meta object for the reference '{@link nl.dslmeinte.xtext.examples.dataModelDsl.PrimitiveType#getSuperType <em>Super Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -816,6 +798,17 @@ public interface DataModelDslPackage extends EPackage
    * @generated
    */
   EClass getDataType();
+
+  /**
+   * Returns the meta object for the attribute '{@link nl.dslmeinte.xtext.examples.dataModelDsl.DataType#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see nl.dslmeinte.xtext.examples.dataModelDsl.DataType#getName()
+   * @see #getDataType()
+   * @generated
+   */
+  EAttribute getDataType_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link nl.dslmeinte.xtext.examples.dataModelDsl.DataType#getFields <em>Fields</em>}'.
@@ -893,6 +886,17 @@ public interface DataModelDslPackage extends EPackage
   EClass getEnumeration();
 
   /**
+   * Returns the meta object for the attribute '{@link nl.dslmeinte.xtext.examples.dataModelDsl.Enumeration#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see nl.dslmeinte.xtext.examples.dataModelDsl.Enumeration#getName()
+   * @see #getEnumeration()
+   * @generated
+   */
+  EAttribute getEnumeration_Name();
+
+  /**
    * Returns the meta object for the containment reference list '{@link nl.dslmeinte.xtext.examples.dataModelDsl.Enumeration#getLiterals <em>Literals</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -955,6 +959,17 @@ public interface DataModelDslPackage extends EPackage
    * @generated
    */
   EAttribute getEntity_Abstract();
+
+  /**
+   * Returns the meta object for the attribute '{@link nl.dslmeinte.xtext.examples.dataModelDsl.Entity#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see nl.dslmeinte.xtext.examples.dataModelDsl.Entity#getName()
+   * @see #getEntity()
+   * @generated
+   */
+  EAttribute getEntity_Name();
 
   /**
    * Returns the meta object for the reference '{@link nl.dslmeinte.xtext.examples.dataModelDsl.Entity#getSuperType <em>Super Type</em>}'.
@@ -1228,14 +1243,6 @@ public interface DataModelDslPackage extends EPackage
     EClass TYPE = eINSTANCE.getType();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TYPE__NAME = eINSTANCE.getType_Name();
-
-    /**
      * The meta object literal for the '{@link nl.dslmeinte.xtext.examples.dataModelDsl.impl.CompoundTypeImpl <em>Compound Type</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1274,6 +1281,14 @@ public interface DataModelDslPackage extends EPackage
     EClass PRIMITIVE_TYPE = eINSTANCE.getPrimitiveType();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PRIMITIVE_TYPE__NAME = eINSTANCE.getPrimitiveType_Name();
+
+    /**
      * The meta object literal for the '<em><b>Super Type</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1298,6 +1313,14 @@ public interface DataModelDslPackage extends EPackage
      * @generated
      */
     EClass DATA_TYPE = eINSTANCE.getDataType();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DATA_TYPE__NAME = eINSTANCE.getDataType_Name();
 
     /**
      * The meta object literal for the '<em><b>Fields</b></em>' containment reference list feature.
@@ -1360,6 +1383,14 @@ public interface DataModelDslPackage extends EPackage
     EClass ENUMERATION = eINSTANCE.getEnumeration();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENUMERATION__NAME = eINSTANCE.getEnumeration_Name();
+
+    /**
      * The meta object literal for the '<em><b>Literals</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1410,6 +1441,14 @@ public interface DataModelDslPackage extends EPackage
      * @generated
      */
     EAttribute ENTITY__ABSTRACT = eINSTANCE.getEntity_Abstract();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENTITY__NAME = eINSTANCE.getEntity_Name();
 
     /**
      * The meta object literal for the '<em><b>Super Type</b></em>' reference feature.

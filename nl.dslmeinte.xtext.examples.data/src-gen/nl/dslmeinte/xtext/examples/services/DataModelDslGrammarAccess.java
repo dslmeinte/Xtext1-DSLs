@@ -26,16 +26,18 @@ public class DataModelDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCompoundTypesCompoundTypeParserRuleCall_1_0 = (RuleCall)cCompoundTypesAssignment_1.eContents().get(0);
 		
 		/// *
-		// * DSL for a textual definition of a data model.
+		// * DSL for a textual definition of a data model which is slightly less
+		// * aenemic than usual. The prime client for this DSL is the dynamic screen
+		// * DSL.
 		// *
 		// * TODO's:
-		// *  1) [must-have] introduce notion of bidirectional associativity/navigability/opposite-ness
-		// *  2) [should-have] packaging and modularization across multiple files
-		// *  3) [coould-have] importing of primitive types instead of local definition
-		// *      -this turns out to be quite difficult because an external
-		// *      Ecore type can't be referenced in an alternative rule and
-		// *      trying to solve this using a reference construction makes
-		// *      the grammar right-recursive...
+		// *  1) [must-have] introduce notion of containment
+		// *  2) [must-have] bidirectional associativity/navigability/opposite-ness
+		// *  3) [should-have] packaging and modularization across multiple files
+		// *  4) [coould-have] importing of primitive types instead of local definition
+		// * // **
+		// * The root model element, comprised of one primitive types section
+		// * and the definition of any number of compound types.
 		// * /DataModel:
 		//	primitives=PrimitiveTypes compoundTypes+=CompoundType*;
 		public ParserRule getRule() { return rule; }
@@ -62,8 +64,10 @@ public class DataModelDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCompoundTypeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cPrimitiveTypeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//// (hierarchical type)
-		//Type:
+		/// **
+		// * Convenience meta type
+		// * (not actually referenced from anywhere in the grammar def.).
+		// * /Type:
 		//	CompoundType | PrimitiveType;
 		public ParserRule getRule() { return rule; }
 
@@ -111,7 +115,9 @@ public class DataModelDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cPrimitiveTypesPrimitiveTypeParserRuleCall_3_0 = (RuleCall)cPrimitiveTypesAssignment_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//PrimitiveTypes:
+		/// **
+		// * A block of primitive type definitions.
+		// * /PrimitiveTypes:
 		//	{PrimitiveTypes} "primitive-types" "{" primitiveTypes+=PrimitiveType* "}";
 		public ParserRule getRule() { return rule; }
 
@@ -153,7 +159,12 @@ public class DataModelDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRealizationTypeAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
 		private final RuleCall cRealizationTypeMetaPrimitiveTypeEnumRuleCall_1_1_1_0 = (RuleCall)cRealizationTypeAssignment_1_1_1.eContents().get(0);
 		
-		//PrimitiveType:
+		/// **
+		// * Definition for a primitive type which has a name and
+		// * either has a realization type (to connect it with e.g. Java primitive types)
+		// * or extends an existing primitive type -in which case the realization type is
+		// * that of the super type.
+		// * /PrimitiveType:
 		//	name=ID ("extends" superType=[PrimitiveType] | ("->" realizationType=MetaPrimitiveType)?);
 		public ParserRule getRule() { return rule; }
 
@@ -212,7 +223,22 @@ public class DataModelDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFunctionsFunctionParserRuleCall_5_0 = (RuleCall)cFunctionsAssignment_5.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
-		//DataType:
+		/// *
+		//     * Nice challenge: the user experience would be better if 
+		//     * "foo extends bar -> string" is _syntactically_ valid but
+		//     * not semantically, by means of an explicit validation
+		//     * (with a meaningful error message).
+		//     * However, since MetaPrimitiveType is an enumeration, its
+		//     * value is always set, with the default being the first literal
+		//     * of the enumeration. Hence, we cannot distinguish between
+		//     * "foo extends bar -> string" (invalid) and "foo extends bar" (valid).
+		//     * We could add an "invalid" enum literal, whose usage then
+		//     * has to be prevented using another validation (or more validations),
+		//     * but currently, I'm too lazy for that ;)
+		//     * // **
+		// * Definition of a data type complete with its constituent fields,
+		// * constraints and function.
+		// * /DataType:
 		//	"datatype" name=ID "{" fields+=Field* constraints+=Constraint* functions+=Function* "}";
 		public ParserRule getRule() { return rule; }
 
@@ -710,7 +736,7 @@ public class DataModelDslGrammarAccess extends AbstractGrammarElementFinder {
 		//     * scoping: if the Field resides inside a DataType, then type must be a PrimitiveType;
 		//     * 
 		//     * Note that this definition might seem a bit contrived, but that's
-		//     * because from a parsing viewpoint splitting this definition up
+		//     * because, from a parsing viewpoint, splitting this definition up
 		//     * (into a SimpleField and ComplexField, e.g.) causes the grammar
 		//     * to be ambiguous.
 		//     * /enum Modifier:
@@ -780,16 +806,18 @@ public class DataModelDslGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	/// *
-	// * DSL for a textual definition of a data model.
+	// * DSL for a textual definition of a data model which is slightly less
+	// * aenemic than usual. The prime client for this DSL is the dynamic screen
+	// * DSL.
 	// *
 	// * TODO's:
-	// *  1) [must-have] introduce notion of bidirectional associativity/navigability/opposite-ness
-	// *  2) [should-have] packaging and modularization across multiple files
-	// *  3) [coould-have] importing of primitive types instead of local definition
-	// *      -this turns out to be quite difficult because an external
-	// *      Ecore type can't be referenced in an alternative rule and
-	// *      trying to solve this using a reference construction makes
-	// *      the grammar right-recursive...
+	// *  1) [must-have] introduce notion of containment
+	// *  2) [must-have] bidirectional associativity/navigability/opposite-ness
+	// *  3) [should-have] packaging and modularization across multiple files
+	// *  4) [coould-have] importing of primitive types instead of local definition
+	// * // **
+	// * The root model element, comprised of one primitive types section
+	// * and the definition of any number of compound types.
 	// * /DataModel:
 	//	primitives=PrimitiveTypes compoundTypes+=CompoundType*;
 	public DataModelElements getDataModelAccess() {
@@ -800,8 +828,10 @@ public class DataModelDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getDataModelAccess().getRule();
 	}
 
-	//// (hierarchical type)
-	//Type:
+	/// **
+	// * Convenience meta type
+	// * (not actually referenced from anywhere in the grammar def.).
+	// * /Type:
 	//	CompoundType | PrimitiveType;
 	public TypeElements getTypeAccess() {
 		return (pType != null) ? pType : (pType = new TypeElements());
@@ -821,7 +851,9 @@ public class DataModelDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getCompoundTypeAccess().getRule();
 	}
 
-	//PrimitiveTypes:
+	/// **
+	// * A block of primitive type definitions.
+	// * /PrimitiveTypes:
 	//	{PrimitiveTypes} "primitive-types" "{" primitiveTypes+=PrimitiveType* "}";
 	public PrimitiveTypesElements getPrimitiveTypesAccess() {
 		return (pPrimitiveTypes != null) ? pPrimitiveTypes : (pPrimitiveTypes = new PrimitiveTypesElements());
@@ -841,7 +873,12 @@ public class DataModelDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getMetaPrimitiveTypeAccess().getRule();
 	}
 
-	//PrimitiveType:
+	/// **
+	// * Definition for a primitive type which has a name and
+	// * either has a realization type (to connect it with e.g. Java primitive types)
+	// * or extends an existing primitive type -in which case the realization type is
+	// * that of the super type.
+	// * /PrimitiveType:
 	//	name=ID ("extends" superType=[PrimitiveType] | ("->" realizationType=MetaPrimitiveType)?);
 	public PrimitiveTypeElements getPrimitiveTypeAccess() {
 		return (pPrimitiveType != null) ? pPrimitiveType : (pPrimitiveType = new PrimitiveTypeElements());
@@ -851,7 +888,22 @@ public class DataModelDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getPrimitiveTypeAccess().getRule();
 	}
 
-	//DataType:
+	/// *
+	//     * Nice challenge: the user experience would be better if 
+	//     * "foo extends bar -> string" is _syntactically_ valid but
+	//     * not semantically, by means of an explicit validation
+	//     * (with a meaningful error message).
+	//     * However, since MetaPrimitiveType is an enumeration, its
+	//     * value is always set, with the default being the first literal
+	//     * of the enumeration. Hence, we cannot distinguish between
+	//     * "foo extends bar -> string" (invalid) and "foo extends bar" (valid).
+	//     * We could add an "invalid" enum literal, whose usage then
+	//     * has to be prevented using another validation (or more validations),
+	//     * but currently, I'm too lazy for that ;)
+	//     * // **
+	// * Definition of a data type complete with its constituent fields,
+	// * constraints and function.
+	// * /DataType:
 	//	"datatype" name=ID "{" fields+=Field* constraints+=Constraint* functions+=Function* "}";
 	public DataTypeElements getDataTypeAccess() {
 		return (pDataType != null) ? pDataType : (pDataType = new DataTypeElements());
@@ -876,7 +928,7 @@ public class DataModelDslGrammarAccess extends AbstractGrammarElementFinder {
 	//     * scoping: if the Field resides inside a DataType, then type must be a PrimitiveType;
 	//     * 
 	//     * Note that this definition might seem a bit contrived, but that's
-	//     * because from a parsing viewpoint splitting this definition up
+	//     * because, from a parsing viewpoint, splitting this definition up
 	//     * (into a SimpleField and ComplexField, e.g.) causes the grammar
 	//     * to be ambiguous.
 	//     * /enum Modifier:

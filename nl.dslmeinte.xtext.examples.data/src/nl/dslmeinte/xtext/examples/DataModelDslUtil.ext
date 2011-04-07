@@ -1,5 +1,0 @@
-import dataModelDsl;
-
-cached MetaPrimitiveType realizationType(PrimitiveType this) :
-    superType == null ? realizationType : superType.realizationType();
-

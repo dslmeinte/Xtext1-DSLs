@@ -9,7 +9,6 @@ import java.util.Collection;
 
 import nl.dslmeinte.xtext.examples.dataModelDsl.Entity;
 
-import nl.dslmeinte.xtext.examples.dynamicScreenDsl.DataImport;
 import nl.dslmeinte.xtext.examples.dynamicScreenDsl.Declaration;
 import nl.dslmeinte.xtext.examples.dynamicScreenDsl.DynamicScreen;
 import nl.dslmeinte.xtext.examples.dynamicScreenDsl.DynamicScreenDslPackage;
@@ -38,7 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenImpl#getLabel <em>Label</em>}</li>
- *   <li>{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenImpl#getDataImport <em>Data Import</em>}</li>
+ *   <li>{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenImpl#getImportURI <em>Import URI</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenImpl#getViewClass <em>View Class</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenImpl#getDeclarations <em>Declarations</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.impl.DynamicScreenImpl#getGroups <em>Groups</em>}</li>
@@ -60,14 +59,24 @@ public class DynamicScreenImpl extends MinimalEObjectImpl.Container implements D
   protected Label label;
 
   /**
-   * The cached value of the '{@link #getDataImport() <em>Data Import</em>}' containment reference.
+   * The default value of the '{@link #getImportURI() <em>Import URI</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDataImport()
+   * @see #getImportURI()
    * @generated
    * @ordered
    */
-  protected DataImport dataImport;
+  protected static final String IMPORT_URI_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getImportURI() <em>Import URI</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getImportURI()
+   * @generated
+   * @ordered
+   */
+  protected String importURI = IMPORT_URI_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getViewClass() <em>View Class</em>}' reference.
@@ -173,9 +182,9 @@ public class DynamicScreenImpl extends MinimalEObjectImpl.Container implements D
    * <!-- end-user-doc -->
    * @generated
    */
-  public DataImport getDataImport()
+  public String getImportURI()
   {
-    return dataImport;
+    return importURI;
   }
 
   /**
@@ -183,37 +192,12 @@ public class DynamicScreenImpl extends MinimalEObjectImpl.Container implements D
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetDataImport(DataImport newDataImport, NotificationChain msgs)
+  public void setImportURI(String newImportURI)
   {
-    DataImport oldDataImport = dataImport;
-    dataImport = newDataImport;
+    String oldImportURI = importURI;
+    importURI = newImportURI;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DynamicScreenDslPackage.DYNAMIC_SCREEN__DATA_IMPORT, oldDataImport, newDataImport);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setDataImport(DataImport newDataImport)
-  {
-    if (newDataImport != dataImport)
-    {
-      NotificationChain msgs = null;
-      if (dataImport != null)
-        msgs = ((InternalEObject)dataImport).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DynamicScreenDslPackage.DYNAMIC_SCREEN__DATA_IMPORT, null, msgs);
-      if (newDataImport != null)
-        msgs = ((InternalEObject)newDataImport).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DynamicScreenDslPackage.DYNAMIC_SCREEN__DATA_IMPORT, null, msgs);
-      msgs = basicSetDataImport(newDataImport, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DynamicScreenDslPackage.DYNAMIC_SCREEN__DATA_IMPORT, newDataImport, newDataImport));
+      eNotify(new ENotificationImpl(this, Notification.SET, DynamicScreenDslPackage.DYNAMIC_SCREEN__IMPORT_URI, oldImportURI, importURI));
   }
 
   /**
@@ -299,8 +283,6 @@ public class DynamicScreenImpl extends MinimalEObjectImpl.Container implements D
     {
       case DynamicScreenDslPackage.DYNAMIC_SCREEN__LABEL:
         return basicSetLabel(null, msgs);
-      case DynamicScreenDslPackage.DYNAMIC_SCREEN__DATA_IMPORT:
-        return basicSetDataImport(null, msgs);
       case DynamicScreenDslPackage.DYNAMIC_SCREEN__DECLARATIONS:
         return ((InternalEList<?>)getDeclarations()).basicRemove(otherEnd, msgs);
       case DynamicScreenDslPackage.DYNAMIC_SCREEN__GROUPS:
@@ -321,8 +303,8 @@ public class DynamicScreenImpl extends MinimalEObjectImpl.Container implements D
     {
       case DynamicScreenDslPackage.DYNAMIC_SCREEN__LABEL:
         return getLabel();
-      case DynamicScreenDslPackage.DYNAMIC_SCREEN__DATA_IMPORT:
-        return getDataImport();
+      case DynamicScreenDslPackage.DYNAMIC_SCREEN__IMPORT_URI:
+        return getImportURI();
       case DynamicScreenDslPackage.DYNAMIC_SCREEN__VIEW_CLASS:
         if (resolve) return getViewClass();
         return basicGetViewClass();
@@ -348,8 +330,8 @@ public class DynamicScreenImpl extends MinimalEObjectImpl.Container implements D
       case DynamicScreenDslPackage.DYNAMIC_SCREEN__LABEL:
         setLabel((Label)newValue);
         return;
-      case DynamicScreenDslPackage.DYNAMIC_SCREEN__DATA_IMPORT:
-        setDataImport((DataImport)newValue);
+      case DynamicScreenDslPackage.DYNAMIC_SCREEN__IMPORT_URI:
+        setImportURI((String)newValue);
         return;
       case DynamicScreenDslPackage.DYNAMIC_SCREEN__VIEW_CLASS:
         setViewClass((Entity)newValue);
@@ -379,8 +361,8 @@ public class DynamicScreenImpl extends MinimalEObjectImpl.Container implements D
       case DynamicScreenDslPackage.DYNAMIC_SCREEN__LABEL:
         setLabel((Label)null);
         return;
-      case DynamicScreenDslPackage.DYNAMIC_SCREEN__DATA_IMPORT:
-        setDataImport((DataImport)null);
+      case DynamicScreenDslPackage.DYNAMIC_SCREEN__IMPORT_URI:
+        setImportURI(IMPORT_URI_EDEFAULT);
         return;
       case DynamicScreenDslPackage.DYNAMIC_SCREEN__VIEW_CLASS:
         setViewClass((Entity)null);
@@ -407,8 +389,8 @@ public class DynamicScreenImpl extends MinimalEObjectImpl.Container implements D
     {
       case DynamicScreenDslPackage.DYNAMIC_SCREEN__LABEL:
         return label != null;
-      case DynamicScreenDslPackage.DYNAMIC_SCREEN__DATA_IMPORT:
-        return dataImport != null;
+      case DynamicScreenDslPackage.DYNAMIC_SCREEN__IMPORT_URI:
+        return IMPORT_URI_EDEFAULT == null ? importURI != null : !IMPORT_URI_EDEFAULT.equals(importURI);
       case DynamicScreenDslPackage.DYNAMIC_SCREEN__VIEW_CLASS:
         return viewClass != null;
       case DynamicScreenDslPackage.DYNAMIC_SCREEN__DECLARATIONS:
@@ -417,6 +399,23 @@ public class DynamicScreenImpl extends MinimalEObjectImpl.Container implements D
         return groups != null && !groups.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (importURI: ");
+    result.append(importURI);
+    result.append(')');
+    return result.toString();
   }
 
 } //DynamicScreenImpl

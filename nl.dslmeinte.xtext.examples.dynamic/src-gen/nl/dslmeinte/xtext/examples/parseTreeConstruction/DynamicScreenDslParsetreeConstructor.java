@@ -32,41 +32,40 @@ protected class ThisRootNode extends RootToken {
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
 			case 0: return new DynamicScreen_Group(this, this, 0, inst);
-			case 1: return new DataImport_Group(this, this, 1, inst);
-			case 2: return new Label_Group(this, this, 2, inst);
-			case 3: return new PathTail_Group(this, this, 3, inst);
-			case 4: return new Declaration_Alternatives(this, this, 4, inst);
-			case 5: return new ExternalVariable_Group(this, this, 5, inst);
-			case 6: return new EnumList_Group(this, this, 6, inst);
-			case 7: return new DataStore_Group(this, this, 7, inst);
-			case 8: return new GroupElement_Alternatives(this, this, 8, inst);
-			case 9: return new Field_Group(this, this, 9, inst);
-			case 10: return new FieldGroup_Group(this, this, 10, inst);
-			case 11: return new Attribute_Alternatives(this, this, 11, inst);
-			case 12: return new EnumFieldAttribute_Alternatives(this, this, 12, inst);
-			case 13: return new NormalAttribute_Group(this, this, 13, inst);
-			case 14: return new AttributeClassExpression_Group(this, this, 14, inst);
-			case 15: return new RestrictionAttribute_Group(this, this, 15, inst);
-			case 16: return new RestrictionGroupAttribute_Group(this, this, 16, inst);
-			case 17: return new RestrictionRule_Group(this, this, 17, inst);
-			case 18: return new ReferenceTarget_Alternatives(this, this, 18, inst);
-			case 19: return new Reference_RefAssignment(this, this, 19, inst);
-			case 20: return new DummyForExternalVariable_Alternatives(this, this, 20, inst);
-			case 21: return new BExpression_BOrExpressionParserRuleCall(this, this, 21, inst);
-			case 22: return new BOrExpression_Group(this, this, 22, inst);
-			case 23: return new BAndExpression_Group(this, this, 23, inst);
+			case 1: return new Label_Group(this, this, 1, inst);
+			case 2: return new PathTail_Group(this, this, 2, inst);
+			case 3: return new Declaration_Alternatives(this, this, 3, inst);
+			case 4: return new ExternalVariable_Group(this, this, 4, inst);
+			case 5: return new EnumList_Group(this, this, 5, inst);
+			case 6: return new DataStore_Group(this, this, 6, inst);
+			case 7: return new GroupElement_Alternatives(this, this, 7, inst);
+			case 8: return new Field_Group(this, this, 8, inst);
+			case 9: return new FieldGroup_Group(this, this, 9, inst);
+			case 10: return new Attribute_Alternatives(this, this, 10, inst);
+			case 11: return new EnumFieldAttribute_Alternatives(this, this, 11, inst);
+			case 12: return new NormalAttribute_Group(this, this, 12, inst);
+			case 13: return new AttributeClassExpression_Group(this, this, 13, inst);
+			case 14: return new RestrictionAttribute_Group(this, this, 14, inst);
+			case 15: return new RestrictionGroupAttribute_Group(this, this, 15, inst);
+			case 16: return new RestrictionRule_Group(this, this, 16, inst);
+			case 17: return new ReferenceTarget_Alternatives(this, this, 17, inst);
+			case 18: return new Reference_RefAssignment(this, this, 18, inst);
+			case 19: return new DummyForExternalVariable_Alternatives(this, this, 19, inst);
+			case 20: return new BExpression_BOrExpressionParserRuleCall(this, this, 20, inst);
+			case 21: return new BOrExpression_Group(this, this, 21, inst);
+			case 22: return new BAndExpression_Group(this, this, 22, inst);
+			case 23: return new NegationExpression_Alternatives(this, this, 23, inst);
 			case 24: return new TerminalBExpression_Alternatives(this, this, 24, inst);
-			case 25: return new NegationExpression_Group(this, this, 25, inst);
-			case 26: return new AtomicReferringBExpression_Alternatives(this, this, 26, inst);
-			case 27: return new BComparison_Group(this, this, 27, inst);
-			case 28: return new EnumComparison_Alternatives(this, this, 28, inst);
-			case 29: return new SingleEnumComparison_Group(this, this, 29, inst);
-			case 30: return new MultiEnumComparison_Group(this, this, 30, inst);
-			case 31: return new StringValueComparison_Group(this, this, 31, inst);
-			case 32: return new PresenceCheck_Group(this, this, 32, inst);
-			case 33: return new EnumLiteralsCollection_Alternatives(this, this, 33, inst);
-			case 34: return new DirectEnumLiteralsCollection_Group(this, this, 34, inst);
-			case 35: return new EnumListReference_RefAssignment(this, this, 35, inst);
+			case 25: return new AtomicReferringBExpression_Alternatives(this, this, 25, inst);
+			case 26: return new BComparison_Group(this, this, 26, inst);
+			case 27: return new EnumComparison_Alternatives(this, this, 27, inst);
+			case 28: return new SingleEnumComparison_Group(this, this, 28, inst);
+			case 29: return new MultiEnumComparison_Group(this, this, 29, inst);
+			case 30: return new StringValueComparison_Group(this, this, 30, inst);
+			case 31: return new PresenceCheck_Group(this, this, 31, inst);
+			case 32: return new EnumLiteralsCollection_Alternatives(this, this, 32, inst);
+			case 33: return new DirectEnumLiteralsCollection_Group(this, this, 33, inst);
+			case 34: return new EnumListReference_RefAssignment(this, this, 34, inst);
 			default: return null;
 		}	
 	}	
@@ -88,26 +87,20 @@ protected class ThisRootNode extends RootToken {
  *  * Aspects and features still TODO (roughly in order of priority):
  *  *
  *  *  1) add paths relative to data stores for non-enum selection lists
- *  *  2) hooks to generate HTML mock-up from the model (actions as Attribute-s?)
- *  *  3) short hand for commonly used boolean expressions
- *  *  4) sample population of fields (especially useful for data stores @1)
- *  *  5) mapping to and from screen (including defaults)
- *  *      (nicety: warn if not all required fields have been mapped)
- *  *  6) translations to Dutch as 'referring annotations'
- *  *  7) layout definition for 2-column layout
- *  *  8) ...
+ *  *  2) short hand for commonly used boolean expressions
+ *  *  3) sample population of fields (especially useful for data stores @1)
  *  * // *
  *  * +-----------------------------+
  *  * | Infrastructure and generics |
  *  * +-----------------------------+
  *  * /DynamicScreen:
- * 	"dynamic-screen" label=Label dataImport=DataImport "view-class" "=" viewClass=[data::Entity]
+ * 	"dynamic-screen" label=Label "data-import" "=" importURI=STRING "view-class" "=" viewClass=[data::Entity]
  * 	declarations+=Declaration* groups+=FieldGroup+;
  *
  **/
 
-// "dynamic-screen" label=Label dataImport=DataImport "view-class" "=" viewClass=[data::Entity] declarations+=Declaration*
-// groups+=FieldGroup+
+// "dynamic-screen" label=Label "data-import" "=" importURI=STRING "view-class" "=" viewClass=[data::Entity]
+// declarations+=Declaration* groups+=FieldGroup+
 protected class DynamicScreen_Group extends GroupToken {
 	
 	public DynamicScreen_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -122,7 +115,7 @@ protected class DynamicScreen_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new DynamicScreen_GroupsAssignment_7(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new DynamicScreen_GroupsAssignment_9(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -203,68 +196,22 @@ protected class DynamicScreen_LabelAssignment_1 extends AssignmentToken  {
 	}	
 }
 
-// dataImport=DataImport
-protected class DynamicScreen_DataImportAssignment_2 extends AssignmentToken  {
+// "data-import"
+protected class DynamicScreen_DataImportKeyword_2 extends KeywordToken  {
 	
-	public DynamicScreen_DataImportAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getDynamicScreenAccess().getDataImportAssignment_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new DataImport_Group(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("dataImport",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("dataImport");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getDataImportRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getDynamicScreenAccess().getDataImportDataImportParserRuleCall_2_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new DynamicScreen_LabelAssignment_1(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-// "view-class"
-protected class DynamicScreen_ViewClassKeyword_3 extends KeywordToken  {
-	
-	public DynamicScreen_ViewClassKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public DynamicScreen_DataImportKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getDynamicScreenAccess().getViewClassKeyword_3();
+		return grammarAccess.getDynamicScreenAccess().getDataImportKeyword_2();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new DynamicScreen_DataImportAssignment_2(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new DynamicScreen_LabelAssignment_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -272,21 +219,99 @@ protected class DynamicScreen_ViewClassKeyword_3 extends KeywordToken  {
 }
 
 // "="
-protected class DynamicScreen_EqualsSignKeyword_4 extends KeywordToken  {
+protected class DynamicScreen_EqualsSignKeyword_3 extends KeywordToken  {
 	
-	public DynamicScreen_EqualsSignKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public DynamicScreen_EqualsSignKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getDynamicScreenAccess().getEqualsSignKeyword_4();
+		return grammarAccess.getDynamicScreenAccess().getEqualsSignKeyword_3();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new DynamicScreen_ViewClassKeyword_3(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new DynamicScreen_DataImportKeyword_2(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// importURI=STRING
+protected class DynamicScreen_ImportURIAssignment_4 extends AssignmentToken  {
+	
+	public DynamicScreen_ImportURIAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getDynamicScreenAccess().getImportURIAssignment_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new DynamicScreen_EqualsSignKeyword_3(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("importURI",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("importURI");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getDynamicScreenAccess().getImportURISTRINGTerminalRuleCall_4_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getDynamicScreenAccess().getImportURISTRINGTerminalRuleCall_4_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// "view-class"
+protected class DynamicScreen_ViewClassKeyword_5 extends KeywordToken  {
+	
+	public DynamicScreen_ViewClassKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getDynamicScreenAccess().getViewClassKeyword_5();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new DynamicScreen_ImportURIAssignment_4(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "="
+protected class DynamicScreen_EqualsSignKeyword_6 extends KeywordToken  {
+	
+	public DynamicScreen_EqualsSignKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getDynamicScreenAccess().getEqualsSignKeyword_6();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new DynamicScreen_ViewClassKeyword_5(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -294,21 +319,21 @@ protected class DynamicScreen_EqualsSignKeyword_4 extends KeywordToken  {
 }
 
 // viewClass=[data::Entity]
-protected class DynamicScreen_ViewClassAssignment_5 extends AssignmentToken  {
+protected class DynamicScreen_ViewClassAssignment_7 extends AssignmentToken  {
 	
-	public DynamicScreen_ViewClassAssignment_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public DynamicScreen_ViewClassAssignment_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getDynamicScreenAccess().getViewClassAssignment_5();
+		return grammarAccess.getDynamicScreenAccess().getViewClassAssignment_7();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new DynamicScreen_EqualsSignKeyword_4(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new DynamicScreen_EqualsSignKeyword_6(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -319,9 +344,9 @@ protected class DynamicScreen_ViewClassAssignment_5 extends AssignmentToken  {
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("viewClass");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getDynamicScreenAccess().getViewClassEntityCrossReference_5_0().getType().getClassifier())) {
+			if(param.isInstanceOf(grammarAccess.getDynamicScreenAccess().getViewClassEntityCrossReference_7_0().getType().getClassifier())) {
 				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getDynamicScreenAccess().getViewClassEntityCrossReference_5_0(); 
+				element = grammarAccess.getDynamicScreenAccess().getViewClassEntityCrossReference_7_0(); 
 				return obj;
 			}
 		}
@@ -331,15 +356,15 @@ protected class DynamicScreen_ViewClassAssignment_5 extends AssignmentToken  {
 }
 
 // declarations+=Declaration*
-protected class DynamicScreen_DeclarationsAssignment_6 extends AssignmentToken  {
+protected class DynamicScreen_DeclarationsAssignment_8 extends AssignmentToken  {
 	
-	public DynamicScreen_DeclarationsAssignment_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public DynamicScreen_DeclarationsAssignment_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getDynamicScreenAccess().getDeclarationsAssignment_6();
+		return grammarAccess.getDynamicScreenAccess().getDeclarationsAssignment_8();
 	}
 
     @Override
@@ -358,7 +383,7 @@ protected class DynamicScreen_DeclarationsAssignment_6 extends AssignmentToken  
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getDeclarationRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getDynamicScreenAccess().getDeclarationsDeclarationParserRuleCall_6_0(); 
+				element = grammarAccess.getDynamicScreenAccess().getDeclarationsDeclarationParserRuleCall_8_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -370,23 +395,23 @@ protected class DynamicScreen_DeclarationsAssignment_6 extends AssignmentToken  
 	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
 		if(value == inst.getEObject() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new DynamicScreen_DeclarationsAssignment_6(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new DynamicScreen_ViewClassAssignment_5(lastRuleCallOrigin, next, actIndex, consumed);
+			case 0: return new DynamicScreen_DeclarationsAssignment_8(lastRuleCallOrigin, next, actIndex, consumed);
+			case 1: return new DynamicScreen_ViewClassAssignment_7(lastRuleCallOrigin, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
 }
 
 // groups+=FieldGroup+
-protected class DynamicScreen_GroupsAssignment_7 extends AssignmentToken  {
+protected class DynamicScreen_GroupsAssignment_9 extends AssignmentToken  {
 	
-	public DynamicScreen_GroupsAssignment_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public DynamicScreen_GroupsAssignment_9(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getDynamicScreenAccess().getGroupsAssignment_7();
+		return grammarAccess.getDynamicScreenAccess().getGroupsAssignment_9();
 	}
 
     @Override
@@ -405,7 +430,7 @@ protected class DynamicScreen_GroupsAssignment_7 extends AssignmentToken  {
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getFieldGroupRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getDynamicScreenAccess().getGroupsFieldGroupParserRuleCall_7_0(); 
+				element = grammarAccess.getDynamicScreenAccess().getGroupsFieldGroupParserRuleCall_9_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -417,9 +442,9 @@ protected class DynamicScreen_GroupsAssignment_7 extends AssignmentToken  {
 	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
 		if(value == inst.getEObject() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new DynamicScreen_GroupsAssignment_7(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new DynamicScreen_DeclarationsAssignment_6(lastRuleCallOrigin, next, actIndex, consumed);
-			case 2: return new DynamicScreen_ViewClassAssignment_5(lastRuleCallOrigin, next, actIndex, consumed);
+			case 0: return new DynamicScreen_GroupsAssignment_9(lastRuleCallOrigin, next, actIndex, consumed);
+			case 1: return new DynamicScreen_DeclarationsAssignment_8(lastRuleCallOrigin, next, actIndex, consumed);
+			case 2: return new DynamicScreen_ViewClassAssignment_7(lastRuleCallOrigin, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
@@ -427,123 +452,6 @@ protected class DynamicScreen_GroupsAssignment_7 extends AssignmentToken  {
 
 
 /************ end Rule DynamicScreen ****************/
-
-
-/************ begin Rule DataImport ****************
- *
- * DataImport:
- * 	"data-import" "=" importURI=STRING;
- *
- **/
-
-// "data-import" "=" importURI=STRING
-protected class DataImport_Group extends GroupToken {
-	
-	public DataImport_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getDataImportAccess().getGroup();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new DataImport_ImportURIAssignment_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getDataImportRule().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// "data-import"
-protected class DataImport_DataImportKeyword_0 extends KeywordToken  {
-	
-	public DataImport_DataImportKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getDataImportAccess().getDataImportKeyword_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// "="
-protected class DataImport_EqualsSignKeyword_1 extends KeywordToken  {
-	
-	public DataImport_EqualsSignKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getDataImportAccess().getEqualsSignKeyword_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new DataImport_DataImportKeyword_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// importURI=STRING
-protected class DataImport_ImportURIAssignment_2 extends AssignmentToken  {
-	
-	public DataImport_ImportURIAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getDataImportAccess().getImportURIAssignment_2();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new DataImport_EqualsSignKeyword_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("importURI",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("importURI");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getDataImportAccess().getImportURISTRINGTerminalRuleCall_2_0(), value, null)) {
-			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getDataImportAccess().getImportURISTRINGTerminalRuleCall_2_0();
-			return obj;
-		}
-		return null;
-	}
-
-}
-
-
-/************ end Rule DataImport ****************/
 
 
 /************ begin Rule Label ****************
@@ -3855,7 +3763,7 @@ protected class BExpression_BOrExpressionParserRuleCall extends RuleCallToken {
 		if(getEObject().eClass() != grammarAccess.getBAndExpressionAccess().getAndOperationLeftAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getBComparisonAccess().getBComparisonAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getMultiEnumComparisonRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getNegationExpressionRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getNegationExpressionAccess().getNegationExpressionAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getBOrExpressionAccess().getOrOperationLeftAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPresenceCheckRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getSingleEnumComparisonRule().getType().getClassifier() && 
@@ -3879,11 +3787,11 @@ protected class BExpression_BOrExpressionParserRuleCall extends RuleCallToken {
 /************ begin Rule BOrExpression ****************
  *
  * BOrExpression returns BExpression:
- * 	BAndExpression ({OrOperation.left=current} "or" right=BAndExpression)*;
+ * 	BAndExpression ({OrOperation.left=current} ("or" | "|") right=BAndExpression)*;
  *
  **/
 
-// BAndExpression ({OrOperation.left=current} "or" right=BAndExpression)*
+// BAndExpression ({OrOperation.left=current} ("or" | "|") right=BAndExpression)*
 protected class BOrExpression_Group extends GroupToken {
 	
 	public BOrExpression_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3909,7 +3817,7 @@ protected class BOrExpression_Group extends GroupToken {
 		if(getEObject().eClass() != grammarAccess.getBAndExpressionAccess().getAndOperationLeftAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getBComparisonAccess().getBComparisonAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getMultiEnumComparisonRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getNegationExpressionRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getNegationExpressionAccess().getNegationExpressionAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getBOrExpressionAccess().getOrOperationLeftAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPresenceCheckRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getSingleEnumComparisonRule().getType().getClassifier() && 
@@ -3954,7 +3862,7 @@ protected class BOrExpression_BAndExpressionParserRuleCall_0 extends RuleCallTok
 	}	
 }
 
-// ({OrOperation.left=current} "or" right=BAndExpression)*
+// ({OrOperation.left=current} ("or" | "|") right=BAndExpression)*
 protected class BOrExpression_Group_1 extends GroupToken {
 	
 	public BOrExpression_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4013,16 +3921,38 @@ protected class BOrExpression_OrOperationLeftAction_1_0 extends ActionToken  {
 	}
 }
 
-// "or"
-protected class BOrExpression_OrKeyword_1_1 extends KeywordToken  {
+// "or" | "|"
+protected class BOrExpression_Alternatives_1_1 extends AlternativesToken {
+
+	public BOrExpression_Alternatives_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
 	
-	public BOrExpression_OrKeyword_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	@Override
+	public Alternatives getGrammarElement() {
+		return grammarAccess.getBOrExpressionAccess().getAlternatives_1_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BOrExpression_OrKeyword_1_1_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "or"
+protected class BOrExpression_OrKeyword_1_1_0 extends KeywordToken  {
+	
+	public BOrExpression_OrKeyword_1_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getBOrExpressionAccess().getOrKeyword_1_1();
+		return grammarAccess.getBOrExpressionAccess().getOrKeyword_1_1_0();
 	}
 
     @Override
@@ -4034,6 +3964,7 @@ protected class BOrExpression_OrKeyword_1_1 extends KeywordToken  {
 	}
 
 }
+
 
 // right=BAndExpression
 protected class BOrExpression_RightAssignment_1_2 extends AssignmentToken  {
@@ -4075,7 +4006,7 @@ protected class BOrExpression_RightAssignment_1_2 extends AssignmentToken  {
 	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
 		if(value == inst.getEObject() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new BOrExpression_OrKeyword_1_1(lastRuleCallOrigin, next, actIndex, consumed);
+			case 0: return new BOrExpression_Alternatives_1_1(lastRuleCallOrigin, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
@@ -4089,11 +4020,11 @@ protected class BOrExpression_RightAssignment_1_2 extends AssignmentToken  {
 /************ begin Rule BAndExpression ****************
  *
  * BAndExpression returns BExpression:
- * 	TerminalBExpression ({AndOperation.left=current} "and" right=TerminalBExpression)*;
+ * 	NegationExpression ({AndOperation.left=current} ("and" | "&") right=NegationExpression)*;
  *
  **/
 
-// TerminalBExpression ({AndOperation.left=current} "and" right=TerminalBExpression)*
+// NegationExpression ({AndOperation.left=current} ("and" | "&") right=NegationExpression)*
 protected class BAndExpression_Group extends GroupToken {
 	
 	public BAndExpression_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4109,7 +4040,7 @@ protected class BAndExpression_Group extends GroupToken {
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
 			case 0: return new BAndExpression_Group_1(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new BAndExpression_TerminalBExpressionParserRuleCall_0(lastRuleCallOrigin, this, 1, inst);
+			case 1: return new BAndExpression_NegationExpressionParserRuleCall_0(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -4119,7 +4050,7 @@ protected class BAndExpression_Group extends GroupToken {
 		if(getEObject().eClass() != grammarAccess.getBAndExpressionAccess().getAndOperationLeftAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getBComparisonAccess().getBComparisonAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getMultiEnumComparisonRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getNegationExpressionRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getNegationExpressionAccess().getNegationExpressionAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getBOrExpressionAccess().getOrOperationLeftAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPresenceCheckRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getSingleEnumComparisonRule().getType().getClassifier() && 
@@ -4130,29 +4061,29 @@ protected class BAndExpression_Group extends GroupToken {
 
 }
 
-// TerminalBExpression
-protected class BAndExpression_TerminalBExpressionParserRuleCall_0 extends RuleCallToken {
+// NegationExpression
+protected class BAndExpression_NegationExpressionParserRuleCall_0 extends RuleCallToken {
 	
-	public BAndExpression_TerminalBExpressionParserRuleCall_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public BAndExpression_NegationExpressionParserRuleCall_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getBAndExpressionAccess().getTerminalBExpressionParserRuleCall_0();
+		return grammarAccess.getBAndExpressionAccess().getNegationExpressionParserRuleCall_0();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new TerminalBExpression_Alternatives(this, this, 0, inst);
+			case 0: return new NegationExpression_Alternatives(this, this, 0, inst);
 			default: return null;
 		}	
 	}
 
     @Override
 	public IEObjectConsumer tryConsume() {
-		if(checkForRecursion(TerminalBExpression_Alternatives.class, eObjectConsumer)) return null;
+		if(checkForRecursion(NegationExpression_Alternatives.class, eObjectConsumer)) return null;
 		return eObjectConsumer;
 	}
 	
@@ -4164,7 +4095,7 @@ protected class BAndExpression_TerminalBExpressionParserRuleCall_0 extends RuleC
 	}	
 }
 
-// ({AndOperation.left=current} "and" right=TerminalBExpression)*
+// ({AndOperation.left=current} ("and" | "&") right=NegationExpression)*
 protected class BAndExpression_Group_1 extends GroupToken {
 	
 	public BAndExpression_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4209,7 +4140,7 @@ protected class BAndExpression_AndOperationLeftAction_1_0 extends ActionToken  {
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
 			case 0: return new BAndExpression_Group_1(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new BAndExpression_TerminalBExpressionParserRuleCall_0(lastRuleCallOrigin, this, 1, inst);
+			case 1: return new BAndExpression_NegationExpressionParserRuleCall_0(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -4223,16 +4154,38 @@ protected class BAndExpression_AndOperationLeftAction_1_0 extends ActionToken  {
 	}
 }
 
-// "and"
-protected class BAndExpression_AndKeyword_1_1 extends KeywordToken  {
+// "and" | "&"
+protected class BAndExpression_Alternatives_1_1 extends AlternativesToken {
+
+	public BAndExpression_Alternatives_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
 	
-	public BAndExpression_AndKeyword_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	@Override
+	public Alternatives getGrammarElement() {
+		return grammarAccess.getBAndExpressionAccess().getAlternatives_1_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new BAndExpression_AndKeyword_1_1_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "and"
+protected class BAndExpression_AndKeyword_1_1_0 extends KeywordToken  {
+	
+	public BAndExpression_AndKeyword_1_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getBAndExpressionAccess().getAndKeyword_1_1();
+		return grammarAccess.getBAndExpressionAccess().getAndKeyword_1_1_0();
 	}
 
     @Override
@@ -4245,7 +4198,8 @@ protected class BAndExpression_AndKeyword_1_1 extends KeywordToken  {
 
 }
 
-// right=TerminalBExpression
+
+// right=NegationExpression
 protected class BAndExpression_RightAssignment_1_2 extends AssignmentToken  {
 	
 	public BAndExpression_RightAssignment_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4260,7 +4214,7 @@ protected class BAndExpression_RightAssignment_1_2 extends AssignmentToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new TerminalBExpression_Alternatives(this, this, 0, inst);
+			case 0: return new NegationExpression_Alternatives(this, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -4271,9 +4225,9 @@ protected class BAndExpression_RightAssignment_1_2 extends AssignmentToken  {
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("right");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getTerminalBExpressionRule().getType().getClassifier())) {
+			if(param.isInstanceOf(grammarAccess.getNegationExpressionRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getBAndExpressionAccess().getRightTerminalBExpressionParserRuleCall_1_2_0(); 
+				element = grammarAccess.getBAndExpressionAccess().getRightNegationExpressionParserRuleCall_1_2_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -4285,7 +4239,7 @@ protected class BAndExpression_RightAssignment_1_2 extends AssignmentToken  {
 	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
 		if(value == inst.getEObject() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new BAndExpression_AndKeyword_1_1(lastRuleCallOrigin, next, actIndex, consumed);
+			case 0: return new BAndExpression_Alternatives_1_1(lastRuleCallOrigin, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
@@ -4296,14 +4250,243 @@ protected class BAndExpression_RightAssignment_1_2 extends AssignmentToken  {
 /************ end Rule BAndExpression ****************/
 
 
-/************ begin Rule TerminalBExpression ****************
+/************ begin Rule NegationExpression ****************
  *
- * TerminalBExpression returns BExpression:
- * 	AtomicReferringBExpression | NegationExpression | "(" BExpression ")";
+ * NegationExpression returns BExpression:
+ * 	TerminalBExpression | {NegationExpression} ("not" | "!") expr=NegationExpression;
  *
  **/
 
-// AtomicReferringBExpression | NegationExpression | "(" BExpression ")"
+// TerminalBExpression | {NegationExpression} ("not" | "!") expr=NegationExpression
+protected class NegationExpression_Alternatives extends AlternativesToken {
+
+	public NegationExpression_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Alternatives getGrammarElement() {
+		return grammarAccess.getNegationExpressionAccess().getAlternatives();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new NegationExpression_TerminalBExpressionParserRuleCall_0(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new NegationExpression_Group_1(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getBAndExpressionAccess().getAndOperationLeftAction_1_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getBComparisonAccess().getBComparisonAction_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getMultiEnumComparisonRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getNegationExpressionAccess().getNegationExpressionAction_1_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getBOrExpressionAccess().getOrOperationLeftAction_1_0().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getPresenceCheckRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getSingleEnumComparisonRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getStringValueComparisonRule().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// TerminalBExpression
+protected class NegationExpression_TerminalBExpressionParserRuleCall_0 extends RuleCallToken {
+	
+	public NegationExpression_TerminalBExpressionParserRuleCall_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public RuleCall getGrammarElement() {
+		return grammarAccess.getNegationExpressionAccess().getTerminalBExpressionParserRuleCall_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new TerminalBExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(checkForRecursion(TerminalBExpression_Alternatives.class, eObjectConsumer)) return null;
+		return eObjectConsumer;
+	}
+	
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
+		}	
+	}	
+}
+
+// {NegationExpression} ("not" | "!") expr=NegationExpression
+protected class NegationExpression_Group_1 extends GroupToken {
+	
+	public NegationExpression_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getNegationExpressionAccess().getGroup_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new NegationExpression_ExprAssignment_1_2(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getNegationExpressionAccess().getNegationExpressionAction_1_0().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// {NegationExpression}
+protected class NegationExpression_NegationExpressionAction_1_0 extends ActionToken  {
+
+	public NegationExpression_NegationExpressionAction_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Action getGrammarElement() {
+		return grammarAccess.getNegationExpressionAccess().getNegationExpressionAction_1_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(!eObjectConsumer.isConsumed()) return null;
+		return eObjectConsumer;
+	}
+}
+
+// "not" | "!"
+protected class NegationExpression_Alternatives_1_1 extends AlternativesToken {
+
+	public NegationExpression_Alternatives_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Alternatives getGrammarElement() {
+		return grammarAccess.getNegationExpressionAccess().getAlternatives_1_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new NegationExpression_NotKeyword_1_1_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// "not"
+protected class NegationExpression_NotKeyword_1_1_0 extends KeywordToken  {
+	
+	public NegationExpression_NotKeyword_1_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getNegationExpressionAccess().getNotKeyword_1_1_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new NegationExpression_NegationExpressionAction_1_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+
+// expr=NegationExpression
+protected class NegationExpression_ExprAssignment_1_2 extends AssignmentToken  {
+	
+	public NegationExpression_ExprAssignment_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getNegationExpressionAccess().getExprAssignment_1_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new NegationExpression_Alternatives(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("expr",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("expr");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getNegationExpressionRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getNegationExpressionAccess().getExprNegationExpressionParserRuleCall_1_2_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new NegationExpression_Alternatives_1_1(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+
+
+/************ end Rule NegationExpression ****************/
+
+
+/************ begin Rule TerminalBExpression ****************
+ *
+ * TerminalBExpression returns BExpression:
+ * 	AtomicReferringBExpression | "(" BExpression ")";
+ *
+ **/
+
+// AtomicReferringBExpression | "(" BExpression ")"
 protected class TerminalBExpression_Alternatives extends AlternativesToken {
 
 	public TerminalBExpression_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4319,8 +4502,7 @@ protected class TerminalBExpression_Alternatives extends AlternativesToken {
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
 			case 0: return new TerminalBExpression_AtomicReferringBExpressionParserRuleCall_0(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new TerminalBExpression_NegationExpressionParserRuleCall_1(lastRuleCallOrigin, this, 1, inst);
-			case 2: return new TerminalBExpression_Group_2(lastRuleCallOrigin, this, 2, inst);
+			case 1: return new TerminalBExpression_Group_1(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -4330,7 +4512,7 @@ protected class TerminalBExpression_Alternatives extends AlternativesToken {
 		if(getEObject().eClass() != grammarAccess.getBAndExpressionAccess().getAndOperationLeftAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getBComparisonAccess().getBComparisonAction_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getMultiEnumComparisonRule().getType().getClassifier() && 
-		   getEObject().eClass() != grammarAccess.getNegationExpressionRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getNegationExpressionAccess().getNegationExpressionAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getBOrExpressionAccess().getOrOperationLeftAction_1_0().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPresenceCheckRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getSingleEnumComparisonRule().getType().getClassifier() && 
@@ -4381,58 +4563,22 @@ protected class TerminalBExpression_AtomicReferringBExpressionParserRuleCall_0 e
 	}	
 }
 
-// NegationExpression
-protected class TerminalBExpression_NegationExpressionParserRuleCall_1 extends RuleCallToken {
-	
-	public TerminalBExpression_NegationExpressionParserRuleCall_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getTerminalBExpressionAccess().getNegationExpressionParserRuleCall_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new NegationExpression_Group(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getNegationExpressionRule().getType().getClassifier())
-			return null;
-		if(checkForRecursion(NegationExpression_Group.class, eObjectConsumer)) return null;
-		return eObjectConsumer;
-	}
-	
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
-		}	
-	}	
-}
-
 // "(" BExpression ")"
-protected class TerminalBExpression_Group_2 extends GroupToken {
+protected class TerminalBExpression_Group_1 extends GroupToken {
 	
-	public TerminalBExpression_Group_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public TerminalBExpression_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Group getGrammarElement() {
-		return grammarAccess.getTerminalBExpressionAccess().getGroup_2();
+		return grammarAccess.getTerminalBExpressionAccess().getGroup_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new TerminalBExpression_RightParenthesisKeyword_2_2(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new TerminalBExpression_RightParenthesisKeyword_1_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -4440,15 +4586,15 @@ protected class TerminalBExpression_Group_2 extends GroupToken {
 }
 
 // "("
-protected class TerminalBExpression_LeftParenthesisKeyword_2_0 extends KeywordToken  {
+protected class TerminalBExpression_LeftParenthesisKeyword_1_0 extends KeywordToken  {
 	
-	public TerminalBExpression_LeftParenthesisKeyword_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public TerminalBExpression_LeftParenthesisKeyword_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getTerminalBExpressionAccess().getLeftParenthesisKeyword_2_0();
+		return grammarAccess.getTerminalBExpressionAccess().getLeftParenthesisKeyword_1_0();
 	}
 
     @Override
@@ -4461,15 +4607,15 @@ protected class TerminalBExpression_LeftParenthesisKeyword_2_0 extends KeywordTo
 }
 
 // BExpression
-protected class TerminalBExpression_BExpressionParserRuleCall_2_1 extends RuleCallToken {
+protected class TerminalBExpression_BExpressionParserRuleCall_1_1 extends RuleCallToken {
 	
-	public TerminalBExpression_BExpressionParserRuleCall_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public TerminalBExpression_BExpressionParserRuleCall_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getTerminalBExpressionAccess().getBExpressionParserRuleCall_2_1();
+		return grammarAccess.getTerminalBExpressionAccess().getBExpressionParserRuleCall_1_1();
 	}
 
     @Override
@@ -4489,28 +4635,28 @@ protected class TerminalBExpression_BExpressionParserRuleCall_2_1 extends RuleCa
     @Override
 	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new TerminalBExpression_LeftParenthesisKeyword_2_0(lastRuleCallOrigin, next, actIndex, inst);
+			case 0: return new TerminalBExpression_LeftParenthesisKeyword_1_0(lastRuleCallOrigin, next, actIndex, inst);
 			default: return null;
 		}	
 	}	
 }
 
 // ")"
-protected class TerminalBExpression_RightParenthesisKeyword_2_2 extends KeywordToken  {
+protected class TerminalBExpression_RightParenthesisKeyword_1_2 extends KeywordToken  {
 	
-	public TerminalBExpression_RightParenthesisKeyword_2_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public TerminalBExpression_RightParenthesisKeyword_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getTerminalBExpressionAccess().getRightParenthesisKeyword_2_2();
+		return grammarAccess.getTerminalBExpressionAccess().getRightParenthesisKeyword_1_2();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new TerminalBExpression_BExpressionParserRuleCall_2_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new TerminalBExpression_BExpressionParserRuleCall_1_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -4520,113 +4666,6 @@ protected class TerminalBExpression_RightParenthesisKeyword_2_2 extends KeywordT
 
 
 /************ end Rule TerminalBExpression ****************/
-
-
-/************ begin Rule NegationExpression ****************
- *
- * NegationExpression:
- * 	"not" expr=BExpression;
- *
- **/
-
-// "not" expr=BExpression
-protected class NegationExpression_Group extends GroupToken {
-	
-	public NegationExpression_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getNegationExpressionAccess().getGroup();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new NegationExpression_ExprAssignment_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override
-	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getNegationExpressionRule().getType().getClassifier())
-			return null;
-		return eObjectConsumer;
-	}
-
-}
-
-// "not"
-protected class NegationExpression_NotKeyword_0 extends KeywordToken  {
-	
-	public NegationExpression_NotKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getNegationExpressionAccess().getNotKeyword_0();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
-		}	
-	}
-
-}
-
-// expr=BExpression
-protected class NegationExpression_ExprAssignment_1 extends AssignmentToken  {
-	
-	public NegationExpression_ExprAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getNegationExpressionAccess().getExprAssignment_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new BExpression_BOrExpressionParserRuleCall(this, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("expr",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("expr");
-		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
-			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getBExpressionRule().getType().getClassifier())) {
-				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getNegationExpressionAccess().getExprBExpressionParserRuleCall_1_0(); 
-				consumed = obj;
-				return param;
-			}
-		}
-		return null;
-	}
-
-    @Override
-	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
-		if(value == inst.getEObject() && !inst.isConsumed()) return null;
-		switch(index) {
-			case 0: return new NegationExpression_NotKeyword_0(lastRuleCallOrigin, next, actIndex, consumed);
-			default: return null;
-		}	
-	}	
-}
-
-
-/************ end Rule NegationExpression ****************/
 
 
 /************ begin Rule AtomicReferringBExpression ****************

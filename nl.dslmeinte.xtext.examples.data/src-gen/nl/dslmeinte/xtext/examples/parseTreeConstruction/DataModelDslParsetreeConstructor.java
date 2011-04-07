@@ -56,16 +56,18 @@ protected class ThisRootNode extends RootToken {
 /************ begin Rule DataModel ****************
  *
  * / *
- *  * DSL for a textual definition of a data model.
+ *  * DSL for a textual definition of a data model which is slightly less
+ *  * aenemic than usual. The prime client for this DSL is the dynamic screen
+ *  * DSL.
  *  *
  *  * TODO's:
- *  *  1) [must-have] introduce notion of bidirectional associativity/navigability/opposite-ness
- *  *  2) [should-have] packaging and modularization across multiple files
- *  *  3) [coould-have] importing of primitive types instead of local definition
- *  *      -this turns out to be quite difficult because an external
- *  *      Ecore type can't be referenced in an alternative rule and
- *  *      trying to solve this using a reference construction makes
- *  *      the grammar right-recursive...
+ *  *  1) [must-have] introduce notion of containment
+ *  *  2) [must-have] bidirectional associativity/navigability/opposite-ness
+ *  *  3) [should-have] packaging and modularization across multiple files
+ *  *  4) [coould-have] importing of primitive types instead of local definition
+ *  * // **
+ *  * The root model element, comprised of one primitive types section
+ *  * and the definition of any number of compound types.
  *  * /DataModel:
  * 	primitives=PrimitiveTypes compoundTypes+=CompoundType*;
  *
@@ -199,8 +201,10 @@ protected class DataModel_CompoundTypesAssignment_1 extends AssignmentToken  {
 
 /************ begin Rule Type ****************
  *
- * // (hierarchical type)
- * Type:
+ * / **
+ *  * Convenience meta type
+ *  * (not actually referenced from anywhere in the grammar def.).
+ *  * /Type:
  * 	CompoundType | PrimitiveType;
  *
  **/
@@ -470,7 +474,9 @@ protected class CompoundType_EntityParserRuleCall_2 extends RuleCallToken {
 
 /************ begin Rule PrimitiveTypes ****************
  *
- * PrimitiveTypes:
+ * / **
+ *  * A block of primitive type definitions.
+ *  * /PrimitiveTypes:
  * 	{PrimitiveTypes} "primitive-types" "{" primitiveTypes+=PrimitiveType* "}";
  *
  **/
@@ -650,7 +656,12 @@ protected class PrimitiveTypes_RightCurlyBracketKeyword_4 extends KeywordToken  
 
 /************ begin Rule PrimitiveType ****************
  *
- * PrimitiveType:
+ * / **
+ *  * Definition for a primitive type which has a name and
+ *  * either has a realization type (to connect it with e.g. Java primitive types)
+ *  * or extends an existing primitive type -in which case the realization type is
+ *  * that of the super type.
+ *  * /PrimitiveType:
  * 	name=ID ("extends" superType=[PrimitiveType] | ("->" realizationType=MetaPrimitiveType)?);
  *
  **/
@@ -908,7 +919,22 @@ protected class PrimitiveType_RealizationTypeAssignment_1_1_1 extends Assignment
 
 /************ begin Rule DataType ****************
  *
- * DataType:
+ * / *
+ *      * Nice challenge: the user experience would be better if 
+ *      * "foo extends bar -> string" is _syntactically_ valid but
+ *      * not semantically, by means of an explicit validation
+ *      * (with a meaningful error message).
+ *      * However, since MetaPrimitiveType is an enumeration, its
+ *      * value is always set, with the default being the first literal
+ *      * of the enumeration. Hence, we cannot distinguish between
+ *      * "foo extends bar -> string" (invalid) and "foo extends bar" (valid).
+ *      * We could add an "invalid" enum literal, whose usage then
+ *      * has to be prevented using another validation (or more validations),
+ *      * but currently, I'm too lazy for that ;)
+ *      * // **
+ *  * Definition of a data type complete with its constituent fields,
+ *  * constraints and function.
+ *  * /DataType:
  * 	"datatype" name=ID "{" fields+=Field* constraints+=Constraint* functions+=Function* "}";
  *
  **/

@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.DynamicScreen#getLabel <em>Label</em>}</li>
- *   <li>{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.DynamicScreen#getDataImport <em>Data Import</em>}</li>
+ *   <li>{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.DynamicScreen#getImportURI <em>Import URI</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.DynamicScreen#getViewClass <em>View Class</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.DynamicScreen#getDeclarations <em>Declarations</em>}</li>
  *   <li>{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.DynamicScreen#getGroups <em>Groups</em>}</li>
@@ -60,30 +60,30 @@ public interface DynamicScreen extends EObject
   void setLabel(Label value);
 
   /**
-   * Returns the value of the '<em><b>Data Import</b></em>' containment reference.
+   * Returns the value of the '<em><b>Import URI</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Data Import</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Import URI</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Data Import</em>' containment reference.
-   * @see #setDataImport(DataImport)
-   * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.DynamicScreenDslPackage#getDynamicScreen_DataImport()
-   * @model containment="true"
+   * @return the value of the '<em>Import URI</em>' attribute.
+   * @see #setImportURI(String)
+   * @see nl.dslmeinte.xtext.examples.dynamicScreenDsl.DynamicScreenDslPackage#getDynamicScreen_ImportURI()
+   * @model
    * @generated
    */
-  DataImport getDataImport();
+  String getImportURI();
 
   /**
-   * Sets the value of the '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.DynamicScreen#getDataImport <em>Data Import</em>}' containment reference.
+   * Sets the value of the '{@link nl.dslmeinte.xtext.examples.dynamicScreenDsl.DynamicScreen#getImportURI <em>Import URI</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Data Import</em>' containment reference.
-   * @see #getDataImport()
+   * @param value the new value of the '<em>Import URI</em>' attribute.
+   * @see #getImportURI()
    * @generated
    */
-  void setDataImport(DataImport value);
+  void setImportURI(String value);
 
   /**
    * Returns the value of the '<em><b>View Class</b></em>' reference.
