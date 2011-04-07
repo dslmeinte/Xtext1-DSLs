@@ -1,0 +1,78 @@
+«IMPORT dataModelDsl»
+«IMPORT dynamicScreenDsl»
+
+«EXTENSION nl::dslmeinte::xtext::examples::DynamicScreenExtensions»
+«EXTENSION nl::dslmeinte::xtext::examples::dynamic::mockup::MockupExtensions»
+
+
+«DEFINE main FOR DynamicScreen»
+  «EXPAND enumList FOREACH enumLists()»
+  «EXPAND update»
+«ENDDEFINE»
+
+
+«DEFINE enumList FOR EnumList»
+  var «name» = «EXPAND jsEnumList(literals) FOR enum»;
+«ENDDEFINE»
+
+«DEFINE jsEnumList(List[EnumLiteral] myLiterals) FOR Enumeration-»
+[ «FOREACH myLiterals AS literal SEPARATOR ", "»"«this.literals.indexOf(literal)»"«ENDFOREACH» ]«ENDDEFINE»
+
+
+«DEFINE update FOR DynamicScreen-»
+/**
+ * Updates the entire screen, based on all the logic defined in the DSL instance, whenever _any_ field changes.
+ * (Implementation is simpler that way. Splitting update logic requires determining which values are used in
+ *  any Boolean expression.)
+ */
+function updateScreen()
+{
+  «REM»note: interprets only display for now«ENDREM»
+  «FOREACH allGroupElements() AS groupElt»
+    «EXPAND attribute(groupElt) FOREACH groupElt.attributes»
+  «ENDFOREACH»
+}
+«ENDDEFINE»
+
+
+«DEFINE attribute(GroupElement elt) FOR Attribute»
+  // handling of Attribute of (sub) type «metaType.name» not implemented yet
+«ENDDEFINE»
+
+«DEFINE attribute(GroupElement elt) FOR NormalAttribute»
+  «IF classExpr.classes.contains(AttributeClass::display)»
+    InputUtils.display( "«elt.id()»", «EXPAND bValue FOR clause-» );
+  «ELSE»
+    // WARNING: handling of AttributeClass-es other than 'display' not implemented yet
+  «ENDIF»
+«ENDDEFINE»
+
+
+«REM»(sentinel)«ENDREM»
+«DEFINE bValue FOR BExpression-»
+alert( "sub type «metaType.name» of «BExpression.name» not handled" ), true«ENDDEFINE»
+
+«DEFINE bValue FOR OrOperation-»
+( «EXPAND bValue FOR left» ) || ( «EXPAND bValue FOR right» )«ENDDEFINE»
+
+«DEFINE bValue FOR AndOperation-»
+( «EXPAND bValue FOR left» ) && ( «EXPAND bValue FOR right» )«ENDDEFINE»
+
+«DEFINE bValue FOR NegationExpression-»!(«EXPAND bValue FOR expr»)«ENDDEFINE»
+«DEFINE bValue FOR BComparison-»«IF bLiteral == BLiteral::^false»!«ENDIF»InputUtils.bGet( "«id()»" )«ENDDEFINE»
+«DEFINE bValue FOR SingleEnumComparison-»InputUtils.eGet( "«id()»" ) == "«enum().literals.indexOf(eLiteral)»"«ENDDEFINE»
+«DEFINE bValue FOR StringValueComparison-»InputUtils.rGet( "«id()»" ) === "«targetValue»"«ENDDEFINE»
+«DEFINE bValue FOR PresenceCheck-»InputUtils.rGet( "«id()» ") != null«ENDDEFINE»
+
+«DEFINE bValue FOR MultiEnumComparison-»
+«IF membership == EnumMembership::isNotIn»!«ENDIF»InputUtils.contains(«EXPAND multiEnumComparison(this) FOR eLiterals-», InputUtils.eGet("«id()»"))«ENDDEFINE»
+
+
+«DEFINE multiEnumComparison(MultiEnumComparison expr) FOR EnumLiteralsCollection-»
+alert( "sub type «metaType.name» of «EnumLiteralsCollection.name» not handled in multiEnumComparison" ), true«ENDDEFINE»
+
+«DEFINE multiEnumComparison(MultiEnumComparison expr) FOR EnumListReference»«ref.name»«ENDDEFINE»
+
+«DEFINE multiEnumComparison(MultiEnumComparison expr) FOR DirectEnumLiteralsCollection»«EXPAND jsEnumList(this.literals) FOR expr.enum()»«ENDDEFINE»
+
+

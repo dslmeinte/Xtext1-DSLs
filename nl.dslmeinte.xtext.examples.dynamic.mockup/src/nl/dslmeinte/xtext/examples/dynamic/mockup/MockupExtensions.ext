@@ -1,0 +1,26 @@
+import dynamicScreenDsl;
+
+extension org::eclipse::xtend::util::stdlib::io;
+
+
+String id (ExternalVariable this) : "_external_" + name;
+String id (Field this) : name;
+String id (ReferenceTarget this) : error();    // (sentinel)
+
+String id (AtomicReferringBExpression this) : ref.ref.id();
+
+String id (FieldGroup this) : syntheticId();
+String id (GroupElement this) : error();    // (sentinel)
+
+String displayName (Field this) : label.en;
+String displayName (ExternalVariable this) : name;
+String displayName (ReferenceTarget this) : error();    // (sentinel)
+
+// (alternative version for the label DEFINE block in HTMLMockUp:)
+cached String label(Label this) :
+    en + ( ( nl != null ) ? " (nl:" + nl + ")" : "" )
+    ;
+
+String syntheticId(FieldGroup this) :
+    JAVA nl.dslmeinte.xtext.examples.dynamic.mockup.MockupExtensions.hashCode(java.lang.Object);
+

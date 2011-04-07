@@ -1,0 +1,152 @@
+«IMPORT dataModelDsl»
+«IMPORT dynamicScreenDsl»
+
+«EXTENSION nl::dslmeinte::xtext::examples::dynamic::mockup::MockupExtensions»
+«EXTENSION nl::dslmeinte::xtext::examples::DynamicScreenExtensions»
+«EXTENSION nl::dslmeinte::xtext::examples::DataModelExtensions»
+
+«REM»convenience template block for use in called templates«ENDREM»
+«DEFINE label FOR Label»«en»«IF nl != null» (nl: «nl»)«ENDIF»«ENDDEFINE»
+
+
+«DEFINE htmlFile FOR DynamicScreen»
+«FILE label.en + ".html"»
+«EXPAND html»
+«ENDFILE»
+«ENDDEFINE»
+
+
+«DEFINE html FOR DynamicScreen»
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" media="all" href="/static/style.css">
+    <script src="/static/prototype.js" type="text/javascript"></script>
+    <script src="/static/inputUtils.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      «EXPAND JavaScript::main»
+    </script>
+    <title>«EXPAND label FOR label»</title>
+  </head>
+  <body>
+
+    <div class="header">Dynamic mockup for «EXPAND label FOR label» screen</div>
+
+    <div class="screen">
+      «EXPAND body»
+    </div>
+
+    «EXPAND eventJS»
+
+  </body>
+</html>
+«ENDDEFINE»
+
+
+«REM»generic HTML error for unhandled types within a polymorphic dispatch«ENDREM»
+«DEFINE unhandledSubType(xpand2::Type superType, String blockName) FOR Object»
+<div class="error">
+  unhandled sub type «this.metaType.name» of «superType.name» in DEFINE-block «blockName»
+  (meta-programmer error)
+</div>
+«ENDDEFINE»
+
+
+«DEFINE body FOR DynamicScreen»
+<div class="onecolumn">
+  <div class="title">External variables</div>
+  «EXPAND inputBlock FOREACH externalVars()»
+</div>
+  «EXPAND topLevelFieldGroup FOREACH groups»
+«ENDDEFINE»
+
+
+«DEFINE eventJS FOR DynamicScreen»
+<script type="text/javascript">
+  «FOREACH allObservables() AS this»
+    «IF isBooleanTyped()»
+      InputUtils.listenToRadio("«id()»_", updateScreen);
+    «ELSE»
+      Event.observe($("«id()»").childElements()[2].childElements()[0], "onchange", updateScreen);
+    «ENDIF»
+  «ENDFOREACH»
+  Event.observe(window, "load", updateScreen);
+</script>
+«ENDDEFINE»
+
+
+«DEFINE topLevelFieldGroup FOR FieldGroup»
+<div id="«syntheticId(this)»" class="onecolumn">
+
+  <div class="title">«EXPAND label FOR label»</div>
+
+  «EXPAND groupElement FOREACH elements»
+
+</div>
+«ENDDEFINE»
+
+«DEFINE groupElement FOR GroupElement»
+  «EXPAND unhandledSubType(GroupElement.metaType, "groupElement")»
+«ENDDEFINE»
+
+«DEFINE groupElement FOR dynamicScreenDsl::Field»
+  «EXPAND inputBlock»
+«ENDDEFINE»
+
+«DEFINE groupElement FOR FieldGroup»
+<div id="«syntheticId(this)»">
+  «EXPAND groupElement FOREACH elements»
+</div>
+«ENDDEFINE»
+
+«DEFINE inputField(ReferenceTarget target) FOR Type»
+  «EXPAND unhandledSubType(Type.metaType, "inputField")»
+«ENDDEFINE»
+
+«DEFINE inputField(ReferenceTarget target) FOR Enumeration»
+<select class="inputSelect" onchange="updateScreen();">
+  <option selected="selected" value="">(none)</option>
+  «EXPAND options FOR literals»
+</select>
+«ENDDEFINE»
+
+«DEFINE inputField(ReferenceTarget target) FOR PrimitiveType»
+  «EXPAND inputElement(target.id(), false)»
+«ENDDEFINE»
+
+
+«DEFINE inputBlock FOR ReferenceTarget»
+<div id="«id()»" class="field">
+  <div class="label">«displayName()»</div>
+  <div class="required"></div>
+  <div class="value">
+    «EXPAND inputField(this) FOR resultType(path)»
+  </div>
+</div>
+«ENDDEFINE»
+
+
+«DEFINE inputElement(String id, Boolean withId) FOR PrimitiveType»
+  «IF realizationType() == MetaPrimitiveType::boolean»
+    <input name="«id»" id="«id»_1" style="display: none;" value="" checked="checked" type="radio" />
+    <input name="«id»" id="«id»_2" class="inputRadio" value="true" type="radio">Yes&nbsp;&nbsp;</input>
+    <input name="«id»" id="«id»_3" class="inputRadio" value="false" type="radio">No</input>
+  «ELSE»
+    <input name="«id»" «IF withId»id="«id»"«ENDIF»
+    «IF { MetaPrimitiveType::int, MetaPrimitiveType::number }.contains(realizationType())»
+      type="text" class="inputNumber" />
+    «ELSEIF realizationType() == MetaPrimitiveType::string »
+      type="text" maxlength="255" class="inputText" />
+    «ELSE»
+      <div class="error">no inputField definition for &gt;PrimitiveType&lt;«name» («realizationType()»)</div>
+    «ENDIF»
+  «ENDIF»
+«ENDDEFINE»
+
+
+«DEFINE options FOR List[EnumLiteral]»
+  «FOREACH this.sortBy( l | l.name ) AS literal»
+    <option value="«indexOf(literal)»">«literal.name»</option>
+  «ENDFOREACH»
+«ENDDEFINE»
+
