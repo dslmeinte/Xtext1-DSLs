@@ -2,7 +2,7 @@ grammar nl.dslmeinte.xtext.examples.WsdlLanguage with org.eclipse.xtext.common.T
 
 generate wsdlLanguage "http://www.dslmeinte.nl/xtext/examples/WsdlLanguage"
 
-import "http://www.dslmeinte.nl/xtext/examples/XsdLanguage" as xsdr
+import "classpath:/nl/dslmeinte/xtext/examples/XsdLanguage.ecore" as xsdr
 
 
 /*
