@@ -7,6 +7,10 @@ import org.eclipse.xtext.conversion.IValueConverterService;
  */
 public class XsdLanguageRuntimeModule extends nl.dslmeinte.xtext.examples.AbstractXsdLanguageRuntimeModule {
 
+	/**
+	 * Binds the {@link IValueConverterService} to our custom implementation
+	 * {@link CustomLanguageConversions}.
+	 */
 	@Override
 	public Class<? extends IValueConverterService> bindIValueConverterService() {
 	  return CustomLanguageConversions.class;

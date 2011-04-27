@@ -15,8 +15,12 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.EcoreUtil2;
 
+/**
+ * Util class with a few convenience methods 
+ */
 public class XsdModelUtil {
 
+	// TODO  JavaDoc
 	public static BuiltinType baseType(NonComplexTypeReference typeReference) {
 		if( typeReference instanceof BuiltinTypeReference ) {
 			return ((BuiltinTypeReference) typeReference).getBuiltin();
@@ -38,18 +42,26 @@ public class XsdModelUtil {
 			);
 	}
 
+	// TODO  JavaDoc
 	public static Restriction restriction(Facet facet) {
 		return (Restriction) facet.eContainer();
 	}
 
+	// TODO  JavaDoc
 	public static BuiltinType baseType(Facet facet) {
 		return baseType(restriction(facet).getTypeRef());
 	}
 
+	// TODO  JavaDoc
 	public static boolean isBaseTypeString(Facet facet) {
 		return baseType(facet) == BuiltinType.STRING;
 	}
 
+	/**
+	 * Computes the value of the (first) max-length restriction (among the
+	 * facets), returning {@literal -1} in case there's no max-length
+	 * restriction.
+	 */
 	public static int maxLength(Restriction restriction) {
 		for( Facet facet : restriction.getFacets() ) {
 			if( facet instanceof MaxLengthFacet ) {
@@ -67,8 +79,8 @@ public class XsdModelUtil {
 		return resolveImport(importElt.eResource(), importElt.getImportURI());
 	}
 
-	public static Schema resolveImport (Resource resource, String importUri) {
-		Resource importResource = EcoreUtil2.getResource(resource, importUri);
+	public static Schema resolveImport (Resource resource, String uri) {
+		Resource importResource = EcoreUtil2.getResource(resource, uri);
 		return (Schema) importResource.getContents().get(0);
 	}
 
