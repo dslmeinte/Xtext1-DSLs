@@ -5,6 +5,7 @@ import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
 var grammarURI = "classpath:/nl/dslmeinte/xtext/examples/AmbiguityDsl.xtext"
+//var grammarURI = "classpath:/nl/dslmeinte/xtext/examples/AmbiguousDsl.xtext"
 var file.extensions = "amb"
 var projectName = "nl.dslmeinte.xtext.examples.ambiguities"
 var runtimeProject = "../${projectName}"
