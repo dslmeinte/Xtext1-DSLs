@@ -1,0 +1,73 @@
+grammar nl.dslmeinte.xtext.examples.AmbiguityDsl with org.eclipse.xtext.common.Terminals
+
+generate ambiguityDsl "http://www.dslmeinte.nl/xtext/examples/AmbiguityDsl"
+
+
+Model:
+	classes+=Class*
+//	statements+=Statement*
+	statements+=LFStatement*
+	;
+
+Class:
+	'class' name=ID '{'
+		features+=Feature*
+	'}'
+	;
+
+InnerClass:
+	'class' name=ID '{'
+		features+=Feature*
+	'}'
+	;
+	/*
+	 * OK, these two parser rules look _remarkably_ the same,
+	 * but it does distinguish top-level classes (Class; can be referenced directly)
+	 * from nested classes (InnerClass; can only be referenced through a "path").
+	 *
+	 * The actual reason to do it like this, is that the next type rule
+	 * would trigger an (infinite) "Pull Up"-cycle w.r.t. to the 'name' feature
+	 * if declared as alternatives between Class and Field (==> Xtext error)...
+	 */
+
+Feature:
+	InnerClass | Field;
+
+Field:
+	'field' name=ID;
+
+Variable:				name=ID;
+Statement:				VariableDeclaration | Assignment;
+VariableDeclaration:	type=TypeRef var=Variable (':=' initValue=STRING)?;
+Assignment:				lhs=AssignSite ':=' rhs=STRING;
+
+// specifies a site to which to assign to:
+AssignSite:		var=[Variable|ID]			tail=FeatureRefTail?;
+// specifies a particular Class or nested Feature:
+TypeRef:		type=[Class|ID]				tail=FeatureRefTail?;
+// specifies the rest of the "path" pointing to a nested Feature:
+FeatureRefTail:	'.' feature=[Feature|ID]	tail=FeatureRefTail?;
+	// scoping: feature must be feature of the containing referenced feature, class or variable
+
+// the valid targets of the RefHead.head cross-reference:
+HeadTarget:		Class | Variable;
+// specifies either a site to assign to or a particular Class or nested Feature:
+RefHead:		target=[HeadTarget] tail=FeatureRefTail?;
+
+LFStatement:
+	RefHead
+	(
+		  ( {LFVariableDeclaration.typeRef=current} var=Variable ( ':=' initValue=STRING )? )
+		| ( {LFAssignment.lhs=current} ':=' rhs=STRING )
+	)
+	;
+	/*
+	 * validation:
+	 *		- LFVariableDeclaration.typeRef.head may not be a Variable
+	 *		- LFAssignment.lhs.current may not be a Class (no static features)
+	 *		- tail element of lhs must be a Field, not a InnerClass
+	 */
+
+// (convenience type:)
+TailedElement:	RefHead | FeatureRefTail;
+
