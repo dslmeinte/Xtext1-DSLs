@@ -10,9 +10,9 @@ import nl.dslmeinte.xtext.examples.ambiguityDsl.FeatureRefTail;
 import nl.dslmeinte.xtext.examples.ambiguityDsl.Field;
 import nl.dslmeinte.xtext.examples.ambiguityDsl.HeadTarget;
 import nl.dslmeinte.xtext.examples.ambiguityDsl.InnerClass;
-import nl.dslmeinte.xtext.examples.ambiguityDsl.LFVariableDeclaration;
 import nl.dslmeinte.xtext.examples.ambiguityDsl.RefHead;
 import nl.dslmeinte.xtext.examples.ambiguityDsl.Variable;
+import nl.dslmeinte.xtext.examples.ambiguityDsl.VariableDeclaration;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -58,7 +58,7 @@ public class AmbiguityDslScopeProvider extends AbstractDeclarativeScopeProvider 
 	}
 
 	private RefHead type(Variable variable) {
-		return ((LFVariableDeclaration) variable.eContainer()).getTypeRef();
+		return ((VariableDeclaration) variable.eContainer()).getTypeRef();
 	}
 
 	private List<Feature> features(RefHead refHead) {
