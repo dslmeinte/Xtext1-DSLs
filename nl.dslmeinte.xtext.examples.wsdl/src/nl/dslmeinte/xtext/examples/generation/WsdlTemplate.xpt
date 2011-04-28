@@ -4,6 +4,7 @@
 «EXTENSION nl::dslmeinte::xtext::examples::generation::WsdlExtensions»
 «EXTENSION org::eclipse::xtend::util::stdlib::io»
 
+
 «DEFINE main FOR Definitions-»
 «FILE name + ".wsdl"-»
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -38,6 +39,10 @@
     «ENDFOREACH -»
   </wsdl:message>
 «ENDDEFINE»
+«REM»
+Slight problem: Xpand (editor) apparently can't register the XSD language meta model
+because of/after the use of import "classpath:/..." in the grammar file...
+«ENDREM»
 
 «DEFINE defRef(String prefix) FOR TopLevelDefinition»
 «( "undefined 'defRef' block for type " + metaType.name ).error()»
