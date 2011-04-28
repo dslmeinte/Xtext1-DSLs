@@ -9,33 +9,39 @@ Model:
 	;
 
 
-Variable:				name=ID;
-
-// specifies the rest of the "path" pointing to a nested Feature:
-FeatureRefTail:	'.' feature=[Feature|ID]	tail=FeatureRefTail?;
-	// scoping: feature must be feature of the containing referenced feature, class or variable
-
-// the valid targets of the RefHead.head cross-reference:
-HeadTarget:		Class | Variable;
-// specifies either a site to assign to or a particular Class or nested Feature:
-RefHead:		target=[HeadTarget] tail=FeatureRefTail?;
+Variable: name=ID;
 
 Statement:
-	RefHead
+	SpecHead
 	(
-		  ( {VariableDeclaration.typeRef=current} var=Variable ( ':=' initValue=STRING )? )
+		  ( {VariableDeclaration.typeSpec=current} var=Variable ( ':=' initValue=STRING )? )
 		| ( {Assignment.lhs=current} ':=' rhs=STRING )
 	)
 	;
 	/*
 	 * validation:
-	 *		- VariableDeclaration.typeRef.head may not be a Variable
-	 *		- Assignment.lhs.current may not be a Class (no static features)
+	 *		- VariableDeclaration.typeSpec.target may not be a Variable
+	 *		- Assignment.lhs.target may not be a Class (no static features)
 	 *		- tail element of lhs must be a Field, not a InnerClass
 	 */
 
+// (head of a) specification of either a site to assign to or a particular Class or nested Feature:
+SpecHead:			target=[HeadTarget] tail=FeatureSpecTail?;
+
+// the valid targets of the SpecHead.target cross-reference:
+HeadTarget:			Class | Variable;
+
+// specifies the rest of the specification "path" pointing to a nested Feature:
+FeatureSpecTail:	'.' feature=[Feature|ID]	tail=FeatureSpecTail?;
+	/*
+	 * scoping: feature must be a feature of
+	 *	- the containing referenced feature (FeatureSpecTail case), or
+	 *	- class or variable (SpecHead case)
+	 */
+
+
 // (convenience type:)
-TailedElement:	RefHead | FeatureRefTail;
+TailedElement:	SpecHead | FeatureSpecTail;
 
 
 Class:

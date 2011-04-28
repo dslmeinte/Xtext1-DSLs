@@ -11,15 +11,15 @@ Model:
 
 Variable:				name=ID;
 Statement:				VariableDeclaration | Assignment;
-VariableDeclaration:	type=TypeRef var=Variable (':=' initValue=STRING)?;
+VariableDeclaration:	typeSpec=TypeSpec var=Variable (':=' initValue=STRING)?;
 Assignment:				lhs=AssignSite ':=' rhs=STRING;
 
 // specifies a site to which to assign to:
-AssignSite:		var=[Variable|ID]			tail=FeatureRefTail?;
+AssignSite:			var=[Variable|ID]			tail=FeatureSpecTail?;
 // specifies a particular Class or nested Feature:
-TypeRef:		type=[Class|ID]				tail=FeatureRefTail?;
+TypeSpec:			clazz=[Class|ID]			tail=FeatureSpecTail?;
 // specifies the rest of the "path" pointing to a nested Feature:
-FeatureRefTail:	'.' feature=[Feature|ID]	tail=FeatureRefTail?;
+FeatureSpecTail:	'.' feature=[Feature|ID]	tail=FeatureSpecTail?;
 	// scoping: feature must be feature of the containing referenced feature, class or variable
 
 
