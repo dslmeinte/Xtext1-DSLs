@@ -1,6 +1,6 @@
 grammar nl.dslmeinte.xtext.examples.DynamicScreenDsl with org.eclipse.xtext.common.Terminals
 
-import "http://www.dslmeinte.nl/xtext/examples/DataModelDsl" as data
+import "classpath:/nl/dslmeinte/xtext/examples/DataModelDsl.ecore" as data
 
 generate dynamicScreenDsl 'http://www.dslmeinte.nl/xtext/examples/DynamicScreenDsl'
 
