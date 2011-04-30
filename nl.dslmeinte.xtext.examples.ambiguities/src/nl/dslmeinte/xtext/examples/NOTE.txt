@@ -1,0 +1,4 @@
+Note that it's not possible to Refactor the common parts of both AmbiguousDsl.xtext and AmbiguityDsl.xtext
+into a common .xtext file, since each .xtext file effectively corresponds to its own EPackage (through
+generation) and we need to alter types coming from the common part by assigning a super type coming
+from a parser rule with alternatives.

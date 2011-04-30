@@ -26,13 +26,16 @@ Statement:
 	 */
 
 // (head of a) specification of either a site to assign to or a particular Class or nested Feature:
-SpecHead:			target=[HeadTarget] tail=FeatureSpecTail?;
+SpecHead:
+	target=[HeadTarget] tail=FeatureSpecTail?;
 
 // the valid targets of the SpecHead.target cross-reference:
-HeadTarget:			Class | Variable;
+HeadTarget:
+	Class | Variable;
 
 // specifies the rest of the specification "path" pointing to a nested Feature:
-FeatureSpecTail:	'.' feature=[Feature|ID]	tail=FeatureSpecTail?;
+FeatureSpecTail:
+	'.' feature=[Feature|ID] tail=FeatureSpecTail?;
 	/*
 	 * scoping: feature must be a feature of
 	 *	- the containing referenced feature (FeatureSpecTail case), or
@@ -40,8 +43,9 @@ FeatureSpecTail:	'.' feature=[Feature|ID]	tail=FeatureSpecTail?;
 	 */
 
 
-// (convenience type:)
-TailedElement:	SpecHead | FeatureSpecTail;
+// (convenience type, for use as Java type:)
+TailedElement:
+	SpecHead | FeatureSpecTail;
 
 
 Class:
