@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Util
+Bundle-SymbolicName: nl.dslmeinte.xtext.util
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.xtext;bundle-version="1.0.2",
+ org.apache.log4j;bundle-version="1.2.15";resolution:=optional
+Export-Package: nl.dslmeinte.xtext.scoping
