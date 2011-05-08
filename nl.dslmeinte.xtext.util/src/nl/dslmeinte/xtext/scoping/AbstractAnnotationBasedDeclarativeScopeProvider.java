@@ -22,7 +22,9 @@ import com.google.common.base.Predicate;
  * {@link EPackage} the scoping provider implementation has better static (i.e.,
  * compile-time) checking.
  * 
- * @author Meinte Boersma
+ * @author Meinte Boersma (see my <a
+ *         href="http://dslmeinte.wordpress.com/">blog</a> and my <a
+ *         href="http://www.dslconsultancy.com/">company web site</a>).
  */
 public class AbstractAnnotationBasedDeclarativeScopeProvider extends AbstractDeclarativeScopeProvider {
 
