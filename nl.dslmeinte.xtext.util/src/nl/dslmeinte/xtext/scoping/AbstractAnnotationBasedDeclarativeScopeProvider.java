@@ -19,8 +19,12 @@ import com.google.common.base.Predicate;
  * Implementation of {@link AbstractDeclarativeScopeProvider} which relies on
  * Java annotations to resolve the polymorphic dispatching rather than on a
  * naming convention. By using the constants defined in the corresponding
- * {@link EPackage} the scoping provider implementation has better static (i.e.,
+ * {@link EPackage} the scoping provider implementation has some static (i.e.,
  * compile-time) checking.
+ * <p>
+ * For an example and some design decisions, check the <a href=
+ * "http://dslmeinte.wordpress.com/2011/05/09/annotation-based-dispatch-for-scope-providers/"
+ * >corresponding blog</a>.
  * 
  * @author Meinte Boersma (see my <a
  *         href="http://dslmeinte.wordpress.com/">blog</a> and my <a
