@@ -1,0 +1,64 @@
+grammar nl.dslmeinte.xtext.examples.DTDLanguage with org.eclipse.xtext.common.Terminals hidden(WS, COMMENT)
+
+import "http://www.eclipse.org/emf/2002/Ecore"
+
+generate dTDLanguage "http://www.dslmeinte.nl/xtext/examples/DTDLanguage"
+
+DTDDefinition:
+	definitions+=Definition+
+	;
+
+Definition:
+	Entity | Element | AttributeList
+	;
+
+Entity:
+	'<!ENTITY' name=ID entity=STRING '>';
+
+Element:
+	'<!ELEMENT' name=ID content=Expression '>'
+	;
+
+Expression:
+	PipeExpression
+	;
+
+PipeExpression returns Expression:
+	CommaExpression ( {Alternatives.alternatives+=current} ( '|' alternatives+=CommaExpression )+ )?
+	;
+
+CommaExpression returns Expression:
+	CardinalityExpression ( {Concatenation.members+=current} (',' members+=CardinalityExpression)+ )?
+	;
+
+CardinalityExpression returns Expression:
+	PrimaryExpression ({Cardinality.nestedExpr=current} cardinality=ElementCardinality)?
+	;
+
+enum ElementCardinality:
+	optional='?' | zeroOrMore='*' | oneOrMore='+'
+	;
+	// (no syntax for default cardinality which is 1 ~ required)
+
+PrimaryExpression returns Expression:
+	'(' Expression ')'
+	| {EmptyContent} 'EMPTY'
+	| {PCData} '#PCDATA'
+	| {ElementReference} element=[Element]
+	;
+
+AttributeList:
+	'<!ATTLIST' element=[Element] attributes+=Attribute+ '>'
+	;
+
+Attribute:
+	name=ID 'CDATA' cardinality=AttributeCardinality
+	;
+
+enum AttributeCardinality:
+	  required='#REQUIRED'
+	| implied='#IMPLIED'
+	;
+
+terminal COMMENT	: '<!--' -> '-->';
+
