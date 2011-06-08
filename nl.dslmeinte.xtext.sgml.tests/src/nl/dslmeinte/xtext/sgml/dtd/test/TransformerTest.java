@@ -34,7 +34,7 @@ public class TransformerTest extends AbstractXtextTests {
 		return (DTDDefinition) resource.getContents().get(0);
 	}
 
-	public void test_full_transformation() {
+	public void test_transformation_of_trivial_dtd_file() {
 		doTransformation("trivial");
 	}
 

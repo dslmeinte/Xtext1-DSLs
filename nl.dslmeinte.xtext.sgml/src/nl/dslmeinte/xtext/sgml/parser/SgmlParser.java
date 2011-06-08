@@ -10,6 +10,7 @@ import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import nl.dslmeinte.xtext.examples.DTDModelUtil;
 import nl.dslmeinte.xtext.examples.dTDLanguage.Alternatives;
 import nl.dslmeinte.xtext.examples.dTDLanguage.Attribute;
 import nl.dslmeinte.xtext.examples.dTDLanguage.Cardinality;
@@ -81,7 +82,7 @@ public class SgmlParser {
 			}
 		});
 		callStack = new Stack<Element>();
-		matchElement(dtdManager.getFirstElement());
+		matchElement(DTDModelUtil.getFirstElement(dtdManager.getDtdDefinition()));
 		tokenStream.expectNextTokenType(EOF);
 	}
 

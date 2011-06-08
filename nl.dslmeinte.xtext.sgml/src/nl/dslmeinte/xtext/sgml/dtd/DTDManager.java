@@ -4,15 +4,13 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 import nl.dslmeinte.xtext.examples.DTDLanguageStandaloneSetup;
-import nl.dslmeinte.xtext.examples.dTDLanguage.Attribute;
-import nl.dslmeinte.xtext.examples.dTDLanguage.AttributeList;
+import nl.dslmeinte.xtext.examples.DTDModelUtil;
 import nl.dslmeinte.xtext.examples.dTDLanguage.DTDDefinition;
-import nl.dslmeinte.xtext.examples.dTDLanguage.Definition;
 import nl.dslmeinte.xtext.examples.dTDLanguage.Element;
 
 import org.eclipse.emf.common.util.URI;
@@ -50,22 +48,15 @@ public class DTDManager {
 		dtdDefinition = (DTDDefinition) resource.getContents().get(0);
 	}
 
-	public Element getFirstElement() {
-		for( Definition definition : dtdDefinition.getDefinitions() ) {
-			if( definition instanceof Element ) {
-				return (Element) definition;
-			}
-		}
-		throw new IllegalArgumentException("no elements in DTD");
-	}
+	private Map<String, Element> elementCache = new HashMap<String, Element>();
 
 	public Element findElement(String name) {
-		for( Definition definition : dtdDefinition.getDefinitions() ) {
-			if( definition instanceof Element && (((Element) definition).getName().equalsIgnoreCase(name)) ) {
-				return( (Element) definition );
-			}
+		Element element = elementCache.get(name);
+		if( element == null ) {
+			element = DTDModelUtil.findElement(name, dtdDefinition);
+			elementCache.put(name, element);
 		}
-		return null;
+		return element;
 	}
 
 	private List<String> keywords = null;
@@ -75,18 +66,7 @@ public class DTDManager {
 			return keywords;
 		}
 
-		Set<String> keywordsSet = new HashSet<String>();
-		for( Definition definition : dtdDefinition.getDefinitions() ) {
-			if( definition instanceof Element ) {
-				keywordsSet.add(((Element) definition).getName());
-			}
-			if( definition instanceof AttributeList ) {
-				for( Attribute attribute : ((AttributeList) definition).getAttributes() ) {
-					keywordsSet.add(attribute.getName());
-				}
-			}
-		}
-		keywords = new ArrayList<String>(keywordsSet);
+		keywords = new ArrayList<String>(DTDModelUtil.getKeywords(dtdDefinition));
 		return keywords;
 	}
 
