@@ -8,10 +8,10 @@ import org.junit.Test;
 public class DTDManagerTest {
 
 	@Test
-	public void test_static_initialization() {
-		DTDManager dtdManager = new DTDManager("src/nl/dslmeinte/xtext/sgml/dtd/test/example.dtd");
+	public void test_initialization_of_DTDManager_and_finding_first_element() {
+		DTDManager dtdManager = new DTDManager("models/trivial.dtd");
 		Assert.assertNotNull(dtdManager);
-		Assert.assertEquals("SISGML", dtdManager.getFirstElement().getName());
+		Assert.assertEquals("ROOT", dtdManager.getFirstElement().getName());
 	}
 
 }

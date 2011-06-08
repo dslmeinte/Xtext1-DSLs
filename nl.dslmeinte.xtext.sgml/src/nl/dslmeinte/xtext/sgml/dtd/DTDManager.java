@@ -1,5 +1,6 @@
 package nl.dslmeinte.xtext.sgml.dtd;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,7 +42,7 @@ public class DTDManager {
 		ResourceSet resourceSet = new ResourceSetImpl();
 		Resource resource = resourceSet.createResource(URI.createURI(path));
 		try {
-			resource.load(getClass().getClassLoader().getResourceAsStream(path), Collections.emptyMap());
+			resource.load(new FileInputStream(path), Collections.emptyMap());
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
