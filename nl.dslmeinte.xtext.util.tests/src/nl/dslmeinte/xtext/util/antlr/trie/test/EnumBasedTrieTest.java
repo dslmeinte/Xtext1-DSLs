@@ -1,7 +1,7 @@
-package nl.dslmeinte.xtext.util.antlr.test;
+package nl.dslmeinte.xtext.util.antlr.trie.test;
 
-import nl.dslmeinte.xtext.util.antlr.EnumBasedTrie;
-import nl.dslmeinte.xtext.util.antlr.CaseInsensitiveTrie;
+import nl.dslmeinte.xtext.util.antlr.trie.CaseInsensitiveTrie;
+import nl.dslmeinte.xtext.util.antlr.trie.EnumBasedTrie;
 
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;

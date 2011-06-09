@@ -12,5 +12,6 @@ Export-Package: nl.dslmeinte.xpand.util,
  nl.dslmeinte.xtend.util,
  nl.dslmeinte.xtext.generation,
  nl.dslmeinte.xtext.scoping,
- nl.dslmeinte.xtext.util.antlr
+ nl.dslmeinte.xtext.util.antlr,
+ nl.dslmeinte.xtext.util.antlr.trie
 Bundle-Vendor: DslConsultancy.com

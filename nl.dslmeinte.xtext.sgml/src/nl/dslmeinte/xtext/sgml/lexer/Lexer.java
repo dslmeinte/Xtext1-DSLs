@@ -34,11 +34,11 @@ abstract public class Lexer extends org.eclipse.xtext.parser.antlr.Lexer {
 			input.consume();
 			type = TokenType.quotedString.ordinal();
 			return;
-		} else {
-			NoViableAltException nvae = new NoViableAltException();
-			recover(nvae);
-			throw nvae;
 		}
+
+		NoViableAltException nvae = new NoViableAltException();
+		recover(nvae);
+		throw nvae;
 	}
 
 }

@@ -1,9 +1,9 @@
-package nl.dslmeinte.xtext.util.antlr.test;
+package nl.dslmeinte.xtext.util.antlr.trie.test;
 
 import java.util.Arrays;
 
-import nl.dslmeinte.xtext.util.antlr.CaseInsensitiveTrie;
-import nl.dslmeinte.xtext.util.antlr.StringBasedTrie;
+import nl.dslmeinte.xtext.util.antlr.trie.CaseInsensitiveTrie;
+import nl.dslmeinte.xtext.util.antlr.trie.StringBasedTrie;
 
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;

@@ -81,7 +81,7 @@ public class SgmlParser {
 			}
 		});
 		callStack = new Stack<Element>();
-		matchElement(DTDModelUtil.getFirstElement(dtdManager.getDtdDefinition()));
+		matchElement(DTDModelUtil.getFirstElement(dtdManager.getDTD()));
 		tokenStream.expectNextTokenType(EOF);
 	}
 

@@ -2,9 +2,9 @@ package nl.dslmeinte.xtext.sgml.lexer;
 
 import java.util.List;
 
-import nl.dslmeinte.xtext.util.antlr.CaseInsensitiveTrie;
-import nl.dslmeinte.xtext.util.antlr.EnumBasedTrie;
-import nl.dslmeinte.xtext.util.antlr.StringBasedTrie;
+import nl.dslmeinte.xtext.util.antlr.trie.CaseInsensitiveTrie;
+import nl.dslmeinte.xtext.util.antlr.trie.EnumBasedTrie;
+import nl.dslmeinte.xtext.util.antlr.trie.StringBasedTrie;
 
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.MismatchedSetException;
@@ -252,6 +252,7 @@ public class SgmlLexer extends Lexer {
 			}
 			type = TokenType.literalContents.ordinal();
 		}
+		// TODO  check whether the literal contents consists solely of whitespace characters, in which case => whitespace
 		this.type = TokenType.literalContents.ordinal();
 		// scan forward until first (unquoted?) '<' (either next tag or comments) or '&' (either regular content or entity reference)
 		while( ( ch = this.input.LA(1) ) != CharStream.EOF && !( ch == '<' || ch == '&' ) ) {

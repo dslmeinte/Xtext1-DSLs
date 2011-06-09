@@ -30,10 +30,10 @@ public class DTDManager {
 		DtdLanguageStandaloneSetup.doSetup();
 	}
 
-	private DocumentTypeDefinition dtdDefinition;
+	private DocumentTypeDefinition dtd;
 
-	public DocumentTypeDefinition getDtdDefinition() {
-		return dtdDefinition;
+	public DocumentTypeDefinition getDTD() {
+		return dtd;
 	}
 
 	public DTDManager(String path) {
@@ -45,7 +45,7 @@ public class DTDManager {
 			throw new RuntimeException(e);
 		}
 		EcoreUtil.resolveAll(resource);
-		dtdDefinition = (DocumentTypeDefinition) resource.getContents().get(0);
+		dtd = (DocumentTypeDefinition) resource.getContents().get(0);
 	}
 
 	private Map<String, Element> elementCache = new HashMap<String, Element>();
@@ -53,7 +53,7 @@ public class DTDManager {
 	public Element findElement(String name) {
 		Element element = elementCache.get(name);
 		if( element == null ) {
-			element = DTDModelUtil.findElement(name, dtdDefinition);
+			element = DTDModelUtil.findElement(name, dtd);
 			elementCache.put(name, element);
 		}
 		return element;
@@ -66,7 +66,7 @@ public class DTDManager {
 			return keywords;
 		}
 
-		keywords = new ArrayList<String>(DTDModelUtil.getKeywords(dtdDefinition));
+		keywords = new ArrayList<String>(DTDModelUtil.getKeywords(dtd));
 		return keywords;
 	}
 
