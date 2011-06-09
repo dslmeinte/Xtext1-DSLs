@@ -90,11 +90,11 @@ public final class XpandCaller {
 	 * template definitions without optional parameters.
 	 */
 	public static void evaluateEmfTemplate (
-		OutputStream body,
+		OutputStream output,
 		String definitionName,
 		Object targetObject)
 	{
-		evaluateEmfTemplate(body, definitionName, targetObject, new Object[0]);
+		evaluateEmfTemplate(output, definitionName, targetObject, new Object[0]);
 	}
 
 	/**
