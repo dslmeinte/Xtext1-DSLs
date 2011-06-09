@@ -6,5 +6,6 @@ Bundle-Version: 0.2.0.qualifier
 Require-Bundle: org.eclipse.xtext;bundle-version="1.0.1",
  org.apache.log4j;bundle-version="1.2.15";resolution:=optional
 Export-Package: nl.dslmeinte.xtext.scoping,
- nl.dslmeinte.xtext.util.antlr
+ nl.dslmeinte.xtext.util.antlr,
+ nl.dslmeinte.xtext.generation
 Bundle-Vendor: DslConsultancy.com

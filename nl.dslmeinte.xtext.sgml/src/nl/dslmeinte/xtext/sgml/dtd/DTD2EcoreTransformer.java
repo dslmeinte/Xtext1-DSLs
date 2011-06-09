@@ -3,13 +3,13 @@ package nl.dslmeinte.xtext.sgml.dtd;
 import java.util.HashMap;
 import java.util.Map;
 
-import nl.dslmeinte.xtext.examples.DTDModelUtil;
-import nl.dslmeinte.xtext.examples.dTDLanguage.Attribute;
-import nl.dslmeinte.xtext.examples.dTDLanguage.DTDDefinition;
-import nl.dslmeinte.xtext.examples.dTDLanguage.Definition;
-import nl.dslmeinte.xtext.examples.dTDLanguage.Element;
-import nl.dslmeinte.xtext.examples.dTDLanguage.EmptyContent;
-import nl.dslmeinte.xtext.examples.dTDLanguage.Expression;
+import nl.dslmeinte.xtext.dtd.DTDModelUtil;
+import nl.dslmeinte.xtext.dtd.dtdModel.Attribute;
+import nl.dslmeinte.xtext.dtd.dtdModel.Definition;
+import nl.dslmeinte.xtext.dtd.dtdModel.DocumentTypeDefinition;
+import nl.dslmeinte.xtext.dtd.dtdModel.Element;
+import nl.dslmeinte.xtext.dtd.dtdModel.EmptyContent;
+import nl.dslmeinte.xtext.dtd.dtdModel.Expression;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -33,9 +33,9 @@ public class DTD2EcoreTransformer extends ToEcoreTransformerSupport {
 	/**
 	 * The source.
 	 */
-	private final DTDDefinition dtdDefinition;
+	private final DocumentTypeDefinition dtdDefinition;
 
-	public DTD2EcoreTransformer(DTDDefinition dtdDefinition) {
+	public DTD2EcoreTransformer(DocumentTypeDefinition dtdDefinition) {
 		this.dtdDefinition = dtdDefinition;
 	}
 

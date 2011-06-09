@@ -3,8 +3,8 @@ package nl.dslmeinte.xtext.sgml.dtd.test;
 import java.io.IOException;
 import java.util.Collections;
 
-import nl.dslmeinte.xtext.examples.DTDLanguageStandaloneSetup;
-import nl.dslmeinte.xtext.examples.dTDLanguage.DTDDefinition;
+import nl.dslmeinte.xtext.dtd.DtdLanguageStandaloneSetup;
+import nl.dslmeinte.xtext.dtd.dtdModel.DocumentTypeDefinition;
 import nl.dslmeinte.xtext.sgml.dtd.DTD2EcoreTransformer;
 
 import org.eclipse.emf.common.util.URI;
@@ -23,15 +23,15 @@ public class TransformerTest extends AbstractXtextTests {
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
-		with(DTDLanguageStandaloneSetup.class);
+		with(DtdLanguageStandaloneSetup.class);
 		new StandaloneSetup().setPlatformUri("..");
 	}
 
-	private DTDDefinition loadModel(URI uri) {
+	private DocumentTypeDefinition loadModel(URI uri) {
 		ResourceSet resourceSet = new ResourceSetImpl();
 		Resource resource = resourceSet.getResource(uri, true);
 		EcoreUtil.resolveAll(resourceSet);
-		return (DTDDefinition) resource.getContents().get(0);
+		return (DocumentTypeDefinition) resource.getContents().get(0);
 	}
 
 	public void test_transformation_of_trivial_dtd_file() {
@@ -39,7 +39,7 @@ public class TransformerTest extends AbstractXtextTests {
 	}
 
 	private void doTransformation(String modelName) {
-		DTDDefinition dtdDefinition = loadModel(URI.createPlatformResourceURI(MODELS_DIR + modelName + ".dtd", true));
+		DocumentTypeDefinition dtdDefinition = loadModel(URI.createPlatformResourceURI(MODELS_DIR + modelName + ".dtd", true));
 //		EPackage ePackage = new DTD2EcoreWithSyntheticsTransformer(dtdDefinition).transform();
 		EPackage ePackage = new DTD2EcoreTransformer(dtdDefinition).transform();
 		ePackage.setName(modelName);

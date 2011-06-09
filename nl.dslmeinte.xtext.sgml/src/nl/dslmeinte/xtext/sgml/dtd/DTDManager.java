@@ -8,10 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import nl.dslmeinte.xtext.examples.DTDLanguageStandaloneSetup;
-import nl.dslmeinte.xtext.examples.DTDModelUtil;
-import nl.dslmeinte.xtext.examples.dTDLanguage.DTDDefinition;
-import nl.dslmeinte.xtext.examples.dTDLanguage.Element;
+import nl.dslmeinte.xtext.dtd.DTDModelUtil;
+import nl.dslmeinte.xtext.dtd.DtdLanguageStandaloneSetup;
+import nl.dslmeinte.xtext.dtd.dtdModel.DocumentTypeDefinition;
+import nl.dslmeinte.xtext.dtd.dtdModel.Element;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -27,12 +27,12 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 public class DTDManager {
 
 	static {
-		DTDLanguageStandaloneSetup.doSetup();
+		DtdLanguageStandaloneSetup.doSetup();
 	}
 
-	private DTDDefinition dtdDefinition;
+	private DocumentTypeDefinition dtdDefinition;
 
-	public DTDDefinition getDtdDefinition() {
+	public DocumentTypeDefinition getDtdDefinition() {
 		return dtdDefinition;
 	}
 
@@ -45,7 +45,7 @@ public class DTDManager {
 			throw new RuntimeException(e);
 		}
 		EcoreUtil.resolveAll(resource);
-		dtdDefinition = (DTDDefinition) resource.getContents().get(0);
+		dtdDefinition = (DocumentTypeDefinition) resource.getContents().get(0);
 	}
 
 	private Map<String, Element> elementCache = new HashMap<String, Element>();

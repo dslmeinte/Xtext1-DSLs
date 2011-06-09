@@ -1,0 +1,25 @@
+«IMPORT dtdModel»
+
+«EXTENSION nl::dslmeinte::xtext::generation::emfExtensions»
+
+«EXTENSION nl::dslmeinte::xtext::dtd::dtdExtensions»
+
+
+«DEFINE main FOR DocumentTypeDefinition»
+«FILE "THX.xtext"»
+grammar nl.dslmeinte.xtext.sgml.THX with nl.dslmeinte.xtext.sgml.dtd.Base
+
+SgmlDocument:
+	OPEN_TAG header1=ID header2=ID header3=STRING header4=STRING?
+		(OPEN_BRACKET entities+=Entity CLOSE_BRACKET)? CLOSE_TAG
+		root=«definitions.typeSelect(Element).first().name»
+	;
+
+«FOREACH definitions.typeSelect(Element) AS elt»
+«elt.name»:
+	OPEN_TAG «elt.name.toUpperCase()» CLOSE_TAG
+	;
+«ENDFOREACH»
+
+«ENDFILE»
+«ENDDEFINE»

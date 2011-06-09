@@ -3,18 +3,18 @@ package nl.dslmeinte.xtext.sgml.dtd;
 import java.util.HashMap;
 import java.util.Map;
 
-import nl.dslmeinte.xtext.examples.DTDModelUtil;
-import nl.dslmeinte.xtext.examples.dTDLanguage.Alternatives;
-import nl.dslmeinte.xtext.examples.dTDLanguage.Attribute;
-import nl.dslmeinte.xtext.examples.dTDLanguage.Cardinality;
-import nl.dslmeinte.xtext.examples.dTDLanguage.Concatenation;
-import nl.dslmeinte.xtext.examples.dTDLanguage.DTDDefinition;
-import nl.dslmeinte.xtext.examples.dTDLanguage.Definition;
-import nl.dslmeinte.xtext.examples.dTDLanguage.Element;
-import nl.dslmeinte.xtext.examples.dTDLanguage.ElementReference;
-import nl.dslmeinte.xtext.examples.dTDLanguage.EmptyContent;
-import nl.dslmeinte.xtext.examples.dTDLanguage.Expression;
-import nl.dslmeinte.xtext.examples.dTDLanguage.PCData;
+import nl.dslmeinte.xtext.dtd.DTDModelUtil;
+import nl.dslmeinte.xtext.dtd.dtdModel.Alternatives;
+import nl.dslmeinte.xtext.dtd.dtdModel.Attribute;
+import nl.dslmeinte.xtext.dtd.dtdModel.Cardinality;
+import nl.dslmeinte.xtext.dtd.dtdModel.Concatenation;
+import nl.dslmeinte.xtext.dtd.dtdModel.Definition;
+import nl.dslmeinte.xtext.dtd.dtdModel.DocumentTypeDefinition;
+import nl.dslmeinte.xtext.dtd.dtdModel.Element;
+import nl.dslmeinte.xtext.dtd.dtdModel.ElementReference;
+import nl.dslmeinte.xtext.dtd.dtdModel.EmptyContent;
+import nl.dslmeinte.xtext.dtd.dtdModel.Expression;
+import nl.dslmeinte.xtext.dtd.dtdModel.PCData;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EAttribute;
@@ -43,9 +43,9 @@ public class DTD2EcoreWithSyntheticsTransformer extends ToEcoreTransformerSuppor
 	/**
 	 * The source.
 	 */
-	private final DTDDefinition dtdDefinition;
+	private final DocumentTypeDefinition dtdDefinition;
 
-	public DTD2EcoreWithSyntheticsTransformer(DTDDefinition dtdDefinition) {
+	public DTD2EcoreWithSyntheticsTransformer(DocumentTypeDefinition dtdDefinition) {
 		this.dtdDefinition = dtdDefinition;
 	}
 
