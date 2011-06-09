@@ -1,0 +1,5 @@
+import dtdModel;
+
+cached List[Attribute] attributes(Element this) :
+	JAVA nl.dslmeinte.xtext.dtd.DTDModelUtil.attributes(nl.dslmeinte.xtext.dtd.dtdModel.Element);
+
