@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.mwe.utils.StandaloneSetup;
 import org.eclipse.xtext.junit.AbstractXtextTests;
 
-public class TransformerTest extends AbstractXtextTests {
+public class DTD2EcoreTransformerTest extends AbstractXtextTests {
 
 	private static final String MODELS_DIR = "nl.dslmeinte.xtext.sgml.tests/models/";
 

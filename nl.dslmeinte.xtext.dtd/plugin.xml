@@ -5,9 +5,9 @@
 
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
-       uri = "http://www.dslmeinte.nl/xtext/examples/DTDLanguage" 
-       class = "nl.dslmeinte.xtext.dtd.dtdLanguage.DtdLanguagePackage"
-       genModel = "nl/dslmeinte/xtext/dtd/DtdLangauge.genmodel" /> 
+       uri = "http://www.dslmeinte.nl/xtext/DTD/model" 
+       class = "nl.dslmeinte.xtext.dtd.dtdModel.DtdModelPackage"
+       genModel = "nl/dslmeinte/xtext/dtd/DtdLanguage.genmodel" /> 
 	
   </extension>
 

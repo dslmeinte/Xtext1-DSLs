@@ -42,7 +42,7 @@ public class DTDModelUtil {
 	 * @return the first {@link Element} in the given
 	 *         {@link DocumentTypeDefinition}.
 	 */
-	public static Element getFirstElement(DocumentTypeDefinition dtd) {
+	public static Element firstElement(DocumentTypeDefinition dtd) {
 		for( Definition definition : dtd.getDefinitions() ) {
 			if( definition instanceof Element ) {
 				return (Element) definition;
@@ -55,7 +55,7 @@ public class DTDModelUtil {
 	 * @return a {@link Set} (of {@link String}s) of all tag keywords in the
 	 *         given {@link DocumentTypeDefinition}.
 	 */
-	public static Set<String> getKeywords(DocumentTypeDefinition dtd) {
+	public static Set<String> keywords(DocumentTypeDefinition dtd) {
 		Set<String> keywordsSet = new HashSet<String>();
 		for( Definition definition : dtd.getDefinitions() ) {
 			if( definition instanceof Element ) {

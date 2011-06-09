@@ -23,7 +23,7 @@ public class DTDManagerTest {
 
 	@Test
 	public void test_finding_first_element() {
-		Assert.assertEquals("ROOT", DTDModelUtil.getFirstElement(dtdManager.getDTD()).getName());
+		Assert.assertEquals("ROOT", DTDModelUtil.firstElement(dtdManager.getDTD()).getName());
 	}
 
 }
