@@ -8,8 +8,8 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 /**
  * Use this class to register components to be used within the IDE.
  */
-public class DtdLangaugeUiModule extends nl.dslmeinte.xtext.dtd.ui.AbstractDtdLangaugeUiModule {
-	public DtdLangaugeUiModule(AbstractUIPlugin plugin) {
+public class DtdLanguageUiModule extends nl.dslmeinte.xtext.dtd.ui.AbstractDtdLanguageUiModule {
+	public DtdLanguageUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}
 }

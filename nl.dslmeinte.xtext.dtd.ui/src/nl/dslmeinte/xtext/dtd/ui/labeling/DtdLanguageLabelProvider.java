@@ -13,10 +13,10 @@ import com.google.inject.Inject;
  * 
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#labelProvider
  */
-public class DtdLangaugeLabelProvider extends DefaultEObjectLabelProvider {
+public class DtdLanguageLabelProvider extends DefaultEObjectLabelProvider {
 
 	@Inject
-	public DtdLangaugeLabelProvider(AdapterFactoryLabelProvider delegate) {
+	public DtdLanguageLabelProvider(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
 	}
 

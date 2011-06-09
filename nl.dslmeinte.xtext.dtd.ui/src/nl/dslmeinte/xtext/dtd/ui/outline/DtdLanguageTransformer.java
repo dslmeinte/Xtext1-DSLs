@@ -9,6 +9,6 @@ import org.eclipse.xtext.ui.editor.outline.transformer.AbstractDeclarativeSemant
  * customization of the default outline structure
  * 
  */
-public class DtdLangaugeTransformer extends AbstractDeclarativeSemanticModelTransformer {
+public class DtdLanguageTransformer extends AbstractDeclarativeSemanticModelTransformer {
 	
 }

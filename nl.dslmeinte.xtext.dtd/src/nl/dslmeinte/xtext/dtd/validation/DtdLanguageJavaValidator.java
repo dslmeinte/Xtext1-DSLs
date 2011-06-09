@@ -1,7 +1,7 @@
 package nl.dslmeinte.xtext.dtd.validation;
  
 
-public class DtdLangaugeJavaValidator extends AbstractDtdLangaugeJavaValidator {
+public class DtdLanguageJavaValidator extends AbstractDtdLanguageJavaValidator {
 
 //	@Check
 //	public void checkGreetingStartsWithCapital(Greeting greeting) {

@@ -6,6 +6,6 @@ package nl.dslmeinte.xtext.dtd;
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
-public class DtdLangaugeRuntimeModule extends nl.dslmeinte.xtext.dtd.AbstractDtdLangaugeRuntimeModule {
+public class DtdLanguageRuntimeModule extends nl.dslmeinte.xtext.dtd.AbstractDtdLanguageRuntimeModule {
 
 }

@@ -1,10 +1,10 @@
-module nl.dslmeinte.xtext.dtd.DtdLangauge
+module nl.dslmeinte.xtext.dtd.DtdLanguage
 
 import org.eclipse.emf.mwe.utils.*
 import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
-var grammarURI = "classpath:/nl/dslmeinte/xtext/dtd/DtdLangauge.xtext"
+var grammarURI = "classpath:/nl/dslmeinte/xtext/dtd/DtdLanguage.xtext"
 var file.extensions = "dtd"
 var projectName = "nl.dslmeinte.xtext.dtd"
 var runtimeProject = "../${projectName}"

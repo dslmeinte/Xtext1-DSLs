@@ -3,10 +3,10 @@
 */
 package nl.dslmeinte.xtext.dtd.ui.contentassist;
 
-import nl.dslmeinte.xtext.dtd.ui.contentassist.AbstractDtdLangaugeProposalProvider;
+import nl.dslmeinte.xtext.dtd.ui.contentassist.AbstractDtdLanguageProposalProvider;
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
-public class DtdLangaugeProposalProvider extends AbstractDtdLangaugeProposalProvider {
+public class DtdLanguageProposalProvider extends AbstractDtdLanguageProposalProvider {
 
 }

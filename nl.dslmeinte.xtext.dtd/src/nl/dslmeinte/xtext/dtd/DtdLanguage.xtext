@@ -1,4 +1,4 @@
-grammar nl.dslmeinte.xtext.dtd.DtdLangauge with org.eclipse.xtext.common.Terminals
+grammar nl.dslmeinte.xtext.dtd.DtdLanguage with org.eclipse.xtext.common.Terminals
 
 generate dtdModel "http://www.dslmeinte.nl/xtext/DTD/model"
 
