@@ -1,5 +1,0 @@
-import dTDLanguage;
-
-cached List[Attribute] attributes(Element this) :
-	JAVA nl.dslmeinte.xtext.examples.DTDModelUtil.attributes(nl.dslmeinte.xtext.examples.dTDLanguage.Element);
-

@@ -1,0 +1,5 @@
+import ecore;
+
+String fileNameWithoutExtension(EObject this) :
+	JAVA nl.dslmeinte.xtext.generation.EmfExtensions.fileNameWithoutExtension(org.eclipse.emf.ecore.EObject);
+
