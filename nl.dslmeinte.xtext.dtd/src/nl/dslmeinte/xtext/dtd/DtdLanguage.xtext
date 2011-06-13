@@ -1,4 +1,13 @@
-grammar nl.dslmeinte.xtext.dtd.DtdLanguage with org.eclipse.xtext.common.Terminals
+/*
+ * The grammar definition for (currently: a sub set of) the DTD language
+ * intended for defining SGML documents.
+ *
+ * (c) 2011 Meinte Boersma (http://www.dslconsultancy.com/)
+ */
+
+grammar nl.dslmeinte.xtext.dtd.DtdLanguage hidden(WS, COMMENT)
+
+import "http://www.eclipse.org/emf/2002/Ecore"	// required for defining terminal rules
 
 generate dtdModel "http://www.dslmeinte.nl/xtext/DTD/model"
 
@@ -64,4 +73,12 @@ terminal COMMENT	: '<!--' -> '-->';
 // convenience super type for implemented a call stack:
 //Rule:
 //	Element | Expression;
+
+// copied from org.eclipse.xtext.common.Terminals:
+terminal ID		: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+terminal STRING	:
+			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
+			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
+		;
+terminal WS		: (' '|'\t'|'\r'|'\n')+;
 

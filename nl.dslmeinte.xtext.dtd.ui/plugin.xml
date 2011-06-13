@@ -6,42 +6,42 @@
     <extension
             point="org.eclipse.ui.editors">
         <editor
-            class="nl.dslmeinte.xtext.dtd.ui.DtdLangaugeExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+            class="nl.dslmeinte.xtext.dtd.ui.DtdLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
             extensions="dtd"
-            id="nl.dslmeinte.xtext.dtd.DtdLangauge"
-            name="DtdLangauge Editor">
+            id="nl.dslmeinte.xtext.dtd.DtdLanguage"
+            name="DtdLanguage Editor">
         </editor>
     </extension>
     <extension
         point="org.eclipse.ui.handlers">
         <handler
-            class="nl.dslmeinte.xtext.dtd.ui.DtdLangaugeExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+            class="nl.dslmeinte.xtext.dtd.ui.DtdLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
             commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
             <activeWhen>
                 <reference
-                    definitionId="nl.dslmeinte.xtext.dtd.DtdLangauge.Editor.opened">
+                    definitionId="nl.dslmeinte.xtext.dtd.DtdLanguage.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
         <handler
-            class="nl.dslmeinte.xtext.dtd.ui.DtdLangaugeExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-            commandId="nl.dslmeinte.xtext.dtd.DtdLangauge.validate">
+            class="nl.dslmeinte.xtext.dtd.ui.DtdLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+            commandId="nl.dslmeinte.xtext.dtd.DtdLanguage.validate">
          <activeWhen>
             <reference
-                    definitionId="nl.dslmeinte.xtext.dtd.DtdLangauge.Editor.opened">
+                    definitionId="nl.dslmeinte.xtext.dtd.DtdLanguage.Editor.opened">
             </reference>
          </activeWhen>
       </handler>
     </extension>
     <extension point="org.eclipse.core.expressions.definitions">
-        <definition id="nl.dslmeinte.xtext.dtd.DtdLangauge.Editor.opened">
+        <definition id="nl.dslmeinte.xtext.dtd.DtdLanguage.Editor.opened">
             <and>
                 <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
                 <with variable="activeEditor">
                     <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-                        value="nl.dslmeinte.xtext.dtd.DtdLangauge" 
+                        value="nl.dslmeinte.xtext.dtd.DtdLanguage" 
                         forcePluginActivation="true"/>
                 </with>        
             </and>
@@ -50,37 +50,37 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            class="nl.dslmeinte.xtext.dtd.ui.DtdLangaugeExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="nl.dslmeinte.xtext.dtd.DtdLangauge"
-            name="DtdLangauge">
-            <keywordReference id="nl.dslmeinte.xtext.dtd.ui.keyword_DtdLangauge"/>
+            class="nl.dslmeinte.xtext.dtd.ui.DtdLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="nl.dslmeinte.xtext.dtd.DtdLanguage"
+            name="DtdLanguage">
+            <keywordReference id="nl.dslmeinte.xtext.dtd.ui.keyword_DtdLanguage"/>
         </page>
         <page
-            category="nl.dslmeinte.xtext.dtd.DtdLangauge"
-            class="nl.dslmeinte.xtext.dtd.ui.DtdLangaugeExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-            id="nl.dslmeinte.xtext.dtd.DtdLangauge.coloring"
+            category="nl.dslmeinte.xtext.dtd.DtdLanguage"
+            class="nl.dslmeinte.xtext.dtd.ui.DtdLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+            id="nl.dslmeinte.xtext.dtd.DtdLanguage.coloring"
             name="Syntax Coloring">
-            <keywordReference id="nl.dslmeinte.xtext.dtd.ui.keyword_DtdLangauge"/>
+            <keywordReference id="nl.dslmeinte.xtext.dtd.ui.keyword_DtdLanguage"/>
         </page>
         <page
-            category="nl.dslmeinte.xtext.dtd.DtdLangauge"
-            class="nl.dslmeinte.xtext.dtd.ui.DtdLangaugeExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-            id="nl.dslmeinte.xtext.dtd.DtdLangauge.templates"
+            category="nl.dslmeinte.xtext.dtd.DtdLanguage"
+            class="nl.dslmeinte.xtext.dtd.ui.DtdLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+            id="nl.dslmeinte.xtext.dtd.DtdLanguage.templates"
             name="Templates">
-            <keywordReference id="nl.dslmeinte.xtext.dtd.ui.keyword_DtdLangauge"/>
+            <keywordReference id="nl.dslmeinte.xtext.dtd.ui.keyword_DtdLanguage"/>
         </page>
     </extension>
     <extension
         point="org.eclipse.ui.keywords">
         <keyword
-            id="nl.dslmeinte.xtext.dtd.ui.keyword_DtdLangauge"
-            label="DtdLangauge"/>
+            id="nl.dslmeinte.xtext.dtd.ui.keyword_DtdLanguage"
+            label="DtdLanguage"/>
     </extension>
     <extension
          point="org.eclipse.ui.commands">
       <command
             description="Trigger expensive validation"
-            id="nl.dslmeinte.xtext.dtd.DtdLangauge.validate"
+            id="nl.dslmeinte.xtext.dtd.DtdLanguage.validate"
             name="Validate">
       </command>
     </extension>
@@ -88,12 +88,12 @@
         <menuContribution
             locationURI="popup:#TextEditorContext?after=group.edit">
              <command
-                 commandId="nl.dslmeinte.xtext.dtd.DtdLangauge.validate"
+                 commandId="nl.dslmeinte.xtext.dtd.DtdLanguage.validate"
                  style="push"
                  tooltip="Trigger expensive validation">
             <visibleWhen checkEnabled="false">
                 <reference
-                    definitionId="nl.dslmeinte.xtext.dtd.DtdLangauge.Editor.opened">
+                    definitionId="nl.dslmeinte.xtext.dtd.DtdLanguage.Editor.opened">
                 </reference>
             </visibleWhen>
          </command>  
@@ -103,7 +103,7 @@
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-                	<reference definitionId="nl.dslmeinte.xtext.dtd.DtdLangauge.Editor.opened">
+                	<reference definitionId="nl.dslmeinte.xtext.dtd.DtdLanguage.Editor.opened">
                 	</reference>
             	</visibleWhen>
 			</command>
@@ -111,11 +111,11 @@
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 	    <handler
-            class="nl.dslmeinte.xtext.dtd.ui.DtdLangaugeExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+            class="nl.dslmeinte.xtext.dtd.ui.DtdLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
             commandId="org.eclipse.xtext.ui.editor.FindReferences">
             <activeWhen>
                 <reference
-                    definitionId="nl.dslmeinte.xtext.dtd.DtdLangauge.Editor.opened">
+                    definitionId="nl.dslmeinte.xtext.dtd.DtdLanguage.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
@@ -126,13 +126,13 @@
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
-			class="nl.dslmeinte.xtext.dtd.ui.DtdLangaugeExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			class="nl.dslmeinte.xtext.dtd.ui.DtdLanguageExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
 			type="dtd">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
         <resourceServiceProvider
-            class="nl.dslmeinte.xtext.dtd.ui.DtdLangaugeExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+            class="nl.dslmeinte.xtext.dtd.ui.DtdLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
             uriExtension="dtd">
         </resourceServiceProvider>
     </extension>
@@ -144,11 +144,11 @@
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler 
-			class="nl.dslmeinte.xtext.dtd.ui.DtdLangaugeExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			class="nl.dslmeinte.xtext.dtd.ui.DtdLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="nl.dslmeinte.xtext.dtd.DtdLangauge.Editor.opened">
+					definitionId="nl.dslmeinte.xtext.dtd.DtdLanguage.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -168,7 +168,7 @@
 				style="push"
 				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="nl.dslmeinte.xtext.dtd.DtdLangauge.Editor.opened"/>
+					<reference definitionId="nl.dslmeinte.xtext.dtd.DtdLanguage.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -177,7 +177,7 @@
    <extension
          point="org.eclipse.ui.ide.markerResolution">
       <markerResolutionGenerator
-            class="nl.dslmeinte.xtext.dtd.ui.DtdLangaugeExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator">
+            class="nl.dslmeinte.xtext.dtd.ui.DtdLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator">
       </markerResolutionGenerator>
    </extension>
 

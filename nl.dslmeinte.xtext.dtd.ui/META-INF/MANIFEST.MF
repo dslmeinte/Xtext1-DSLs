@@ -16,4 +16,4 @@ Require-Bundle: nl.dslmeinte.xtext.dtd;visibility:=reexport,
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: nl.dslmeinte.xtext.dtd.ui.contentassist.antlr
-Bundle-Activator: nl.dslmeinte.xtext.dtd.ui.internal.DtdLangaugeActivator
+Bundle-Activator: nl.dslmeinte.xtext.dtd.ui.internal.DtdLanguageActivator
