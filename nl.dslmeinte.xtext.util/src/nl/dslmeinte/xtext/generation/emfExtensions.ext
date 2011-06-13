@@ -1,5 +1,4 @@
-import ecore;
-
-String fileNameWithoutExtension(EObject this) :
+// the file name of the Resource this EObject resides in, without extension:
+String fileNameWithoutExtension(emf::EObject this) :
 	JAVA nl.dslmeinte.xtext.generation.EmfExtensions.fileNameWithoutExtension(org.eclipse.emf.ecore.EObject);
 
