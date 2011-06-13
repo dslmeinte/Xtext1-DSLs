@@ -6,21 +6,29 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 	// (need to import Ecore because of terminal definitions)
 
 // will be overridden by including grammar to add 'root' feature:
-SgmlDocument:
-	OPEN_TAG header1=ID header2=ID header3=STRING header4=STRING?
-		(OPEN_BRACKET entities+=Entity CLOSE_BRACKET)? CLOSE_TAG
+SgmlDocument hidden(WHITESPACE, HEADER_COMMENTS):
+	OPEN_TAG 'SISGML' ('PUBLIC'|'SYSTEM') header1=QUOTED_STRING header2=QUOTED_STRING?
+		(OPEN_BRACKET entities+=Entity* CLOSE_BRACKET)? CLOSE_TAG
 	;
 
-Entity hidden(WHITESPACE):
-	OPEN_TAG ENTITY_KEYWORD name=ID CLOSE_TAG
+Entity hidden(WHITESPACE, HEADER_COMMENTS):
+	OPEN_TAG ENTITY_KEYWORD name=ID 'SYSTEM'? CLOSE_TAG
 	;
+
+// FIXME  #PCDATA not assigned to anything yet (also get rid of *-card. in generated grammar)...
+
+_PCDATA:
+	_PCDATALiteralContents | _PCDATAEntityReference;
+
+_PCDATALiteralContents:
+	text=LITERAL_CONTENTS;
 
 _PCDATAEntityReference:
 	AMPERSAND entity=[Entity] SEMICOLON;
 
 
 terminal ID  				: ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
-terminal STRING				: 
+terminal QUOTED_STRING		:
 								'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
 								"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
 								;
@@ -39,6 +47,7 @@ terminal WHITESPACE			: (' '|'\t'|'\r'|'\n')+;
 
 terminal OPEN_TAG			: '<';
 terminal CLOSE_TAG			: '>';
+terminal SLASH_SYMBOL		: '/';
 
 terminal DOCTYPE_KEYWORD	: '!DOCTYPE';
 terminal ENTITY_KEYWORD		: '!ENTITY';

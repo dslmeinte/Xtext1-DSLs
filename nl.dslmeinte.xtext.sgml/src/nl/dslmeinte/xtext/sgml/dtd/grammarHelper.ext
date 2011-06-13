@@ -1,0 +1,29 @@
+import dtdModel;
+
+extension nl::dslmeinte::xtext::dtd::dtdExtensions;
+
+
+// returns whether the close tag of this Element is optional:
+Boolean isCloseTagOptional(Element this) : EmptyContent.isAssignableFrom(content.metaType);
+
+// returns whether this Attribute is optional:
+Boolean isOptional(Attribute this) : cardinality == AttributeCardinality::implied;
+
+// returns the Xtext syntax for ElementCardinality literals:
+String syntax(ElementCardinality this) :
+	switch(this) {
+		case ElementCardinality::optional	: '?'
+		case ElementCardinality::zeroOrMore	: '*'
+		case ElementCardinality::oneOrMore	: '+'
+		default	: 'error'
+	};
+
+Boolean canBeEmpty(Element this) :
+		attributes().forAll( a | a.cardinality == AttributeCardinality::implied )
+	&&	content.canBeEmpty();
+
+private Boolean canBeEmpty(Expression this) :
+	// TODO  finish this: add sentinel here and Xtensions corresponding to Expression sub types below
+	true
+	;
+

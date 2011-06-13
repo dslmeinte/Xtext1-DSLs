@@ -7,13 +7,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class DTDManagerTest {
+public class DTDManagerTest extends DTDTestSupport {
 
 	private DTDManager dtdManager;
 
 	@Before
 	public void setup() {
-		dtdManager = new DTDManager("models/trivial.dtd");
+		dtdManager = new DTDManager(createModelsURI("trivial.dtd"));
 	}
 
 	@Test
