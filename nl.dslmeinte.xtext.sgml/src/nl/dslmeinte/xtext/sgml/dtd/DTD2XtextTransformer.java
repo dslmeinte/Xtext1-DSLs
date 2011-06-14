@@ -30,46 +30,63 @@ public class DTD2XtextTransformer {
 	 * Transforms the {@code DTD} file into a Xtext grammar definition and saves
 	 * that to the {@link OutputStream} given.
 	 */
-	public static void transform(URI dtdUri, String nsURI, OutputStream xtextOutput) {
-		new XpandCallConfiguration()
-			.withEmfRegistry()
-			.call(packagePrefix() + "::DTD2Xtext::main")
-			.on(new DTDManager(dtdUri).getDTD())
-			.with("\"" + nsURI + "\"")
-			.to(xtextOutput)
-			.evaluate();
-	}
-
-	private static String packagePrefix() {
-		return DTD2XtextTransformer.class.getPackage().getName().replaceAll("\\.", "::");
+	public static void transform(URI dtdUri, String fqLanguageName, String nsURI, OutputStream xtextOutput) {
+		baseConfig(dtdUri, fqLanguageName, nsURI, xtextOutput).evaluate();
 	}
 
 	/**
 	 * Transforms the {@code DTD} file into a Xtext grammar definition and saves
 	 * that to the {@link URI} given.
 	 */
-	public static void transform(URI dtdUri, String nsURI, URI xtextUri) {
-		String path = ".." + ( xtextUri.isPlatformResource() ? xtextUri.toPlatformString(true) : xtextUri.toFileString() );
+	public static void transform(URI dtdUri, String fqLanguageName, String nsURI, URI xtextUri) {
+		transform(dtdUri, fqLanguageName, nsURI, toOutputStream(xtextUri));
+	}
+
+	private static OutputStream toOutputStream(URI uri) {
+		String path = "../" + ( uri.isPlatformResource() ? uri.toPlatformString(true) : uri.toFileString() );
 		try {
-			FileOutputStream xtextOutput = new FileOutputStream(path);
-			transform(dtdUri, nsURI, xtextOutput);
+			return new FileOutputStream(path);
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	public static void transform(URI dtdUri, String nsURI, OutputStream xtextOutput, String commaSeparatedAdvices) {
-		XpandCallConfiguration config = new XpandCallConfiguration()
-			.withEmfRegistry()
-			.call(packagePrefix() + "::DTD2Xtext::main")
-			.on(new DTDManager(dtdUri).getDTD())
-			.with("\"" + nsURI + "\"")
-			.to(xtextOutput);
+	/**
+	 * Transforms the {@code DTD} file into a Xtext grammar definition and saves
+	 * that to the {@link OutputStream} given.
+	 */
+	public static void transform(URI dtdUri, String fqLanguageName, String nsURI, OutputStream xtextOutput, String commaSeparatedAdvices) {
+		XpandCallConfiguration config = baseConfig(dtdUri, fqLanguageName, nsURI, xtextOutput);
 		String[] advices = commaSeparatedAdvices.split("\\s*,\\s*");
 		for( String advice : advices ) {
 			config.registerAdvice(advice);
 		}
 		config.evaluate();
+	}
+
+	/**
+	 * Transforms the {@code DTD} file into a Xtext grammar definition and saves
+	 * that to the {@link OutputStream} given.
+	 */
+	public static void transform(URI dtdUri, String fqLanguageName, String nsURI, URI xtextUri, String commaSeparatedAdvices) {
+		transform(dtdUri, fqLanguageName, nsURI, toOutputStream(xtextUri), commaSeparatedAdvices);
+	}
+
+	private static XpandCallConfiguration baseConfig(URI dtdUri, String fqLanguageName, String nsURI, OutputStream xtextOutput) {
+		return new XpandCallConfiguration()
+			.withEmfRegistry()
+			.call(packagePrefix() + "::DTD2Xtext::main")
+			.on(new DTDManager(dtdUri).getDTD())
+			.with(fqLanguageName, stringify(nsURI))
+			.to(xtextOutput);
+	}
+
+	private static String packagePrefix() {
+		return DTD2XtextTransformer.class.getPackage().getName().replaceAll("\\.", "::");
+	}
+
+	private static String stringify(String str) {
+		return "\"" + str + "\"";
 	}
 
 }

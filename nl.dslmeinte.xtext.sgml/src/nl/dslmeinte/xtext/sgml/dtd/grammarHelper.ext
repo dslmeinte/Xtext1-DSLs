@@ -1,6 +1,7 @@
 import dtdModel;
 
 extension nl::dslmeinte::xtext::dtd::dtdExtensions;
+extension org::eclipse::xtend::util::stdlib::io;
 
 
 // returns whether the close tag of this Element is optional:
@@ -18,12 +19,21 @@ String syntax(ElementCardinality this) :
 		default	: 'error'
 	};
 
+// returns whether this Element can have no content at all (including Attribute-s):
 Boolean canBeEmpty(Element this) :
 		attributes().forAll( a | a.cardinality == AttributeCardinality::implied )
-	&&	content.canBeEmpty();
+//	&&	content.canBeEmpty()
+	;
 
 private Boolean canBeEmpty(Expression this) :
-	// TODO  finish this: add sentinel here and Xtensions corresponding to Expression sub types below
-	true
-	;
+	// sentinel:
+	( "no Xtension 'canBeEmpty' defined for sub type " + metaType.name + " of " + Expression.metaType.name ).error();
+
+private Boolean canBeEmpty(Alternatives		this) : alternatives.exists( e | e.canBeEmpty() );
+private Boolean canBeEmpty(Concatenation	this) : members.forAll( e | e.canBeEmpty() );
+private Boolean canBeEmpty(Cardinality		this) :    nestedExpr.canBeEmpty()
+												    && cardinality != ElementCardinality::oneOrMore;
+private Boolean canBeEmpty(EmptyContent		this) : true;
+private Boolean canBeEmpty(PCData			this) : true;
+private Boolean canBeEmpty(ElementReference	this) : false;
 
