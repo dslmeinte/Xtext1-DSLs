@@ -1,12 +1,10 @@
 package nl.dslmeinte.xpand.util;
 
-import java.io.IOException;
 import java.io.OutputStream;
 
 import org.eclipse.xpand2.XpandExecutionContext;
 import org.eclipse.xpand2.XpandExecutionContextImpl;
 import org.eclipse.xpand2.XpandFacade;
-import org.eclipse.xpand2.output.OutputImpl;
 import org.eclipse.xtend.typesystem.MetaModel;
 import org.eclipse.xtend.typesystem.emf.EmfRegistryMetaModel;
 
@@ -17,6 +15,7 @@ import org.eclipse.xtend.typesystem.emf.EmfRegistryMetaModel;
  * @author Meinte Boersma  (adaptation)
  * @author Marc Schlienger (original; (c) 2009, see http://www.innoq.com/blog/mrs)
  */
+@Deprecated
 public final class XpandCaller {
 
 	private XpandCaller() {
@@ -95,36 +94,6 @@ public final class XpandCaller {
 		Object targetObject)
 	{
 		evaluateEmfTemplate(output, definitionName, targetObject, new Object[0]);
-	}
-
-	/**
-	 * Custom implementation of {@link OutputImpl} which redirects
-	 * the templates' output directly to a {@link OutputStream}.
-	 * 
-	 * @author Meinte Boersma  (adaptation)
-	 * @author Marc Schlienger (original; (c) 2009, see http://www.innoq.com/blog/mrs)
-	 */
-	private static class OutputStreamWrapper extends OutputImpl {
-
-		private OutputStream body;
-
-		public OutputStreamWrapper (OutputStream body) {
-			this.body = body;
-		}
-
-		public void write (String text) {
-			try {
-				body.write(text.getBytes());
-			} catch (IOException e) {
-				throw new RuntimeException( "Couldn't write to wrapped " + OutputStream.class.getSimpleName() + " instance.", e );
-			}
-		}
-
-		@Override
-		public void openFile (String path, String outletName) {
-			throw new UnsupportedOperationException( getClass().getName() + " can only be used for non-file templates." );
-		}
-
 	}
 
 }

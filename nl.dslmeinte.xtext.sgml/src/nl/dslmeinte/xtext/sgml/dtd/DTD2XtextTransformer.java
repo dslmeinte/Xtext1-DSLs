@@ -4,13 +4,13 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EPackage;
-
-import nl.dslmeinte.xpand.util.XpandCaller;
+import nl.dslmeinte.xpand.util.XpandCallConfiguration;
 import nl.dslmeinte.xtext.dtd.DtdLanguageStandaloneSetup;
 import nl.dslmeinte.xtext.dtd.dtdModel.DtdModelPackage;
 import nl.dslmeinte.xtext.sgml.lexer.SgmlLexer;
+
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EPackage;
 
 /**
  * Transforms a {@code .dtd} file into an Xtext grammar which is compatible with
@@ -31,13 +31,17 @@ public class DTD2XtextTransformer {
 	 * that to the {@link OutputStream} given.
 	 */
 	public static void transform(URI dtdUri, String nsURI, OutputStream xtextOutput) {
-		String packagePrefix = DTD2XtextTransformer.class.getPackage().getName().replaceAll("\\.", "::");
-		XpandCaller.evaluateEmfTemplate(
-				xtextOutput,
-				packagePrefix + "::DTD2Xtext::main",
-				new DTDManager(dtdUri).getDTD(),
-				( "\"" + nsURI + "\"" )
-			);
+		new XpandCallConfiguration()
+			.withEmfRegistry()
+			.call(packagePrefix() + "::DTD2Xtext::main")
+			.on(new DTDManager(dtdUri).getDTD())
+			.with("\"" + nsURI + "\"")
+			.to(xtextOutput)
+			.evaluate();
+	}
+
+	private static String packagePrefix() {
+		return DTD2XtextTransformer.class.getPackage().getName().replaceAll("\\.", "::");
 	}
 
 	/**
@@ -54,6 +58,18 @@ public class DTD2XtextTransformer {
 		}
 	}
 
-	// TODO  add a version of transform which allows to add AOP to the Xpand evaluation
+	public static void transform(URI dtdUri, String nsURI, OutputStream xtextOutput, String commaSeparatedAdvices) {
+		XpandCallConfiguration config = new XpandCallConfiguration()
+			.withEmfRegistry()
+			.call(packagePrefix() + "::DTD2Xtext::main")
+			.on(new DTDManager(dtdUri).getDTD())
+			.with("\"" + nsURI + "\"")
+			.to(xtextOutput);
+		String[] advices = commaSeparatedAdvices.split("\\s*,\\s*");
+		for( String advice : advices ) {
+			config.registerAdvice(advice);
+		}
+		config.evaluate();
+	}
 
 }
