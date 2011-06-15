@@ -39,6 +39,11 @@ public class DTDManager {
 		return dtd;
 	}
 
+	/**
+	 * Tries to load the DTD file specified by the {@link URI} while
+	 * constructing an instance. Throws an {@link IllegalArgumentException} in
+	 * case the DTD file had errors.
+	 */
 	public DTDManager(URI uri) {
 		ResourceSet resourceSet = new ResourceSetImpl();
 		Resource resource = resourceSet.createResource(uri);
@@ -46,6 +51,9 @@ public class DTDManager {
 			resource.load(Collections.emptyMap());
 			EcoreUtil.resolveAll(resource);
 			dtd = (DocumentTypeDefinition) resource.getContents().get(0);
+			if( resource.getErrors().size() > 0 ) {
+				throw new IllegalArgumentException("errors while parsing DTD file");
+			}
 		} catch (IOException e) {
 			System.err.println(e);
 			throw new RuntimeException("could not load DTD file", e);
@@ -54,6 +62,9 @@ public class DTDManager {
 
 	private Map<String, Element> elementCache = new HashMap<String, Element>();
 
+	/**
+	 * @return the first (and only) {@link Element} in the DTD.
+	 */
 	public Element findElement(String name) {
 		Element element = elementCache.get(name);
 		if( element == null ) {
@@ -65,12 +76,15 @@ public class DTDManager {
 
 	private List<String> keywords = null;
 
-	public List<String> getKeywords() {
+	/**
+	 * @return all the tag keywords in the DTD.
+	 */
+	public List<String> tagKeywords() {
 		if( keywords != null ) {
 			return keywords;
 		}
 
-		keywords = new ArrayList<String>(DTDModelUtil.keywords(dtd));
+		keywords = new ArrayList<String>(DTDModelUtil.tagKeywords(dtd));
 		return keywords;
 	}
 

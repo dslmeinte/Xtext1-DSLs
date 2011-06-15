@@ -40,7 +40,7 @@ public class SgmlParser {
 
 	public SgmlParser(DTDManager dtdManager) {
 		this.dtdManager = dtdManager;
-		this.sgmlLexer = new SgmlLexer(dtdManager.getKeywords());
+		this.sgmlLexer = new SgmlLexer(dtdManager.tagKeywords());
 	}
 
 	private TokenStream tokenStream;
