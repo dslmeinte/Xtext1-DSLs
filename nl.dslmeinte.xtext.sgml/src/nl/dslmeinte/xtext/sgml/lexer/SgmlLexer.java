@@ -29,7 +29,7 @@ import org.antlr.runtime.RecognitionException;
  * states they can be emitted, and when:
  * <dl>
  * 	<dt>{@code whitespace}</dt>
- * 		<dd>{@code header}, {@code tag}</dd>
+ * 		<dd>{@code header}, {@code tag}, {@code content} if literal contents if pure whitespace (<b>TODO!</b>)</dd>
  * 	<dt>{@code identifier} matching {@code [0-9A-Za-z_]+}</dt>
  * 		<dd>{@code header}</dd>
  * 	<dt>{@code comments} matching {@code '<!--'} &rarr; {@code '-->'}</dt>
@@ -282,7 +282,7 @@ public class SgmlLexer extends Lexer {
 			}
 			type = TokenType.literalContents.ordinal();
 		}
-		// TODO  check whether the literal contents consists solely of whitespace characters, in which case => whitespace
+		// TODO  check whether the literal contents consists solely of whitespace characters, in which case => whitespace (do this by book-keeping a boolean)
 		this.type = TokenType.literalContents.ordinal();
 		// scan forward until first (unquoted?) '<' (either next tag or comments) or '&' (either regular content or entity reference)
 		while( ( ch = this.input.LA(1) ) != CharStream.EOF && !( ch == '<' || ch == '&' ) ) {
