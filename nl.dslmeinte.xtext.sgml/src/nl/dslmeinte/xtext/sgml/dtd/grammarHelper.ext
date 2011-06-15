@@ -21,9 +21,11 @@ String syntax(ElementCardinality this) :
 
 // returns whether this Element can have no content at all (including Attribute-s):
 Boolean canBeEmpty(Element this) :
-		attributes().forAll( a | a.cardinality == AttributeCardinality::implied )
+		attributesCanBeEmpty()
 //	&&	content.canBeEmpty()
 	;
+
+Boolean attributesCanBeEmpty(Element this) : attributes().forAll( a | a.cardinality == AttributeCardinality::implied );
 
 private Boolean canBeEmpty(Expression this) :
 	// sentinel:

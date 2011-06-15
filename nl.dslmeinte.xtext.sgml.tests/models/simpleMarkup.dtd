@@ -7,7 +7,8 @@
 <!ATTLIST Reference to CDATA #REQUIRED>
 
 <!ELEMENT Section (Par*)>
-<!ATTLIST Section styleName CDATA #IMPLIED>
+<!ATTLIST Section styleName CDATA #REQUIRED
+						condition CDATA #IMPLIED>
 
 <!ELEMENT Par ((em | bf | #PCDATA)*)>
 <!ATTLIST Par styleName CDATA #IMPLIED>

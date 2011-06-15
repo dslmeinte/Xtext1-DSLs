@@ -84,7 +84,7 @@ public class DTDManager {
 			return keywords;
 		}
 
-		keywords = new ArrayList<String>(DTDModelUtil.tagKeywords(dtd));
+		keywords = new ArrayList<String>(DTDModelUtil.keywords(dtd));
 		return keywords;
 	}
 

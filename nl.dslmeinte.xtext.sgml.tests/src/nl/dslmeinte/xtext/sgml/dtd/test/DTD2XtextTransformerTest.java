@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import nl.dslmeinte.xtext.sgml.dtd.DTD2XtextTransformer;
 import nl.dslmeinte.xtext.sgml.dtd.test.support.DTDTestSupport;
 
+import org.eclipse.emf.common.util.URI;
 import org.junit.Test;
 
 public class DTD2XtextTransformerTest extends DTDTestSupport {
@@ -25,7 +26,7 @@ public class DTD2XtextTransformerTest extends DTDTestSupport {
 				createModelsURI("simpleMarkup.dtd"),
 				"nl.dslmeinte.xtext.sgml.dtd.test.SimpleMarkup",
 				"http://dslmeinte.nl/Xtext/sgml/dtd/tests/simpleMarkup",
-				createModelsURI("simpleMarkup-gen.xtext")
+				URI.createPlatformResourceURI("nl.dslmeinte.xtext.sgml.dtd.test.simplemarkup/src/nl/dslmeinte/xtext/sgml/dtd/test/SimpleMarkup.xtext", true)
 			);
 	}
 
