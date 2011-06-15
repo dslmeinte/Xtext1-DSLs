@@ -52,10 +52,10 @@ public class DTDModelUtil {
 	}
 
 	/**
-	 * @return a {@link Set} (of {@link String}s) of all tag keywords in the
-	 *         given {@link DocumentTypeDefinition}.
+	 * @return a {@link Set} (of {@link String}s) of all keywords, i.e.: tag and
+	 *         attribute names, in the given {@link DocumentTypeDefinition}.
 	 */
-	public static Set<String> tagKeywords(DocumentTypeDefinition dtd) {
+	public static Set<String> keywords(DocumentTypeDefinition dtd) {
 		Set<String> keywordsSet = new HashSet<String>();
 		for( Definition definition : dtd.getDefinitions() ) {
 			if( definition instanceof Element ) {

@@ -12,3 +12,7 @@ Element firstElement(DocumentTypeDefinition this) :
 Element findElement(String name, DocumentTypeDefinition dtd) :
 	JAVA nl.dslmeinte.xtext.dtd.DTDModelUtil.findElement(java.lang.String, nl.dslmeinte.xtext.dtd.dtdModel.DocumentTypeDefinition);
 
+// the keywords, i.e.: tag and attribute names, in the DTD:
+Set[String] keywords(DocumentTypeDefinition this) :
+	JAVA nl.dslmeinte.xtext.dtd.DTDModelUtil.keywords(nl.dslmeinte.xtext.dtd.dtdModel.DocumentTypeDefinition);
+
