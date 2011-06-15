@@ -198,7 +198,7 @@ public class SgmlParser {
 
 	private boolean matchKeywordEntry(String keyword2match) {
 		Token token = tokenStream.peek();
-		if( keyword.isTypeOf(token) && token.getText().equalsIgnoreCase(keyword2match) ) {
+		if( tagKeyword.isTypeOf(token) && token.getText().equalsIgnoreCase(keyword2match) ) {
 			tokenStream.consume();
 			return true;
 		}
@@ -341,7 +341,7 @@ public class SgmlParser {
 		while( !closeTagSymbol.isTypeOf(token = tokenStream.peek()) ) {
 			tokenStream.consume();
 			// match attribute name:
-			keyword.expectOf(token);
+			tagKeyword.expectOf(token);
 			String name = token.getText();
 			// match '=':
 			tokenStream.expectNextTokenType(equalsSymbol);

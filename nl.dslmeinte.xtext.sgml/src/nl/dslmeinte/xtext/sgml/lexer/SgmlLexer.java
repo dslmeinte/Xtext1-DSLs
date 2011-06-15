@@ -14,6 +14,35 @@ import org.antlr.runtime.RecognitionException;
 /**
  * Lexer to lexe SGML content, using the principle of lexical state and
  * governing that state itself.
+ * <p>
+ * The three lexical states are:
+ * <dl>
+ * 	<dt>{@code header}</dt>
+ * 		<dd>For the SGML header, including entities and up to the closing {@code >}.</dd>
+ * 	<dt>{@code tag}</dt>
+ * 		<dd>For tags, including opening {@code <} and closing {@code >}.</dd>
+ * 	<dt>{@code content}</dt>
+ * 		<dd>For content outside of the SGML header and tags.</dd>
+ * </dl>
+ * <p>
+ * The following is a table detailing all the {@link TokenType}s, by which
+ * states they can be emitted, and when:
+ * <dl>
+ * 	<dt>{@code whitespace}</dt>
+ * 		<dd>{@code header}, {@code tag}</dd>
+ * 	<dt>{@code identifier} matching {@code [0-9A-Za-z_]+}</dt>
+ * 		<dd>{@code header}</dd>
+ * 	<dt>{@code comments} matching {@code '<!--'} &rarr; {@code '-->'}</dt>
+ * 		<dd>{@code content}</dd>
+ * 	<dt>{@code quotedString}, {@code quotedString}</dt>
+ * 		<dd>{@code header}, {@code tag}</dd>
+ * 	<dt>{@code doctypeKeyword} ~ {@code !DOCTYPE}, {@code entityKeyword} ~ {@code !ENTITY}, {@code openBracketSymbol}, {@code closeBracketSymbol}, {@code headerComments} matching {@code '--'} &rarr; {@code '--'}</dt>
+ * 		<dd>{@code header}</dd>
+ * 	<dt>{@code openTagSymbol}, {@code closeTagSymbol}, {@code tagSlash}, {@code tagKeyword}, {@code equalsSymbol}, {@code singleQuote}, {@code doubleQuote}</dt>
+ * 		<dd>{@code tag}</dd>
+ * 	<dt>{@code entityReference} matching {@code &[0-9A-Za-z_]+;}, {@code literalContents}</dt>
+ * 		<dd>{@code content}</dd>
+ * </dl>
  * 
  * @author Meinte Boersma
  */
@@ -35,10 +64,6 @@ public class SgmlLexer extends Lexer {
 	}
 
 	private LexicalState lexicalState;
-
-	public void signalHeaderEnd() {
-		lexicalState = LexicalState.content;
-	}
 
 	@Override
 	public void mTokens() throws RecognitionException {
@@ -153,6 +178,7 @@ public class SgmlLexer extends Lexer {
 	private void mTokensTag() throws RecognitionException {
 		int ch = input.LA(1);
 		if( ch == '<' ) {
+			// FIXME  comments can't be part of a tag
 			if( input.LA(2) == '!' && input.LA(3) == '-' && input.LA(4) == '-' ) {
 				match("<!--");
 				while( ( ch = input.LA(1) ) != CharStream.EOF && !( ch == '-' && input.LA(2) == '-' && input.LA(3) == '>' ) ) {
@@ -197,7 +223,7 @@ public class SgmlLexer extends Lexer {
 		}
 		String match = tagKeywordsTrie.match(input);
 		if( match != null ) {
-			type = TokenType.keyword.ordinal();
+			type = TokenType.tagKeyword.ordinal();
 			// TODO  emit precise keyword
 			return;
 		}
@@ -210,6 +236,10 @@ public class SgmlLexer extends Lexer {
 		}
 	}
 
+	/**
+	 * Lexes the input until the first opening tag {@code <} (which is not part
+	 * of SGML comments).
+	 */
 	private void mTokensContent() throws RecognitionException {
 		int ch = input.LA(1);
 		if( ch == '<' ) {
@@ -242,7 +272,7 @@ public class SgmlLexer extends Lexer {
 		if( ch == '&' ) {
 			input.consume();
 			// scan ahead to see if it's an entity reference:
-			while( ( ch = input.LA(1) ) != CharStream.EOF && ( ch == '_' || Character.isLetterOrDigit(ch) ) ) {
+			while( ( ch = input.LA(1) ) != CharStream.EOF && isIdentifierPart(ch) ) {
 				input.consume();
 			}
 			if( ch == ';' ) {

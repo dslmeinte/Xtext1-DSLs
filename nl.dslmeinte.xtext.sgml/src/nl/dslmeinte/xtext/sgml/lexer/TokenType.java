@@ -10,7 +10,7 @@ public enum TokenType {
 	// for document header:
 	doctypeKeyword, entityKeyword, openBracketSymbol, closeBracketSymbol, headerComments,
 	// for tags:
-	openTagSymbol, closeTagSymbol, tagSlash, keyword, equalsSymbol, singleQuote, doubleQuote,
+	openTagSymbol, closeTagSymbol, tagSlash, tagKeyword, equalsSymbol, singleQuote, doubleQuote,
 	// for #PCDATA content:
     entityReference, literalContents,
     // for conditional expressions:
