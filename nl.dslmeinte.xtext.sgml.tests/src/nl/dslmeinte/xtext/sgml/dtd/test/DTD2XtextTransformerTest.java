@@ -19,4 +19,14 @@ public class DTD2XtextTransformerTest extends DTDTestSupport {
 			);
 	}
 
+	@Test
+	public void test_transformation_of_simple_markup_dtd() throws FileNotFoundException {
+		DTD2XtextTransformer.transform(
+				createModelsURI("simpleMarkup.dtd"),
+				"nl.dslmeinte.xtext.sgml.dtd.test.SimpleMarkup",
+				"http://dslmeinte.nl/Xtext/sgml/dtd/tests/simpleMarkup",
+				createModelsURI("simpleMarkup-gen.xtext")
+			);
+	}
+
 }
