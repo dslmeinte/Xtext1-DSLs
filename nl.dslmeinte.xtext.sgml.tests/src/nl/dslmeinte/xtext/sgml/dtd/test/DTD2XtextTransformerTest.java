@@ -30,4 +30,15 @@ public class DTD2XtextTransformerTest extends DTDTestSupport {
 			);
 	}
 
+	@Test
+	public void test_transformation_of_simple_markup_dtd_with_conditional_override() throws FileNotFoundException {
+		DTD2XtextTransformer.transform(
+				createModelsURI("simpleMarkup.dtd"),
+				"nl.dslmeinte.xtext.sgml.dtd.test.SimpleMarkupConditional",
+				"http://dslmeinte.nl/Xtext/sgml/dtd/tests/simpleMarkup/conditional",
+				URI.createPlatformResourceURI("nl.dslmeinte.xtext.sgml.dtd.test.simplemarkup/src/nl/dslmeinte/xtext/sgml/dtd/test/SimpleMarkupConditional.xtext", true),
+				getClass().getPackage().getName().replaceAll("\\.", "::") + "::Conditional"
+			);
+	}
+
 }

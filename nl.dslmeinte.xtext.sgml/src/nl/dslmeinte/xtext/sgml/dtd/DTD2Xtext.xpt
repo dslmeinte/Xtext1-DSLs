@@ -16,10 +16,14 @@ generate «fileNameWithoutExtension().toLowerCase()» «nsURI»
 
 «EXPAND element FOREACH definitions.typeSelect(Element)»
 
-«FOREACH keywords() AS keyword»
-terminal «keyword»_KEYWORD : '«keyword»';
-«ENDFOREACH»
+«EXPAND additionalGrammarContent»
 
+// It's useful to have explicit terminal rules for keywords to do keyword discovery:
+«FOREACH keywords() AS keyword»
+terminal «keyword»_KEYWORD : '«keyword»';«ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE additionalGrammarContent FOR DocumentTypeDefinition»
 «ENDDEFINE»
 
 «DEFINE element FOR Element»

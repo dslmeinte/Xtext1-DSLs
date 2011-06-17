@@ -12,24 +12,27 @@ SgmlDocument hidden(WHITESPACE, HEADER_COMMENTS):
 	;
 
 Entity hidden(WHITESPACE, HEADER_COMMENTS):
-	OPEN_TAG_SYMBOL ENTITY_KEYWORD name=ID SYSTEM_KEYWORD? CLOSE_TAG_SYMBOL
+	OPEN_TAG_SYMBOL ENTITY_KEYWORD name=IDENTIFIER SYSTEM_KEYWORD? CLOSE_TAG_SYMBOL
 	;
 
+_PCDATA:
+	contents+=_PCDATAContents;
+
 _PCDATAContents:
-	_PCDATALiteralContents | _PCDATAEntityReference | {Empty} /* epsilon */;
+	_PCDATALiteralContents | _PCDATAEntityReference;
 
 _PCDATALiteralContents:
 	text=LITERAL_CONTENTS;
 
 _PCDATAEntityReference:
-	AMPERSAND_SYMBOL entity=[Entity] SEMICOLON_SYMBOL;
+	AMPERSAND_SYMBOL entity=[Entity|IDENTIFIER] SEMICOLON_SYMBOL;
 
 
 terminal SISGML_KEYWORD			: 'SISGML';
 terminal PUBLIC_KEYWORD			: 'PUBLIC';
 terminal SYSTEM_KEYWORD			: 'SYSTEM';
 
-terminal ID 	 				: ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+terminal IDENTIFIER				: ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 terminal QUOTED_STRING			:
 									'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
 									"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|"'") )* "'"

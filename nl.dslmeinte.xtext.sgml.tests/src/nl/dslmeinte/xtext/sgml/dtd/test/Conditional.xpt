@@ -1,0 +1,30 @@
+«IMPORT dtdModel»
+
+«EXTENSION nl::dslmeinte::xtext::sgml::dtd::grammarHelper»
+«EXTENSION nl::dslmeinte::xtext::dtd::dtdExtensions»
+
+«AROUND nl::dslmeinte::xtext::sgml::dtd::DTD2Xtext::additionalGrammarContent FOR DocumentTypeDefinition»
+ConditionalExpression: ConditionalOR;
+
+ConditionalOR returns ConditionalExpression hidden(WHITESPACE):
+    ConditionalAND ({ConditionalOR.left=current} OR_KEYWORD right=ConditionalAND)*;
+
+ConditionalAND returns ConditionalExpression hidden(WHITESPACE):
+    ConditionalNOT ({ConditionalAND.left=current} AND_KEYWORD right=ConditionalNOT)*;
+
+ConditionalNOT returns ConditionalExpression hidden(WHITESPACE):
+    NOT_SYMBOL? right=ConditionalPrimary;	// TODO  fix this into a correct prefix operator
+
+ConditionalPrimary returns ConditionalExpression hidden(WHITESPACE):
+    {ConditionLiteral} id=IDENTIFIER | OPEN_PARENTHESIS_SYMBOL ConditionalOR CLOSE_PARENTHESIS_SYMBOL;
+
+terminal OR_KEYWORD					: '||';
+terminal AND_KEYWORD				: '&&';
+terminal NOT_SYMBOL					: '!';
+terminal OPEN_PARENTHESIS_SYMBOL	: '(';
+terminal CLOSE_PARENTHESIS_SYMBOL	: ')';
+«ENDAROUND»
+
+«AROUND nl::dslmeinte::xtext::sgml::dtd::DTD2Xtext::attribute FOR Attribute -»
+«IF isOptional()»(«ENDIF»«name»_KEYWORD EQUALS_SYMBOL «name»=«IF name == 'condition'»ConditionalExpression«ELSE»QUOTED_STRING«ENDIF»«IF isOptional()»)?«ENDIF -»
+«ENDAROUND»
