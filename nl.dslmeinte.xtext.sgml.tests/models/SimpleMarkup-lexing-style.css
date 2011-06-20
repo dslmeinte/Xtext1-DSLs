@@ -1,0 +1,51 @@
+div.tokenVisualization {
+	font-family: Monaco;
+	font-size: 11px;
+	white-space: nowrap;
+}
+
+.whitespace {
+	background-color: silver;
+}
+
+.identifier {
+	color: blue;
+}
+
+.sgml_comments, .header_comments {
+	color: green;
+}
+
+.quoted_string {
+	color: orange;
+}
+
+.doctype, .entity {
+	color: purple;
+	font-weight: bold;
+}
+
+.tagKeyword {
+	color: red;
+}
+
+.entity_reference {
+	color: red;
+	background-color: yellow;
+	border: 1px;
+	border-color: green;
+	border-style: dashed;
+}
+
+.literal_contents {
+	background-color: yellow;
+}
+
+/*
+	EOF,
+	openBracketSymbol, closeBracketSymbol,
+	openTagSymbol, closeTagSymbol, tagSlash, keyword, equalsSymbol, singleQuote, doubleQuote,
+	leftParenthesis, rightParenthesis, andOperator, orOperator, notOperator
+	not (explicitly) styled
+*/
+
