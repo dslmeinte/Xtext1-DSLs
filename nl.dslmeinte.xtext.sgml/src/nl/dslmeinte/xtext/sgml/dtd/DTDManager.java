@@ -1,11 +1,11 @@
 package nl.dslmeinte.xtext.sgml.dtd;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import nl.dslmeinte.xtext.dtd.DTDModelUtil;
 import nl.dslmeinte.xtext.dtd.DtdLanguageStandaloneSetup;
@@ -74,17 +74,17 @@ public class DTDManager {
 		return element;
 	}
 
-	private List<String> keywords = null;
+	private Set<String> keywords = null;
 
 	/**
 	 * @return all the tag keywords in the DTD.
 	 */
-	public List<String> tagKeywords() {
+	public Set<String> tagKeywords() {
 		if( keywords != null ) {
 			return keywords;
 		}
 
-		keywords = new ArrayList<String>(DTDModelUtil.keywords(dtd));
+		keywords = new HashSet<String>(DTDModelUtil.keywords(dtd));
 		return keywords;
 	}
 

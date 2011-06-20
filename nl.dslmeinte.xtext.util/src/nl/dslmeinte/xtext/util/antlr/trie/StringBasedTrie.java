@@ -1,6 +1,7 @@
 package nl.dslmeinte.xtext.util.antlr.trie;
 
-import java.util.List;
+import java.util.Set;
+
 
 /**
  * Implementation of {@link CaseInsensitiveTrie} which matches the given list of
@@ -11,17 +12,17 @@ import java.util.List;
  */
 public class StringBasedTrie extends TrieSupport<String> {
 
-	private StringBasedTrie(Iterable<String> keys) {
+	private StringBasedTrie(Set<String> keys) {
 		for( String key : keys ) {
 			register(key, key);
 		}
 	}
 
 	/**
-	 * Creates a {@link CaseInsensitiveTrie} from the given {@link List} of
-	 * {@link String} keys.
+	 * Creates a {@link CaseInsensitiveTrie} from the given {@link Set}
+	 * of {@link String} keys.
 	 */
-	public static StringBasedTrie of(List<String> keys) {
+	public static StringBasedTrie of(Set<String> keys) {
 		return new StringBasedTrie(keys);
 	}
 

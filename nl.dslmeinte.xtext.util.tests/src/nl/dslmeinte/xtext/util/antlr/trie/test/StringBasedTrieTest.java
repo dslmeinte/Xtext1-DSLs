@@ -1,6 +1,7 @@
 package nl.dslmeinte.xtext.util.antlr.trie.test;
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 import nl.dslmeinte.xtext.util.antlr.trie.CaseInsensitiveTrie;
 import nl.dslmeinte.xtext.util.antlr.trie.StringBasedTrie;
@@ -50,7 +51,7 @@ public class StringBasedTrieTest {
 		Assert.assertEquals(CharStream.EOF, input.LA(1));
 	}
 
-	private final CaseInsensitiveTrie<String> trie = StringBasedTrie.of(Arrays.asList("a", "aa"));
+	private final CaseInsensitiveTrie<String> trie = StringBasedTrie.of(new HashSet<String>(Arrays.asList("a", "aa")));
 
 	private String match(String input) {
 		return trie.match(new ANTLRStringStream(input));

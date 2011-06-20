@@ -1,6 +1,6 @@
 package nl.dslmeinte.xtext.sgml.lexer;
 
-import java.util.List;
+import java.util.Set;
 
 import nl.dslmeinte.xtext.util.antlr.trie.CaseInsensitiveTrie;
 import nl.dslmeinte.xtext.util.antlr.trie.EnumBasedTrie;
@@ -48,7 +48,7 @@ import org.antlr.runtime.RecognitionException;
  */
 public class SgmlLexer extends Lexer {
 
-	public SgmlLexer(List<String> keywords) {
+	public SgmlLexer(Set<String> keywords) {
 		super.setCharStream(input);
 		this.tagKeywordsTrie = StringBasedTrie.of(keywords);
 	}
