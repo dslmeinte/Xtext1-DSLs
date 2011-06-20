@@ -28,7 +28,7 @@ public class HtmlTokenVisualizerTest {
 			public String cssClassName(Token token) {
 				return "tokenType" + token.getType();
 			}
-		}, "lexing-style.css");
+		}, "Xtext-lexing-style.css");
 		CharStream input = new ANTLRFileStream("src/nl/dslmeinte/xtext/util/antlr/test/Xtext.xtext");
 		OutputStream output = new FileOutputStream("gen/Xtext_xtext-lexed.html");
 		visualizer.visualize(input, output, "Xtext.xtext: token visualization");
