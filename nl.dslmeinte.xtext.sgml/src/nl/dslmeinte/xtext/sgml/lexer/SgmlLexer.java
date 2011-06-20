@@ -85,7 +85,7 @@ public class SgmlLexer extends Lexer {
 
 	private boolean insideBrackets = false;
 
-	private final CaseInsensitiveTrie<HeaderKeywords> headerKeywordsTrie = EnumBasedTrie.of(HeaderKeywords.class);
+	private final CaseInsensitiveTrie<BaseTerminals> headerKeywordsTrie = EnumBasedTrie.of(BaseTerminals.doctype, BaseTerminals.sisgml, BaseTerminals.public_, BaseTerminals.system, BaseTerminals.entity);
 
 	private void mTokensHeader() throws RecognitionException {
 		int ch = input.LA(1);
@@ -116,12 +116,12 @@ public class SgmlLexer extends Lexer {
 		}
 		if( ch == '!' ) {
 			input.consume();
-			HeaderKeywords keyword = headerKeywordsTrie.match(input);
-			if( keyword == HeaderKeywords.doctype ) {
+			BaseTerminals keyword = headerKeywordsTrie.match(input);
+			if( keyword == BaseTerminals.doctype ) {
 				type = TokenType.doctypeKeyword.ordinal();
 				return;
 			}
-			if( keyword == HeaderKeywords.entity ) {
+			if( keyword == BaseTerminals.entity ) {
 				type = TokenType.entityKeyword.ordinal();
 				return;
 			}
@@ -138,6 +138,7 @@ public class SgmlLexer extends Lexer {
 			consumeQuotedString(ch);
 			return;
 		}
+		// FIXME  instead of identifiers, recognize a fixed set of base terminals
 		if( isIdentifierPart(ch) ) {
 			input.consume();
 			type = TokenType.identifier.ordinal();
@@ -289,11 +290,6 @@ public class SgmlLexer extends Lexer {
 			input.consume();
 		}
 		return;
-	}
-
-	public enum HeaderKeywords {
-		doctype, entity;
-		// TODO  consider adding keywords 'sisgml', 'public' and 'system' as well
 	}
 
 }

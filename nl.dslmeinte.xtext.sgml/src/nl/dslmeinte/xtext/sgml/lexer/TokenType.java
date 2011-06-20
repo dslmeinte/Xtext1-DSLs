@@ -3,6 +3,11 @@ package nl.dslmeinte.xtext.sgml.lexer;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.Token;
 
+/**
+ * <em>Depreciation</em>: replace usage with {@link BaseTerminals}.
+ * 
+ * @author Meinte Boersma
+ */
 public enum TokenType {
 
 	// generic:
