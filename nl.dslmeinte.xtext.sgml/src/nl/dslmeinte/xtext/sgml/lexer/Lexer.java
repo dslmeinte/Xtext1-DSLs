@@ -12,12 +12,22 @@ import org.antlr.runtime.RecognitionException;
  */
 abstract public class Lexer extends org.eclipse.xtext.parser.antlr.Lexer {
 
+	protected final AntlrParserFacade facade;
+
+	protected Lexer(AntlrParserFacade facade) {
+		this.facade = facade;
+	}
+
+	public AntlrParserFacade getAntlrParserFacade() {
+		return facade;
+	}
+
 	protected boolean isIdentifierPart(int ch) {
 		return( Character.isLetterOrDigit(ch) || ch == '_' );
 	}
 
 	protected void consumeWhitespace() {
-		type = TokenType.whitespace.ordinal();
+		type = facade.baseTerminalsMap().get(BaseTerminals.close_tag);
 		input.consume();
 		while( Character.isWhitespace( input.LA(1) ) ) {
 			input.consume();
@@ -32,7 +42,7 @@ abstract public class Lexer extends org.eclipse.xtext.parser.antlr.Lexer {
 		}
 		if( ch != CharStream.EOF ) {
 			input.consume();
-			type = TokenType.quotedString.ordinal();
+			type = facade.baseTerminalsMap().get(BaseTerminals.quoted_string);
 			return;
 		}
 

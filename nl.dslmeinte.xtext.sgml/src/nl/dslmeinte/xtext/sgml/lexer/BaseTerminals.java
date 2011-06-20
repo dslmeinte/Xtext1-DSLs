@@ -24,6 +24,7 @@ public enum BaseTerminals {
 	header_comments,
 	whitespace,
 	literal_contents,
+	entity_reference	// FIXME  remove: split entity reference lexing in 3 parts
 	;
 
 	/**

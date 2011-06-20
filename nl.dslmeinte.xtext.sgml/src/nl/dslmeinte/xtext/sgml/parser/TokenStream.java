@@ -3,8 +3,6 @@ package nl.dslmeinte.xtext.sgml.parser;
 import java.util.ArrayList;
 import java.util.List;
 
-import nl.dslmeinte.xtext.sgml.lexer.TokenType;
-
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.Lexer;
 import org.antlr.runtime.Token;
@@ -79,10 +77,6 @@ public class TokenStream {
 	public void consume() {
 		/* Token token = */nextToken();
 //		logger.debug( "consumed token: |" + token.getText() + "|, index=" + (nextTokenIndex-1) );
-	}
-
-	public void expectNextTokenType(TokenType tokenType) {
-		tokenType.expectOf(nextToken());
 	}
 
 	/**

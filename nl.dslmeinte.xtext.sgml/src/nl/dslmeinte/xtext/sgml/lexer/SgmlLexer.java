@@ -4,12 +4,13 @@ import java.util.Set;
 
 import nl.dslmeinte.xtext.util.antlr.trie.CaseInsensitiveTrie;
 import nl.dslmeinte.xtext.util.antlr.trie.EnumBasedTrie;
-import nl.dslmeinte.xtext.util.antlr.trie.StringBasedTrie;
 
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.MismatchedSetException;
 import org.antlr.runtime.MismatchedTokenException;
 import org.antlr.runtime.RecognitionException;
+
+import com.google.inject.Inject;
 
 /**
  * Lexer to lexe SGML content, using the principle of lexical state and
@@ -25,22 +26,22 @@ import org.antlr.runtime.RecognitionException;
  * 		<dd>For content outside of the SGML header and tags.</dd>
  * </dl>
  * <p>
- * The following is a table detailing all the {@link TokenType}s, by which
+ * The following is a table detailing all the {@link BaseTerminals}s, by which
  * states they can be emitted, and when:
  * <dl>
  * 	<dt>{@code whitespace}</dt>
  * 		<dd>{@code header}, {@code tag}, {@code content} if literal contents if pure whitespace (<b>TODO!</b>)</dd>
  * 	<dt>{@code identifier} matching {@code [0-9A-Za-z_]+}</dt>
  * 		<dd>{@code header}</dd>
- * 	<dt>{@code comments} matching {@code '<!--'} &rarr; {@code '-->'}</dt>
+ * 	<dt>{@code sgml_comments} matching {@code '<!--'} &rarr; {@code '-->'}</dt>
  * 		<dd>{@code content}</dd>
- * 	<dt>{@code quotedString}, {@code quotedString}</dt>
+ * 	<dt>{@code quoted_string}</dt>
  * 		<dd>{@code header}, {@code tag}</dd>
- * 	<dt>{@code doctypeKeyword} ~ {@code !DOCTYPE}, {@code entityKeyword} ~ {@code !ENTITY}, {@code openBracketSymbol}, {@code closeBracketSymbol}, {@code headerComments} matching {@code '--'} &rarr; {@code '--'}</dt>
+ * 	<dt>{@code doctype} ~ {@code !DOCTYPE}, {@code entity} ~ {@code !ENTITY}, {@code open_bracket}, {@code close_bracket}, {@code header_comments} matching {@code '--'} &rarr; {@code '--'}</dt>
  * 		<dd>{@code header}</dd>
- * 	<dt>{@code openTagSymbol}, {@code closeTagSymbol}, {@code tagSlash}, {@code tagKeyword}, {@code equalsSymbol}, {@code singleQuote}, {@code doubleQuote}</dt>
+ * 	<dt>{@code open_tag}, {@code close_tag}, {@code slash}, {@code equals}</dt>
  * 		<dd>{@code tag}</dd>
- * 	<dt>{@code entityReference} matching {@code &[0-9A-Za-z_]+;}, {@code literalContents}</dt>
+ * 	<dt>{@code literal_contents}</dt>
  * 		<dd>{@code content}</dd>
  * </dl>
  * 
@@ -48,9 +49,16 @@ import org.antlr.runtime.RecognitionException;
  */
 public class SgmlLexer extends Lexer {
 
-	public SgmlLexer(Set<String> keywords) {
+	@Inject
+	public SgmlLexer(AntlrParserFacade facade) {
+		super(facade);
 		super.setCharStream(input);
-		this.tagKeywordsTrie = StringBasedTrie.of(keywords);
+	}
+
+	@Deprecated
+	public SgmlLexer(AntlrParserFacade facade, Set<String> keywords) {
+		super(facade);
+		super.setCharStream(input);
 	}
 
 	@Override
@@ -91,12 +99,12 @@ public class SgmlLexer extends Lexer {
 		int ch = input.LA(1);
 		if( ch == '<' ) {
 			input.consume();
-			type = TokenType.openTagSymbol.ordinal();
+			type = facade.map(BaseTerminals.open_tag);
 			return;
 		}
 		if( ch == '>' ) {
 			input.consume();
-			type = TokenType.closeTagSymbol.ordinal();
+			type = facade.map(BaseTerminals.close_tag);
 			if( !insideBrackets ) {
 				lexicalState = LexicalState.content;
 			}
@@ -104,13 +112,13 @@ public class SgmlLexer extends Lexer {
 		}
 		if( ch == '[' ) {
 			input.consume();
-			type = TokenType.openBracketSymbol.ordinal();
+			type = facade.map(BaseTerminals.open_bracket);
 			insideBrackets = true;
 			return;
 		}
 		if( ch == ']' ) {
 			input.consume();
-			type = TokenType.closeBracketSymbol.ordinal();
+			type = facade.map(BaseTerminals.close_bracket);
 			insideBrackets = false;
 			return;
 		}
@@ -118,11 +126,11 @@ public class SgmlLexer extends Lexer {
 			input.consume();
 			BaseTerminals keyword = headerKeywordsTrie.match(input);
 			if( keyword == BaseTerminals.doctype ) {
-				type = TokenType.doctypeKeyword.ordinal();
+				type = facade.map(BaseTerminals.doctype);
 				return;
 			}
 			if( keyword == BaseTerminals.entity ) {
-				type = TokenType.entityKeyword.ordinal();
+				type = facade.map(BaseTerminals.entity);
 				return;
 			}
 			// TODO  provide more useful info than '0'
@@ -138,10 +146,10 @@ public class SgmlLexer extends Lexer {
 			consumeQuotedString(ch);
 			return;
 		}
-		// FIXME  instead of identifiers, recognize a fixed set of base terminals
+		// FIXME  instead of identifiers, recognize a fixed set of base terminals (see out-commented code below)
 		if( isIdentifierPart(ch) ) {
 			input.consume();
-			type = TokenType.identifier.ordinal();
+			type = facade.map(BaseTerminals.identifier);
 			while( ( ch = input.LA(1) ) != CharStream.EOF && isIdentifierPart(ch) ) {
 				input.consume();
 			}
@@ -155,7 +163,7 @@ public class SgmlLexer extends Lexer {
 					input.consume();
 				}
 				if( ch == '-' && input.LA(2) == '-' ) {
-					type = TokenType.headerComments.ordinal();
+					type = facade.map(BaseTerminals.header_comments);
 					input.consume();
 					input.consume();
 					return;
@@ -168,13 +176,20 @@ public class SgmlLexer extends Lexer {
 				}
 			}
 		}
+		/*
+		BaseTerminals keyword = headerKeywordsTrie.match(input);
+		if( keyword != null ) {
+			type = facade.map(keyword);
+			return;
+		}
+		*/
 		// TODO  actually use a sensible BitSet instead of null
 		MismatchedSetException mse = new MismatchedSetException(null, input);
 		recover(mse);
 		throw mse;
 	}
 
-	private CaseInsensitiveTrie<String> tagKeywordsTrie;
+//	private CaseInsensitiveTrie<String> tagKeywordsTrie;
 
 	private void mTokensTag() throws RecognitionException {
 		int ch = input.LA(1);
@@ -187,7 +202,7 @@ public class SgmlLexer extends Lexer {
 				}
 				if( ch != CharStream.EOF ) {
 					match("-->");
-					type = TokenType.comments.ordinal();
+					type = facade.map(BaseTerminals.sgml_comments);
 					return;
 				} else {
 					type = 0;
@@ -199,22 +214,22 @@ public class SgmlLexer extends Lexer {
 			}
 			// no comments, only an open tag symbol:
 			input.consume();
-			type = TokenType.openTagSymbol.ordinal();
+			type = facade.map(BaseTerminals.open_tag);
 			return;
 		}
 		if( ch == '>' ) {
-			type = TokenType.closeTagSymbol.ordinal();
+			type = facade.map(BaseTerminals.close_tag);
 			input.consume();
 			lexicalState = LexicalState.content;
 			return;
 		}
 		if( ch == '=' ) {
-			type = TokenType.equalsSymbol.ordinal();
+			type = facade.map(BaseTerminals.equals);
 			input.consume();
 			return;
 		}
 		if( ch == '/' ) {
-			type = TokenType.tagSlash.ordinal();
+			type = facade.map(BaseTerminals.slash);
 			input.consume();
 			return;
 		}
@@ -222,10 +237,9 @@ public class SgmlLexer extends Lexer {
 			consumeWhitespace();
 			return;
 		}
-		String match = tagKeywordsTrie.match(input);
+		Integer match = facade.tagKeywordsTrie().match(input);
 		if( match != null ) {
-			type = TokenType.tagKeyword.ordinal();
-			// TODO  emit precise keyword
+			type = match;
 			return;
 		}
 		if( ch == '"' || ch == '\'' ) {
@@ -235,6 +249,10 @@ public class SgmlLexer extends Lexer {
 		if( ch == CharStream.EOF ) {
 			return;
 		}
+		// TODO  actually use a sensible BitSet instead of null
+		MismatchedSetException mse = new MismatchedSetException(null, input);
+		recover(mse);
+		throw mse;
 	}
 
 	/**
@@ -251,7 +269,7 @@ public class SgmlLexer extends Lexer {
 				}
 				if( ch != CharStream.EOF ) {
 					match("-->");
-					type = TokenType.comments.ordinal();
+					type = facade.map(BaseTerminals.sgml_comments);
 					return;
 				} else {
 					type = 0;
@@ -263,7 +281,7 @@ public class SgmlLexer extends Lexer {
 			}
 			// no comments, only an open tag symbol:
 			input.consume();
-			type = TokenType.openTagSymbol.ordinal();
+			type = facade.map(BaseTerminals.open_tag);
 			lexicalState = LexicalState.tag;
 			return;
 		}
@@ -278,13 +296,14 @@ public class SgmlLexer extends Lexer {
 			}
 			if( ch == ';' ) {
 				input.consume();
-				type = TokenType.entityReference.ordinal();
+				// FIXME  emit 3 tokens: & - identifier - ;
+				type = facade.map(BaseTerminals.entity_reference);
 				return;
 			}
-			type = TokenType.literalContents.ordinal();
+			type = facade.map(BaseTerminals.literal_contents);
 		}
 		// TODO  check whether the literal contents consists solely of whitespace characters, in which case => whitespace (do this by book-keeping a boolean)
-		this.type = TokenType.literalContents.ordinal();
+		type = facade.map(BaseTerminals.literal_contents);
 		// scan forward until first (unquoted?) '<' (either next tag or comments) or '&' (either regular content or entity reference)
 		while( ( ch = this.input.LA(1) ) != CharStream.EOF && !( ch == '<' || ch == '&' ) ) {
 			input.consume();
