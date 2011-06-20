@@ -3,8 +3,8 @@ package nl.dslmeinte.xtext.util.antlr.trie;
 import org.antlr.runtime.CharStream;
 
 /**
- * Implementation of {@link CaseInsensitiveTrie} which allows sub implementors to govern to way
- * keys and their run-time representations are registered.
+ * Implementation of {@link CaseInsensitiveTrie} which allows sub implementors
+ * to govern to way keys and their run-time representations are registered.
  * 
  * @author Meinte Boersma
  * 
@@ -14,7 +14,7 @@ import org.antlr.runtime.CharStream;
 abstract public class TrieSupport<T> implements CaseInsensitiveTrie<T> {
 
 	protected static class Node<T> {
-	
+
 		/**
 		 * If the current {@link Node} can be considered to terminate on the
 		 * last character, then {@link EnumBasedTrie#match(String)} is going to return
@@ -29,7 +29,7 @@ abstract public class TrieSupport<T> implements CaseInsensitiveTrie<T> {
 
 	private Node<T> root = new Node<T>();
 
-	protected void register(T t, String key) {
+	protected void register(String key, T t) {
 		Node<T> currentNode = root;
 		for( int i = 0; i < key.length(); i++ ) {
 			int charIndex = Character.toLowerCase(key.charAt(i)) - 'a';

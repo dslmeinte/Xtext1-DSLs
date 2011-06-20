@@ -4,7 +4,7 @@ import java.util.Set;
 
 
 /**
- * Implementation of {@link CaseInsensitiveTrie} which matches the given list of
+ * Implementation of {@link CaseInsensitiveTrie} which matches the given set of
  * {@link String}s, returning the matched {@link String} verbatim in case of a
  * match.
  * 
@@ -19,8 +19,8 @@ public class StringBasedTrie extends TrieSupport<String> {
 	}
 
 	/**
-	 * Creates a {@link CaseInsensitiveTrie} from the given {@link Set}
-	 * of {@link String} keys.
+	 * Creates a {@link CaseInsensitiveTrie} from the given set of
+	 * {@link String} keys.
 	 */
 	public static StringBasedTrie of(Set<String> keys) {
 		return new StringBasedTrie(keys);

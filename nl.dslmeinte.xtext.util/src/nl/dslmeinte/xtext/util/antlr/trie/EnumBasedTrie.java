@@ -16,7 +16,7 @@ public class EnumBasedTrie<T extends Enum<T>> extends TrieSupport<T> {
 
 	private EnumBasedTrie(T...enumLiterals) {
 		for( T enumLiteral : enumLiterals ) {
-			register(enumLiteral, escapeFromJava(enumLiteral.name()));
+			register(escapeFromJava(enumLiteral.name()), enumLiteral);
 		}
 	}
 
