@@ -43,7 +43,7 @@ terminal «keyword»_KEYWORD : '«keyword»';«ENDFOREACH»
 «DEFINE sgmlDocumentRuleOverride FOR DocumentTypeDefinition»
 // override from Base to include root (of right type):
 SgmlDocument hidden(WHITESPACE, HEADER_COMMENTS):
-	OPEN_TAG_SYMBOL SISGML_BASE_KEYWORD (PUBLIC_BASE_KEYWORD | SYSTEM_BASE_KEYWORD) header1=QUOTED_STRING header2=QUOTED_STRING?
+	OPEN_TAG_SYMBOL DOCTYPE_BASE_KEYWORD SISGML_BASE_KEYWORD (PUBLIC_BASE_KEYWORD | SYSTEM_BASE_KEYWORD) header1=QUOTED_STRING header2=QUOTED_STRING?
 		(OPEN_BRACKET_SYMBOL entities+=Entity* CLOSE_BRACKET_SYMBOL)? CLOSE_TAG_SYMBOL
 		root=«definitions.typeSelect(Element).first().name»
 	;
