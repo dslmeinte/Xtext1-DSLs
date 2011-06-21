@@ -1,5 +1,5 @@
 <!DOCTYPE SISGML PUBLIC "simpleMarkup.dtd">
 <Content>
-	<Reference>
-	</Reference>
+	<Reference TO="foo">
+	<Section styleName="abstract" condition="true"><!--foo--><Par>bar</Par></Section>
 </Content>

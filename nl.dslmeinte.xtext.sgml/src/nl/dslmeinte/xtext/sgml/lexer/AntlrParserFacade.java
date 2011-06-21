@@ -18,6 +18,8 @@ import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
  * Essentially, an instance of this class represents the knowledge about the
  * token types (coded as integers) of a certain language.
  * 
+ * TODO  replace a lot of the low-level reflection stuff with AntlrTokenDefProvider?
+ * 
  * @author Meinte Boersma
  */
 public class AntlrParserFacade {

@@ -20,7 +20,7 @@ div.tokenVisualization {
 	color: orange;
 }
 
-.doctype, .entity {
+.doctype, .entity, .sisgml, .public_, .system {
 	color: purple;
 	font-weight: bold;
 }

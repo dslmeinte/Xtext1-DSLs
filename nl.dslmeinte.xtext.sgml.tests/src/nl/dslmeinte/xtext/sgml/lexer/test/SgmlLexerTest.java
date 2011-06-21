@@ -5,9 +5,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import nl.dslmeinte.xtext.sgml.dtd.test.support.BaseTerminalsMockupMetadata;
-import nl.dslmeinte.xtext.sgml.dtd.test.support.LexerTestSupport;
 import nl.dslmeinte.xtext.sgml.lexer.AntlrParserFacade;
+import nl.dslmeinte.xtext.sgml.lexer.BaseTerminals;
 import nl.dslmeinte.xtext.sgml.lexer.SgmlLexer;
+import nl.dslmeinte.xtext.sgml.lexer.InternalModelPopulatingSgmlLexer;
 import nl.dslmeinte.xtext.util.antlr.HtmlTokenVisualizer;
 import nl.dslmeinte.xtext.util.antlr.HtmlTokenVisualizer.TokenToStyleMapper;
 
@@ -17,7 +18,7 @@ import org.antlr.runtime.Token;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SgmlLexerTest extends LexerTestSupport<SgmlLexer> {
+public class SgmlLexerTest {
 
 	public static class SimpleMarkupMockupMetadata extends BaseTerminalsMockupMetadata {
 
@@ -35,8 +36,16 @@ public class SgmlLexerTest extends LexerTestSupport<SgmlLexer> {
 
 	}
 
+	private final InternalModelPopulatingSgmlLexer lexer;
+
+	private final SgmlLexer sgmlLexer;
+
 	public SgmlLexerTest() {
-		super(new SgmlLexer(new AntlrParserFacade(SimpleMarkupMockupMetadata.class)));
+		sgmlLexer = new SgmlLexer();
+		sgmlLexer.setFacade(new AntlrParserFacade(SimpleMarkupMockupMetadata.class));
+		lexer = new InternalModelPopulatingSgmlLexer();
+		lexer.setSgmlLexer(sgmlLexer);
+		sgmlLexer.setBaseLexer(lexer);
 	}
 
 	@Test
@@ -52,7 +61,7 @@ public class SgmlLexerTest extends LexerTestSupport<SgmlLexer> {
 
 	@Test
 	public void visualize_lexing_of_simple_markup_file() throws IOException {
-		final AntlrParserFacade facade = lexer.getAntlrParserFacade();
+		final AntlrParserFacade facade = sgmlLexer.getFacade();
 		HtmlTokenVisualizer visualizer = new HtmlTokenVisualizer(lexer, new TokenToStyleMapper() {
 			@Override
 			public String cssClassName(Token token) {
@@ -70,6 +79,28 @@ public class SgmlLexerTest extends LexerTestSupport<SgmlLexer> {
 		OutputStream output = new FileOutputStream("models/simpleMarkup-lexed.html");
 		visualizer.visualize(input, output, "simpleMarkup.sm: token visualization");
 		output.close();
+	}
+
+	protected void assertNextToken(BaseTerminals type) {
+		Token token = lexer.nextToken();
+//		System.out.format( "|%s| [actual=%s, expected=%s]\n", token.getText(), TokenType.values()[token.getType()], type );
+		assertTokenType(type, token);
+	}
+
+	protected void assertTokenType(BaseTerminals type, Token token) {
+		Assert.assertEquals(sgmlLexer.getFacade().baseTerminalsMap().get(type).intValue(), token.getType());
+	}
+
+	protected Token nextNonWhitespaceToken() {
+		Token token = lexer.nextToken();
+		while( ( token != null ) && ( token.getType() == sgmlLexer.getFacade().map(BaseTerminals.whitespace) ) ) {
+			token = lexer.nextToken();
+		}
+		return token;
+	}
+
+	protected void assertNextNonWhitespaceToken(BaseTerminals baseTerminal) {
+		assertTokenType(baseTerminal, nextNonWhitespaceToken());
 	}
 
 }
