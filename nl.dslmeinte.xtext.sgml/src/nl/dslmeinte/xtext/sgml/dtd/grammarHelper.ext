@@ -19,23 +19,19 @@ String syntax(ElementCardinality this) :
 		default	: 'error'
 	};
 
-// returns whether this Element can have no content at all (including Attribute-s):
-Boolean canBeEmpty(Element this) :
-		attributesCanBeEmpty()
-//	&&	content.canBeEmpty()
-	;
-
+// returns whether this Element can have no 0 Attribute-s:
 Boolean attributesCanBeEmpty(Element this) : attributes().forAll( a | a.cardinality == AttributeCardinality::implied );
 
-private Boolean canBeEmpty(Expression this) :
-	// sentinel:
-	( "no Xtension 'canBeEmpty' defined for sub type " + metaType.name + " of " + Expression.metaType.name ).error();
+Boolean canHaveFollowingContent(Element this) : content.canHaveFollowingContent();
 
-private Boolean canBeEmpty(Alternatives		this) : alternatives.exists( e | e.canBeEmpty() );
-private Boolean canBeEmpty(Concatenation	this) : members.forAll( e | e.canBeEmpty() );
-private Boolean canBeEmpty(Cardinality		this) :    nestedExpr.canBeEmpty()
-												    && cardinality != ElementCardinality::oneOrMore;
-private Boolean canBeEmpty(EmptyContent		this) : true;
-private Boolean canBeEmpty(PCData			this) : true;
-private Boolean canBeEmpty(ElementReference	this) : false;
+private Boolean canHaveFollowingContent(Expression this) :
+	// sentinel:
+	( "no Xtension 'canHaveFollowingContent' defined for sub type " + metaType.name + " of " + Expression.metaType.name ).error();
+
+private Boolean canHaveFollowingContent(Alternatives this)		: alternatives.exists( e | e.canHaveFollowingContent() );
+private Boolean canHaveFollowingContent(Concatenation this)		: members.get(0).canHaveFollowingContent();
+private Boolean canHaveFollowingContent(Cardinality this)		: canHaveFollowingContent(nestedExpr);
+private Boolean canHaveFollowingContent(EmptyContent this)		: false;
+private Boolean canHaveFollowingContent(PCData this)			: true;
+private Boolean canHaveFollowingContent(ElementReference this)	: false;
 

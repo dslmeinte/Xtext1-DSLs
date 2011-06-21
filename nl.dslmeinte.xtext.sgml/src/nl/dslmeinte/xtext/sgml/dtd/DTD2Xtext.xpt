@@ -27,7 +27,7 @@ terminal «keyword»_KEYWORD : '«keyword»';«ENDFOREACH»
 «ENDDEFINE»
 
 «DEFINE element FOR Element»
-«name» hidden(SGML_COMMENTS):
+«name» hidden(SGML_COMMENTS«IF !canHaveFollowingContent()», WHITESPACE«ENDIF»):
 	«name»_tagOpen=«name»_tagOpen
 	«EXPAND expression FOR content»
 	«IF isCloseTagOptional()»(«ENDIF»«name»_tagClose=«name»_tagClose«IF isCloseTagOptional()»)?«ENDIF»
