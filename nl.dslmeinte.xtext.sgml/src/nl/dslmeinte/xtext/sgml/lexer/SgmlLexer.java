@@ -202,7 +202,7 @@ public class SgmlLexer {
 			consumeWhitespace();
 			return;
 		}
-		if( ch == '"' || ch == '\'' ) {
+		if( isQuoteChar(ch) ) {
 			consumeQuotedString(ch);
 			return;
 		}
@@ -304,7 +304,7 @@ public class SgmlLexer {
 			setType(match);
 			return;
 		}
-		if( ch == '"' || ch == '\'' ) {
+		if( isQuoteChar(ch) ) {
 			consumeQuotedString(ch);
 			return;
 		}
@@ -375,7 +375,6 @@ public class SgmlLexer {
 			}
 			setType(facade.map(literal_contents));
 		}
-		// TODO  check whether the literal contents consists solely of whitespace characters, in which case => whitespace (do this by book-keeping a boolean)
 		setType(facade.map(literal_contents));
 		// scan forward until first (unquoted?) '<' (either next tag or comments) or '&' (either regular content or entity reference)
 		while( ( ch = LA(1) ) != CharStream.EOF && !( ch == '<' || ch == '&' ) ) {
@@ -395,6 +394,13 @@ public class SgmlLexer {
 		return( Character.isLetterOrDigit(ch) || ch == '_' );
 	}
 
+	private boolean isQuoteChar(int ch) {
+		return( ch == '"' || ch == '\'' );
+	}
+
+	/**
+	 * Assertion: only called in case {@code Character.isIdentifierPart( LA(1) )}.
+	 */
 	private void consumeIdentifier() {
 		setType(facade.map(identifier));
 		consume();
@@ -414,6 +420,12 @@ public class SgmlLexer {
 		}
 	}
 
+	/**
+	 * Assertion: only called in case {@code Character.isQuoteChar( LA(1) )}.
+	 * 
+	 * @param quoteChar
+	 *            the value of {@code LA(1)}
+	 */
 	private void consumeQuotedString(int quoteChar) throws RecognitionException {
 		consume();
 		int ch;
