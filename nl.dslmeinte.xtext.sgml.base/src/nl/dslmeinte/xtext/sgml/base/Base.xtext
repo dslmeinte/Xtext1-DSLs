@@ -13,7 +13,7 @@ SgmlDocument hidden(WHITESPACE, HEADER_COMMENTS):
 	;
 
 Entity hidden(WHITESPACE, HEADER_COMMENTS):
-	OPEN_TAG_SYMBOL ENTITY_BASE_KEYWORD name=IDENTIFIER SYSTEM_BASE_KEYWORD? CLOSE_TAG_SYMBOL
+	OPEN_TAG_SYMBOL ENTITY_BASE_KEYWORD name=IDENTIFIER SYSTEM_BASE_KEYWORD? path=QUOTED_STRING CLOSE_TAG_SYMBOL
 	;
 
 _PCDATA:
@@ -66,5 +66,7 @@ terminal HEADER_COMMENTS		: '--' -> '--';
 
 terminal WHITESPACE				: (' '|'\t'|'\r'|'\n')+;
 
-terminal LITERAL_CONTENTS		: ( !( '<' | '&' ) )+;
+terminal LITERAL_CONTENTS		: '#something that never matches...';
+
+terminal ENTITY_REFERENCE		: '&amp;';		// TODO  remove after SgmlLexer has been adapted
 

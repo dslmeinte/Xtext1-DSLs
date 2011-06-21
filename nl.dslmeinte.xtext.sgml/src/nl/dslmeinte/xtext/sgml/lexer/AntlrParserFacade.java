@@ -47,19 +47,11 @@ public class AntlrParserFacade {
 		return tagKeywordsTrie;
 	}
 
-	protected final Map<String, Integer> tagKeywordsMap = new HashMap<String, Integer>();
-	protected final Map<Integer, String> reverseTagKeywordsMap = new HashMap<Integer, String>();
+	private final Map<String, Integer> tagKeywordsMap = new HashMap<String, Integer>();
+	private final Map<Integer, String> reverseTagKeywordsMap = new HashMap<Integer, String>();
 
-	protected final Map<BaseTerminals, Integer> baseTerminalsMap = new EnumMap<BaseTerminals, Integer>(BaseTerminals.class);
-	protected final Map<Integer, BaseTerminals> reverseBaseTerminalsMap = new HashMap<Integer, BaseTerminals>();
-
-	/**
-	 * @return a {@link Map} from {@link BaseTerminals} literals to the
-	 *         {@code int} identifier in the generated internal ANTLR parser.
-	 */
-	public Map<BaseTerminals, Integer> baseTerminalsMap() {
-		return baseTerminalsMap;
-	}
+	private final Map<BaseTerminals, Integer> baseTerminalsMap = new EnumMap<BaseTerminals, Integer>(BaseTerminals.class);
+	private final Map<Integer, BaseTerminals> reverseBaseTerminalsMap = new HashMap<Integer, BaseTerminals>();
 
 	public int map(BaseTerminals baseTerminal) {
 		return baseTerminalsMap.get(baseTerminal).intValue();

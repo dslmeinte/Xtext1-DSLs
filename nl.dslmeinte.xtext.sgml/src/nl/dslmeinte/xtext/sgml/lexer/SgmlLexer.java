@@ -11,6 +11,9 @@ import org.antlr.runtime.RecognitionException;
 
 import com.google.inject.Inject;
 
+import static nl.dslmeinte.xtext.sgml.lexer.BaseTerminals.*;
+
+
 /**
  * Lexer to lexe SGML content, using the principle of lexical state and
  * governing that state itself.
@@ -70,6 +73,9 @@ public class SgmlLexer {
 	}
 
 	private void setType(int type) {
+		if( type == 0 ) {
+			throw new IllegalArgumentException("token type can't be 0");
+		}
 		baseLexer.setType(type);
 	}
 
@@ -113,11 +119,13 @@ public class SgmlLexer {
 		lexicalState = LexicalState.header;
 	}
 
-	private enum LexicalState {
+	// the following 2 features have protected visibility to allow per-state testing:
+
+	protected enum LexicalState {
 		header, tag, content;
 	}
 
-	private LexicalState lexicalState;
+	protected LexicalState lexicalState;
 
 	public void mTokens() throws RecognitionException {
 		switch( lexicalState ) {
@@ -145,44 +153,44 @@ public class SgmlLexer {
 
 	private boolean insideBrackets = false;
 
-	private final CaseInsensitiveTrie<BaseTerminals> headerKeywordsTrie = EnumBasedTrie.of(BaseTerminals.doctype, BaseTerminals.sisgml, BaseTerminals.public_, BaseTerminals.system, BaseTerminals.entity);
+	private final CaseInsensitiveTrie<BaseTerminals> headerKeywordsTrie = EnumBasedTrie.of(doctype, sisgml, public_, system, entity);
 
 	private void mTokensHeader() throws RecognitionException {
 		int ch = LA(1);
 		if( ch == '<' ) {
 			consume();
-			setType(facade.map(BaseTerminals.open_tag));
+			setType(facade.map(open_tag));
 			return;
 		}
 		if( ch == '>' ) {
 			consume();
-			setType(facade.map(BaseTerminals.close_tag));
 			if( !insideBrackets ) {
 				lexicalState = LexicalState.content;
 			}
+			setType(facade.map(close_tag));
 			return;
 		}
 		if( ch == '[' ) {
 			consume();
-			setType(facade.map(BaseTerminals.open_bracket));
 			insideBrackets = true;
+			setType(facade.map(open_bracket));
 			return;
 		}
 		if( ch == ']' ) {
 			consume();
-			setType(facade.map(BaseTerminals.close_bracket));
 			insideBrackets = false;
+			setType(facade.map(close_bracket));
 			return;
 		}
 		if( ch == '!' ) {
 			consume();
 			BaseTerminals keyword = headerKeywordsTrie.match(input());
-			if( keyword == BaseTerminals.doctype ) {
-				setType(facade.map(BaseTerminals.doctype));
+			if( keyword == doctype ) {
+				setType(facade.map(doctype));
 				return;
 			}
-			if( keyword == BaseTerminals.entity ) {
-				setType(facade.map(BaseTerminals.entity));
+			if( keyword == entity ) {
+				setType(facade.map(entity));
 				return;
 			}
 			// TODO  provide more useful info than '0'
@@ -201,15 +209,19 @@ public class SgmlLexer {
 		if( ch == '-' && LA(2) == '-' ) {
 			consume();
 			consume();
+			setType(facade.map(header_comments));
 			while( true ) {
 				while( ( ch = LA(1) ) != CharStream.EOF && ch != '-' ) {
 					consume();
 				}
-				if( ch == '-' && LA(2) == '-' ) {
-					setType(facade.map(BaseTerminals.header_comments));
+				if( ch == '-' ) {
 					consume();
-					consume();
-					return;
+					if( LA(1) == '-' ) {
+						consume();
+						return;
+					} else {
+						continue;
+					}
 				}
 				if( ch == CharStream.EOF ) {
 					// TODO  actually use a sensible BitSet instead of null
@@ -222,6 +234,10 @@ public class SgmlLexer {
 		BaseTerminals keyword = headerKeywordsTrie.match(input());
 		if( keyword != null ) {
 			setType(facade.map(keyword));
+			return;
+		}
+		if( isIdentifierPart(ch) ) {
+			consumeIdentifier();
 			return;
 		}
 		// TODO  actually use a sensible BitSet instead of null
@@ -248,7 +264,7 @@ public class SgmlLexer {
 				}
 				if( ch != CharStream.EOF ) {
 					match("-->");
-					setType(facade.map(BaseTerminals.sgml_comments));
+					setType(facade.map(sgml_comments));
 					return;
 				} else {
 					setType(0);
@@ -260,22 +276,22 @@ public class SgmlLexer {
 			}
 			// no comments, only an open tag symbol:
 			consume();
-			setType(facade.map(BaseTerminals.open_tag));
+			setType(facade.map(open_tag));
 			return;
 		}
 		if( ch == '>' ) {
-			setType(facade.map(BaseTerminals.close_tag));
+			setType(facade.map(close_tag));
 			consume();
 			lexicalState = LexicalState.content;
 			return;
 		}
 		if( ch == '=' ) {
-			setType(facade.map(BaseTerminals.equals));
+			setType(facade.map(equals));
 			consume();
 			return;
 		}
 		if( ch == '/' ) {
-			setType(facade.map(BaseTerminals.slash));
+			setType(facade.map(slash));
 			consume();
 			return;
 		}
@@ -322,7 +338,7 @@ public class SgmlLexer {
 				}
 				if( ch != CharStream.EOF ) {
 					match("-->");
-					setType(facade.map(BaseTerminals.sgml_comments));
+					setType(facade.map(sgml_comments));
 					return;
 				} else {
 					setType(0);
@@ -334,7 +350,7 @@ public class SgmlLexer {
 			}
 			// no comments, only an open tag symbol:
 			consume();
-			setType(facade.map(BaseTerminals.open_tag));
+			setType(facade.map(open_tag));
 			lexicalState = LexicalState.tag;
 			return;
 		}
@@ -354,13 +370,13 @@ public class SgmlLexer {
 			if( ch == ';' ) {
 				consume();
 				// FIXME  emit 3 tokens: & - identifier - ;
-				setType(facade.map(BaseTerminals.entity_reference));
+				setType(facade.map(entity_reference));
 				return;
 			}
-			setType(facade.map(BaseTerminals.literal_contents));
+			setType(facade.map(literal_contents));
 		}
 		// TODO  check whether the literal contents consists solely of whitespace characters, in which case => whitespace (do this by book-keeping a boolean)
-		setType(facade.map(BaseTerminals.literal_contents));
+		setType(facade.map(literal_contents));
 		// scan forward until first (unquoted?) '<' (either next tag or comments) or '&' (either regular content or entity reference)
 		while( ( ch = LA(1) ) != CharStream.EOF && !( ch == '<' || ch == '&' ) ) {
 			consume();
@@ -379,8 +395,19 @@ public class SgmlLexer {
 		return( Character.isLetterOrDigit(ch) || ch == '_' );
 	}
 
+	private void consumeIdentifier() {
+		setType(facade.map(identifier));
+		consume();
+		while( isIdentifierPart(LA(1)) ) {
+			consume();
+		}
+	}
+
+	/**
+	 * Assertion: only called in case {@code Character.isWhitespace( LA(1) )}.
+	 */
 	private void consumeWhitespace() {
-		setType(facade.baseTerminalsMap().get(BaseTerminals.whitespace));
+		setType(facade.map(whitespace));
 		consume();
 		while( Character.isWhitespace( LA(1) ) ) {
 			consume();
@@ -393,9 +420,10 @@ public class SgmlLexer {
 		while( ( ch = LA(1) ) != quoteChar && ch != CharStream.EOF ) {
 			consume();
 		}
+
 		if( ch != CharStream.EOF ) {
 			consume();
-			setType(facade.baseTerminalsMap().get(BaseTerminals.quoted_string));
+			setType(facade.map(quoted_string));
 			return;
 		}
 
