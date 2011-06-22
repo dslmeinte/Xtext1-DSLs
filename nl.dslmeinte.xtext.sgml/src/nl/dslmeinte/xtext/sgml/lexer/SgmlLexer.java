@@ -1,7 +1,12 @@
 package nl.dslmeinte.xtext.sgml.lexer;
 
+import static nl.dslmeinte.xtext.sgml.lexer.BaseTerminals.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import nl.dslmeinte.xtext.util.antlr.trie.CaseInsensitiveTrie;
-import nl.dslmeinte.xtext.util.antlr.trie.EnumBasedTrie;
+import nl.dslmeinte.xtext.util.antlr.trie.MapBasedTrie;
 
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.MismatchedSetException;
@@ -10,8 +15,6 @@ import org.antlr.runtime.NoViableAltException;
 import org.antlr.runtime.RecognitionException;
 
 import com.google.inject.Inject;
-
-import static nl.dslmeinte.xtext.sgml.lexer.BaseTerminals.*;
 
 
 /**
@@ -57,11 +60,11 @@ public class SgmlLexer {
 	 * +---------+
 	 */
 
-	@Inject
 	private WeavableAntlrLexer baseLexer;
 
 	public void setBaseLexer(WeavableAntlrLexer baseLexer) {
 		this.baseLexer = baseLexer;
+		init();
 	}
 
 	private int LA(int i) {
@@ -73,9 +76,9 @@ public class SgmlLexer {
 	}
 
 	private void setType(int type) {
-		if( type == 0 ) {
-			throw new IllegalArgumentException("token type can't be 0");
-		}
+//		if( type == 0 ) {
+//			throw new IllegalArgumentException("token type can't be 0");
+//		}
 		baseLexer.setType(type);
 	}
 
@@ -98,13 +101,14 @@ public class SgmlLexer {
 	 * +--------+
 	 */
 
-	private AntlrParserFacade facade;
+	private final TokenFacade facade;
 
-	public void setFacade(AntlrParserFacade facade) {
+	@Inject
+	public SgmlLexer(TokenFacade facade) {
 		this.facade = facade;
 	}
 
-	public AntlrParserFacade getFacade() {
+	public TokenFacade getFacade() {
 		return facade;
 	}
 
@@ -127,7 +131,7 @@ public class SgmlLexer {
 
 	protected LexicalState lexicalState;
 
-	public void mTokens() throws RecognitionException {
+	public void mTokensDelegate() throws RecognitionException {
 		switch( lexicalState ) {
 			case header: {
 				mTokensHeader();
@@ -153,7 +157,17 @@ public class SgmlLexer {
 
 	private boolean insideBrackets = false;
 
-	private final CaseInsensitiveTrie<BaseTerminals> headerKeywordsTrie = EnumBasedTrie.of(doctype, sisgml, public_, system, entity);
+	private final static CaseInsensitiveTrie<BaseTerminals> headerKeywordsTrie;
+
+	static {
+		Map<String, BaseTerminals> map = new HashMap<String, BaseTerminals>();
+		map.put("DOCTYPE", doctype);
+		map.put("ENTITY", entity);
+		map.put(sisgml.getKeyword(), sisgml);
+		map.put(public_.getKeyword(), public_);
+		map.put(system.getKeyword(), system);
+		headerKeywordsTrie = MapBasedTrie.of(map);
+	}
 
 	private void mTokensHeader() throws RecognitionException {
 		int ch = LA(1);
@@ -299,7 +313,7 @@ public class SgmlLexer {
 			consumeWhitespace();
 			return;
 		}
-		Integer match = facade.tagKeywordsTrie().match(input());
+		Integer match = facade.nonBaseKeywordsTrie().match(input());
 		if( match != null ) {
 			setType(match);
 			return;

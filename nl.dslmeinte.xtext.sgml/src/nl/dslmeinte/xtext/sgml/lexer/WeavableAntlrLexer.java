@@ -12,9 +12,7 @@ import org.antlr.runtime.RecognitionException;
  * 
  * @author Meinte Boersma
  */
-interface WeavableAntlrLexer {
-
-	void setSgmlLexer(SgmlLexer sgmlLexer);
+public interface WeavableAntlrLexer {
 
 	CharStream input();
 

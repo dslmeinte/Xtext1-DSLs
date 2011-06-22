@@ -8,12 +8,12 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 // will be overridden by including grammar to add 'root' feature:
 SgmlDocument hidden(WHITESPACE, HEADER_COMMENTS):
-	OPEN_TAG_SYMBOL DOCTYPE_BASE_KEYWORD SISGML_BASE_KEYWORD (PUBLIC_BASE_KEYWORD | SYSTEM_BASE_KEYWORD) header1=QUOTED_STRING header2=QUOTED_STRING?
-		(OPEN_BRACKET_SYMBOL entities+=Entity* CLOSE_BRACKET_SYMBOL)? CLOSE_TAG_SYMBOL
+	'<' '!DOCTYPE' 'SISGML' ('PUBLIC' | 'SYSTEM') header1=QUOTED_STRING header2=QUOTED_STRING?
+		('<' entities+=Entity* ']')? '>'
 	;
 
 Entity hidden(WHITESPACE, HEADER_COMMENTS):
-	OPEN_TAG_SYMBOL ENTITY_BASE_KEYWORD name=IDENTIFIER SYSTEM_BASE_KEYWORD? path=QUOTED_STRING CLOSE_TAG_SYMBOL
+	'<' '!ENTITY' name=IDENTIFIER 'SYSTEM'? path=QUOTED_STRING '>'
 	;
 
 _PCDATA:
@@ -26,33 +26,7 @@ _PCDATALiteralContents:
 	text=LITERAL_CONTENTS;
 
 _PCDATAEntityReference:
-	AMPERSAND_SYMBOL entity=[Entity|IDENTIFIER] SEMICOLON_SYMBOL;
-
-
-terminal SISGML_BASE_KEYWORD	: 'SISGML';
-terminal PUBLIC_BASE_KEYWORD	: 'PUBLIC';
-terminal SYSTEM_BASE_KEYWORD	: 'SYSTEM';
-
-/*
- * Note that we give the keywords which are known beforehand
- * their own, separate terminal rules so that it is easier
- * to marry up the generic SgmlLexer part to the custom
- * Lexer.
- */
-
-terminal OPEN_TAG_SYMBOL		: '<';
-terminal CLOSE_TAG_SYMBOL		: '>';
-terminal SLASH_SYMBOL			: '/';
-terminal EQUALS_SYMBOL			: '=';
-
-terminal DOCTYPE_BASE_KEYWORD	: '!DOCTYPE';
-terminal ENTITY_BASE_KEYWORD	: '!ENTITY';
-
-terminal OPEN_BRACKET_SYMBOL	: '[';
-terminal CLOSE_BRACKET_SYMBOL	: ']';
-
-terminal AMPERSAND_SYMBOL		: '&';
-terminal SEMICOLON_SYMBOL		: ';';
+	'&' entity=[Entity|IDENTIFIER] ';';
 
 
 terminal IDENTIFIER				: ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

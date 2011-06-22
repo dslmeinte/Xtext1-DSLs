@@ -14,11 +14,11 @@ public enum BaseTerminals {
 
 	// TODO  add enough meta data so Base.xtext could be generated from this description (or vice versa - SSP)
 
-	sisgml, public_, system,
-	open_tag, close_tag, slash, equals,
-	doctype, entity,
-	open_bracket, close_bracket,
-	ampersand, semicolon,
+	sisgml("SISGML"), public_("PUBLIC"), system("SYSTEM"),
+	open_tag("<"), close_tag(">"), slash("/"), equals("="),
+	doctype("!DOCTYPE"), entity("!ENTITY"),
+	open_bracket("["), close_bracket("]"),
+	ampersand("&"), semicolon(";"),
 	identifier, quoted_string,
 	sgml_comments,
 	header_comments,
@@ -26,6 +26,34 @@ public enum BaseTerminals {
 	literal_contents,
 	entity_reference	// FIXME  remove: split entity reference lexing in 3 parts
 	;
+
+	private String keyword;
+
+	private BaseTerminals() {
+		this.keyword = null;
+	}
+
+	private BaseTerminals(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public boolean isKeyword() {
+		return keyword != null;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public static BaseTerminals fromKeyword(String keyword) {
+		for( BaseTerminals terminal : values() ) {
+			if( terminal.isKeyword() && terminal.getKeyword().equalsIgnoreCase(keyword) ) {
+				return terminal;
+			}
+		}
+
+		return null;
+	}
 
 	/**
 	 * Maps a {@link String} to a {@link BaseTerminals} literal, based on name

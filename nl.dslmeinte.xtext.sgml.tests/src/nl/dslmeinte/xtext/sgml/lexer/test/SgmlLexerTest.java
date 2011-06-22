@@ -3,12 +3,13 @@ package nl.dslmeinte.xtext.sgml.lexer.test;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.lang.reflect.Field;
 
-import nl.dslmeinte.xtext.sgml.dtd.test.support.BaseTerminalsMockupMetadata;
-import nl.dslmeinte.xtext.sgml.lexer.AntlrParserFacade;
 import nl.dslmeinte.xtext.sgml.lexer.BaseTerminals;
-import nl.dslmeinte.xtext.sgml.lexer.InternalModelPopulatingSgmlLexer;
 import nl.dslmeinte.xtext.sgml.lexer.SgmlLexer;
+import nl.dslmeinte.xtext.sgml.lexer.SgmlLexerForParsing;
+import nl.dslmeinte.xtext.sgml.lexer.TokenFacade;
+import nl.dslmeinte.xtext.sgml.test.simplemarkup.SimpleMarkupStandaloneSetup;
 import nl.dslmeinte.xtext.util.antlr.HtmlTokenVisualizer;
 import nl.dslmeinte.xtext.util.antlr.HtmlTokenVisualizer.TokenToStyleMapper;
 
@@ -20,39 +21,39 @@ import org.eclipse.xtext.parser.antlr.Lexer;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.google.inject.Injector;
+
 public class SgmlLexerTest {
 
-	public static class SimpleMarkupMockupMetadata extends BaseTerminalsMockupMetadata {
+	private final Injector injector = new SimpleMarkupStandaloneSetup().createInjector();
+	private final SgmlLexer sgmlLexer = injector.getInstance(SgmlLexer.class);
 
-		private static int id = 1;
+	@Test
+	public void test_SgmlLexer_provision() {
+		Assert.assertNotNull(sgmlLexer);
+		Assert.assertNotNull(sgmlLexer.getFacade());
+	}
 
-		public static final int RULE_CONTENT_KEYWORD = id++;
-		public static final int RULE_REFERENCE_KEYWORD = id++;
-		public static final int RULE_TO_KEYWORD = id++;
-		public static final int RULE_SECTION_KEYWORD = id++;
-		public static final int RULE_STYLENAME_KEYWORD = id++;
-		public static final int RULE_CONDITION_KEYWORD = id++;
-		public static final int RULE_PAR_KEYWORD = id++;
-		public static final int RULE_EM_KEYWORD = id++;
-		public static final int RULE_BF_KEYWORD = id++;
-
+	@Test
+	public void test_SgmlLexerForParsing_provision() {
+		SgmlLexerForParsing baseLexer = injector.getInstance(SgmlLexerForParsing.class);
+		Assert.assertNotNull(baseLexer);
+		try {
+			Field field = SgmlLexerForParsing.class.getDeclaredField("sgmlLexer");
+			field.setAccessible(true);
+			Assert.assertNotNull(field.get(baseLexer));
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("could not access (value of) field " + SgmlLexerForParsing.class.getSimpleName() + "#simpleLexer" );
+		}
 	}
 
 	private Lexer lexer;
 
-	private final SgmlLexer sgmlLexer;
-
-	public SgmlLexerTest() {
-		sgmlLexer = new SgmlLexer();
-		sgmlLexer.setFacade(new AntlrParserFacade(SimpleMarkupMockupMetadata.class));
-	}
-
-	private Lexer provideLexer(CharStream input) {
-		InternalModelPopulatingSgmlLexer baseLexer = new InternalModelPopulatingSgmlLexer(null);
-		baseLexer.setSgmlLexer(sgmlLexer);
-		sgmlLexer.setBaseLexer(baseLexer);
+	private void initLexer(CharStream input) {
+		SgmlLexerForParsing baseLexer = injector.getInstance(SgmlLexerForParsing.class);
 		baseLexer.setCharStream(input);
-		return baseLexer;
+		this.lexer = baseLexer;
 	}
 
 	@Test
@@ -66,7 +67,7 @@ public class SgmlLexerTest {
 	}
 
 	private void lexe(CharStream input) throws IOException {
-		lexer = provideLexer(input);
+		initLexer(input);
 		Token token = lexer.nextToken();
 		while( token.getType() != CharStream.EOF ) {
 			if( token.getType() == 0 ) {
@@ -78,8 +79,8 @@ public class SgmlLexerTest {
 
 	@Test
 	public void visualize_lexing_of_simple_markup_file() throws IOException {
-		final AntlrParserFacade facade = sgmlLexer.getFacade();
-		lexer = provideLexer(null);
+		final TokenFacade facade = sgmlLexer.getFacade();
+		initLexer(null);
 		HtmlTokenVisualizer visualizer = new HtmlTokenVisualizer(lexer, new TokenToStyleMapper() {
 			@Override
 			public String cssClassName(Token token) {
@@ -87,10 +88,7 @@ public class SgmlLexerTest {
 				if( facade.isBase(type) ) {
 					return facade.asBase(type).name();
 				}
-				if( facade.isTag(type) ) {
-					return "tagKeyword";
-				}
-				throw new IllegalArgumentException("couldn't map token type id=" + type + " to style");
+				return "tagKeyword";
 			}
 		}, "SimpleMarkup-lexing-style.css");
 		CharStream input = new ANTLRFileStream("models/simpleMarkup.sm");

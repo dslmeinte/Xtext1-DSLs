@@ -5,7 +5,7 @@ import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
 var grammarURI = "classpath:/nl/dslmeinte/xtext/sgml/base/Base.xtext"
-var file.extensions = "base"
+var file.extensions = "#base"	// matches as bad as possible...
 var projectName = "nl.dslmeinte.xtext.sgml.base"
 var runtimeProject = "../${projectName}"
 

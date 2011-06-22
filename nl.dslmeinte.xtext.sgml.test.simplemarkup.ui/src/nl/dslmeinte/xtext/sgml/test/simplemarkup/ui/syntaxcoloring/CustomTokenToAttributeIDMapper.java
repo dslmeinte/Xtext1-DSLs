@@ -19,13 +19,10 @@ public class CustomTokenToAttributeIDMapper extends AbstractAntlrTokenToAttribut
 
 	@Override
 	protected String calculateId(String tokenName, int tokenType) {
-		if( tokenName.endsWith("_KEYWORD") ) {
+		if( tokenName.startsWith("'") && tokenName.endsWith("'") && tokenName.length() > 3 ) {
 			return DefaultHighlightingConfiguration.KEYWORD_ID;
 		}
-		if( tokenName.endsWith("_SYMBOL") ) {
-			return DefaultHighlightingConfiguration.PUNCTUATION_ID;		// is actually the same as DEFAULT_ID...
-		}
-		if( tokenName.endsWith("_COMMENTS") ) {
+		if( tokenName.equals("RULE_SGML_COMMENTS") || tokenName.equals("RULE_HEADER_COMMENTS") ) {
 			return DefaultHighlightingConfiguration.COMMENT_ID;
 		}
 		if( tokenName.equals("RULE_QUOTED_STRING") ) {

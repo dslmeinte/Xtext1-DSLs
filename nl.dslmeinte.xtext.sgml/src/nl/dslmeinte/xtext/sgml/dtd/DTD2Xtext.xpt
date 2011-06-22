@@ -18,9 +18,6 @@ generate «fileNameWithoutExtension().toLowerCase()» «nsURI»
 
 «EXPAND additionalGrammarContent»
 
-// It's useful to have explicit terminal rules for keywords to do keyword discovery:
-«FOREACH keywords() AS keyword»
-terminal «keyword»_KEYWORD : '«keyword»';«ENDFOREACH»
 «ENDDEFINE»
 
 «DEFINE additionalGrammarContent FOR DocumentTypeDefinition»
@@ -33,18 +30,18 @@ terminal «keyword»_KEYWORD : '«keyword»';«ENDFOREACH»
 	«IF isCloseTagOptional()»(«ENDIF»«name»_tagClose=«name»_tagClose«IF isCloseTagOptional()»)?«ENDIF»
 	;
 
-«name»_tagOpen hidden(): «IF attributesCanBeEmpty()»{«name»_tagOpen}«ENDIF»OPEN_TAG_SYMBOL «name»_KEYWORD «IF attributes().size > 0»attributes=«name»_attributes«ENDIF» CLOSE_TAG_SYMBOL;
-«IF attributes().size > 0»«name»_attributes hidden(WHITESPACE): «IF attributesCanBeEmpty()»{«name»_attributes}«ENDIF»«IF attributes().size > 1»(«ENDIF»«EXPAND attribute FOREACH attributes() SEPARATOR ' & '»«IF attributes().size > 1»)«ENDIF»;«ENDIF»
-«name»_tagClose hidden(): {«name»_tagClose} OPEN_TAG_SYMBOL SLASH_SYMBOL «name»_KEYWORD CLOSE_TAG_SYMBOL;
+«name»_tagOpen hidden(): «IF attributesCanBeEmpty()»{«name»_tagOpen} «ENDIF»'<' '«name»' «IF attributes().size > 0»attributes=«name»_attributes«ENDIF» '>';
+«IF attributes().size > 0»«name»_attributes hidden(WHITESPACE): «IF attributesCanBeEmpty()»{«name»_attributes} «ENDIF»«IF attributes().size > 1»(«ENDIF»«EXPAND attribute FOREACH attributes() SEPARATOR ' & '»«IF attributes().size > 1»)«ENDIF»;«ENDIF»
+«name»_tagClose hidden(): {«name»_tagClose} '<' '/' '«name»' '>';
 «ENDDEFINE»
 
-«DEFINE attribute FOR Attribute»«IF isOptional()»(«ENDIF»«name»_KEYWORD EQUALS_SYMBOL «name»=QUOTED_STRING«IF isOptional()»)?«ENDIF»«ENDDEFINE»
+«DEFINE attribute FOR Attribute»«IF isOptional()»(«ENDIF»'«name»' '=' «name»=QUOTED_STRING«IF isOptional()»)?«ENDIF»«ENDDEFINE»
 
 «DEFINE sgmlDocumentRuleOverride FOR DocumentTypeDefinition»
 // override from Base to include root (of right type):
 SgmlDocument hidden(WHITESPACE, HEADER_COMMENTS):
-	OPEN_TAG_SYMBOL DOCTYPE_BASE_KEYWORD SISGML_BASE_KEYWORD (PUBLIC_BASE_KEYWORD | SYSTEM_BASE_KEYWORD) header1=QUOTED_STRING header2=QUOTED_STRING?
-		(OPEN_BRACKET_SYMBOL entities+=Entity* CLOSE_BRACKET_SYMBOL)? CLOSE_TAG_SYMBOL
+	'<' '!DOCTYPE' 'SISGML' ('PUBLIC' | 'SYSTEM') header1=QUOTED_STRING header2=QUOTED_STRING?
+		('[' entities+=Entity* ']')? '>'
 		root=«definitions.typeSelect(Element).first().name»
 	;
 «ENDDEFINE»
@@ -64,7 +61,7 @@ SgmlDocument hidden(WHITESPACE, HEADER_COMMENTS):
 
 «DEFINE expression FOR EmptyContent»«ENDDEFINE»
 
-«DEFINE expression FOR PCData»contents+=_PCDATAContents«ENDDEFINE»
+«DEFINE expression FOR PCData»contents+=_PCDATA«ENDDEFINE»
 
 «DEFINE expression FOR ElementReference»contents+=«element.name»«ENDDEFINE»
 
