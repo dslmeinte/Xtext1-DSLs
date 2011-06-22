@@ -15,7 +15,7 @@ public class DTD2XtextTransformerTest extends DTDTestSupport {
 		DTD2XtextTransformer.transform(
 				createModelsURI("trivial.dtd"),
 				"nl.dslmeinte.xtext.sgml.dtd.test.Trivial",
-				"http://dslmeinte.nl/Xtext/sgml/dtd/tests/trivial",
+				"http://dslmeinte.nl/Xtext/sgml/dtd/test/trivial",
 				createModelsURI("trivial-gen.xtext")
 			);
 	}
@@ -24,9 +24,9 @@ public class DTD2XtextTransformerTest extends DTDTestSupport {
 	public void test_transformation_of_simple_markup_dtd() throws FileNotFoundException {
 		DTD2XtextTransformer.transform(
 				createModelsURI("simpleMarkup.dtd"),
-				"nl.dslmeinte.xtext.sgml.dtd.test.SimpleMarkup",
-				"http://dslmeinte.nl/Xtext/sgml/dtd/tests/simpleMarkup",
-				URI.createPlatformResourceURI("nl.dslmeinte.xtext.sgml.dtd.test.simplemarkup/src/nl/dslmeinte/xtext/sgml/dtd/test/SimpleMarkup.xtext", true)
+				"nl.dslmeinte.xtext.sgml.test.simplemarkup.SimpleMarkup",
+				"http://dslmeinte.nl/Xtext/sgml/test/simpleMarkup",
+				URI.createPlatformResourceURI("nl.dslmeinte.xtext.sgml.test.simplemarkup/src/nl/dslmeinte/xtext/sgml/test/simplemarkup/SimpleMarkup.xtext", true)
 			);
 	}
 
@@ -34,9 +34,9 @@ public class DTD2XtextTransformerTest extends DTDTestSupport {
 	public void test_transformation_of_simple_markup_dtd_with_conditional_override() throws FileNotFoundException {
 		DTD2XtextTransformer.transform(
 				createModelsURI("simpleMarkup.dtd"),
-				"nl.dslmeinte.xtext.sgml.dtd.test.SimpleMarkupConditional",
-				"http://dslmeinte.nl/Xtext/sgml/dtd/tests/simpleMarkup/conditional",
-				URI.createPlatformResourceURI("nl.dslmeinte.xtext.sgml.dtd.test.simplemarkup/src/nl/dslmeinte/xtext/sgml/dtd/test/SimpleMarkupConditional.xtext", true),
+				"nl.dslmeinte.xtext.sgml.test.simplemarkup.SimpleMarkupConditional",
+				"http://dslmeinte.nl/Xtext/sgml/dtd/test/simpleMarkup/conditional",
+				URI.createPlatformResourceURI("nl.dslmeinte.xtext.sgml.test.simplemarkup/src/nl/dslmeinte/xtext/sgml/test/simplemarkup/SimpleMarkupConditional.xtext", true),
 				getClass().getPackage().getName().replaceAll("\\.", "::") + "::Conditional"
 			);
 	}

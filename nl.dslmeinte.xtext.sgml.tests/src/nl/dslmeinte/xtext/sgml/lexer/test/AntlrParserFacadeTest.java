@@ -1,8 +1,8 @@
 package nl.dslmeinte.xtext.sgml.lexer.test;
 
-import nl.dslmeinte.xtext.sgml.dtd.test.parser.antlr.internal.InternalSimpleMarkupParser;
 import nl.dslmeinte.xtext.sgml.lexer.AntlrParserFacade;
 import nl.dslmeinte.xtext.sgml.lexer.BaseTerminals;
+import nl.dslmeinte.xtext.sgml.test.simplemarkup.parser.antlr.internal.InternalSimpleMarkupParser;
 
 import org.junit.Assert;
 import org.junit.Test;

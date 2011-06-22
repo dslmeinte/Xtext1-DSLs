@@ -10,7 +10,7 @@ Require-Bundle: org.junit4;bundle-version="4.8.1",
  org.eclipse.xtext.junit;bundle-version="1.0.1",
  org.eclipse.xtext;bundle-version="1.0.1",
  nl.dslmeinte.xtext.dtd;bundle-version="1.0.0",
- nl.dslmeinte.xtext.sgml.dtd.test.simplemarkup;bundle-version="1.0.0",
  nl.dslmeinte.xtext.sgml.base;bundle-version="1.0.0",
- nl.dslmeinte.xtext.util;bundle-version="0.2.0"
+ nl.dslmeinte.xtext.util;bundle-version="0.2.0",
+ nl.dslmeinte.xtext.sgml.test.simplemarkup;bundle-version="1.0.0"
 Export-Package: nl.dslmeinte.xtext.sgml.dtd.test.support

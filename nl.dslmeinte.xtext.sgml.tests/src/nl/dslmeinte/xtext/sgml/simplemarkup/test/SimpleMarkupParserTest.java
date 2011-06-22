@@ -3,7 +3,7 @@ package nl.dslmeinte.xtext.sgml.simplemarkup.test;
 import java.io.IOException;
 import java.util.Collections;
 
-import nl.dslmeinte.xtext.sgml.dtd.test.SimpleMarkupStandaloneSetup;
+import nl.dslmeinte.xtext.sgml.test.simplemarkup.SimpleMarkupStandaloneSetup;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;

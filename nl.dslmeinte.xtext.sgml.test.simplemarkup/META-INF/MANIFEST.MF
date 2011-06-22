@@ -1,0 +1,33 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: nl.dslmeinte.xtext.sgml.test.simplemarkup
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0
+Bundle-SymbolicName: nl.dslmeinte.xtext.sgml.test.simplemarkup; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.generator;resolution:=optional,
+ org.apache.commons.logging;resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ com.ibm.icu;resolution:=optional,
+ org.eclipse.xtext.xtend;resolution:=optional,
+ nl.dslmeinte.xtext.sgml.base;bundle-version="1.0.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime,
+ nl.dslmeinte.xtext.sgml;bundle-version="0.1.0"
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: nl.dslmeinte.xtext.sgml.test.simplemarkup,
+ nl.dslmeinte.xtext.sgml.test.simplemarkup.services,
+ nl.dslmeinte.xtext.sgml.test.simplemarkup.simplemarkup,
+ nl.dslmeinte.xtext.sgml.test.simplemarkup.simplemarkup.impl,
+ nl.dslmeinte.xtext.sgml.test.simplemarkup.simplemarkup.util,
+ nl.dslmeinte.xtext.sgml.test.simplemarkup.parseTreeConstruction,
+ nl.dslmeinte.xtext.sgml.test.simplemarkup.parser.antlr,
+ nl.dslmeinte.xtext.sgml.test.simplemarkup.parser.antlr.internal,
+ nl.dslmeinte.xtext.sgml.test.simplemarkup.validation
+
