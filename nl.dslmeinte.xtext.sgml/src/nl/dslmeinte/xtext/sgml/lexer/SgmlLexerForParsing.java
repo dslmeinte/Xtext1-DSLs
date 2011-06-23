@@ -1,6 +1,5 @@
 package nl.dslmeinte.xtext.sgml.lexer;
 
-
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.RecognitionException;
 
