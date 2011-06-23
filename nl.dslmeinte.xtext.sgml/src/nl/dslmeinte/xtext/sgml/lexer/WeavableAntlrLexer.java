@@ -3,6 +3,7 @@ package nl.dslmeinte.xtext.sgml.lexer;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.MismatchedTokenException;
 import org.antlr.runtime.RecognitionException;
+import org.antlr.runtime.Token;
 
 /**
  * An interface intended to be able to decouple the actual lexing implementation
@@ -19,6 +20,8 @@ public interface WeavableAntlrLexer {
 	void setType(int type);
 
 	void match(String string) throws MismatchedTokenException;
+
+	Token emit();
 
 	void recover(RecognitionException re);
 

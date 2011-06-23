@@ -5,11 +5,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 
-import nl.dslmeinte.xtext.sgml.lexer.BaseTerminals;
-import nl.dslmeinte.xtext.sgml.lexer.SgmlLexer;
+import nl.dslmeinte.xtext.sgml.dtd.test.support.SgmlLexerTestSupport;
 import nl.dslmeinte.xtext.sgml.lexer.SgmlLexerForParsing;
 import nl.dslmeinte.xtext.sgml.lexer.TokenFacade;
-import nl.dslmeinte.xtext.sgml.test.simplemarkup.SimpleMarkupStandaloneSetup;
 import nl.dslmeinte.xtext.util.antlr.HtmlTokenVisualizer;
 import nl.dslmeinte.xtext.util.antlr.HtmlTokenVisualizer.TokenToStyleMapper;
 
@@ -17,16 +15,10 @@ import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.Token;
-import org.eclipse.xtext.parser.antlr.Lexer;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.google.inject.Injector;
-
-public class SgmlLexerTest {
-
-	private final Injector injector = new SimpleMarkupStandaloneSetup().createInjector();
-	private final SgmlLexer sgmlLexer = injector.getInstance(SgmlLexer.class);
+public class SgmlLexerTest extends SgmlLexerTestSupport {
 
 	@Test
 	public void test_SgmlLexer_provision() {
@@ -48,14 +40,6 @@ public class SgmlLexerTest {
 		}
 	}
 
-	private Lexer lexer;
-
-	private void initLexer(CharStream input) {
-		SgmlLexerForParsing baseLexer = injector.getInstance(SgmlLexerForParsing.class);
-		baseLexer.setCharStream(input);
-		this.lexer = baseLexer;
-	}
-
 	@Test
 	public void test_lexing_of_header() throws IOException {
 		lexe(new ANTLRStringStream("<!DOCTYPE SISGML PUBLIC 'simpleMarkup.dtd' [<!ENTITY myEntity SYSTEM '/foo/bar' --bla-die-blah-->]>"));
@@ -64,17 +48,6 @@ public class SgmlLexerTest {
 	@Test
 	public void test_lexing_of_simple_markup_file() throws IOException {
 		lexe(new ANTLRFileStream("models/simpleMarkup.sm"));
-	}
-
-	private void lexe(CharStream input) throws IOException {
-		initLexer(input);
-		Token token = lexer.nextToken();
-		while( token.getType() != CharStream.EOF ) {
-			if( token.getType() == 0 ) {
-				System.err.println( "encountered token of type 0 @L" + token.getLine() + ":" + token.getCharPositionInLine() );
-			}
-			token = lexer.nextToken();
-		}
 	}
 
 	@Test
@@ -95,28 +68,6 @@ public class SgmlLexerTest {
 		OutputStream output = new FileOutputStream("models/simpleMarkup-lexed.html");
 		visualizer.visualize(input, output, "simpleMarkup.sm: token visualization");
 		output.close();
-	}
-
-	protected void assertNextToken(BaseTerminals type) {
-		Token token = lexer.nextToken();
-//		System.out.format( "|%s| [actual=%s, expected=%s]\n", token.getText(), TokenType.values()[token.getType()], type );
-		assertTokenType(type, token);
-	}
-
-	protected void assertTokenType(BaseTerminals type, Token token) {
-		Assert.assertEquals(sgmlLexer.getFacade().map(type), token.getType());
-	}
-
-	protected Token nextNonWhitespaceToken() {
-		Token token = lexer.nextToken();
-		while( ( token != null ) && ( token.getType() == sgmlLexer.getFacade().map(BaseTerminals.whitespace) ) ) {
-			token = lexer.nextToken();
-		}
-		return token;
-	}
-
-	protected void assertNextNonWhitespaceToken(BaseTerminals baseTerminal) {
-		assertTokenType(baseTerminal, nextNonWhitespaceToken());
 	}
 
 }

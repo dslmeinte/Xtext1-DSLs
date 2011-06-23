@@ -42,5 +42,3 @@ terminal WHITESPACE				: (' '|'\t'|'\r'|'\n')+;
 
 terminal LITERAL_CONTENTS		: '#something that never matches...';
 
-terminal ENTITY_REFERENCE		: '&amp;';		// TODO  remove after SgmlLexer has been adapted
-
