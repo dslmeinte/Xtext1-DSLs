@@ -1,4 +1,4 @@
-package nl.dslmeinte.xtext.sgml.test.simplemarkup.ui.syntaxcoloring;
+package nl.dslmeinte.xtext.sgml.base.ui.syntaxcoloring;
 
 import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.antlr.AbstractAntlrTokenToAttributeIdMapper;
@@ -15,7 +15,7 @@ import com.google.inject.Singleton;
  * @author Meinte Boersma
  */
 @Singleton
-public class CustomTokenToAttributeIDMapper extends AbstractAntlrTokenToAttributeIdMapper {
+public class BaseTokenToAttributeIdMapper extends AbstractAntlrTokenToAttributeIdMapper {
 
 	@Override
 	protected String calculateId(String tokenName, int tokenType) {

@@ -1,8 +1,8 @@
 package nl.dslmeinte.xtext.sgml.test.simplemarkup.ui;
 
+import nl.dslmeinte.xtext.sgml.base.ui.syntaxcoloring.BaseTokenToAttributeIdMapper;
 import nl.dslmeinte.xtext.sgml.lexer.SgmlLexerForContentAssist;
 import nl.dslmeinte.xtext.sgml.lexer.SgmlLexerForParsing;
-import nl.dslmeinte.xtext.sgml.test.simplemarkup.ui.syntaxcoloring.CustomTokenToAttributeIDMapper;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.antlr.AbstractAntlrTokenToAttributeIdMapper;
@@ -36,7 +36,7 @@ public class SimpleMarkupUiModule extends nl.dslmeinte.xtext.sgml.test.simplemar
 	public void configureTokenToAttributeIDMapper(Binder binder) {
         binder
         	.bind(AbstractAntlrTokenToAttributeIdMapper.class)
-        	.to(CustomTokenToAttributeIDMapper.class);
+        	.to(BaseTokenToAttributeIdMapper.class);
     }
 
 }
