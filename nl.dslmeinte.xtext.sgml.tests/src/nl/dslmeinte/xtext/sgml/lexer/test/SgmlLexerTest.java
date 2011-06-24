@@ -1,5 +1,8 @@
 package nl.dslmeinte.xtext.sgml.lexer.test;
 
+import static nl.dslmeinte.xtext.sgml.lexer.BaseTerminals.*;
+
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -68,6 +71,53 @@ public class SgmlLexerTest extends SgmlLexerTestSupport {
 		OutputStream output = new FileOutputStream("models/simpleMarkup-lexed.html");
 		visualizer.visualize(input, output, "simpleMarkup.sm: token visualization");
 		output.close();
+	}
+
+	@Test
+	public void test_docType_without_entities_but_explicitly_checking_whitespace() {
+		initLexer(new ANTLRStringStream("<!DOCTYPE SISGML PUBLIC \"-//Intuit//SISGML DTD//EN\" \"sisgml.dtd\">"));
+		assertNextToken(open_tag);
+		assertNextToken(doctype);
+		assertNextToken(whitespace);
+		assertNextToken(sisgml);
+		assertNextToken(whitespace);
+		assertNextToken(public_);
+		assertNextToken(whitespace);
+		assertNextToken(quoted_string);
+		assertNextToken(whitespace);
+		assertNextToken(quoted_string);
+		assertNextToken(close_tag);
+	}
+
+	@Test
+	public void test_docType_with_entities() throws FileNotFoundException, IOException {
+		initLexer(new ANTLRFileStream("src/test/com/intuit/helptext/custom/lexer/test/docType_with_entities.test"));
+		expectDocumentHeader();
+		assertNextNonWhitespaceToken(open_bracket);
+		for( int i = 0; i < 16; i++ ) {
+			expectEntity(i);
+		}
+		assertNextNonWhitespaceToken(close_bracket);
+		assertNextNonWhitespaceToken(close_tag);
+	}
+
+	private void expectDocumentHeader() {
+		assertNextNonWhitespaceToken(open_tag);
+		assertNextNonWhitespaceToken(doctype);
+		assertNextNonWhitespaceToken(sisgml);
+		assertNextNonWhitespaceToken(public_);
+		assertNextNonWhitespaceToken(quoted_string);
+		assertNextNonWhitespaceToken(quoted_string);
+	}
+
+	private void expectEntity(int i) {
+		assertNextNonWhitespaceToken(open_tag);
+		assertNextNonWhitespaceToken(entity);
+		assertNextNonWhitespaceToken(identifier);
+		assertNextNonWhitespaceToken(identifier);
+		assertNextNonWhitespaceToken(quoted_string);
+		assertNextNonWhitespaceToken(header_comments);
+		assertNextNonWhitespaceToken(close_tag);
 	}
 
 }
