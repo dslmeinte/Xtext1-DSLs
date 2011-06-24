@@ -17,7 +17,7 @@ Entity hidden(WHITESPACE, HEADER_COMMENTS):
 	;
 
 _PCDATA:
-	contents+=_PCDATAContents;
+	contents+=_PCDATAContents+;
 
 _PCDATAContents:
 	_PCDATALiteralContents | _PCDATAEntityReference;
