@@ -18,14 +18,29 @@ public class SgmlLiteralContentLexingTest extends SgmlLexerTestSupport {
 	}
 
 	@Test
+	public void test_whitespace_handling() {
+		initWithHeader("	<");
+		assertNextToken(whitespace, "\t");
+		assertNextToken(open_tag);
+	}
+
+	@Test
 	public void test_amp_entity_reference() {
-		initWithHeader("foo &amp;bar<");
+		initWithHeader("foo &amp; bar<");
 		assertNextToken(literal_contents, "foo ");
 		assertNextToken(ampersand);
 		assertNextToken(identifier, "amp");
 		assertNextToken(semicolon);
-		assertNextToken(literal_contents, "bar");
+		assertNextToken(literal_contents, " bar");
 		assertNextToken(open_tag);
+		assertEOF();
+	}
+
+	@Test
+	public void test_incomplete_entity_reference() {
+		initWithHeader("&foo");
+		assertNextToken(ampersand);
+		assertNextToken(identifier, "foo");
 		assertEOF();
 	}
 

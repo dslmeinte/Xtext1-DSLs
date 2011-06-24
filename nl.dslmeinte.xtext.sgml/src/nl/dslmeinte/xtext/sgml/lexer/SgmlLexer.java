@@ -384,45 +384,55 @@ public class SgmlLexer {
 			lexicalState = LexicalState.tag;
 			return;
 		}
-		// FIXME  keep a running boolean to know whether to emit literal_contents or whitespace
-		if( isWhitespace(ch) ) {
-			consumeWhitespace();
-			return;
-		}
+
 		if( ch == CharStream.EOF ) {
 			return;
 		}
 
+		whitespaceOnly = true;
+		int charactersToConsume = 0;
 		// walk over contents and deal with (potential) entity reference matches:
 
 		while( true ) {
-			while( ( ch = LA(1) ) != CharStream.EOF && !( ch == '<' || ch == '&' ) ) {
-				consume();
+			while( ( ch = LA(charactersToConsume + 1) ) != CharStream.EOF && !( ch == '<' || ch == '&' ) ) {
+				whitespaceOnly &= isWhitespace(ch);
+				charactersToConsume++;
 			}
 			if( ch == '<' || ch == CharStream.EOF ) {
-				setType(literal_contents);
+				enqueue(getLiteralContentsType(), charactersToConsume);
+				dequeue();
 				return;
 			}
 			// LA(1) == '&':
-			if( isWhitespace(LA(2)) ) {
-				consume();
-				consume();
+			if( !isIdentifierPart(LA(charactersToConsume + 2)) ) {
+				charactersToConsume += 2;
+				whitespaceOnly = false;
 				continue;
 			}
 			int i = 2;
-			while( ( ch = LA(i++) ) != CharStream.EOF && isIdentifierPart(ch) );
-			// emit literal_contents token for characters before '&':
-			setType(literal_contents);
-			emit();
+			while( ( ch = LA(charactersToConsume + i) ) != CharStream.EOF && isIdentifierPart(ch) ) {
+				i++;
+			}
+			if( charactersToConsume > 0 ) {
+				// emit literal_contents token for characters before '&':
+				enqueue(getLiteralContentsType(), charactersToConsume);
+			}
 			// emit ampersand token for '&':
 			enqueue(ampersand, 1);
-			enqueue(identifier, i - 3);
+			enqueue(identifier, i - 2);
 			if( ch == ';' ) {	// entity reference found!
 				// emit semicolon token ';':
 				enqueue(semicolon, 1);
 			}
+			dequeue();
 			return;
 		}
+	}
+
+	private boolean whitespaceOnly;
+
+	private BaseTerminals getLiteralContentsType() {
+		return( whitespaceOnly ? whitespace : literal_contents );
 	}
 
 	private class QueuedToken {

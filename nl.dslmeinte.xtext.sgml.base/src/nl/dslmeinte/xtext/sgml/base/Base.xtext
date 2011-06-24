@@ -23,7 +23,7 @@ _PCDATAContents:
 	_PCDATALiteralContents | _PCDATAEntityReference;
 
 _PCDATALiteralContents:
-	text=LITERAL_CONTENTS;
+	text=(LITERAL_CONTENTS|WHITESPACE);
 
 _PCDATAEntityReference:
 	'&' entity=[Entity|IDENTIFIER] ';';
@@ -40,5 +40,5 @@ terminal HEADER_COMMENTS		: '--' -> '--';
 
 terminal WHITESPACE				: (' '|'\t'|'\r'|'\n')+;
 
-terminal LITERAL_CONTENTS		: '#something that never matches...';
+terminal LITERAL_CONTENTS		: '#something';		// ...that doesn't match with any other terminal here so ANTLR doesn't get confused for nothing because we\'re rolling our own lexer anyway...
 

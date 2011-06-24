@@ -5,5 +5,5 @@
 >
 <Content>
 	<Reference TO="foo">
-	<Section styleName="abstract" condition="true"><!--foo--><Par>bar & bar &amp;</Par></Section>
+	<Section styleName="abstract" condition="true"><!--foo--><Par>bar & bar &amp;		</Par></Section>
 </Content>
