@@ -174,7 +174,6 @@ public class SgmlLexer {
 		Map<String, BaseTerminals> map = new HashMap<String, BaseTerminals>();
 		map.put("DOCTYPE", doctype);
 		map.put("ENTITY", entity);
-		map.put(sisgml.getKeyword(), sisgml);
 		map.put(public_.getKeyword(), public_);
 		map.put(system.getKeyword(), system);
 		headerKeywordsTrie = MapBasedTrie.of(map);

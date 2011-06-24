@@ -40,7 +40,7 @@ generate «fileNameWithoutExtension().toLowerCase()» «nsURI»
 «DEFINE sgmlDocumentRuleOverride FOR DocumentTypeDefinition»
 // override from Base to include root (of right type):
 SgmlDocument hidden(WHITESPACE, HEADER_COMMENTS):
-	'<' '!DOCTYPE' 'SISGML' ('PUBLIC' | 'SYSTEM') header1=QUOTED_STRING header2=QUOTED_STRING?
+	'<' '!DOCTYPE' rootName=IDENTIFIER ('PUBLIC' | 'SYSTEM') header1=QUOTED_STRING header2=QUOTED_STRING?
 		('[' entities+=Entity* ']')? '>'
 		root=«definitions.typeSelect(Element).first().name»
 	;

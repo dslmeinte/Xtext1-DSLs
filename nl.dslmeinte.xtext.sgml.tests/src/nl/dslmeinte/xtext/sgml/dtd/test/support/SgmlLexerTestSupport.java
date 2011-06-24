@@ -60,6 +60,12 @@ public abstract class SgmlLexerTestSupport {
 		assertTokenType(baseTerminal, nextNonWhitespaceToken());
 	}
 
+	protected void assertNextNonWhitespaceToken(BaseTerminals baseTerminal, String text) {
+		Token token = nextNonWhitespaceToken();
+		assertTokenType(baseTerminal, token);
+		Assert.assertEquals(text, token.getText());
+	}
+
 	protected void lexe(CharStream input) throws IOException {
 		initLexer(input);
 		Token token = lexer.nextToken();

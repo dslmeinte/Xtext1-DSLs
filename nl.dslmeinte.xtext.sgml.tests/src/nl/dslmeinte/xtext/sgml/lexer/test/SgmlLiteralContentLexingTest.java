@@ -56,7 +56,7 @@ public class SgmlLiteralContentLexingTest extends SgmlLexerTestSupport {
 	private void assertHeader() {
 		assertNextNonWhitespaceToken(BaseTerminals.open_tag);
 		assertNextNonWhitespaceToken(BaseTerminals.doctype);
-		assertNextNonWhitespaceToken(BaseTerminals.sisgml);
+		assertNextNonWhitespaceToken(BaseTerminals.identifier, "SISGML");
 		assertNextNonWhitespaceToken(BaseTerminals.public_);
 		assertNextNonWhitespaceToken(BaseTerminals.quoted_string);
 		assertNextNonWhitespaceToken(BaseTerminals.close_tag);

@@ -14,7 +14,7 @@ public enum BaseTerminals {
 
 	// TODO  add enough meta data so Base.xtext could be generated from this description (or vice versa - SSP)
 
-	sisgml("SISGML"), public_("PUBLIC"), system("SYSTEM"),
+	public_("PUBLIC"), system("SYSTEM"),
 	open_tag("<"), close_tag(">"), slash("/"), equals("="),
 	doctype("!DOCTYPE"), entity("!ENTITY"),
 	open_bracket("["), close_bracket("]"),
