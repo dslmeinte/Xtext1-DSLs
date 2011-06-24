@@ -36,7 +36,7 @@ Workflow {
 
 			// generates Java API for the generated EPackages 
 			fragment = ecore.EcoreGeneratorFragment {
-				referencedGenModels="platform:/resource/nl.dslmeinte.xtext.sgml.base/src-gen/nl/dslmeinte/xtext/sgml/base/Base.genmodel"
+				referencedGenModels="classpath:/nl/dslmeinte/xtext/sgml/base/Base.genmodel"
 			}
 
 			// the serialization component
