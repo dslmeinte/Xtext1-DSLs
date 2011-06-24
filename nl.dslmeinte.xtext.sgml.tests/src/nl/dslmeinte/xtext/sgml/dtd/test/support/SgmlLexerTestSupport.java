@@ -5,6 +5,7 @@ import java.io.IOException;
 import nl.dslmeinte.xtext.sgml.lexer.BaseTerminals;
 import nl.dslmeinte.xtext.sgml.lexer.SgmlLexer;
 import nl.dslmeinte.xtext.sgml.lexer.SgmlLexerForParsing;
+import nl.dslmeinte.xtext.sgml.lexer.TokenFacade;
 import nl.dslmeinte.xtext.sgml.test.simplemarkup.SimpleMarkupStandaloneSetup;
 
 import org.antlr.runtime.CharStream;
@@ -45,7 +46,15 @@ public abstract class SgmlLexerTestSupport {
 	}
 
 	protected void assertTokenType(BaseTerminals type, Token token) {
-		Assert.assertEquals(sgmlLexer.getFacade().map(type), token.getType());
+		TokenFacade facade = sgmlLexer.getFacade();
+		int actualType = token.getType();
+		if( facade.map(type) != actualType ) {
+			Assert.fail(
+					"expected " + type.name() + " but was: " +
+					( facade.isBase(actualType) ? facade.asBase(actualType) : ( "<" + actualType + ">" ) )
+				);
+		}
+		Assert.assertEquals(facade.map(type), actualType);
 	}
 
 	private Token nextNonWhitespaceToken() {

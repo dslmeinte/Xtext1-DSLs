@@ -91,10 +91,10 @@ public class SgmlLexerTest extends SgmlLexerTestSupport {
 
 	@Test
 	public void test_docType_with_entities() throws FileNotFoundException, IOException {
-		initLexer(new ANTLRFileStream("nl/dslmeinte/xtext/sgml/lexer/test/docType_with_entities.test"));
+		initLexer(new ANTLRFileStream("src/nl/dslmeinte/xtext/sgml/lexer/test/docType_with_entities.test"));
 		expectDocumentHeader();
 		assertNextNonWhitespaceToken(open_bracket);
-		for( int i = 0; i < 16; i++ ) {
+		for( int i = 0; i < 2; i++ ) {
 			expectEntity(i);
 		}
 		assertNextNonWhitespaceToken(close_bracket);
@@ -107,14 +107,13 @@ public class SgmlLexerTest extends SgmlLexerTestSupport {
 		assertNextNonWhitespaceToken(identifier, "DOC");
 		assertNextNonWhitespaceToken(public_);
 		assertNextNonWhitespaceToken(quoted_string);
-		assertNextNonWhitespaceToken(quoted_string);
 	}
 
 	private void expectEntity(int i) {
 		assertNextNonWhitespaceToken(open_tag);
 		assertNextNonWhitespaceToken(entity);
 		assertNextNonWhitespaceToken(identifier);
-		assertNextNonWhitespaceToken(identifier);
+		assertNextNonWhitespaceToken(system);
 		assertNextNonWhitespaceToken(quoted_string);
 		assertNextNonWhitespaceToken(header_comments);
 		assertNextNonWhitespaceToken(close_tag);
