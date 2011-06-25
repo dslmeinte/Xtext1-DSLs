@@ -1,8 +1,8 @@
 package nl.dslmeinte.xtext.sgml.test.simplemarkup.ui;
 
 import nl.dslmeinte.xtext.sgml.base.ui.syntaxcoloring.BaseTokenToAttributeIdMapper;
-import nl.dslmeinte.xtext.sgml.lexer.SgmlLexerForContentAssist;
 import nl.dslmeinte.xtext.sgml.lexer.SgmlLexerForParsing;
+import nl.dslmeinte.xtext.sgml.lexer.ui.SgmlLexerForContentAssist;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.antlr.AbstractAntlrTokenToAttributeIdMapper;

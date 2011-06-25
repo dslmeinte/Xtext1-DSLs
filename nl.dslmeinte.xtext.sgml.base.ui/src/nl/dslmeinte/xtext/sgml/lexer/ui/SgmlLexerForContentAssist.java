@@ -1,4 +1,7 @@
-package nl.dslmeinte.xtext.sgml.lexer;
+package nl.dslmeinte.xtext.sgml.lexer.ui;
+
+import nl.dslmeinte.xtext.sgml.lexer.SgmlLexer;
+import nl.dslmeinte.xtext.sgml.lexer.WeavableAntlrLexer;
 
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.RecognitionException;

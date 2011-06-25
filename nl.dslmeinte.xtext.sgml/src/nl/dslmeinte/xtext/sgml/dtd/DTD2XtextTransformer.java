@@ -7,14 +7,13 @@ import java.io.OutputStream;
 import nl.dslmeinte.xpand.util.XpandCallConfiguration;
 import nl.dslmeinte.xtext.dtd.DtdLanguageStandaloneSetup;
 import nl.dslmeinte.xtext.dtd.dtdModel.DtdModelPackage;
-import nl.dslmeinte.xtext.sgml.lexer.SgmlLexer;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 
 /**
  * Transforms a {@code .dtd} file into an Xtext grammar which is compatible with
- * the {@link SgmlLexer}.
+ * the custom (but generic) SGML lexer.
  * 
  * @author Meinte Boersma
  */
