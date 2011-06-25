@@ -19,8 +19,10 @@ public class BaseTokenToAttributeIdMapper extends AbstractAntlrTokenToAttributeI
 
 	@Override
 	protected String calculateId(String tokenName, int tokenType) {
-		if( tokenName.startsWith("'") && tokenName.endsWith("'") && tokenName.length() > 3 ) {
-			return DefaultHighlightingConfiguration.KEYWORD_ID;
+		if( tokenName.startsWith("'") && tokenName.endsWith("'") ) {
+			if( ( tokenName.length() > 3 ) || ( Character.isLetter(tokenName.charAt(1)) ) ) {
+				return DefaultHighlightingConfiguration.KEYWORD_ID;
+			}
 		}
 		if( tokenName.equals("RULE_SGML_COMMENTS") || tokenName.equals("RULE_HEADER_COMMENTS") ) {
 			return DefaultHighlightingConfiguration.COMMENT_ID;
