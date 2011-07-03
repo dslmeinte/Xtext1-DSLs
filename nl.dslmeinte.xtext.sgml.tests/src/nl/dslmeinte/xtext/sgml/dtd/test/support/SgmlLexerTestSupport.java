@@ -22,6 +22,9 @@ public abstract class SgmlLexerTestSupport {
 
 	protected Lexer lexer;
 
+	/**
+	 * Initializes the {@link #sgmlLexer} field with the given {@link CharStream}.
+	 */
 	protected void initLexer(CharStream input) {
 		SgmlLexerForParsing baseLexer = injector.getInstance(SgmlLexerForParsing.class);
 		baseLexer.setCharStream(input);
