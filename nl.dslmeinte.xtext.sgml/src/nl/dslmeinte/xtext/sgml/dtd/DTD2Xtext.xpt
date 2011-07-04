@@ -41,7 +41,7 @@ generate «fileNameWithoutExtension().toLowerCase()» «nsURI»
 // override from Base to include root (of right type):
 SgmlDocument hidden(WHITESPACE, HEADER_COMMENTS):
 	'<' '!DOCTYPE' rootName=IDENTIFIER ('PUBLIC' | 'SYSTEM') header1=QUOTED_STRING header2=QUOTED_STRING?
-		('[' entities+=Entity* ']')? '>'
+		('[' ( entities+=Entity | SGML_COMMENTS )* ']')? '>'
 		root=«definitions.typeSelect(Element).first().name»
 	;
 «ENDDEFINE»

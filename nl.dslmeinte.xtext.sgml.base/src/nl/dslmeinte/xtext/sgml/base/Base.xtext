@@ -12,8 +12,14 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
  */
 SgmlDocument hidden(WHITESPACE, HEADER_COMMENTS):
 	'<' '!DOCTYPE' rootName=IDENTIFIER ('PUBLIC' | 'SYSTEM') header1=QUOTED_STRING header2=QUOTED_STRING?
-		('<' entities+=Entity* ']')? '>'
+		('[' ( entities+=Entity | SGML_COMMENTS )* ']')? '>'
 	;
+	/*
+	 * SGML comments are not valid inside Entity instances, but
+	 * I don't want to make a separate Entities rule to be able
+	 * to allow SGML comments inside [..] but outside Entity
+	 * instances, hence the somewhat strange construct in line 15.
+	 */
 
 Entity hidden(WHITESPACE, HEADER_COMMENTS):
 	'<' '!ENTITY' name=IDENTIFIER 'SYSTEM'? path=QUOTED_STRING '>'

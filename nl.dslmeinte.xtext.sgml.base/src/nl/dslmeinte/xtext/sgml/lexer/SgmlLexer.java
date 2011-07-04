@@ -182,6 +182,25 @@ public class SgmlLexer {
 	private void mTokensHeader() throws RecognitionException {
 		int ch = LA(1);
 		if( ch == '<' ) {
+			// SGML comments can be part of the header, inside [..] and outside Entity instances
+			if( LA(2) == '!' && LA(3) == '-' && LA(4) == '-' ) {
+				match("<!--");
+				while( ( ch = LA(1) ) != CharStream.EOF && !( ch == '-' && LA(2) == '-' && LA(3) == '>' ) ) {
+					consume();
+				}
+				if( ch != CharStream.EOF ) {
+					match("-->");
+					setType(sgml_comments);
+					return;
+				} else {
+					setType(0);
+					// TODO  actually use a sensible BitSet instead of null
+					MismatchedSetException mse = new MismatchedSetException(null, input());
+			        recover(mse);
+			        throw mse;
+				}
+			}
+			// no comments, only an open tag symbol:
 			consume();
 			setType(open_tag);
 			return;
@@ -532,6 +551,8 @@ public class SgmlLexer {
 		recover(nvae);
 		throw nvae;
 	}
+
+	// TODO  common method to consume SGML comments
 
 }
 
