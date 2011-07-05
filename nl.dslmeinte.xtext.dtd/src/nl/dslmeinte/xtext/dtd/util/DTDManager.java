@@ -1,4 +1,4 @@
-package nl.dslmeinte.xtext.sgml.dtd;
+package nl.dslmeinte.xtext.dtd.util;
 
 import java.io.IOException;
 import java.util.Collections;

@@ -17,8 +17,7 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.util,
  org.eclipse.emf.ecore,
  org.eclipse.emf.common,
- org.antlr.runtime,
- nl.dslmeinte.xtext.sgml;bundle-version="0.1.0"
+ org.antlr.runtime
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: nl.dslmeinte.xtext.sgml.test.simplemarkup,

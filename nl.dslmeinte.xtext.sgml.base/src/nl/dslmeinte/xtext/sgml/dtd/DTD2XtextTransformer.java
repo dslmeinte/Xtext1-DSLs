@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import nl.dslmeinte.xpand.util.XpandCallConfiguration;
 import nl.dslmeinte.xtext.dtd.DtdLanguageStandaloneSetup;
 import nl.dslmeinte.xtext.dtd.dtdModel.DtdModelPackage;
+import nl.dslmeinte.xtext.dtd.util.DTDManager;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;

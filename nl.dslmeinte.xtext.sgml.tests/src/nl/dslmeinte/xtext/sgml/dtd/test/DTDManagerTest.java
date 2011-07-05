@@ -1,7 +1,7 @@
 package nl.dslmeinte.xtext.sgml.dtd.test;
 
 import nl.dslmeinte.xtext.dtd.DTDModelUtil;
-import nl.dslmeinte.xtext.sgml.dtd.DTDManager;
+import nl.dslmeinte.xtext.dtd.util.DTDManager;
 import nl.dslmeinte.xtext.sgml.dtd.test.support.DTDTestSupport;
 
 import org.junit.Assert;

@@ -36,7 +36,7 @@ public class CustomizedInternalSimpleMarkupParser extends InternalSimpleMarkupPa
 			match(input, 21, FOLLOW_21_in_ruleReference_attributes1125);
 			createLeafNode(metadata.getEqualsSignKeyword_1(), null);
 			// QUOTED_STRING, which will be re-interpreted as '"' to=[Section|IDENTIFIER] '"':
-			match(input, RULE_QUOTED_STRING, null);		// TODO  add meaningful BitSet...
+			match(input, RULE_QUOTED_STRING, null);
 
 //			match(input, 22, FOLLOW_22_in_ruleReference_attributes1135);
 //			createLeafNode(metadata.getQuotationMarkKeyword_2(), null);
@@ -46,6 +46,7 @@ public class CustomizedInternalSimpleMarkupParser extends InternalSimpleMarkupPa
 			String quotedString = token.getText();
 			token.setText(quotedString.substring(1, quotedString.length()-1));
 			// TODO  really un-escape the quoted string
+			
 
 			associateNodeWithAstElement(currentNode, current);
 			createLeafNode(metadata.getToSectionCrossReference_3_0(), "to");
@@ -63,5 +64,28 @@ public class CustomizedInternalSimpleMarkupParser extends InternalSimpleMarkupPa
 		}
 		return current;
 	}
+
+//	protected Object createLeafNode(EObject grammarElement, String feature) {
+////		Token token = new CommonT
+//		Token token = input.LT(-1);
+//		if (token != null && token.getTokenIndex() > lastConsumedIndex) {
+//			int indexOfTokenBefore = lastConsumedIndex;
+//			if (indexOfTokenBefore + 1 < token.getTokenIndex()) {
+//				for (int x = indexOfTokenBefore + 1; x < token.getTokenIndex(); x++) {
+//					Token hidden = input.get(x);
+//					LeafNode leafNode = createLeafNode(hidden, hidden.getChannel() == HIDDEN);
+//					setLexerRule(leafNode, hidden);
+//				}
+//			}
+//			LeafNode leafNode = createLeafNode(token, false);
+//			leafNode.setGrammarElement(grammarElement);
+//			leafNode.setFeature(feature);
+//			lastConsumedIndex = token.getTokenIndex();
+//			lastConsumedNode = leafNode;
+//			tokenConsumed(token, leafNode);
+//			return leafNode;
+//		}
+//		return null;
+//	}
 
 }

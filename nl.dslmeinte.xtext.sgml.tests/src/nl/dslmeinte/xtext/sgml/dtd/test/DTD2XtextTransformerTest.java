@@ -26,7 +26,7 @@ public class DTD2XtextTransformerTest extends DTDTestSupport {
 
 	private static URI simpleMarkupPlatformResourceURI(String sourceFolder, String postfixPath) {
 		return URI.createPlatformResourceURI(
-				String.format("%s/%s/%s/%d", SIMPLE_MARKUP_BASE_PACKAGE_NAME, sourceFolder, SIMPLE_MARKUP_BASE_PACKAGE_NAME.replace('.', '/'), postfixPath),
+				String.format("%s/%s/%s/%s", SIMPLE_MARKUP_BASE_PACKAGE_NAME, sourceFolder, SIMPLE_MARKUP_BASE_PACKAGE_NAME.replace('.', '/'), postfixPath),
 				true
 			);
 	}

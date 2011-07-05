@@ -1,4 +1,4 @@
-package nl.dslmeinte.xtext.sgml.dtd;
+package nl.dslmeinte.ecore.util;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -16,6 +16,7 @@ abstract public class ToEcoreTransformerSupport {
 
 	private final EcoreFactory factory = EcoreFactory.eINSTANCE;
 	private final EcorePackage ecorePackage = EcorePackage.eINSTANCE;
+
 	/**
 	 * The end result/destination.
 	 * <p>
@@ -80,15 +81,14 @@ abstract public class ToEcoreTransformerSupport {
 	 *         with the given name, given type and the indicated cardinality
 	 *         lower- and upper bounds.
 	 */
-	protected EReference createContainingReference(String name, EClass type,
-			int lowerBound, int upperBound) {
-				EReference eReference = factory.createEReference();
-				eReference.setName(name);
-				eReference.setContainment(true);
-				eReference.setEType(type);
-				eReference.setLowerBound(lowerBound);
-				eReference.setUpperBound(upperBound);
-				return eReference;
-			}
+	protected EReference createContainingReference(String name, EClass type, int lowerBound, int upperBound) {
+		EReference eReference = factory.createEReference();
+		eReference.setName(name);
+		eReference.setContainment(true);
+		eReference.setEType(type);
+		eReference.setLowerBound(lowerBound);
+		eReference.setUpperBound(upperBound);
+		return eReference;
+	}
 
 }
