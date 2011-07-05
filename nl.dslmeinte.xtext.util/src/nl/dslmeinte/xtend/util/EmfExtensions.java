@@ -1,9 +1,10 @@
-package nl.dslmeinte.xtext.generation;
+package nl.dslmeinte.xtend.util;
 
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * A util class to hold Java Xtensions.
+ * A util class to hold some Java Xtensions (for Xtend) which have something to
+ * do with EMF and could be useful.
  * 
  * @author Meinte Boersma
  */
