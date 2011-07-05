@@ -28,8 +28,8 @@ public class SimpleMarkupParserTest {
 	public void test_parser() {
 		SgmlDocument document = load("models/simpleMarkup.sm");
 		Section to = ((Reference) document.getRoot().getContents().get(0)).getReference_tagOpen().getAttributes().getTo();
-		System.out.println(to);
 		Assert.assertNotNull(to);
+		Assert.assertTrue(!to.eIsProxy());
 	}
 
 	private SgmlDocument load(String fileUri) {
@@ -46,7 +46,7 @@ public class SimpleMarkupParserTest {
 			for( Diagnostic diagnostic : resource.getErrors() ) {
 				System.err.println(diagnostic.getMessage() + " @L" + diagnostic.getLine() );
 			}
-			Assert.fail("parse errors");
+			Assert.fail("parse errors (see error console)");
 		}
 		EObject root = resource.getContents().get(0);
 		Assert.assertNotNull(root);

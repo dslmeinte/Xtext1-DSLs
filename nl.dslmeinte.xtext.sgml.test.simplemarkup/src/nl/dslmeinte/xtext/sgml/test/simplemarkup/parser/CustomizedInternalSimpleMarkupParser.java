@@ -5,6 +5,7 @@ import nl.dslmeinte.xtext.sgml.test.simplemarkup.services.SimpleMarkupGrammarAcc
 import nl.dslmeinte.xtext.sgml.test.simplemarkup.services.SimpleMarkupGrammarAccess.Reference_attributesElements;
 
 import org.antlr.runtime.RecognitionException;
+import org.antlr.runtime.Token;
 import org.antlr.runtime.TokenStream;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.parser.IAstFactory;
@@ -40,12 +41,13 @@ public class CustomizedInternalSimpleMarkupParser extends InternalSimpleMarkupPa
 //			match(input, 22, FOLLOW_22_in_ruleReference_attributes1135);
 //			createLeafNode(metadata.getQuotationMarkKeyword_2(), null);
 			current = factory.create(getGrammarAccess().getReference_attributesRule().getType().getClassifier());
-			// TODO  install proxy?!
-//			Token token = input.LT(-1);
-//			String text = token.getText();
+			// remove surrounding quotes from token text:
+			Token token = input.LT(-1);
+			String quotedString = token.getText();
+			token.setText(quotedString.substring(1, quotedString.length()-1));
+			// TODO  really un-escape the quoted string
 
-//			associateNodeWithAstElement(currentNode, current);
-//			match(input, RULE_IDENTIFIER, FOLLOW_RULE_IDENTIFIER_in_ruleReference_attributes1153);
+			associateNodeWithAstElement(currentNode, current);
 			createLeafNode(metadata.getToSectionCrossReference_3_0(), "to");
 //			match(input, 22, FOLLOW_22_in_ruleReference_attributes1163);
 //			createLeafNode(metadata.getQuotationMarkKeyword_4(), null);

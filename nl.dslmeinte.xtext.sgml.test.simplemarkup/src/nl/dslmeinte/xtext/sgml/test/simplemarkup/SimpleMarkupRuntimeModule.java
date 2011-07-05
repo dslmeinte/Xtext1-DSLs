@@ -1,6 +1,7 @@
 package nl.dslmeinte.xtext.sgml.test.simplemarkup;
 
 import nl.dslmeinte.xtext.sgml.lexer.SgmlLexerForParsing;
+import nl.dslmeinte.xtext.sgml.test.simplemarkup.naming.SimpleMarkupNameProvider;
 import nl.dslmeinte.xtext.sgml.test.simplemarkup.parser.CustomizedSimpleMarkupParser;
 
 import com.google.inject.Binder;
@@ -22,4 +23,8 @@ public class SimpleMarkupRuntimeModule extends nl.dslmeinte.xtext.sgml.test.simp
 		return CustomizedSimpleMarkupParser.class;
 	}
 
+	public Class<? extends org.eclipse.xtext.naming.IQualifiedNameProvider> bindIQualifiedNameProvider() {
+		return SimpleMarkupNameProvider.class;
+	}
+	
 }
