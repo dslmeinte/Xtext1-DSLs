@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Xtext utils by dslmeinte
 Bundle-SymbolicName: nl.dslmeinte.xtext.util
-Bundle-Version: 0.2.0.qualifier
+Bundle-Version: 0.3.0.qualifier
 Require-Bundle: org.eclipse.xtext;bundle-version="1.0.1",
  org.eclipse.xpand;bundle-version="1.0.1";resolution:=optional,
  org.eclipse.xtend;bundle-version="1.0.1";resolution:=optional,
