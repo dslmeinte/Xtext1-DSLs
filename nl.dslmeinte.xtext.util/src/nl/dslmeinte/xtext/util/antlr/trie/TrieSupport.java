@@ -30,6 +30,9 @@ abstract public class TrieSupport<T> implements CaseInsensitiveTrie<T> {
 	private Node<T> root = new Node<T>();
 
 	protected void register(String key, T t) {
+		if( !isWord(key) ) {
+			throw new IllegalArgumentException( "'" + key + "' is not a word so can't be registered with a character-based trie" );
+		}
 		Node<T> currentNode = root;
 		for( int i = 0; i < key.length(); i++ ) {
 			int charIndex = Character.toLowerCase(key.charAt(i)) - 'a';
@@ -43,6 +46,19 @@ abstract public class TrieSupport<T> implements CaseInsensitiveTrie<T> {
 			}
 			currentNode = nextNode;
 		}
+	}
+
+	/**
+	 * Returns whether the given {@link String} consists solely of letter
+	 * characters.
+	 */
+	public static boolean isWord(String key) {
+		for( int i = 0; i < key.length(); i++ ) {
+			if( !Character.isLetter(key.charAt(i)) ) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override

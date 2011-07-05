@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 
 import nl.dslmeinte.xtext.util.antlr.trie.CaseInsensitiveTrie;
 import nl.dslmeinte.xtext.util.antlr.trie.MapBasedTrie;
+import nl.dslmeinte.xtext.util.antlr.trie.TrieSupport;
 
 import org.eclipse.xtext.parser.antlr.AntlrTokenDefProvider;
 
@@ -31,7 +32,9 @@ public class AntlrTokenFacade implements TokenFacade {
 				String keyword = tokenDescription.substring(1, tokenDescription.length()-1);
 				BaseTerminals baseTerminal = BaseTerminals.fromKeyword(keyword);
 				if( baseTerminal == null ) {
-					nonBaseKeywordsMap.put(keyword, id);
+					if( TrieSupport.isWord(keyword) ) {
+						nonBaseKeywordsMap.put(keyword, id);
+					}
 				} else {
 					baseTerminalsMap.put(baseTerminal, id);
 				}
