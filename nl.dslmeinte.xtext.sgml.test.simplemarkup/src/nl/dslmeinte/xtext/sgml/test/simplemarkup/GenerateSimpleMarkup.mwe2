@@ -4,7 +4,7 @@ import org.eclipse.emf.mwe.utils.*
 import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
-var grammarURI = "classpath:/nl/dslmeinte/xtext/sgml/test/simplemarkup/SimpleMarkup.xtext"
+var grammarURI = "classpath:/nl/dslmeinte/xtext/sgml/test/simplemarkup/SimpleMarkupAttributeValueReparsing.xtext"
 var file.extensions = "sm"
 var projectName = "nl.dslmeinte.xtext.sgml.test.simplemarkup"
 var runtimeProject = "../${projectName}"

@@ -5,5 +5,5 @@
 >
 <Content>
 	<Reference TO="foo">
-	<Section styleName="abstract" condition="true"><!--foo--><Par>bar & bar &amp;		</Par></Section>
+	<Section name="foo" styleName="abstract" condition="true"><!--foo--><Par>bar & bar &myEntity;		</Par></Section>
 </Content>

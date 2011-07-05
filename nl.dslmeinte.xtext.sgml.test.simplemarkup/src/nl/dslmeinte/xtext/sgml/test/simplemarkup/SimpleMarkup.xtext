@@ -7,8 +7,8 @@ generate simplemarkup "http://dslmeinte.nl/Xtext/sgml/test/simpleMarkup"
 
 // override from Base to include root (of right type):
 SgmlDocument hidden(WHITESPACE, HEADER_COMMENTS):
-	'<' '!DOCTYPE' 'SISGML' ('PUBLIC' | 'SYSTEM') header1=QUOTED_STRING header2=QUOTED_STRING?
-		('[' entities+=Entity* ']')? '>'
+	'<' '!DOCTYPE' rootName=IDENTIFIER ('PUBLIC' | 'SYSTEM') header1=QUOTED_STRING header2=QUOTED_STRING?
+		('[' ( entities+=Entity | SGML_COMMENTS )* ']')? '>'
 		root=Content
 	;
 
@@ -41,7 +41,7 @@ Section hidden(SGML_COMMENTS, WHITESPACE):
 	;
 
 Section_tagOpen hidden(): '<' 'Section' attributes=Section_attributes '>';
-Section_attributes hidden(WHITESPACE): ('styleName' '=' styleName=QUOTED_STRING & ('condition' '=' condition=QUOTED_STRING)?);
+Section_attributes hidden(WHITESPACE): ('styleName' '=' styleName=QUOTED_STRING & ('condition' '=' condition=QUOTED_STRING)? & ('name' '=' name=QUOTED_STRING)?);
 Section_tagClose hidden(): {Section_tagClose} '<' '/' 'Section' '>';
 
 Par hidden(SGML_COMMENTS):

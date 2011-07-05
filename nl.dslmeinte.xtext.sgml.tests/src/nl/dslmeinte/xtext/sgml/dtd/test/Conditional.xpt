@@ -13,10 +13,12 @@ ConditionalAND returns ConditionalExpression hidden(WHITESPACE):
     ConditionalNOT ({ConditionalAND.left=current} '&&' right=ConditionalNOT)*;
 
 ConditionalNOT returns ConditionalExpression hidden(WHITESPACE):
-    '!'? right=ConditionalPrimary;	// TODO  fix this into a correct prefix operator
+    ConditionalPrimary | ( {ConditionalNOT} '!' expr=ConditionalPrimary );
 
 ConditionalPrimary returns ConditionalExpression hidden(WHITESPACE):
-    {ConditionLiteral} id=IDENTIFIER | '(' ConditionalOR ')';
+      ( '(' ConditionalOR ')' )
+    | ( {ConditionLiteral} id=IDENTIFIER )
+    ;
 ÇENDAROUNDÈ
 
 ÇAROUND nl::dslmeinte::xtext::sgml::dtd::DTD2Xtext::attribute FOR Attribute -È
