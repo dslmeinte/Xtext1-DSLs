@@ -9,6 +9,7 @@ import nl.dslmeinte.xtext.util.antlr.trie.MapBasedTrie;
 import nl.dslmeinte.xtext.util.antlr.trie.TrieSupport;
 
 import org.eclipse.xtext.parser.antlr.AntlrTokenDefProvider;
+import org.eclipse.xtext.parser.antlr.TokenTool;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -38,8 +39,8 @@ public class AntlrTokenFacade implements TokenFacade {
 				} else {
 					baseTerminalsMap.put(baseTerminal, id);
 				}
-			} else if( tokenDescription.startsWith("RULE_") ) {
-				String ruleName = tokenDescription.substring("RULE_".length());
+			} else if( TokenTool.isLexerRule(tokenDescription) ) {
+				String ruleName = TokenTool.getLexerRuleName(tokenDescription);
 				BaseTerminals baseTerminal = BaseTerminals.fromName(ruleName);
 				if( baseTerminal != null ) {
 					baseTerminalsMap.put(baseTerminal, id);
