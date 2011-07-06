@@ -2,19 +2,25 @@ package nl.dslmeinte.xtext.sgml.base.services;
 
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
+import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.xtext.conversion.impl.AbstractDeclarativeValueConverterService;
-import org.eclipse.xtext.conversion.impl.STRINGValueConverter;
-
-import com.google.inject.Inject;
+import org.eclipse.xtext.parsetree.AbstractNode;
 
 public class BaseTerminalsConverter extends AbstractDeclarativeValueConverterService {
 
-	@Inject
-	private STRINGValueConverter stringValueConverter;
-	
 	@ValueConverter(rule = "QuotedString")
 	public IValueConverter<String> QuotedString() {
-		return stringValueConverter;
+		return new IValueConverter<String>(){
+				@Override
+				public String toString(String value) throws ValueConverterException {
+					return "\"" + value + "\"";
+				}
+				@Override
+				public String toValue(String string, AbstractNode node) throws ValueConverterException {
+					return string.substring(1, string.length()-1);
+					// Note that 'node' could be used to determine which characters to escape.
+				}
+			};
 	}
 
 }

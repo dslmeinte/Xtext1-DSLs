@@ -35,6 +35,7 @@ import com.google.inject.Inject;
  * <p>
  * The following is a table detailing all the {@link BaseTerminals}s, by which
  * states they can be emitted, and when:
+ * TODO  -update to current-
  * <dl>
  * 	<dt>{@code whitespace}</dt>
  * 		<dd>{@code header}, {@code tag}, {@code content} if literal contents if pure whitespace (<b>TODO!</b>)</dd>
@@ -567,6 +568,7 @@ public class SgmlLexer {
 
 		int i = 2;
 		int ch;
+		// TODO  add correct handling of escaping
 		while( ( ch = LA(i) ) != quoteChar && ch != CharStream.EOF ) {
 			i++;
 		}
