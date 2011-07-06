@@ -18,7 +18,8 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.emf.common,
  org.antlr.runtime,
  nl.dslmeinte.xtext.util;bundle-version="0.3.0",
- nl.dslmeinte.xtext.dtd;bundle-version="1.0.0"
+ nl.dslmeinte.xtext.dtd;bundle-version="1.0.0",
+ org.eclipse.xtend.util.stdlib;bundle-version="1.0.1"
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: nl.dslmeinte.xtext.sgml.base,
