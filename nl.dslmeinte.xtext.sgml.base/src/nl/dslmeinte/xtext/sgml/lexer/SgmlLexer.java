@@ -180,6 +180,11 @@ public class SgmlLexer {
 	}
 
 	private void mTokensHeader() throws RecognitionException {
+		if( isQueuePopulated() ) {
+			dequeue();
+			return;
+		}
+
 		int ch = LA(1);
 		if( ch == '<' ) {
 			// SGML comments can be part of the header, inside [..] and outside Entity instances
@@ -246,7 +251,7 @@ public class SgmlLexer {
 			return;
 		}
 		if( isQuoteChar(ch) ) {
-			consumeQuotedString(ch);
+			handleQuotedString(ch);
 			return;
 		}
 		if( ch == '-' && LA(2) == '-' ) {
@@ -297,6 +302,11 @@ public class SgmlLexer {
 	 */
 
 	private void mTokensTag() throws RecognitionException {
+		if( isQueuePopulated() ) {
+			dequeue();
+			return;
+		}
+
 		int ch = LA(1);
 		if( ch == '<' ) {
 			// comments can't be part of a tag, but must be able to lexe them just before tag open:
@@ -348,7 +358,7 @@ public class SgmlLexer {
 			return;
 		}
 		if( isQuoteChar(ch) ) {
-			consumeQuotedString(ch);
+			handleQuotedString(ch);
 			return;
 		}
 		if( ch == CharStream.EOF ) {
@@ -453,6 +463,13 @@ public class SgmlLexer {
 		return( whitespaceOnly ? whitespace : literal_contents );
 	}
 
+
+	/*
+	 * +---------------+
+	 * | Token queuing |
+	 * +---------------+
+	 */
+
 	private class QueuedToken {
 		private BaseTerminals type;
 		private int length;
@@ -502,6 +519,16 @@ public class SgmlLexer {
 		return( ch == '"' || ch == '\'' );
 	}
 
+	private BaseTerminals mapQuoteChar(int ch) {
+		if( ch == '"' ) {
+			return double_quote;
+		}
+		if( ch == '\'' ) {
+			return single_quote;
+		}
+		throw new IllegalArgumentException( ((char) ch) + " is not a quote character" );
+	}
+
 	private boolean isWhitespace(int ch) {
 		return Character.isWhitespace(ch);
 	}
@@ -534,19 +561,26 @@ public class SgmlLexer {
 	 * @param quoteChar
 	 *            the value of {@code LA(1)}
 	 */
-	private void consumeQuotedString(int quoteChar) throws RecognitionException {
-		consume();
+	private void handleQuotedString(int quoteChar) throws RecognitionException {
+		BaseTerminals quoteTerminal = mapQuoteChar(quoteChar);
+		enqueue(quoteTerminal, 1);
+
+		int i = 2;
 		int ch;
-		while( ( ch = LA(1) ) != quoteChar && ch != CharStream.EOF ) {
-			consume();
+		while( ( ch = LA(i) ) != quoteChar && ch != CharStream.EOF ) {
+			i++;
 		}
+		enqueue(quoted_string, i-2);
 
 		if( ch != CharStream.EOF ) {
-			consume();
-			setType(quoted_string);
+			enqueue(quoteTerminal, 1);
+			dequeue();
 			return;
 		}
 
+		for( int j = 0; j < i; j++ ) {
+			consume();
+		}
 		NoViableAltException nvae = new NoViableAltException();
 		recover(nvae);
 		throw nvae;

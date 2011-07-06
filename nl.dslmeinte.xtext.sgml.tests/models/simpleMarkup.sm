@@ -1,4 +1,4 @@
-<!DOCTYPE SISGML PUBLIC "simpleMarkup.dtd"
+<!DOCTYPE SISGML PUBLIC "-//Intuit//SISGML DTD//EN" "simpleMarkup.dtd"
 [
 	<!ENTITY myEntity SYSTEM "/foo/bar" --bla-die-blah-->
 ]

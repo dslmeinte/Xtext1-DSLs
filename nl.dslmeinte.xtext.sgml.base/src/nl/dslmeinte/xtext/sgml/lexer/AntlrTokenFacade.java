@@ -10,6 +10,7 @@ import nl.dslmeinte.xtext.util.antlr.trie.TrieSupport;
 
 import org.eclipse.xtext.parser.antlr.AntlrTokenDefProvider;
 import org.eclipse.xtext.parser.antlr.TokenTool;
+import org.eclipse.xtext.util.Strings;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -31,6 +32,7 @@ public class AntlrTokenFacade implements TokenFacade {
 			int id = entry.getKey();
 			if( tokenDescription.startsWith("'") && tokenDescription.endsWith("'") ) {
 				String keyword = tokenDescription.substring(1, tokenDescription.length()-1);
+				keyword = Strings.convertFromJavaString(keyword, true);
 				BaseTerminals baseTerminal = BaseTerminals.fromKeyword(keyword);
 				if( baseTerminal == null ) {
 					if( TrieSupport.isWord(keyword) ) {

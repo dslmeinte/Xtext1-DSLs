@@ -35,12 +35,12 @@ generate «fileNameWithoutExtension().toLowerCase()» «nsURI»
 «name»_tagClose hidden(): {«name»_tagClose} '<' '/' '«name»' '>';
 «ENDDEFINE»
 
-«DEFINE attribute FOR Attribute»«IF isOptional()»(«ENDIF»'«name»' '=' «name»=QUOTED_STRING«IF isOptional()»)?«ENDIF»«ENDDEFINE»
+«DEFINE attribute FOR Attribute»«IF isOptional()»(«ENDIF»'«name»' '=' «name»=QuotedString«IF isOptional()»)?«ENDIF»«ENDDEFINE»
 
 «DEFINE sgmlDocumentRuleOverride FOR DocumentTypeDefinition»
 // override from Base to include root (of right type):
 SgmlDocument hidden(WHITESPACE, HEADER_COMMENTS):
-	'<' '!DOCTYPE' rootName=IDENTIFIER ('PUBLIC' | 'SYSTEM') header1=QUOTED_STRING header2=QUOTED_STRING?
+	'<' '!DOCTYPE' rootName=IDENTIFIER ('PUBLIC' | 'SYSTEM') header1=QuotedString header2=QuotedString?
 		('[' ( entities+=Entity | SGML_COMMENTS )* ']')? '>'
 		root=«definitions.typeSelect(Element).first().name»
 	;

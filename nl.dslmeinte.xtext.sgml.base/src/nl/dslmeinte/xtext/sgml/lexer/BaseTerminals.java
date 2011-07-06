@@ -12,13 +12,14 @@ import nl.dslmeinte.xtext.util.antlr.trie.EnumBasedTrie;
  */
 public enum BaseTerminals {
 
-	// TODO  add enough meta data so Base.xtext could be generated from this description (or vice versa - SSP)
+	// TODO  add enough meta data so Base.xtext could be generated from this description (or vice versa ~ SingleSourcePrinciple)
 
 	public_("PUBLIC"), system("SYSTEM"),
 	open_tag("<"), close_tag(">"), slash("/"), equals("="),
 	doctype("!DOCTYPE"), entity("!ENTITY"),
 	open_bracket("["), close_bracket("]"),
 	ampersand("&"), semicolon(";"),
+	single_quote("'"), double_quote("\""),
 	identifier, quoted_string,
 	sgml_comments,
 	header_comments,

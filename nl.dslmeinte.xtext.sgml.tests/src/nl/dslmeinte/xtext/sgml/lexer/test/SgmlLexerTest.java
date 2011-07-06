@@ -83,9 +83,13 @@ public class SgmlLexerTest extends SgmlLexerTestSupport {
 		assertNextToken(whitespace);
 		assertNextToken(public_);
 		assertNextToken(whitespace);
+		assertNextToken(double_quote);
 		assertNextToken(quoted_string);
+		assertNextToken(double_quote);
 		assertNextToken(whitespace);
+		assertNextToken(double_quote);
 		assertNextToken(quoted_string);
+		assertNextToken(double_quote);
 		assertNextToken(close_tag);
 	}
 
@@ -106,7 +110,9 @@ public class SgmlLexerTest extends SgmlLexerTestSupport {
 		assertNextNonWhitespaceToken(doctype);
 		assertNextNonWhitespaceToken(identifier, "DOC");
 		assertNextNonWhitespaceToken(public_);
+		assertNextNonWhitespaceToken(double_quote);
 		assertNextNonWhitespaceToken(quoted_string);
+		assertNextNonWhitespaceToken(double_quote);
 	}
 
 	private void expectEntity(int i) {
@@ -114,7 +120,9 @@ public class SgmlLexerTest extends SgmlLexerTestSupport {
 		assertNextNonWhitespaceToken(entity);
 		assertNextNonWhitespaceToken(identifier);
 		assertNextNonWhitespaceToken(system);
+		assertNextNonWhitespaceToken(double_quote);
 		assertNextNonWhitespaceToken(quoted_string);
+		assertNextNonWhitespaceToken(double_quote);
 		assertNextNonWhitespaceToken(header_comments);
 		assertNextNonWhitespaceToken(close_tag);
 	}

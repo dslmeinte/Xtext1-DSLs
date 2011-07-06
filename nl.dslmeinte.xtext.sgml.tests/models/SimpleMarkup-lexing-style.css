@@ -16,6 +16,10 @@ div.tokenVisualization {
 	color: green;
 }
 
+.single_quote, .double_quote {
+	background-color: orange;
+}
+
 .quoted_string {
 	color: orange;
 }

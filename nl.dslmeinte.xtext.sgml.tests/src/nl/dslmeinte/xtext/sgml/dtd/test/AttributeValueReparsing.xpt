@@ -7,5 +7,5 @@
 «ENDAROUND»
 
 «AROUND nl::dslmeinte::xtext::sgml::dtd::DTD2Xtext::attribute FOR Attribute -»
-«IF isOptional()»(«ENDIF»'«name»' '=' «IF name == 'to'»'"' to=[Section|IDENTIFIER] '"'	// notice: AOP happened here«ELSE»«name»=QUOTED_STRING«ENDIF»«IF isOptional()»)?«ENDIF -»
+«IF isOptional()»(«ENDIF»'«name»' '=' «IF name == 'to'»'"' to=[Section|QUOTED_STRING] '"'	// notice: AOP happened here«ELSE»«name»=QuotedString«ENDIF»«IF isOptional()»)?«ENDIF -»
 «ENDAROUND»

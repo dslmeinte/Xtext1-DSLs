@@ -1,8 +1,10 @@
 package nl.dslmeinte.xtext.sgml.test.simplemarkup;
 
+import org.eclipse.xtext.conversion.IValueConverterService;
+
+import nl.dslmeinte.xtext.sgml.base.services.BaseTerminalsConverter;
 import nl.dslmeinte.xtext.sgml.lexer.SgmlLexerForParsing;
 import nl.dslmeinte.xtext.sgml.test.simplemarkup.naming.SimpleMarkupNameProvider;
-import nl.dslmeinte.xtext.sgml.test.simplemarkup.parser.CustomizedSimpleMarkupParser;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -19,12 +21,16 @@ public class SimpleMarkupRuntimeModule extends nl.dslmeinte.xtext.sgml.test.simp
 			.to(SgmlLexerForParsing.class);
 	}
 
-	public Class<? extends org.eclipse.xtext.parser.antlr.IAntlrParser> bindIAntlrParser() {
-		return CustomizedSimpleMarkupParser.class;
+//	public Class<? extends org.eclipse.xtext.parser.antlr.IAntlrParser> bindIAntlrParser() {
+//		return CustomizedSimpleMarkupParser.class;
+//	}
+
+	public Class<? extends IValueConverterService> bindIValueConverterService() {
+		return BaseTerminalsConverter.class;
 	}
 
 	public Class<? extends org.eclipse.xtext.naming.IQualifiedNameProvider> bindIQualifiedNameProvider() {
 		return SimpleMarkupNameProvider.class;
 	}
-	
+
 }

@@ -22,5 +22,5 @@ ConditionalPrimary returns ConditionalExpression hidden(WHITESPACE):
 «ENDAROUND»
 
 «AROUND nl::dslmeinte::xtext::sgml::dtd::DTD2Xtext::attribute FOR Attribute -»
-«IF isOptional()»(«ENDIF»'«name»' '=' «name»=«IF name == 'condition'»ConditionalExpression«ELSE»QUOTED_STRING«ENDIF»«IF isOptional()»)?«ENDIF -»
+«IF isOptional()»(«ENDIF»'«name»' '=' «IF name == 'condition'»'"' «name»=ConditionalExpression '"'«ELSE»«name»=QuotedString«ENDIF»«IF isOptional()»)?«ENDIF -»
 «ENDAROUND»
