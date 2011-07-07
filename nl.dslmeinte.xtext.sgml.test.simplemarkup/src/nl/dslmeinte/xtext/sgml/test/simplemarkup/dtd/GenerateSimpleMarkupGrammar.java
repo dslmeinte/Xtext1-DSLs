@@ -1,4 +1,4 @@
-package nl.dslmeinte.xtext.sgml.test.simplemarkup;
+package nl.dslmeinte.xtext.sgml.test.simplemarkup.dtd;
 
 import java.io.FileNotFoundException;
 
@@ -37,7 +37,7 @@ public class GenerateSimpleMarkupGrammar {
 
 	private void run() throws FileNotFoundException {
 		DTD2XtextTransformer.transform(
-				platformResourceURI("src", "simpleMarkup.dtd"),
+				platformResourceURI("src", "dtd/simpleMarkup.dtd"),
 				SIMPLE_MARKUP_LANGUAGE_fqName,
 				SIMPLE_MARKUP_nsUri,
 				platformResourceURI("src", "SimpleMarkup.xtext"),
