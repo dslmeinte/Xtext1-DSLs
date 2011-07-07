@@ -29,7 +29,7 @@ ConditionalPrimary returns ConditionalExpression:
     ;
 
 
-// copied from Base.xtext:
-terminal IDENTIFIER			: ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
-terminal WHITESPACE			: (' '|'\t'|'\r'|'\n')+;
+terminal IDENTIFIER	: ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+
+terminal WHITESPACE	: (' '|'\t'|'\r'|'\n')+;
 
