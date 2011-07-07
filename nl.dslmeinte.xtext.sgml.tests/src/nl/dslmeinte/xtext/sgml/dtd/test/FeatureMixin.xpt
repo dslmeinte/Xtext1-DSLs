@@ -1,0 +1,29 @@
+«IMPORT dtdModel»
+
+«EXTENSION nl::dslmeinte::xtext::sgml::dtd::grammarHelper»
+«EXTENSION nl::dslmeinte::xtext::dtd::dtdExtensions»
+
+«AROUND nl::dslmeinte::xtext::sgml::dtd::DTD2Xtext::additionalGrammarContent FOR DocumentTypeDefinition»
+ConditionalExpression: ConditionalOR;
+
+ConditionalOR returns ConditionalExpression hidden(WHITESPACE):
+    ConditionalAND ({ConditionalOR.left=current} '||' right=ConditionalAND)*;
+
+ConditionalAND returns ConditionalExpression hidden(WHITESPACE):
+    ConditionalNOT ({ConditionalAND.left=current} '&&' right=ConditionalNOT)*;
+
+ConditionalNOT returns ConditionalExpression hidden(WHITESPACE):
+    ConditionalPrimary | ( {ConditionalNOT} '!' expr=ConditionalPrimary );
+
+ConditionalPrimary returns ConditionalExpression hidden(WHITESPACE):
+      ( '(' ConditionalOR ')' )
+    | ( {ConditionLiteral} id=IDENTIFIER )
+    ;
+«ENDAROUND»
+
+«AROUND nl::dslmeinte::xtext::sgml::dtd::DTD2Xtext::attribute FOR Attribute -»
+«IF isOptional()»(«ENDIF -»
+	'«name»' '=' «IF name == 'condition'»'"' «name»=ConditionalExpression '"'	// notice: AOP happened here«ELSEIF name == 'to'»'"' to=[Section|QUOTED_STRING] '"'	// notice: AOP happened here«ELSE»«name»=QuotedString«ENDIF -»
+«IF isOptional()»)?«ENDIF -»
+«ENDAROUND»
+

@@ -31,7 +31,11 @@ Reference hidden(SGML_COMMENTS, WHITESPACE):
 	;
 
 Reference_tagOpen hidden(): '<' 'Reference' attributes=Reference_attributes '>';
-Reference_attributes hidden(WHITESPACE): 'to' '=' to=QuotedString;
+Reference_attributes hidden(WHITESPACE): 
+
+	'to' '=' '"' to=[Section|QUOTED_STRING] '"'	// notice: AOP happened here
+
+;
 Reference_tagClose hidden(): {Reference_tagClose} '<' '/' 'Reference' '>';
 
 Section hidden(SGML_COMMENTS, WHITESPACE):
@@ -41,7 +45,19 @@ Section hidden(SGML_COMMENTS, WHITESPACE):
 	;
 
 Section_tagOpen hidden(): '<' 'Section' attributes=Section_attributes '>';
-Section_attributes hidden(WHITESPACE): ('styleName' '=' styleName=QuotedString & ('condition' '=' condition=QuotedString)? & ('name' '=' name=QuotedString)?);
+Section_attributes hidden(WHITESPACE): (
+
+	'styleName' '=' styleName=QuotedString
+
+ & 
+(
+	'condition' '=' '"' condition=ConditionalExpression '"'	// notice: AOP happened here
+)?
+ & 
+(
+	'name' '=' name=QuotedString
+)?
+);
 Section_tagClose hidden(): {Section_tagClose} '<' '/' 'Section' '>';
 
 Par hidden(SGML_COMMENTS):
@@ -51,7 +67,11 @@ Par hidden(SGML_COMMENTS):
 	;
 
 Par_tagOpen hidden(): {Par_tagOpen} '<' 'Par' attributes=Par_attributes '>';
-Par_attributes hidden(WHITESPACE): {Par_attributes} ('styleName' '=' styleName=QuotedString)?;
+Par_attributes hidden(WHITESPACE): {Par_attributes} 
+(
+	'styleName' '=' styleName=QuotedString
+)?
+;
 Par_tagClose hidden(): {Par_tagClose} '<' '/' 'Par' '>';
 
 em hidden(SGML_COMMENTS):
@@ -76,5 +96,20 @@ bf_tagClose hidden(): {bf_tagClose} '<' '/' 'bf' '>';
 
 
 
+ConditionalExpression: ConditionalOR;
+
+ConditionalOR returns ConditionalExpression hidden(WHITESPACE):
+    ConditionalAND ({ConditionalOR.left=current} '||' right=ConditionalAND)*;
+
+ConditionalAND returns ConditionalExpression hidden(WHITESPACE):
+    ConditionalNOT ({ConditionalAND.left=current} '&&' right=ConditionalNOT)*;
+
+ConditionalNOT returns ConditionalExpression hidden(WHITESPACE):
+    ConditionalPrimary | ( {ConditionalNOT} '!' expr=ConditionalPrimary );
+
+ConditionalPrimary returns ConditionalExpression hidden(WHITESPACE):
+      ( '(' ConditionalOR ')' )
+    | ( {ConditionLiteral} id=IDENTIFIER )
+    ;
 
 

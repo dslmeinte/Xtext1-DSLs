@@ -32,36 +32,15 @@ public class DTD2XtextTransformerTest extends DTDTestSupport {
 	}
 
 	@Test
-	public void test_transformation_of_simple_markup_dtd() throws FileNotFoundException {
+	public void test_transformation_of_simple_markup_dtd_with_AOP() throws FileNotFoundException {
 		DTD2XtextTransformer.transform(
 				createModelsURI("simpleMarkup.dtd"),
 				SIMPLE_MARKUP_LANGUAGE_fqName,
 				SIMPLE_MARKUP_nsUri,
-				simpleMarkupPlatformResourceURI("src", "SimpleMarkup.xtext")
+				simpleMarkupPlatformResourceURI("src", "SimpleMarkup.xtext"),
+				xpandPackageQualifiedName() + "::FeatureMixin"
 			);
-	}
-
-	@Test
-	public void test_transformation_of_simple_markup_dtd_with_conditional_override() throws FileNotFoundException {
-		DTD2XtextTransformer.transform(
-				createModelsURI("simpleMarkup.dtd"),
-				SIMPLE_MARKUP_LANGUAGE_fqName,
-				SIMPLE_MARKUP_nsUri + "/conditional",
-				simpleMarkupPlatformResourceURI("src", "SimpleMarkupConditional.xtext"),
-				xpandPackageQualifiedName() + "::Conditional"
-			);
-	}
-
-	@Test
-	public void test_transformation_of_simple_markup_dtd_with_weaving() throws FileNotFoundException {
-		DTD2XtextTransformer.transform(
-				createModelsURI("simpleMarkup.dtd"),
-				SIMPLE_MARKUP_LANGUAGE_fqName,
-				SIMPLE_MARKUP_nsUri + "/attributeValueReparsing",
-				simpleMarkupPlatformResourceURI("src", "SimpleMarkupAttributeValueReparsing.xtext"),
-				xpandPackageQualifiedName() + "::AttributeValueReparsing"
-			);
-		modifyGeneratedParsers(simpleMarkupPlatformResourceURI("src-gen", "parser/antlr/internal/InternalSimpleMarkupParser"), "Reference_attributes");
+		modifyGeneratedParsers(simpleMarkupPlatformResourceURI("src-gen", "parser/antlr/internal/InternalSimpleMarkupParser"), "Section_attributes");
 	}
 
 	/**
