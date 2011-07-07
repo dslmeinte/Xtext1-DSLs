@@ -121,6 +121,11 @@
         </handler>
     </extension>   
 
+    <!-- Reduce memory consumption of Xtext builder: -->
+    <extension point="org.eclipse.xtext.ui.shared.overridingGuiceModule">  
+     <module class="org.eclipse.xtext.builder.clustering.ClusteringModule"/>  
+    </extension>
+
 <!-- adding resource factories -->
 
 	<extension

@@ -5,6 +5,9 @@ import nl.dslmeinte.xtext.sgml.lexer.SgmlLexerForParsing;
 import nl.dslmeinte.xtext.sgml.lexer.ui.SgmlLexerForContentAssist;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.builder.clustering.CurrentDescriptions;
+import org.eclipse.xtext.resource.IResourceDescriptions;
+import org.eclipse.xtext.scoping.impl.AbstractGlobalScopeProvider;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.antlr.AbstractAntlrTokenToAttributeIdMapper;
 
 import com.google.inject.Binder;
@@ -37,6 +40,14 @@ public class SimpleMarkupUiModule extends nl.dslmeinte.xtext.sgml.test.simplemar
         binder
         	.bind(AbstractAntlrTokenToAttributeIdMapper.class)
         	.to(BaseTokenToAttributeIdMapper.class);
+    }
+
+    public void configureIResourceDescriptionsBuilderScope(Binder binder)
+    {  
+        binder
+        	.bind(IResourceDescriptions.class)
+            .annotatedWith(Names.named(AbstractGlobalScopeProvider.NAMED_BUILDER_SCOPE))
+            .to(CurrentDescriptions.ResourceSetAware.class);  
     }
 
 //	public Class<? extends org.eclipse.xtext.ui.editor.contentassist.antlr.IContentAssistParser> bindIContentAssistParser() {
