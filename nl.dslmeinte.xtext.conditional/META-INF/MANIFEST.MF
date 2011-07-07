@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: nl.dslmeinte.xtext.conditional
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0
+Bundle-SymbolicName: nl.dslmeinte.xtext.conditional; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.generator;resolution:=optional,
+ org.apache.commons.logging;resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ com.ibm.icu;resolution:=optional,
+ org.eclipse.xtext.xtend;resolution:=optional,
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: nl.dslmeinte.xtext.conditional,
+ nl.dslmeinte.xtext.conditional.services,
+ nl.dslmeinte.xtext.conditional.conditional,
+ nl.dslmeinte.xtext.conditional.conditional.impl,
+ nl.dslmeinte.xtext.conditional.conditional.util,
+ nl.dslmeinte.xtext.conditional.parseTreeConstruction,
+ nl.dslmeinte.xtext.conditional.parser.antlr,
+ nl.dslmeinte.xtext.conditional.parser.antlr.internal
