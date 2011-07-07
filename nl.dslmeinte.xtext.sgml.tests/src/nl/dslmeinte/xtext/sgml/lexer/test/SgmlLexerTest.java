@@ -50,7 +50,7 @@ public class SgmlLexerTest extends SgmlLexerTestSupport {
 
 	@Test
 	public void test_lexing_of_simple_markup_file() throws IOException {
-		lexe(new ANTLRFileStream("models/simpleMarkup.sm"));
+		lexe(new ANTLRFileStream("models/example1.sm"));
 	}
 
 	@Test
@@ -66,10 +66,10 @@ public class SgmlLexerTest extends SgmlLexerTestSupport {
 				}
 				return "tagKeyword";
 			}
-		}, "SimpleMarkup-lexing-style.css");
-		CharStream input = new ANTLRFileStream("models/simpleMarkup.sm");
-		OutputStream output = new FileOutputStream("models/simpleMarkup-lexed.html");
-		visualizer.visualize(input, output, "simpleMarkup.sm: token visualization");
+		}, "default-lexing-style.css");
+		CharStream input = new ANTLRFileStream("models/example1.sm");
+		OutputStream output = new FileOutputStream("models/example1-lexed.html");
+		visualizer.visualize(input, output, "example1.sm: token visualization");
 		output.close();
 	}
 

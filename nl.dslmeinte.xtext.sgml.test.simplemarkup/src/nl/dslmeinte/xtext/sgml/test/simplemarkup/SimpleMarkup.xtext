@@ -51,7 +51,7 @@ Section_attributes hidden(WHITESPACE): (
 
  & 
 (
-	'condition' '=' ('"'|"'") condition=ConditionalExpression ('"'|"'")	// notice: AOP happened here
+	'condition' '=' condition=QuotedString
 )?
  & 
 (

@@ -24,7 +24,7 @@ div.tokenVisualization {
 	color: orange;
 }
 
-.doctype, .entity, .sisgml, .public_, .system {
+.doctype, .entity, .public_, .system {
 	color: purple;
 	font-weight: bold;
 }
@@ -33,23 +33,14 @@ div.tokenVisualization {
 	color: red;
 }
 
-.entity_reference {
-	color: red;
-	background-color: yellow;
-	border: 1px;
-	border-color: green;
-	border-style: dashed;
-}
-
 .literal_contents {
 	background-color: yellow;
 }
 
 /*
 	EOF,
-	openBracketSymbol, closeBracketSymbol,
-	openTagSymbol, closeTagSymbol, tagSlash, keyword, equalsSymbol, singleQuote, doubleQuote,
-	leftParenthesis, rightParenthesis, andOperator, orOperator, notOperator
-	not (explicitly) styled
+	open_bracket, close_bracket,
+	open_tag, close_tag, slash, equals,
+	&c... not (explicitly) styled
 */
 

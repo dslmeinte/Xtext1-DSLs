@@ -25,15 +25,25 @@ public class SimpleMarkupParserTest {
 	}
 
 	@Test
-	public void test_parser() {
-		SgmlDocument document = load("models/simpleMarkup.sm");
+	public void test_resolution_of_internal_crossReference() {
+		SgmlDocument document = load("models/example1.sm", new ResourceSetImpl());
+		EcoreUtil.resolveAll(document);
 		Section to = ((Reference) document.getRoot().getContents().get(0)).getReference_tagOpen().getAttributes().getTo();
 		Assert.assertNotNull(to);
 		Assert.assertTrue(!to.eIsProxy());
 	}
 
-	private SgmlDocument load(String fileUri) {
+	@Test
+	public void test_resolution_of_external_crossReference() {
 		ResourceSet resourceSet = new ResourceSetImpl();
+		load("models/example1.sm", resourceSet);
+		SgmlDocument document2 = load("models/example2.sm", resourceSet);
+		Section to = ((Reference) document2.getRoot().getContents().get(0)).getReference_tagOpen().getAttributes().getTo();
+		Assert.assertNotNull(to);
+		Assert.assertTrue(!to.eIsProxy());	// proxy gets resolved because of access
+	}
+
+	private SgmlDocument load(String fileUri, ResourceSet resourceSet) {
 		Resource resource = resourceSet.createResource(URI.createFileURI(fileUri));
 		try {
 			resource.load(Collections.emptyMap());
@@ -41,7 +51,6 @@ public class SimpleMarkupParserTest {
 			e.printStackTrace();
 			Assert.fail();
 		}
-		EcoreUtil.resolveAll(resource);
 		if( resource.getErrors().size() > 0 ) {
 			for( Diagnostic diagnostic : resource.getErrors() ) {
 				System.err.println(diagnostic.getMessage() + " @L" + diagnostic.getLine() );
