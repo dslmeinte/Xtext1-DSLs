@@ -33,7 +33,7 @@ Reference hidden(SGML_COMMENTS, WHITESPACE):
 Reference_tagOpen hidden(): '<' 'Reference' attributes=Reference_attributes '>';
 Reference_attributes hidden(WHITESPACE): 
 
-	'to' '=' '"' to=[Section|QUOTED_STRING] '"'	// notice: AOP happened here
+	'to' '=' ('"'|"'") to=[Section|QUOTED_STRING] ('"'|"'")	// notice: AOP happened here
 
 ;
 Reference_tagClose hidden(): {Reference_tagClose} '<' '/' 'Reference' '>';
@@ -51,7 +51,7 @@ Section_attributes hidden(WHITESPACE): (
 
  & 
 (
-	'condition' '=' '"' condition=ConditionalExpression '"'	// notice: AOP happened here
+	'condition' '=' ('"'|"'") condition=ConditionalExpression ('"'|"'")	// notice: AOP happened here
 )?
  & 
 (
