@@ -14,13 +14,9 @@ Workflow {
 		platformUri = "${runtimeProject}/.."
 	}
 
-	component = DirectoryCleaner {
-		directory = "${runtimeProject}/src-gen"
-	}
-
-	component = DirectoryCleaner {
-		directory = "${runtimeProject}.ui/src-gen"
-	}
+    component = DirectoryCleaner {
+        directory = "${runtimeProject}/src-gen/nl"
+    }
 
 	component = Generator {
 		pathRtProject = runtimeProject
