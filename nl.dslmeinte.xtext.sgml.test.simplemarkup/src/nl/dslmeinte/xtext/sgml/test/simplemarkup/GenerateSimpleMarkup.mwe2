@@ -15,7 +15,7 @@ Workflow {
 	}
 
 	component = DirectoryCleaner {
-		directory = "${runtimeProject}/src-gen"
+		directory = "${runtimeProject}/src-gen/nl"    // do not wipe out directory itself to preserve Git-related files
 	}
 
 	component = DirectoryCleaner {
