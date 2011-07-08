@@ -23,6 +23,7 @@ Workflow {
 		pathUiProject = "${runtimeProject}.ui"
 		projectNameRt = projectName
 		projectNameUi = "${projectName}.ui"
+		mergeManifest = false	// avoids that MWE2 launch fails (manifest for this project is already checked in correctly)
 		language = {
 			uri = grammarURI
 			fileExtensions = file.extensions
