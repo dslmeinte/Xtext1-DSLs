@@ -33,6 +33,7 @@ public class AntlrTokenFacade implements TokenFacade {
 			if( tokenDescription.startsWith("'") && tokenDescription.endsWith("'") ) {
 				String keyword = tokenDescription.substring(1, tokenDescription.length()-1);
 				keyword = Strings.convertFromJavaString(keyword, true);
+				keyword = keyword.intern();	// optimization attempt: avoid duplicate String-s
 				BaseTerminals baseTerminal = BaseTerminals.fromKeyword(keyword);
 				if( baseTerminal == null ) {
 					if( TrieSupport.isWord(keyword) ) {
