@@ -1,14 +1,18 @@
 package nl.dslmeinte.xtext.sgml.lexer.test;
 
+import static nl.dslmeinte.xtext.sgml.lexer.BaseTerminals.*;
+import nl.dslmeinte.xtext.sgml.base.BaseStandaloneSetup;
 import nl.dslmeinte.xtext.sgml.dtd.test.support.SgmlLexerTestSupport;
 import nl.dslmeinte.xtext.sgml.lexer.BaseTerminals;
 
 import org.antlr.runtime.ANTLRStringStream;
 import org.junit.Test;
 
-import static nl.dslmeinte.xtext.sgml.lexer.BaseTerminals.*;
-
 public class SgmlLiteralContentLexingTest extends SgmlLexerTestSupport {
+
+	public SgmlLiteralContentLexingTest() {
+		super(new BaseStandaloneSetup().createInjector());
+	}
 
 	@Test
 	public void test_contiguous_content () {

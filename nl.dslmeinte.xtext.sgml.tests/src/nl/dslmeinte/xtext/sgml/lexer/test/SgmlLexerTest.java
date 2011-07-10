@@ -10,7 +10,7 @@ import java.lang.reflect.Field;
 
 import nl.dslmeinte.xtext.sgml.dtd.test.support.SgmlLexerTestSupport;
 import nl.dslmeinte.xtext.sgml.lexer.SgmlLexerForParsing;
-import nl.dslmeinte.xtext.sgml.lexer.TokenFacade;
+import nl.dslmeinte.xtext.sgml.test.simplemarkup.SimpleMarkupStandaloneSetup;
 import nl.dslmeinte.xtext.util.antlr.HtmlTokenVisualizer;
 import nl.dslmeinte.xtext.util.antlr.HtmlTokenVisualizer.TokenToStyleMapper;
 
@@ -21,17 +21,16 @@ import org.antlr.runtime.Token;
 import org.junit.Assert;
 import org.junit.Test;
 
+
 public class SgmlLexerTest extends SgmlLexerTestSupport {
 
-	@Test
-	public void test_SgmlLexer_provision() {
-		Assert.assertNotNull(sgmlLexer);
-		Assert.assertNotNull(sgmlLexer.getFacade());
+	public SgmlLexerTest() {
+		super(new SimpleMarkupStandaloneSetup().createInjector());
 	}
 
 	@Test
 	public void test_SgmlLexerForParsing_provision() {
-		SgmlLexerForParsing baseLexer = injector.getInstance(SgmlLexerForParsing.class);
+		SgmlLexerForParsing baseLexer = new SimpleMarkupStandaloneSetup().createInjector().getInstance(SgmlLexerForParsing.class);
 		Assert.assertNotNull(baseLexer);
 		try {
 			Field field = SgmlLexerForParsing.class.getDeclaredField("sgmlLexer");
@@ -55,14 +54,13 @@ public class SgmlLexerTest extends SgmlLexerTestSupport {
 
 	@Test
 	public void visualize_lexing_of_simple_markup_file() throws IOException {
-		final TokenFacade facade = sgmlLexer.getFacade();
 		initLexer(null);
-		HtmlTokenVisualizer visualizer = new HtmlTokenVisualizer(lexer, new TokenToStyleMapper() {
+		HtmlTokenVisualizer visualizer = new HtmlTokenVisualizer(getLexer(), new TokenToStyleMapper() {
 			@Override
 			public String cssClassName(Token token) {
 				int type = token.getType();
-				if( facade.isBase(type) ) {
-					return facade.asBase(type).name();
+				if( tokenFacade.isBase(type) ) {
+					return tokenFacade.asBase(type).name();
 				}
 				return "tagKeyword";
 			}
