@@ -16,10 +16,6 @@ div.tokenVisualization {
 	color: green;
 }
 
-.single_quote, .double_quote {
-	background-color: orange;
-}
-
 .quoted_string {
 	color: orange;
 }
@@ -41,6 +37,7 @@ div.tokenVisualization {
 	EOF,
 	open_bracket, close_bracket,
 	open_tag, close_tag, slash, equals,
+	single_quote, double_quote,
 	&c... not (explicitly) styled
 */
 
