@@ -1,4 +1,5 @@
-<!DOCTYPE SISGML PUBLIC "-//Intuit//SISGML DTD//EN" "simpleMarkup.dtd"
+<!-- allow comments before header -->
+<!DOCTYPE SISGML PUBLIC "conf/simpleMarkup.dtd" "simpleMarkup.dtd"
 [
 	<!ENTITY myEntity SYSTEM "/foo/bar" --bla-die-blah-->
 ]
