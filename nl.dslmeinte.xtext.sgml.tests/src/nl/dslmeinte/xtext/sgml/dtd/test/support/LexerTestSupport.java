@@ -21,6 +21,9 @@ public abstract class LexerTestSupport {
 	private Lexer lexer;
 
 	protected Lexer getLexer() {
+		if( lexer == null ) {
+			throw new IllegalStateException( "lexer not initialized" );
+		}
 		return lexer;
 	}
 
