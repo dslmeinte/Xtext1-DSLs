@@ -1,6 +1,7 @@
 package nl.dslmeinte.xtext.sgml.lexer;
 
 import static nl.dslmeinte.xtext.sgml.lexer.BaseTerminals.*;
+import static nl.dslmeinte.xtext.sgml.lexer.SgmlLexer.LexicalState.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -132,7 +133,8 @@ public class SgmlLexer {
 	 */
 
 	public void init() {
-		lexicalState = LexicalState.header;
+		lexicalState = content;
+		nextNonContentLexicalState = header;
 	}
 
 	// the following 2 features have protected visibility to allow per-state testing:
@@ -141,7 +143,10 @@ public class SgmlLexer {
 		header, tag, content;
 	}
 
-	protected LexicalState lexicalState;
+	private LexicalState lexicalState;
+
+	// TODO  remove (state will be determined by tag/header lexer)
+	private LexicalState nextNonContentLexicalState;
 
 	public void mTokensDelegate() throws RecognitionException {
 		switch( lexicalState ) {
@@ -160,6 +165,31 @@ public class SgmlLexer {
 		}
 	}
 
+
+	/*
+	 * +--------------------+
+	 * | Lexing: tag/header |
+	 * +--------------------+
+	 */
+
+	private void mTokensTagOrHeader() throws RecognitionException {
+		if( isQueuePopulated() ) {
+			dequeue();
+			return;
+		}
+
+		int ch = LA(1);
+		if( handledOpenTagOrSgmlComments(ch) ) {
+			return;
+		}
+		if( handledWhitespace(ch) ) {
+			return;
+		}
+		if( handledQuotedString(ch) ) {
+			return;
+		}
+
+	}
 
 	/*
 	 * +----------------+
@@ -187,34 +217,14 @@ public class SgmlLexer {
 		}
 
 		int ch = LA(1);
-		if( ch == '<' ) {
-			// SGML comments can be part of the header, inside [..] and outside Entity instances
-			if( LA(2) == '!' && LA(3) == '-' && LA(4) == '-' ) {
-				match("<!--");
-				while( ( ch = LA(1) ) != CharStream.EOF && !( ch == '-' && LA(2) == '-' && LA(3) == '>' ) ) {
-					consume();
-				}
-				if( ch != CharStream.EOF ) {
-					match("-->");
-					setType(sgml_comments);
-					return;
-				} else {
-					setType(0);
-					// TODO  actually use a sensible BitSet instead of null
-					MismatchedSetException mse = new MismatchedSetException(null, input());
-			        recover(mse);
-			        throw mse;
-				}
-			}
-			// no comments, only an open tag symbol:
-			consume();
-			setType(open_tag);
+		if( handledOpenTagOrSgmlComments(ch) ) {
 			return;
 		}
 		if( ch == '>' ) {
 			consume();
 			if( !insideBrackets ) {
-				lexicalState = LexicalState.content;
+				lexicalState = content;
+				nextNonContentLexicalState = tag;
 			}
 			setType(close_tag);
 			return;
@@ -247,12 +257,10 @@ public class SgmlLexer {
 			recover(mte);
 			throw mte;
 		}
-		if( isWhitespace(ch) ) {
-			consumeWhitespace();
+		if( handledWhitespace(ch) ) {
 			return;
 		}
-		if( isQuoteChar(ch) ) {
-			handleQuotedString(ch);
+		if( handledQuotedString(ch) ) {
 			return;
 		}
 		if( ch == '-' && LA(2) == '-' ) {
@@ -285,14 +293,15 @@ public class SgmlLexer {
 			setType(keyword);
 			return;
 		}
-		if( isIdentifierPart(ch) ) {
-			consumeIdentifier();
+		if( handledIdentifier(ch) ) {
 			return;
 		}
-		// TODO  actually use a sensible BitSet instead of null
-		MismatchedSetException mse = new MismatchedSetException(null, input());
-		recover(mse);
-		throw mse;
+		lexicalState = content;
+		mTokensContent();
+//		// TODO  actually use a sensible BitSet instead of null
+//		MismatchedSetException mse = new MismatchedSetException(null, input());
+//		recover(mse);
+//		throw mse;
 	}
 
 
@@ -309,34 +318,13 @@ public class SgmlLexer {
 		}
 
 		int ch = LA(1);
-		if( ch == '<' ) {
-			// comments can't be part of a tag, but must be able to lexe them just before tag open:
-			if( LA(2) == '!' && LA(3) == '-' && LA(4) == '-' ) {
-				match("<!--");
-				while( ( ch = LA(1) ) != CharStream.EOF && !( ch == '-' && LA(2) == '-' && LA(3) == '>' ) ) {
-					consume();
-				}
-				if( ch != CharStream.EOF ) {
-					match("-->");
-					setType(sgml_comments);
-					return;
-				} else {
-					setType(0);
-					// TODO  actually use a sensible BitSet instead of null
-					MismatchedSetException mse = new MismatchedSetException(null, input());
-			        recover(mse);
-			        throw mse;
-				}
-			}
-			// no comments, only an open tag symbol:
-			consume();
-			setType(open_tag);
+		if( handledOpenTagOrSgmlComments(ch) ) {
 			return;
 		}
 		if( ch == '>' ) {
 			setType(close_tag);
 			consume();
-			lexicalState = LexicalState.content;
+			lexicalState = content;
 			return;
 		}
 		if( ch == '=' ) {
@@ -349,20 +337,48 @@ public class SgmlLexer {
 			consume();
 			return;
 		}
-		if( isWhitespace(ch) ) {
-			consumeWhitespace();
+		if( handledWhitespace(ch) ) {
 			return;
 		}
+		/*
+		if( lexicalState == header ) {
+			if( ch == '[' ) {
+				consume();
+				insideBrackets = true;
+				setType(open_bracket);
+				return;
+			}
+			if( ch == ']' ) {
+				consume();
+				insideBrackets = false;
+				setType(close_bracket);
+				return;
+			}
+		}
+		if( ch == '!' ) {
+			consume();
+			BaseTerminals keyword = headerKeywordsTrie.match(input());
+			if( keyword == doctype ) {
+				setType(doctype);
+				lexicalState = header;
+				return;
+			}
+			if( keyword == entity ) {
+				setType(entity);
+				return;
+			}
+			// TODO  provide more useful info than '0'
+			MismatchedTokenException mte = new MismatchedTokenException(0, input());
+			recover(mte);
+			throw mte;
+		}
+		*/
 		Integer match = facade.nonBaseKeywordsTrie().match(input());
 		if( match != null ) {
 			setType(match);
 			return;
 		}
-		if( isQuoteChar(ch) ) {
-			handleQuotedString(ch);
-			return;
-		}
-		if( ch == CharStream.EOF ) {
+		if( handledQuotedString(ch) ) {
 			return;
 		}
 		// TODO  actually use a sensible BitSet instead of null
@@ -389,35 +405,9 @@ public class SgmlLexer {
 		}
 
 		int ch = LA(1);
-		if( ch == '<' ) {
-			if( LA(2) == '!' && LA(3) == '-' && LA(4) == '-' ) {
-				match("<!--");
-				while( ( ch = LA(1) ) != CharStream.EOF && !( ch == '-' && LA(2) == '-' && LA(3) == '>' ) ) {
-					consume();
-				}
-				if( ch != CharStream.EOF ) {
-					match("-->");
-					setType(sgml_comments);
-					return;
-				} else {
-					setType(0);
-					// TODO  actually use a sensible BitSet instead of null
-					MismatchedSetException mse = new MismatchedSetException(null, input());
-			        recover(mse);
-			        throw mse;
-				}
-			}
-			// no comments, only an open tag symbol:
-			consume();
-			setType(open_tag);
-			lexicalState = LexicalState.tag;
+		if( handledOpenTagOrSgmlComments(ch) ) {
 			return;
 		}
-
-		if( ch == CharStream.EOF ) {
-			return;
-		}
-
 		whitespaceOnly = true;
 		int charactersToConsume = 0;
 		// walk over contents and deal with (potential) entity reference matches:
@@ -516,6 +506,18 @@ public class SgmlLexer {
 		return( Character.isLetterOrDigit(ch) || ch == '_' );
 	}
 
+	private boolean handledIdentifier(int ch) {
+		if( isIdentifierPart(ch) ) {
+			setType(identifier);
+			consume();
+			while( isIdentifierPart(LA(1)) ) {
+				consume();
+			}
+			return true;
+		}
+		return false;
+	}
+
 	private boolean isQuoteChar(int ch) {
 		return( ch == '"' || ch == '\'' );
 	}
@@ -530,30 +532,12 @@ public class SgmlLexer {
 		throw new IllegalArgumentException( ((char) ch) + " is not a quote character" );
 	}
 
-	private boolean isWhitespace(int ch) {
-		return Character.isWhitespace(ch);
-	}
-
-	/**
-	 * Assertion: only called in case {@code Character.isIdentifierPart( LA(1) )}.
-	 */
-	private void consumeIdentifier() {
-		setType(identifier);
-		consume();
-		while( isIdentifierPart(LA(1)) ) {
-			consume();
+	private boolean handledQuotedString(int ch) throws RecognitionException {
+		if( isQuoteChar(ch) ) {
+			handleQuotedString(ch);
+			return true;
 		}
-	}
-
-	/**
-	 * Assertion: only called in case {@code isWhitespace( LA(1) )}.
-	 */
-	private void consumeWhitespace() {
-		setType(whitespace);
-		consume();
-		while( isWhitespace( LA(1) ) ) {
-			consume();
-		}
+		return false;
 	}
 
 	/**
@@ -588,7 +572,49 @@ public class SgmlLexer {
 		throw nvae;
 	}
 
-	// TODO  common method to consume SGML comments
+	private boolean isWhitespace(int ch) {
+		return Character.isWhitespace(ch);
+	}
+
+	private boolean handledWhitespace(int ch) {
+		if( isWhitespace(ch) ) {
+			setType(whitespace);
+			consume();
+			while( isWhitespace( LA(1) ) ) {
+				consume();
+			}
+			return true;
+		}
+		return false;
+	}
+
+	private boolean handledOpenTagOrSgmlComments(int ch) throws RecognitionException {
+		if( ch == '<' ) {
+			if( LA(2) == '!' && LA(3) == '-' && LA(4) == '-' ) {
+				match("<!--");
+				while( ( ch = LA(1) ) != CharStream.EOF && !( ch == '-' && LA(2) == '-' && LA(3) == '>' ) ) {
+					consume();
+				}
+				if( ch != CharStream.EOF ) {
+					match("-->");
+					setType(sgml_comments);
+					return true;
+				} else {
+					setType(0);
+					// TODO  actually use a sensible BitSet instead of null
+					MismatchedSetException mse = new MismatchedSetException(null, input());
+			        recover(mse);
+			        throw mse;
+				}
+			}
+			// no comments, only an open tag symbol:
+			consume();
+			setType(open_tag);
+			lexicalState = nextNonContentLexicalState;
+			return true;
+		}
+		return false;
+	}
 
 }
 
