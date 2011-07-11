@@ -30,6 +30,9 @@ public class BaseTokenToAttributeIdMapper extends AbstractAntlrTokenToAttributeI
 		if( tokenName.equals("RULE_QUOTED_STRING") ) {
 			return DefaultHighlightingConfiguration.STRING_ID;
 		}
+		if( tokenName.equals("RULE_IDENTIFIER") ) {
+			return DefaultHighlightingConfiguration.NUMBER_ID;	// grey
+		}
 		return DefaultHighlightingConfiguration.DEFAULT_ID;
 	}
 
