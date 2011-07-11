@@ -178,7 +178,7 @@ public class SgmlLexer {
 		if( ch == '>' ) {
 			setType(close_tag);
 			consume();
-			lexicalState = ( lexicalState == header && insideBrackets ) ? header : content;
+			updateLexicalState(content);
 			return;
 		}
 		if( ch == '=' ) {
@@ -467,10 +467,19 @@ public class SgmlLexer {
 			// no comments, only an open tag symbol:
 			consume();
 			setType(open_tag);
-			lexicalState = ( lexicalState == header && insideBrackets ) ? header : tag;
+			updateLexicalState(tag);
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * Updates the {@link #lexicalState} for the case that we've just
+	 * encountered an open or close tag, taking into account the current state
+	 * and how the header behaves.
+	 */
+	private void updateLexicalState(LexicalState nonHeaderState) {
+		lexicalState = ( lexicalState == header && insideBrackets ) ? header : nonHeaderState;
 	}
 
 	private boolean handledHeaderComments(int ch) throws RecognitionException {
