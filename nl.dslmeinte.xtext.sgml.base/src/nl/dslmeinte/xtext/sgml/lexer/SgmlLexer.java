@@ -33,26 +33,6 @@ import com.google.inject.Inject;
  * 	<dt>{@code content}</dt>
  * 		<dd>For content outside of the SGML header and tags.</dd>
  * </dl>
- * <p>
- * The following is a table detailing all the {@link BaseTerminals}s, by which
- * states they can be emitted, and when:
- * TODO  -update to current-
- * <dl>
- * 	<dt>{@code whitespace}</dt>
- * 		<dd>{@code header}, {@code tag}, {@code content} if literal contents if pure whitespace (<b>TODO!</b>)</dd>
- * 	<dt>{@code identifier} matching {@code [0-9A-Za-z_]+}</dt>
- * 		<dd>{@code header}</dd>
- * 	<dt>{@code sgml_comments} matching {@code '<!--'} &rarr; {@code '-->'}</dt>
- * 		<dd>{@code content}</dd>
- * 	<dt>{@code quoted_string}</dt>
- * 		<dd>{@code header}, {@code tag}</dd>
- * 	<dt>{@code doctype} ~ {@code !DOCTYPE}, {@code entity} ~ {@code !ENTITY}, {@code open_bracket}, {@code close_bracket}, {@code header_comments} matching {@code '--'} &rarr; {@code '--'}</dt>
- * 		<dd>{@code header}</dd>
- * 	<dt>{@code open_tag}, {@code close_tag}, {@code slash}, {@code equals}</dt>
- * 		<dd>{@code tag}</dd>
- * 	<dt>{@code literal_contents}</dt>
- * 		<dd>{@code content}</dd>
- * </dl>
  * 
  * @author Meinte Boersma
  */
@@ -134,7 +114,6 @@ public class SgmlLexer {
 
 	public void init() {
 		lexicalState = content;
-		nextNonContentLexicalState = header;
 	}
 
 	// the following 2 features have protected visibility to allow per-state testing:
@@ -145,17 +124,12 @@ public class SgmlLexer {
 
 	private LexicalState lexicalState;
 
-	// TODO  remove (state will be determined by tag/header lexer)
-	private LexicalState nextNonContentLexicalState;
-
 	public void mTokensDelegate() throws RecognitionException {
 		switch( lexicalState ) {
-			case header: {
-				mTokensHeader();
-				return;
-			}
-			case tag: {
-				mTokensTag();
+			case header:
+			case tag:
+			{
+				mTokensTagOrHeader();
 				return;
 			}
 			case content: {
@@ -171,6 +145,19 @@ public class SgmlLexer {
 	 * | Lexing: tag/header |
 	 * +--------------------+
 	 */
+
+	private boolean insideBrackets = false;
+
+	private final static CaseInsensitiveTrie<BaseTerminals> headerKeywordsTrie;
+
+	static {
+		Map<String, BaseTerminals> map = new HashMap<String, BaseTerminals>();
+		map.put("DOCTYPE", doctype);
+		map.put("ENTITY", entity);
+		map.put(public_.getKeyword(), public_);
+		map.put(system.getKeyword(), system);
+		headerKeywordsTrie = MapBasedTrie.of(map);
+	}
 
 	private void mTokensTagOrHeader() throws RecognitionException {
 		if( isQueuePopulated() ) {
@@ -188,143 +175,10 @@ public class SgmlLexer {
 		if( handledQuotedString(ch) ) {
 			return;
 		}
-
-	}
-
-	/*
-	 * +----------------+
-	 * | Lexing: header |
-	 * +----------------+
-	 */
-
-	private boolean insideBrackets = false;
-
-	private final static CaseInsensitiveTrie<BaseTerminals> headerKeywordsTrie;
-
-	static {
-		Map<String, BaseTerminals> map = new HashMap<String, BaseTerminals>();
-		map.put("DOCTYPE", doctype);
-		map.put("ENTITY", entity);
-		map.put(public_.getKeyword(), public_);
-		map.put(system.getKeyword(), system);
-		headerKeywordsTrie = MapBasedTrie.of(map);
-	}
-
-	private void mTokensHeader() throws RecognitionException {
-		if( isQueuePopulated() ) {
-			dequeue();
-			return;
-		}
-
-		int ch = LA(1);
-		if( handledOpenTagOrSgmlComments(ch) ) {
-			return;
-		}
-		if( ch == '>' ) {
-			consume();
-			if( !insideBrackets ) {
-				lexicalState = content;
-				nextNonContentLexicalState = tag;
-			}
-			setType(close_tag);
-			return;
-		}
-		if( ch == '[' ) {
-			consume();
-			insideBrackets = true;
-			setType(open_bracket);
-			return;
-		}
-		if( ch == ']' ) {
-			consume();
-			insideBrackets = false;
-			setType(close_bracket);
-			return;
-		}
-		if( ch == '!' ) {
-			consume();
-			BaseTerminals keyword = headerKeywordsTrie.match(input());
-			if( keyword == doctype ) {
-				setType(doctype);
-				return;
-			}
-			if( keyword == entity ) {
-				setType(entity);
-				return;
-			}
-			// TODO  provide more useful info than '0'
-			MismatchedTokenException mte = new MismatchedTokenException(0, input());
-			recover(mte);
-			throw mte;
-		}
-		if( handledWhitespace(ch) ) {
-			return;
-		}
-		if( handledQuotedString(ch) ) {
-			return;
-		}
-		if( ch == '-' && LA(2) == '-' ) {
-			consume();
-			consume();
-			setType(header_comments);
-			while( true ) {
-				while( ( ch = LA(1) ) != CharStream.EOF && ch != '-' ) {
-					consume();
-				}
-				if( ch == '-' ) {
-					consume();
-					if( LA(1) == '-' ) {
-						consume();
-						return;
-					} else {
-						continue;
-					}
-				}
-				if( ch == CharStream.EOF ) {
-					// TODO  actually use a sensible BitSet instead of null
-					MismatchedSetException mse = new MismatchedSetException(null, input());
-					recover(mse);
-					throw mse;
-				}
-			}
-		}
-		BaseTerminals keyword = headerKeywordsTrie.match(input());
-		if( keyword != null ) {
-			setType(keyword);
-			return;
-		}
-		if( handledIdentifier(ch) ) {
-			return;
-		}
-		lexicalState = content;
-		mTokensContent();
-//		// TODO  actually use a sensible BitSet instead of null
-//		MismatchedSetException mse = new MismatchedSetException(null, input());
-//		recover(mse);
-//		throw mse;
-	}
-
-
-	/*
-	 * +--------------+
-	 * | Lexing: tags |
-	 * +--------------+
-	 */
-
-	private void mTokensTag() throws RecognitionException {
-		if( isQueuePopulated() ) {
-			dequeue();
-			return;
-		}
-
-		int ch = LA(1);
-		if( handledOpenTagOrSgmlComments(ch) ) {
-			return;
-		}
 		if( ch == '>' ) {
 			setType(close_tag);
 			consume();
-			lexicalState = content;
+			lexicalState = ( lexicalState == header && insideBrackets ) ? header : content;
 			return;
 		}
 		if( ch == '=' ) {
@@ -337,10 +191,6 @@ public class SgmlLexer {
 			consume();
 			return;
 		}
-		if( handledWhitespace(ch) ) {
-			return;
-		}
-		/*
 		if( lexicalState == header ) {
 			if( ch == '[' ) {
 				consume();
@@ -352,6 +202,14 @@ public class SgmlLexer {
 				consume();
 				insideBrackets = false;
 				setType(close_bracket);
+				return;
+			}
+			if( handledHeaderComments(ch) ) {
+				return;
+			}
+			BaseTerminals keyword = headerKeywordsTrie.match(input());
+			if( keyword != null ) {
+				setType(keyword);
 				return;
 			}
 		}
@@ -372,19 +230,18 @@ public class SgmlLexer {
 			recover(mte);
 			throw mte;
 		}
-		*/
-		Integer match = facade.nonBaseKeywordsTrie().match(input());
-		if( match != null ) {
-			setType(match);
+		if( lexicalState == tag ) {		// i.e., != header
+			Integer match = facade.nonBaseKeywordsTrie().match(input());
+			if( match != null ) {
+				setType(match);
+				return;
+			}
+		}
+		if( handledIdentifier(ch) ) {
 			return;
 		}
-		if( handledQuotedString(ch) ) {
-			return;
-		}
-		// TODO  actually use a sensible BitSet instead of null
-		MismatchedSetException mse = new MismatchedSetException(null, input());
-		recover(mse);
-		throw mse;
+		lexicalState = content;
+		mTokensContent();
 	}
 
 
@@ -610,8 +467,37 @@ public class SgmlLexer {
 			// no comments, only an open tag symbol:
 			consume();
 			setType(open_tag);
-			lexicalState = nextNonContentLexicalState;
+			lexicalState = ( lexicalState == header && insideBrackets ) ? header : tag;
 			return true;
+		}
+		return false;
+	}
+
+	private boolean handledHeaderComments(int ch) throws RecognitionException {
+		if( ch == '-' && LA(2) == '-' ) {
+			consume();
+			consume();
+			setType(header_comments);
+			while( true ) {
+				while( ( ch = LA(1) ) != CharStream.EOF && ch != '-' ) {
+					consume();
+				}
+				if( ch == '-' ) {
+					consume();
+					if( LA(1) == '-' ) {
+						consume();
+						return true;
+					} else {
+						continue;
+					}
+				}
+				if( ch == CharStream.EOF ) {
+					// TODO  actually use a sensible BitSet instead of null
+					MismatchedSetException mse = new MismatchedSetException(null, input());
+					recover(mse);
+					throw mse;
+				}
+			}
 		}
 		return false;
 	}

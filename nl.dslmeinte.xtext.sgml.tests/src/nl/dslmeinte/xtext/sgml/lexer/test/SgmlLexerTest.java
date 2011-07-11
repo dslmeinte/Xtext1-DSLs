@@ -3,26 +3,29 @@ package nl.dslmeinte.xtext.sgml.lexer.test;
 import static nl.dslmeinte.xtext.sgml.lexer.BaseTerminals.*;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.lang.reflect.Field;
 
+import nl.dslmeinte.xtext.conditional.ConditionalStandaloneSetup;
+import nl.dslmeinte.xtext.conditional.conditional.ConditionalPackage;
 import nl.dslmeinte.xtext.sgml.dtd.test.support.SgmlLexerTestSupport;
 import nl.dslmeinte.xtext.sgml.lexer.SgmlLexerForParsing;
 import nl.dslmeinte.xtext.sgml.test.simplemarkup.SimpleMarkupStandaloneSetup;
-import nl.dslmeinte.xtext.util.antlr.HtmlTokenVisualizer;
-import nl.dslmeinte.xtext.util.antlr.HtmlTokenVisualizer.TokenToStyleMapper;
 
 import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.ANTLRStringStream;
-import org.antlr.runtime.CharStream;
 import org.antlr.runtime.Token;
+import org.eclipse.emf.ecore.EPackage;
 import org.junit.Assert;
 import org.junit.Test;
 
-
 public class SgmlLexerTest extends SgmlLexerTestSupport {
+
+	static {
+		if( !EPackage.Registry.INSTANCE.containsKey(ConditionalPackage.eNS_URI) ) {
+			ConditionalStandaloneSetup.doSetup();
+		}
+	}
 
 	public SgmlLexerTest() {
 		super(new SimpleMarkupStandaloneSetup().createInjector());
@@ -54,26 +57,35 @@ public class SgmlLexerTest extends SgmlLexerTestSupport {
 
 	@Test
 	public void visualize_lexing_of_simple_markup_file() throws IOException {
-		initLexer(null);
-		HtmlTokenVisualizer visualizer = new HtmlTokenVisualizer(getLexer(), new TokenToStyleMapper() {
-			@Override
-			public String cssClassName(Token token) {
-				int type = token.getType();
-				if( tokenFacade.isBase(type) ) {
-					return tokenFacade.asBase(type).name();
-				}
-				return "tagKeyword";
-			}
-		}, "default-lexing-style.css");
-		CharStream input = new ANTLRFileStream("models/example1.sm");
-		OutputStream output = new FileOutputStream("models/example1-lexed.html");
-		visualizer.visualize(input, output, "example1.sm: token visualization");
-		output.close();
+		visualize_lexing("example1.sm", "models/",  "models/");
+	}
+
+	@Test
+	public void visualize_lexing_of_freeform_file() throws IOException {
+		visualize_lexing("example3.sm", "models/",  "models/");
+	}
+
+	@Test
+	public void test_lexing_of_freeform_content() throws IOException {
+		Token token;
+		initLexer(new ANTLRStringStream("some literal contents before actual content (no SGML document header)<Par></Par>"));
+		assertNextToken(literal_contents, "some literal contents before actual content (no SGML document header)");
+		assertNextToken(open_tag);
+		token = getLexer().nextToken();
+		Assert.assertEquals("Par", token.getText());
+		Assert.assertFalse(tokenFacade.map(identifier) == token.getType());
+		assertNextToken(close_tag);
+		assertNextToken(open_tag);
+		assertNextToken(slash);
+		token = getLexer().nextToken();
+		Assert.assertEquals("Par", token.getText());
+		Assert.assertFalse(tokenFacade.map(identifier) == token.getType());
+		assertNextToken(close_tag);
 	}
 
 	@Test
 	public void test_docType_without_entities_but_explicitly_checking_whitespace() {
-		initLexer(new ANTLRStringStream("<!DOCTYPE SISGML PUBLIC \"-//Intuit//SISGML DTD//EN\" \"sisgml.dtd\">"));
+		initLexer(new ANTLRStringStream("<!DOCTYPE SISGML PUBLIC \"-//SISGML DTD//EN\" \"sisgml.dtd\">"));
 		assertNextToken(open_tag);
 		assertNextToken(doctype);
 		assertNextToken(whitespace);
