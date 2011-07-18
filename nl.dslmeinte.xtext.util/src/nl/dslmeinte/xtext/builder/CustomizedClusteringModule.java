@@ -8,7 +8,7 @@ import com.google.inject.Binder;
 
 /**
  * Customization of {@link ClusteringModule} which also binds the
- * {@link ReadonlyIndifferentMarkerUpdaterImpl} instead of
+ * {@link ReadonlyIndifferentMarkerUpdater} instead of
  * {@link MarkerUpdaterImpl}: because the order in which Guice modules are
  * allowed to bind is indeterminate we can't rely on doing the binding in the UI
  * Guice module.
@@ -25,7 +25,7 @@ public class CustomizedClusteringModule extends ClusteringModule {
 	@Override
 	public void configure(Binder binder) {
 		super.configure(binder);
-		binder.bind(IMarkerUpdater.class).to(ReadonlyIndifferentMarkerUpdaterImpl.class);
+		binder.bind(IMarkerUpdater.class).to(ReadonlyIndifferentMarkerUpdater.class);
 	}
 
 }

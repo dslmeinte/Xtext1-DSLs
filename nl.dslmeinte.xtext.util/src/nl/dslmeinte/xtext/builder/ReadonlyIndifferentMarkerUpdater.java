@@ -30,12 +30,12 @@ import com.google.inject.Inject;
  * 
  * @author Meinte Boersma
  */
-public class ReadonlyIndifferentMarkerUpdaterImpl extends MarkerUpdaterImpl {
+public class ReadonlyIndifferentMarkerUpdater extends MarkerUpdaterImpl {
 
 	@Inject
 	private IStorage2UriMapper mapper;
 
-	private final static Logger log = Logger.getLogger(ReadonlyIndifferentMarkerUpdaterImpl.class);
+	private final static Logger log = Logger.getLogger(ReadonlyIndifferentMarkerUpdater.class);
 
 	@Override
 	public void updateMarker(ResourceSet resourceSet,
