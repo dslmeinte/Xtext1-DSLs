@@ -20,7 +20,7 @@ import com.google.inject.Binder;
  * 
  * @author Meinte Boersma
  */
-public class CustomizedClusteringModule extends ClusteringModule {
+public class ReadonlyIndifferentClusteringModule extends ClusteringModule {
 
 	@Override
 	public void configure(Binder binder) {
