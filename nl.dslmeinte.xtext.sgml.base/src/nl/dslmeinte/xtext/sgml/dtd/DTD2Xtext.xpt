@@ -35,7 +35,7 @@ generate «fileNameWithoutExtension().toLowerCase()» «nsURI»
 	«IF isCloseTagOptional()»(«ENDIF»«name»_tagClose=«name»_tagClose«IF isCloseTagOptional()»)?«ENDIF»
 	;
 
-«name»_tagOpen hidden(): «IF attributesCanBeEmpty()»{«name»_tagOpen} «ENDIF»'<' '«name»' «IF attributes().size > 0»attributes=«name»_attributes«ENDIF» '>';
+«name»_tagOpen hidden(): «IF attributesCanBeEmpty()»{«name»_tagOpen} «ENDIF»'<' '«name»' «IF attributes().size > 0»WHITESPACE attributes=«name»_attributes«ENDIF» '>';
 «IF attributes().size > 0»«name»_attributes hidden(WHITESPACE): «IF attributesCanBeEmpty()»{«name»_attributes} «ENDIF»«IF attributes().size > 1»(«ENDIF»«EXPAND attribute FOREACH attributes() SEPARATOR ' & '»«IF attributes().size > 1»)«ENDIF»;«ENDIF»
 «name»_tagClose hidden(): {«name»_tagClose} '<' '/' '«name»' '>';
 «ENDDEFINE»
@@ -44,11 +44,14 @@ generate «fileNameWithoutExtension().toLowerCase()» «nsURI»
 
 «DEFINE sgmlDocumentRuleOverride FOR DocumentTypeDefinition»
 // override from Base to include root (of right type):
-SgmlDocument hidden(WHITESPACE, HEADER_COMMENTS):
-	SGML_COMMENTS*
-	'<' '!DOCTYPE' rootName=IDENTIFIER ('PUBLIC' | 'SYSTEM') header1=QuotedString header2=QuotedString?
-		('[' ( entities+=Entity | SGML_COMMENTS )* ']')? '>'
+SgmlDocument hidden(WHITESPACE, SGML_COMMENTS):
+		docType=DocumentType
 		root=«definitions.typeSelect(Element).first().name»
+	;
+
+DocumentType hidden(WHITESPACE):
+	'<' '!DOCTYPE' rootName=IDENTIFIER ('PUBLIC' | 'SYSTEM') header1=QuotedString header2=QuotedString?
+		('[' ( entities+=Entity | SGML_COMMENTS )* ']')? '>'	
 	;
 «ENDDEFINE»
 
