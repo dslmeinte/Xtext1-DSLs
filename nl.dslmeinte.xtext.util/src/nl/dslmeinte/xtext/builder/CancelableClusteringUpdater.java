@@ -71,6 +71,9 @@ public class CancelableClusteringUpdater extends ClusteringUpdater {
         queueAffectedResourceDescriptions(oldState, newState, result.values(), queue);            
         while (!queue.isEmpty()) {
         	subMonitor.setWorkRemaining(100);
+            if( monitor.isCanceled() ) {
+            	throw new OperationCanceledException();
+            }
             Map<URI, Delta> clusterDeltas = loadResourceCluster(oldState, rs, queue, toBeDeletedAsSet,
             		subMonitor.newChild(30), result.size() - startWith + 1);
             result.putAll(clusterDeltas);
