@@ -16,6 +16,7 @@ Export-Package: nl.dslmeinte.ecore.util,
  nl.dslmeinte.xtend.util,
  nl.dslmeinte.xtext.builder,
  nl.dslmeinte.xtext.parser.util,
+ nl.dslmeinte.xtext.resource,
  nl.dslmeinte.xtext.scoping,
  nl.dslmeinte.xtext.util.antlr,
  nl.dslmeinte.xtext.util.antlr.trie
