@@ -24,7 +24,8 @@ import com.google.inject.Inject;
 
 /**
  * Sub implementation of {@link ClusteringUpdater} which is cancelable, so that
- * the {@link XtextBuilder} can be canceled at (almost) any time.
+ * the {@link XtextBuilder} can be canceled more often while running - although
+ * this still doesn't make it entirely cancelable, unfortunately.
  * 
  * @author Meinte Boersma
  */
@@ -38,10 +39,6 @@ public class CancelableClusteringUpdater extends ClusteringUpdater {
 			ResourceSet rs, Set<URI> toBeUpdated, Set<URI> toBeDeleted,
 			IProgressMonitor monitor)
 	{
-		// also print some old-skool debugging info, to try and pinpoint the root cause:
-		System.out.printf( "%s#transitiveUpdate(..) called; stacktrace:\n", super.getClass().getSimpleName() );
-		new RuntimeException().printStackTrace(System.out);
-
 		SubMonitor subMonitor = SubMonitor.convert(monitor, Messages.ClusteringUpdater_0, 100);
         subMonitor.subTask(Messages.ClusteringUpdater_0);
 
