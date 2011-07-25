@@ -9,6 +9,13 @@ import com.google.inject.Singleton;
  * Maps token names to constants in {@link DefaultHighlightingConfiguration} to
  * do lexical highlighting of the input.
  * <p>
+ * Bind it to the Guice UI binding to activate as follows:
+ * <pre>
+ * 	public static Class&lt;? extends AbstractAntlrTokenToAttributeIdMapper&gt; bindAbstractAntlrTokenToAttributeIdMapper() {
+		return BaseTokenToAttributeIdMapper.class;
+	}
+ * </pre>
+ * <p>
  * It uses the naming convention underlying {@code Base.xtext} and
  * {@code DTD2Xtext.xpt}.
  * 
