@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import nl.dslmeinte.xtext.dtd.DTDModelUtil;
 import nl.dslmeinte.xtext.dtd.DtdLanguageStandaloneSetup;
 import nl.dslmeinte.xtext.dtd.dtdModel.DocumentTypeDefinition;
 import nl.dslmeinte.xtext.dtd.dtdModel.DtdModelPackage;

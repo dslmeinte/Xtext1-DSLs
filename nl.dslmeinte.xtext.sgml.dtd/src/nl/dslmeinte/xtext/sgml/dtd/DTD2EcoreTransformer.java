@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import nl.dslmeinte.ecore.util.ToEcoreTransformerSupport;
-import nl.dslmeinte.xtext.dtd.DTDModelUtil;
 import nl.dslmeinte.xtext.dtd.dtdModel.Attribute;
 import nl.dslmeinte.xtext.dtd.dtdModel.Definition;
 import nl.dslmeinte.xtext.dtd.dtdModel.DocumentTypeDefinition;
 import nl.dslmeinte.xtext.dtd.dtdModel.Element;
 import nl.dslmeinte.xtext.dtd.dtdModel.EmptyContent;
 import nl.dslmeinte.xtext.dtd.dtdModel.Expression;
+import nl.dslmeinte.xtext.dtd.util.DTDModelUtil;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;

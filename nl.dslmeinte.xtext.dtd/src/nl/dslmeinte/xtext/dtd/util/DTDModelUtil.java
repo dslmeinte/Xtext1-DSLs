@@ -1,4 +1,4 @@
-package nl.dslmeinte.xtext.dtd;
+package nl.dslmeinte.xtext.dtd.util;
 
 import java.util.ArrayList;
 import java.util.HashSet;

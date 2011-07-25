@@ -1,6 +1,6 @@
 import dtdModel;
 
-extension nl::dslmeinte::xtext::dtd::dtdExtensions;
+extension nl::dslmeinte::xtext::dtd::util::dtdExtensions;
 extension org::eclipse::xtend::util::stdlib::io;
 
 

@@ -1,7 +1,7 @@
 «IMPORT dtdModel»
 
 «EXTENSION nl::dslmeinte::xtext::sgml::dtd::grammarHelper»
-«EXTENSION nl::dslmeinte::xtext::dtd::dtdExtensions»
+«EXTENSION nl::dslmeinte::xtext::dtd::util::dtdExtensions»
 
 «AROUND nl::dslmeinte::xtext::sgml::dtd::DTD2Xtext::additionalGrammarContent FOR DocumentTypeDefinition»
 // extra rule to be able to trigger validation conveniently:
