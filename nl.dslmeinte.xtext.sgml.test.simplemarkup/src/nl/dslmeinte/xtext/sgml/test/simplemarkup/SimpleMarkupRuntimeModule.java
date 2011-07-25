@@ -22,10 +22,6 @@ public class SimpleMarkupRuntimeModule extends nl.dslmeinte.xtext.sgml.test.simp
 			.to(SgmlLexerForParsing.class);
 	}
 
-//	public Class<? extends org.eclipse.xtext.parser.antlr.IAntlrParser> bindIAntlrParser() {
-//		return CustomizedSimpleMarkupParser.class;
-//	}
-
 	public Class<? extends IValueConverterService> bindIValueConverterService() {
 		return BaseTerminalsConverter.class;
 	}

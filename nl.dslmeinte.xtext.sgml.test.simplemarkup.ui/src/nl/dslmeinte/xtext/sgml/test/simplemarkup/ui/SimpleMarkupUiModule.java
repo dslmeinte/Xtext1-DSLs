@@ -50,8 +50,4 @@ public class SimpleMarkupUiModule extends nl.dslmeinte.xtext.sgml.test.simplemar
             .to(CurrentDescriptions.ResourceSetAware.class);  
     }
 
-//	public Class<? extends org.eclipse.xtext.ui.editor.contentassist.antlr.IContentAssistParser> bindIContentAssistParser() {
-//		return CustomizedSimpleMarkupParser.class;
-//	}
-
 }
