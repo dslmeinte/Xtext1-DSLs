@@ -3,45 +3,8 @@
 */
 package nl.dslmeinte.xtext.sgml.base.ui.contentassist;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.AbstractElement;
-import org.eclipse.xtext.AbstractRule;
-import org.eclipse.xtext.Keyword;
-import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.TerminalRule;
-import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
-import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-
-import nl.dslmeinte.xtext.sgml.base.ui.contentassist.AbstractBaseProposalProvider;
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
 public class BaseProposalProvider extends AbstractBaseProposalProvider {
-
-	@Override
-	public void completeRuleCall(RuleCall ruleCall, ContentAssistContext contentAssistContext, ICompletionProposalAcceptor acceptor) {
-		AbstractRule rule = ruleCall.getRule();
-		if( rule instanceof TerminalRule ) {
-			String ruleName = rule.getName();
-			if( ruleName.endsWith("_KEYWORD") || ruleName.endsWith("_SYMBOL") ) {
-				acceptor.accept(createCompletionProposal(syntax((TerminalRule) rule), contentAssistContext));
-			}
-		}
-		super.completeRuleCall(ruleCall, contentAssistContext, acceptor);
-	}
-
-	private String syntax(TerminalRule rule) {
-		AbstractElement alternatives = rule.getAlternatives();
-		if( !(alternatives instanceof Keyword && alternatives.getCardinality() == null ) ) {
-			throw new IllegalArgumentException(rule.getClass().getName() + " '" + rule.getName() + "' is not a keyword");
-		}
-		return ((Keyword) alternatives).getValue();
-	}
-
-	@Override
-	public void complete_SgmlDocument(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		acceptor.accept(createCompletionProposal("!DOCTYPE SISGML ", context));
-		super.complete_SgmlDocument(model, ruleCall, context, acceptor);
-	}
-
 }
