@@ -17,6 +17,7 @@ Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: nl.dslmeinte.xtext.sgml.base.ui.contentassist,
  nl.dslmeinte.xtext.sgml.base.ui.contentassist.antlr,
+ nl.dslmeinte.xtext.sgml.base.ui.guice,
  nl.dslmeinte.xtext.sgml.base.ui.syntaxcoloring,
  nl.dslmeinte.xtext.sgml.lexer.ui
 Bundle-Activator: nl.dslmeinte.xtext.sgml.base.ui.internal.BaseActivator
