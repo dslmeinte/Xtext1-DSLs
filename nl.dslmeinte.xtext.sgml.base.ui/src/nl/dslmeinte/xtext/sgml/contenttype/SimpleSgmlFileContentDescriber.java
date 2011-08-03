@@ -23,10 +23,10 @@ import org.eclipse.core.runtime.content.ITextContentDescriber;
  */
 public abstract class SimpleSgmlFileContentDescriber implements ITextContentDescriber {
 
-	private String rootIdentifier;
+	private final SimpleSgmlRecognizer recognizer;
 
 	public SimpleSgmlFileContentDescriber(String rootIdentifier) {
-		this.rootIdentifier = rootIdentifier;
+		recognizer = new SimpleSgmlRecognizer(rootIdentifier);
 	}
 
 	@Override
@@ -48,11 +48,10 @@ public abstract class SimpleSgmlFileContentDescriber implements ITextContentDesc
 		return SUPPORTED_OPTIONS;
 	}
 
-	private final SimpleSgmlRecognizer recognizer = new SimpleSgmlRecognizer(rootIdentifier);
-
 	private int internalDescribe(CharStream input,
 			IContentDescription description) throws IOException {
-		return( validResults.contains(recognizer.recognize(input)) ? VALID : INVALID );
+		Result result = recognizer.recognize(input);
+		return( validResults.contains(result) ? VALID : INVALID );
 	}
 
 	private final static EnumSet<Result> validResults = EnumSet.of(
