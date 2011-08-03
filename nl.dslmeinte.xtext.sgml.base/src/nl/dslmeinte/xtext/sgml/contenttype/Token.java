@@ -27,4 +27,14 @@ class Token {
 		return text;
 	}
 
+	/**
+	 * (mainly for debugging purposes)
+	 */
+	@Override
+	public String toString() {
+		return
+			  type.name()
+			+ ( (text == null) ? "" : ( ": '" + text + "'" ) );
+	}
+
 }
