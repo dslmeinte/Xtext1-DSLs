@@ -7,6 +7,7 @@ import nl.dslmeinte.xtext.sgml.lexer.ui.SgmlLexerForContentAssist;
 import org.eclipse.xtext.builder.clustering.CurrentDescriptions;
 import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.scoping.impl.AbstractGlobalScopeProvider;
+import org.eclipse.xtext.ui.LexerUIBindings;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.antlr.AbstractAntlrTokenToAttributeIdMapper;
 
 import com.google.inject.Binder;
@@ -49,7 +50,7 @@ public class UiModuleSupport {
 	public static void configureHighlightingLexer(Binder binder) {
 		binder
 			.bind(org.eclipse.xtext.parser.antlr.Lexer.class)
-			.annotatedWith(Names.named(org.eclipse.xtext.ui.LexerUIBindings.HIGHLIGHTING))
+			.annotatedWith(Names.named(LexerUIBindings.HIGHLIGHTING))
 			.to(SgmlLexerForParsing.class);
 	}
 
@@ -60,7 +61,7 @@ public class UiModuleSupport {
 	public static void configureContentAssistLexer(Binder binder) {
 		binder
 			.bind(org.eclipse.xtext.ui.editor.contentassist.antlr.internal.Lexer.class)
-			.annotatedWith(Names.named(org.eclipse.xtext.ui.LexerUIBindings.CONTENT_ASSIST))
+			.annotatedWith(Names.named(LexerUIBindings.CONTENT_ASSIST))
 			.to(SgmlLexerForContentAssist.class);
 	}
 
