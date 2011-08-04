@@ -15,7 +15,7 @@ public class SimpleMarkupNameProvider extends SimpleNameProvider {
 	@Override
 	public String getQualifiedName(EObject object) {
 		if( object instanceof Section ) {
-			return ((Section) object).getSection_tagOpen().getAttributes().getName();
+			return ((Section) object).getSection_tagOpen().getName().getName();
 		}
 		return super.getQualifiedName(object);
 	}

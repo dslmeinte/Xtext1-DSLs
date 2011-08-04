@@ -8,9 +8,12 @@
 Condition: expr=QuotedString;
 «ENDAROUND»
 
-«AROUND nl::dslmeinte::xtext::sgml::dtd::DTD2Xtext::attribute FOR Attribute -»
-«IF isOptional()»(«ENDIF -»
-	'«name»' '=' «IF name == 'to'»('"'|"'") to=[Section|QUOTED_STRING] ('"'|"'")	// notice: AOP happened here«ELSEIF name == 'condition'»«name»=Condition	// notice: AOP happened here«ELSE»«name»=QuotedString«ENDIF -»
-«IF isOptional()»)?«ENDIF -»
+«AROUND nl::dslmeinte::xtext::sgml::dtd::DTD2Xtext::attributeRule FOR Attribute -»
+«((AttributeList) eContainer).element.name»_«name»_attribute hidden(WHITESPACE): 
+	{«((AttributeList) eContainer).element.name»_«name»_attribute}
+	«IF isOptional()»(«ENDIF»
+		'«name»' '=' «IF name == 'to'»('"'|"'") to=[Section|QUOTED_STRING] ('"'|"'")	// notice: AOP happened here«ELSEIF name == 'condition'»«name»=Condition	// notice: AOP happened here«ELSE»«name»=QuotedString«ENDIF -»
+	«IF isOptional()»)?«ENDIF»
+	;
 «ENDAROUND»
 
