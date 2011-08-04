@@ -30,6 +30,7 @@ class Token {
 	/**
 	 * (mainly for debugging purposes)
 	 */
+	@SuppressWarnings("nls")
 	@Override
 	public String toString() {
 		return

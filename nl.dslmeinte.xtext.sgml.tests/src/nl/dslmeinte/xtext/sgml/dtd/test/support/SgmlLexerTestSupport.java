@@ -48,12 +48,12 @@ public abstract class SgmlLexerTestSupport extends LexerTestSupport {
 				if( tokenFacade.isBase(type) ) {
 					return tokenFacade.asBase(type).name();
 				}
-				return "tagKeyword";
+				return "tagKeyword"; //$NON-NLS-1$
 			}
-		}, "default-lexing-style.css");
+		}, "default-lexing-style.css"); //$NON-NLS-1$
 		CharStream input = new ANTLRFileStream(sourcePath + fileName );
-		OutputStream output = new FileOutputStream(destinationPath + fileName.substring(0, fileName.lastIndexOf('.')) + "-lexed.html");
-		visualizer.visualize(input, output, fileName + ": token visualization");
+		OutputStream output = new FileOutputStream(destinationPath + fileName.substring(0, fileName.lastIndexOf('.')) + "-lexed.html"); //$NON-NLS-1$
+		visualizer.visualize(input, output, fileName + ": token visualization"); //$NON-NLS-1$
 		output.close();
 	}
 

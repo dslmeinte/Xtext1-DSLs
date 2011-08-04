@@ -22,6 +22,7 @@ public class SimpleMarkupUiModule extends nl.dslmeinte.xtext.sgml.test.simplemar
 		super(plugin);
 	}
 
+	@Override
 	public void configureHighlightingLexer(Binder binder) {
 		binder
 			.bind(org.eclipse.xtext.parser.antlr.Lexer.class)
@@ -29,6 +30,7 @@ public class SimpleMarkupUiModule extends nl.dslmeinte.xtext.sgml.test.simplemar
 			.to(SgmlLexerForParsing.class);
 	}
 
+	@Override
 	public void configureContentAssistLexer(Binder binder) {
 		binder
 			.bind(org.eclipse.xtext.ui.editor.contentassist.antlr.internal.Lexer.class)
@@ -42,6 +44,7 @@ public class SimpleMarkupUiModule extends nl.dslmeinte.xtext.sgml.test.simplemar
         	.to(BaseTokenToAttributeIdMapper.class);
     }
 
+	@Override
     public void configureIResourceDescriptionsBuilderScope(Binder binder)
     {  
         binder

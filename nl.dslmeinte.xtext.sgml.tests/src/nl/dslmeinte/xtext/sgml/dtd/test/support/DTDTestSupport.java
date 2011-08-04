@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.mwe.utils.StandaloneSetup;
 
+@SuppressWarnings("nls")
 public class DTDTestSupport {
 
 	private static final String MODELS_DIR = "nl.dslmeinte.xtext.sgml.tests/models/";

@@ -24,6 +24,7 @@ import org.junit.Test;
 
 import com.google.inject.Injector;
 
+@SuppressWarnings("nls")
 public class SimpleMarkupParserTest {
 
 	private final static Injector conditionalInjector = new ConditionalStandaloneSetup().createInjector();

@@ -13,7 +13,7 @@ public class BaseTerminalsConverter extends AbstractDeclarativeValueConverterSer
 		return new IValueConverter<String>() {
 				@Override
 				public String toString(String value) throws ValueConverterException {
-					return "\"" + value + "\"";
+					return "\"" + value + "\""; //$NON-NLS-1$ //$NON-NLS-2$
 				}
 				@Override
 				public String toValue(String string, AbstractNode node) throws ValueConverterException {

@@ -30,7 +30,7 @@ public class AntlrTokenFacade implements TokenFacade {
 		for( Entry<Integer, String> entry : tokenDefProvider.getTokenDefMap().entrySet() ) {
 			String tokenDescription = entry.getValue();
 			int id = entry.getKey();
-			if( tokenDescription.startsWith("'") && tokenDescription.endsWith("'") ) {
+			if( tokenDescription.startsWith("'") && tokenDescription.endsWith("'") ) { //$NON-NLS-1$ //$NON-NLS-2$
 				String keyword = tokenDescription.substring(1, tokenDescription.length()-1);
 				keyword = Strings.convertFromJavaString(keyword, true);
 				keyword = keyword.intern();	// optimization attempt: avoid duplicate String-s

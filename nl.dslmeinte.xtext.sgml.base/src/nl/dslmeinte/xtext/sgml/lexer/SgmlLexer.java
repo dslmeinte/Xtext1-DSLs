@@ -152,8 +152,8 @@ public class SgmlLexer {
 
 	static {
 		Map<String, BaseTerminals> map = new HashMap<String, BaseTerminals>();
-		map.put("DOCTYPE", doctype);
-		map.put("ENTITY", entity);
+		map.put("DOCTYPE", doctype); //$NON-NLS-1$
+		map.put("ENTITY", entity); //$NON-NLS-1$
 		map.put(public_.getKeyword(), public_);
 		map.put(system.getKeyword(), system);
 		headerKeywordsTrie = MapBasedTrie.of(map);
@@ -386,7 +386,7 @@ public class SgmlLexer {
 		if( ch == '\'' ) {
 			return single_quote;
 		}
-		throw new IllegalArgumentException( ((char) ch) + " is not a quote character" );
+		throw new IllegalArgumentException( ((char) ch) + " is not a quote character" ); //$NON-NLS-1$
 	}
 
 	private boolean handledQuotedString(int ch) throws RecognitionException {
@@ -448,21 +448,20 @@ public class SgmlLexer {
 	private boolean handledOpenTagOrSgmlComments(int ch) throws RecognitionException {
 		if( ch == '<' ) {
 			if( LA(2) == '!' && LA(3) == '-' && LA(4) == '-' ) {
-				match("<!--");
+				match("<!--"); //$NON-NLS-1$
 				while( ( ch = LA(1) ) != CharStream.EOF && !( ch == '-' && LA(2) == '-' && LA(3) == '>' ) ) {
 					consume();
 				}
 				if( ch != CharStream.EOF ) {
-					match("-->");
+					match("-->"); //$NON-NLS-1$
 					setType(sgml_comments);
 					return true;
-				} else {
-					setType(0);
-					// TODO  actually use a sensible BitSet instead of null
-					MismatchedSetException mse = new MismatchedSetException(null, input());
-			        recover(mse);
-			        throw mse;
-				}
+				} // else:
+				setType(0);
+				// TODO  actually use a sensible BitSet instead of null
+				MismatchedSetException mse = new MismatchedSetException(null, input());
+		        recover(mse);
+		        throw mse;
 			}
 			// no comments, only an open tag symbol:
 			consume();
@@ -496,9 +495,8 @@ public class SgmlLexer {
 					if( LA(1) == '-' ) {
 						consume();
 						return true;
-					} else {
-						continue;
-					}
+					} // else:
+					continue;
 				}
 				if( ch == CharStream.EOF ) {
 					// TODO  actually use a sensible BitSet instead of null

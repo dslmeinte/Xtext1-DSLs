@@ -7,6 +7,7 @@ import nl.dslmeinte.xtext.sgml.dtd.test.support.DTDTestSupport;
 import org.eclipse.emf.ecore.EPackage;
 import org.junit.Test;
 
+@SuppressWarnings("nls")
 public class DTD2EcoreTransformerTest extends DTDTestSupport {
 
 	@Test

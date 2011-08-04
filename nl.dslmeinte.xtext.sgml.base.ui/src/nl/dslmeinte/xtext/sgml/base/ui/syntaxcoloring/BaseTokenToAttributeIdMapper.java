@@ -21,6 +21,7 @@ import com.google.inject.Singleton;
  * 
  * @author Meinte Boersma
  */
+@SuppressWarnings("nls")
 @Singleton
 public class BaseTokenToAttributeIdMapper extends AbstractAntlrTokenToAttributeIdMapper {
 

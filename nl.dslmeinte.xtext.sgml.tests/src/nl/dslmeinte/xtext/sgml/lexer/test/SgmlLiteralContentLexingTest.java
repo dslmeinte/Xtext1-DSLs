@@ -8,6 +8,7 @@ import nl.dslmeinte.xtext.sgml.lexer.BaseTerminals;
 import org.antlr.runtime.ANTLRStringStream;
 import org.junit.Test;
 
+@SuppressWarnings("nls")
 public class SgmlLiteralContentLexingTest extends SgmlLexerTestSupport {
 
 	public SgmlLiteralContentLexingTest() {

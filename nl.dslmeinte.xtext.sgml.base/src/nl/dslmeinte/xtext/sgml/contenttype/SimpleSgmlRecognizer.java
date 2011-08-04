@@ -32,8 +32,8 @@ public class SimpleSgmlRecognizer {
 	 * having the right document type, and returns the corresponding
 	 * {@link Result} literal.
 	 */
-	public Result recognize(CharStream input) {
-		this.input = input;
+	public Result recognize(CharStream newInput) {
+		this.input = newInput;
 		try {
 			// proceed until first non-whitespace, non-SGML-comments token:
 			Token token;
@@ -53,7 +53,7 @@ public class SimpleSgmlRecognizer {
 	private Result handleOpenTag() throws RecognitionException {
 		Token token = nextToken();
 		if( token.getType() == textual_contents ) {
-			if( token.getText().equalsIgnoreCase("!DOCTYPE") ) {
+			if( token.getText().equalsIgnoreCase("!DOCTYPE") ) { //$NON-NLS-1$
 				token = nextToken();
 				if( token.getType() != whitespace ) {
 					return sgmlWithWrongDocType;
@@ -61,15 +61,12 @@ public class SimpleSgmlRecognizer {
 				token = nextToken();
 				if( token.getType() != textual_contents ) {
 					return sgmlWithWrongDocType;
-				} else {
-					return( token.getText().equalsIgnoreCase(rootIdentifier) ? sgmlWithRightDocType : sgmlWithWrongDocType );
-				}
-			} else {
-				return sgmlWithoutDocType;
-			}
-		} else {
-			return notSgml;
-		}
+				} // else:
+				return( token.getText().equalsIgnoreCase(rootIdentifier) ? sgmlWithRightDocType : sgmlWithWrongDocType );
+			} // else:
+			return sgmlWithoutDocType;
+		} // else:
+		return notSgml;
 	}
 
 	private CharStream input;
@@ -90,12 +87,10 @@ public class SimpleSgmlRecognizer {
 					input.consume();
 					input.consume();
 					return new Token(sgml_comments);
-				} else {
-					throw new MismatchedSetException();
-				}
-			} else {
-				return new Token(open_tag);
-			}
+				} // else:
+				throw new MismatchedSetException();
+			} // else:
+			return new Token(open_tag);
 		}
 		if( Character.isWhitespace(ch) ) {
 			input.consume();

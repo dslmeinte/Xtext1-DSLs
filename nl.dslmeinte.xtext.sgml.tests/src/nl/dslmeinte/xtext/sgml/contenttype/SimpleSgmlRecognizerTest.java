@@ -8,7 +8,7 @@ import nl.dslmeinte.xtext.sgml.contenttype.SimpleSgmlRecognizer.Result;
 import org.antlr.runtime.ANTLRStringStream;
 import org.junit.Test;
 
-
+@SuppressWarnings("nls")
 public class SimpleSgmlRecognizerTest {
 
 	@Test

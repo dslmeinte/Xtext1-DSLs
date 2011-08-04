@@ -54,7 +54,7 @@ public class BaseProposalProvider extends AbstractBaseProposalProvider {
 			EObject objectOrProxy = candidate.getEObjectOrProxy();
 			StyledString displayString = getStyledDisplayString(objectOrProxy, candidate.getQualifiedName(), candidate.getName());
 			Image image = getImage(objectOrProxy);
-			ICompletionProposal result = createCompletionProposal("&" + name + ";", displayString, image, context);
+			ICompletionProposal result = createCompletionProposal("&" + name + ";", displayString, image, context); //$NON-NLS-1$ //$NON-NLS-2$
 			getPriorityHelper().adjustCrossReferencePriority(result, context.getPrefix());			
 			acceptor.accept(result);
 		}

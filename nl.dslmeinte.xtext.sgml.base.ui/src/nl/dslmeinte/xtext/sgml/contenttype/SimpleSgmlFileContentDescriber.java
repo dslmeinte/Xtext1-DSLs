@@ -48,8 +48,7 @@ public abstract class SimpleSgmlFileContentDescriber implements ITextContentDesc
 		return SUPPORTED_OPTIONS;
 	}
 
-	private int internalDescribe(CharStream input,
-			IContentDescription description) throws IOException {
+	private int internalDescribe(CharStream input, @SuppressWarnings("unused") IContentDescription description) {
 		Result result = recognizer.recognize(input);
 		return( validResults.contains(result) ? VALID : INVALID );
 	}

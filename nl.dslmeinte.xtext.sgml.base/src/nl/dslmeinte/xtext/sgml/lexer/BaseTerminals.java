@@ -10,6 +10,7 @@ import nl.dslmeinte.xtext.util.antlr.trie.EnumBasedTrie;
  * 
  * @author Meinte Boersma
  */
+@SuppressWarnings("nls")
 public enum BaseTerminals {
 
 	// TODO  add enough meta data so Base.xtext could be generated from this description (or vice versa ~ SingleSourcePrinciple)
