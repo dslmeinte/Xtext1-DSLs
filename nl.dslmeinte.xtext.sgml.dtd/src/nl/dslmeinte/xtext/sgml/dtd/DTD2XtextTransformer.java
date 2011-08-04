@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EPackage;
  * 
  * @author Meinte Boersma
  */
+@SuppressWarnings("nls")
 public class DTD2XtextTransformer {
 
 	static {
