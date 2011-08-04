@@ -1,7 +1,5 @@
 package nl.dslmeinte.xtext.sgml.test.simplemarkup.dtd;
 
-import java.io.FileNotFoundException;
-
 import nl.dslmeinte.xtext.dtd.DtdLanguageStandaloneSetup;
 import nl.dslmeinte.xtext.dtd.dtdModel.DtdModelPackage;
 import nl.dslmeinte.xtext.sgml.dtd.DTD2XtextTransformer;
@@ -10,6 +8,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.mwe.utils.StandaloneSetup;
 
+@SuppressWarnings("nls")
 public class GenerateSimpleMarkupGrammar {
 
 	static {
@@ -35,7 +34,7 @@ public class GenerateSimpleMarkupGrammar {
 			);
 	}
 
-	private void run() throws FileNotFoundException {
+	private void run() {
 		DTD2XtextTransformer.transform(
 				platformResourceURI("src", "dtd/simpleMarkup.dtd"),
 				SIMPLE_MARKUP_LANGUAGE_fqName,
@@ -43,22 +42,13 @@ public class GenerateSimpleMarkupGrammar {
 				platformResourceURI("src", "SimpleMarkup.xtext"),
 				xpandPackageQualifiedName() + "::FeatureMixin"
 			);
-		modifyGeneratedParsers(platformResourceURI("src-gen", "parser/antlr/internal/InternalSimpleMarkupParser"), "Section_attributes");
-	}
-
-	/**
-	 * Removes the {@code final} keyword for specific parser methods in order to
-	 * be able to sub class the parser class and override those methods.
-	 */
-	private void modifyGeneratedParsers(URI uri, String...ruleNames) {
-		// TODO  implement
 	}
 
 	private String xpandPackageQualifiedName() {
 		return getClass().getPackage().getName().replaceAll("\\.", "::");
 	}
 
-	public static void main(String...args) throws FileNotFoundException {
+	public static void main(String...args) {
 		new GenerateSimpleMarkupGrammar().run();
 	}
 
