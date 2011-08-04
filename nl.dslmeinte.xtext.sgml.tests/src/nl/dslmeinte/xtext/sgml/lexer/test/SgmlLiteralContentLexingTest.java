@@ -54,7 +54,7 @@ public class SgmlLiteralContentLexingTest extends SgmlLexerTestSupport {
 		assertHeader();
 	}
 
-	private String mkHeader() {
+	private static String mkHeader() {
 		return "<!DOCTYPE SISGML PUBLIC \"snafu.dtd\">";
 	}
 

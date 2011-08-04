@@ -5,6 +5,11 @@ import org.antlr.runtime.RecognitionException;
 
 import com.google.inject.Inject;
 
+/**
+ * TODO  provide Javadoc on how to use this class
+ * 
+ * @author meinte
+ */
 public class SgmlLexerForParsing
 	extends org.eclipse.xtext.parser.antlr.Lexer
 	implements WeavableAntlrLexer

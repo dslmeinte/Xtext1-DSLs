@@ -65,7 +65,7 @@ public class SimpleMarkupParserTest {
 		Assert.assertNotNull(result);
 	}
 
-	private SgmlDocument load(String fileUri, ResourceSet resourceSet) {
+	private static SgmlDocument load(String fileUri, ResourceSet resourceSet) {
 		Resource resource = resourceSet.createResource(URI.createFileURI(fileUri));
 		try {
 			resource.load(Collections.emptyMap());

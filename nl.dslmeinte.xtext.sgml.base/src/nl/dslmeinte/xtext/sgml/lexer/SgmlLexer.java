@@ -24,12 +24,11 @@ import com.google.inject.Inject;
  * Lexer to lexe SGML content, using the principle of lexical state and
  * governing that state itself.
  * <p>
- * The three lexical states are:
+ * The two lexical states are:
  * <dl>
- * 	<dt>{@code header}</dt>
- * 		<dd>For the SGML header, including entities and up to the closing {@code >}.</dd>
- * 	<dt>{@code tag}</dt>
- * 		<dd>For tags, including opening {@code <} and closing {@code >}.</dd>
+ * 	<dt>{@code header or tag}</dt>
+ * 		<dd>For the SGML header, including entities and up to the closing {@code >},
+ * 			or inside tags, including opening {@code <} and closing {@code >}.</dd>
  * 	<dt>{@code content}</dt>
  * 		<dd>For content outside of the SGML header and tags.</dd>
  * </dl>

@@ -14,5 +14,5 @@ public class BaseRuntimeModule extends nl.dslmeinte.xtext.sgml.base.AbstractBase
 	public Class<? extends IValueConverterService> bindIValueConverterService() {
 		return BaseTerminalsConverter.class;
 	}
-	
+
 }
