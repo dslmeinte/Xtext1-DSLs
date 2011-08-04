@@ -10,6 +10,7 @@ generate simplemarkup "http://dslmeinte.nl/Xtext/sgml/dtd/test/simpleMarkup"
 
 // override from Base to include root (of right type):
 SgmlDocument hidden(WHITESPACE, HEADER_COMMENTS):
+	SGML_COMMENTS*
 	'<' '!DOCTYPE' rootName=IDENTIFIER ('PUBLIC' | 'SYSTEM') header1=QuotedString header2=QuotedString?
 		('[' ( entities+=Entity | SGML_COMMENTS )* ']')? '>'
 		root=Content
