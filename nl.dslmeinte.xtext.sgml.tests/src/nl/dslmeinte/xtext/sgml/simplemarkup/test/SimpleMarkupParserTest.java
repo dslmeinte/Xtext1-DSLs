@@ -38,7 +38,7 @@ public class SimpleMarkupParserTest {
 	public void test_resolution_of_internal_crossReference() {
 		SgmlDocument document = load("models/example1.sm", new ResourceSetImpl());
 		EcoreUtil.resolveAll(document);
-		Section to = ((Reference) document.getRoot().getContents().get(0)).getReference_tagOpen().getTo().getTo();
+		Section to = ((Reference) document.getRoot().getContents().get(0)).getReference_tagOpen().getAttributes().getTo();
 		Assert.assertNotNull(to);
 		Assert.assertFalse(to.eIsProxy());
 	}
@@ -48,7 +48,7 @@ public class SimpleMarkupParserTest {
 		ResourceSet resourceSet = new ResourceSetImpl();
 		load("models/example1.sm", resourceSet);
 		SgmlDocument document2 = load("models/example2.sm", resourceSet);
-		Section to = ((Reference) document2.getRoot().getContents().get(0)).getReference_tagOpen().getTo().getTo();
+		Section to = ((Reference) document2.getRoot().getContents().get(0)).getReference_tagOpen().getAttributes().getTo();
 		Assert.assertNotNull(to);
 		Assert.assertFalse(to.eIsProxy());	// proxy gets resolved because of access
 	}
@@ -56,7 +56,7 @@ public class SimpleMarkupParserTest {
 	@Test
 	public void test_parsing_of_conditional_expression() {
 		SgmlDocument document = load("models/example1.sm", new ResourceSetImpl());
-		String condition = ((Section) document.getRoot().getContents().get(1)).getSection_tagOpen().getCondition().getCondition().getExpr();
+		String condition = ((Section) document.getRoot().getContents().get(1)).getSection_tagOpen().getAttributes().getCondition().getExpr();
 		Assert.assertNotNull(condition);
 		ConditionalParser parser = conditionalInjector.getInstance(ConditionalParser.class);
 		Assert.assertNotNull(parser);
