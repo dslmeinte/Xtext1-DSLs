@@ -16,7 +16,7 @@ public class BaseTerminalsConverter extends AbstractDeclarativeValueConverterSer
 					return "\"" + value + "\""; //$NON-NLS-1$ //$NON-NLS-2$
 				}
 				@Override
-				public String toValue(String string, AbstractNode node) throws ValueConverterException {
+				public String toValue(String string, @SuppressWarnings("unused") AbstractNode node) throws ValueConverterException {
 					return string == null ? null : string.substring(1, string.length()-1);
 					// Note that 'node' could be used to determine which characters to escape.
 				}
