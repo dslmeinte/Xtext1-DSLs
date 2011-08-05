@@ -27,7 +27,7 @@ public class GenerateSimpleMarkupGrammar {
 	 * a source folder (either {@code "src"} or {@code "src-gen"}) and a postfix
 	 * path.
 	 */
-	private URI platformResourceURI(String sourceFolder, String postfixPath) {
+	private static URI platformResourceURI(String sourceFolder, String postfixPath) {
 		return URI.createPlatformResourceURI(
 				String.format("%s/%s/%s/%s", SIMPLE_MARKUP_BASE_PACKAGE_NAME, sourceFolder, SIMPLE_MARKUP_BASE_PACKAGE_NAME.replace('.', '/'), postfixPath),
 				true

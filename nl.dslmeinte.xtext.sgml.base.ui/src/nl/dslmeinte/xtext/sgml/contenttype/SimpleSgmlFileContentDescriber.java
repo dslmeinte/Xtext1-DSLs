@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.io.Reader;
 import java.util.EnumSet;
 
-import nl.dslmeinte.xtext.sgml.contenttype.SimpleSgmlRecognizer;
 import nl.dslmeinte.xtext.sgml.contenttype.SimpleSgmlRecognizer.Result;
 
 import org.antlr.runtime.ANTLRInputStream;

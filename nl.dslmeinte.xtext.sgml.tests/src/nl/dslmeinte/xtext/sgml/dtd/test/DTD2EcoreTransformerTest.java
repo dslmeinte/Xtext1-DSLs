@@ -15,7 +15,7 @@ public class DTD2EcoreTransformerTest extends DTDTestSupport {
 		doTransformation("trivial");
 	}
 
-	private void doTransformation(String modelName) {
+	private static void doTransformation(String modelName) {
 		DocumentTypeDefinition dtdDefinition = loadModel(createModelsURI(modelName + ".dtd"));
 //		EPackage ePackage = new DTD2EcoreWithSyntheticsTransformer(dtdDefinition).transform();
 		EPackage ePackage = new DTD2EcoreTransformer(dtdDefinition).transform();

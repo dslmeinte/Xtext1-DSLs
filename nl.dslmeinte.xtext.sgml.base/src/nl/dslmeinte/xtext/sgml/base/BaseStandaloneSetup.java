@@ -21,7 +21,7 @@ public class BaseStandaloneSetup extends BaseStandaloneSetupGenerated {
 	 * languages.
 	 */
 	@Override
-	public void register(Injector injector) {
+	public void register(@SuppressWarnings("unused") Injector injector) {
 		if( !EPackage.Registry.INSTANCE.containsKey(BasePackage.eNS_URI) ) {
 			EPackage.Registry.INSTANCE.put(BasePackage.eNS_URI, BasePackage.eINSTANCE);
 		}

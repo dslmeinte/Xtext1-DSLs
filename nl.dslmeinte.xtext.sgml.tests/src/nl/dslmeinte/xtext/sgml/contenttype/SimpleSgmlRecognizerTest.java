@@ -24,11 +24,11 @@ public class SimpleSgmlRecognizerTest {
 
 	private final static SimpleSgmlRecognizer recognizer = new SimpleSgmlRecognizer("SGML");
 
-	private Result recognize(String input) {
+	private static Result recognize(String input) {
 		return recognizer.recognize(new ANTLRStringStream(input));
 	}
 
-	private void assertR(Result result, String input) {
+	private static void assertR(Result result, String input) {
 		Assert.assertEquals(result, recognize(input));
 	}
 
